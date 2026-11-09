@@ -590,6 +590,177 @@
       "name": "scroll-top",
       "key": "8c7b6a5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p",
       "image": "https://cdn.salla.network/images/themes/raed/preview-images/main-links-with-bg.jpg"
+    },
+    {
+      "title": "أجزاء الدرون",
+      "icon": "sicon-rocket",
+      "name": "drone-parts",
+      "key": "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "مش مجرد درون.. دي زاوية جديدة للعالم."
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان القسم",
+          "format": "text",
+          "value": "أجزاء الدرون"
+        },
+        {
+          "id": "drone_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "parts",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "أجزاء الدرون",
+          "value": [
+            {
+              "label": "المراوح",
+              "text": "مراوح قوية لتحقيق استقرار وسرعة",
+              "image": "https://cdn.files.salla.network/other/1343631853/bf7f9a93-b38e-4732-bc81-72a0efc8f6f1-original.png"
+            },
+            {
+              "label": "الكاميرا",
+              "text": "نظام استقرار للكاميرا والتصوير",
+              "image": "https://cdn.files.salla.network/other/1343631853/dbe75395-d8f9-44dc-9efd-0b546c639792-original.png"
+            },
+            {
+              "label": "هيكل الهبوط",
+              "text": "هيكل هبوط متين وآمن",
+              "image": "https://cdn.files.salla.network/other/1343631853/0a173af6-0bd6-460d-8aae-57da6db532f2-original.png"
+            },
+            {
+              "label": "جسم الطائرة",
+              "text": "جسم الطائرة أساسي ومتكامل",
+              "image": "https://cdn.files.salla.network/other/1343631853/3d1ba946-2089-41e1-8a7d-890dd4d0c972-original.png"
+            }
+          ],
+          "fields": [
+            {
+              "id": "label",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "اسم الجزء",
+              "maxLength": 50
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "format": "textarea",
+              "placeholder": "وصف الجزء",
+              "maxLength": 200
+            },
+            {
+              "id": "image",
+              "type": "string",
+              "icon": "sicon-image-landscape",
+              "format": "image",
+              "label": "صورة الجزء",
+              "required": false
+            }
+          ]
+        }
+      ]
     }
   ],
   "features": [
