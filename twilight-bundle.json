@@ -1,6 +1,6 @@
 {
     "name": {
-        "ar": "\u062f\u0631\u0648\u0646",
+        "ar": "درون",
         "en": "Drone"
     },
     "description": {
@@ -10,5 +10,8 @@
     "author_email": "MahmoudSalah@azzrk.com",
     "support_url": "https://themiify.com/",
     "repository": "https://github.com/themiify/tw-drone",
-    "components": []
+    "components": [],
+    "features": [
+        "landing-page-templates"
+    ]
 }
