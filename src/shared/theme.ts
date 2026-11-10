@@ -314,7 +314,6 @@ export const tacticalFrameStyles = css`
     pointer-events: none;
     z-index: 1;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
-    transition: transform 0.3s ease;
   }
 
   .frame-inner {
@@ -328,7 +327,6 @@ export const tacticalFrameStyles = css`
       95.0868% 14.1286%,
       100% 25.6345%,
       100% 100%,
-      86.4885% 100%,
       81.2499% 87.7327%,
       58.4176% 87.7327%,
       53.1791% 100%,
@@ -348,12 +346,6 @@ export const tacticalFrameStyles = css`
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .frame:hover .frame-inner img,
-  .frame:hover .frame-inner video {
-    transform: scale(1.03);
   }
 
   .frame-inner .empty {
