@@ -68,7 +68,7 @@ const DEFAULT_LINKS: FooterLinkItem[] = [
   { label: "القصة", url: "#story" },
   { label: "اجزاء الدرون", url: "#parts" },
   { label: "الاسئلة الشائعة", url: "#faq" },
-  { label: "الفيدوهات", url: "#videos" },
+  { label: "الفيديوهات", url: "#videos" },
 ];
 
 const DEFAULT_DESC =
@@ -581,20 +581,21 @@ export default class DroneFooter extends LitElement {
               ${links.map(
                 (l) => html`
                   <a class="link-row" href=${l.url || "#"}>
+                    <span class="link-label">${l.label || ""}</span>
                     <span class="link-arrow">
                       <!-- Up-Left arrow ↖ -->
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2.5"
+                        stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       >
-                        <path d="M16 16L8 8M8 8H15M8 8V15" />
+                        <line x1="17" y1="17" x2="7" y2="7"></line>
+                        <polyline points="7 17 7 7 17 7"></polyline>
                       </svg>
                     </span>
-                    <span class="link-label">${l.label || ""}</span>
                   </a>
                 `
               )}

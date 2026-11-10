@@ -1203,7 +1203,7 @@
               "active": false
             },
             {
-              "label": "الفيدوهات",
+              "label": "الفيديوهات",
               "url": "#videos",
               "active": false
             }
@@ -1305,7 +1305,7 @@
           "label": "تثبيت الترويسة في الأعلى عند التمرير (Sticky)",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": true
         },
         {
           "id": "bg_color",
@@ -1525,7 +1525,7 @@
               "url": "#faq"
             },
             {
-              "label": "الفيدوهات",
+              "label": "الفيديوهات",
               "url": "#videos"
             }
           ],
@@ -1729,7 +1729,7 @@
           "inputType": "color",
           "label": "لون خلفية أيقونات التواصل",
           "required": false,
-          "value": "#ebebeb"
+          "value": "#E6E6E6"
         },
         {
           "id": "social_color",

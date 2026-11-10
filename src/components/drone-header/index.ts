@@ -41,7 +41,7 @@ const DEFAULT_LINKS: NavLinkItem[] = [
   { label: "القصة", url: "#story", active: false },
   { label: "الأجزاء", url: "#parts", active: false },
   { label: "الاسئلة الشائعة", url: "#faq", active: false },
-  { label: "الفيدوهات", url: "#videos", active: false },
+  { label: "الفيديوهات", url: "#videos", active: false },
 ];
 
 function pick(v: unknown): string {
@@ -107,6 +107,12 @@ export default class DroneHeader extends LitElement {
     return "#";
   }
 
+  private get isSticky(): boolean {
+    const s = this.cfg.sticky;
+    if (s === undefined || s === null) return true;
+    return s === true || s === "true" || s === 1 || s === "1";
+  }
+
   private get links(): NavLinkItem[] {
     const raw = this.cfg.links;
     if (Array.isArray(raw) && raw.length > 0) return raw;
@@ -141,7 +147,7 @@ export default class DroneHeader extends LitElement {
       width: 100%;
       box-sizing: border-box;
       position: relative;
-      z-index: 9999;
+      z-index: 99999;
       --hdr-bg: #0d0d0d;
       --hdr-text: #ffffff;
       --hdr-active: #ffffff;
@@ -150,14 +156,14 @@ export default class DroneHeader extends LitElement {
       --hdr-border: #262626;
     }
 
-    * {
-      box-sizing: border-box;
+    :host(.sticky-header) {
+      position: sticky;
+      top: 0;
+      z-index: 99999;
     }
 
-    .sticky-spacer {
-      height: 72px;
-      width: 100%;
-      display: block;
+    * {
+      box-sizing: border-box;
     }
 
     .header-wrap {
@@ -170,12 +176,8 @@ export default class DroneHeader extends LitElement {
     }
 
     .header-wrap.sticky {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 99999;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -365,6 +367,30 @@ export default class DroneHeader extends LitElement {
     }
   `];
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateStickyHost();
+  }
+
+  updated(changedProperties: Map<string, any>) {
+    super.updated(changedProperties);
+    this.updateStickyHost();
+  }
+
+  private updateStickyHost() {
+    if (this.isSticky) {
+      this.classList.add("sticky-header");
+      this.style.position = "sticky";
+      this.style.top = "0";
+      this.style.zIndex = "99999";
+    } else {
+      this.classList.remove("sticky-header");
+      this.style.position = "relative";
+      this.style.top = "";
+      this.style.zIndex = "9999";
+    }
+  }
+
   private toggleMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
@@ -407,11 +433,8 @@ export default class DroneHeader extends LitElement {
     const links = this.links;
 
     return html`
-      ${c.sticky
-        ? html`<div class="sticky-spacer" aria-hidden="true"></div>`
-        : nothing}
       <header
-        class="header-wrap ${c.sticky ? "sticky" : ""} ${c.border_bottom ? "bordered" : ""}"
+        class="header-wrap ${this.isSticky ? "sticky" : ""} ${c.border_bottom ? "bordered" : ""}"
         style="${customVars}"
       >
         <div class="container">
