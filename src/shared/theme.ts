@@ -59,11 +59,12 @@ export function renderTacticalButton(
   text: string,
   link: string = "#",
   bgVar: string = "var(--btn-bg, #ffffff)",
-  extraClass: string = ""
+  extraClass: string = "",
+  inlineStyle: string = ""
 ) {
   if (!text) return nothing;
   return html`
-    <a class="cta-btn ${extraClass}" href=${link}>
+    <a class="cta-btn ${extraClass}" href=${link} style="${inlineStyle}">
       <svg
         class="cta-bg"
         viewBox="0 0 170 42"
@@ -169,5 +170,97 @@ export function renderSectionHeader(
       <h3 class="badge" style="${bStyle}">${badge}</h3>
     </div>
     <div class="line" style="${lStyle}"></div>
+  `;
+}
+
+/**
+ * Tactical Framed Media (Outer notched frame & inner media container)
+ * Precision 12-point vector polygon matching Figma design 575x327:
+ * M 28.8746 0 H 274.621 L 305.78 46.2005 H 546.749 L 575 83.8249 V 327 H 497.309 L 467.187 286.886 H 335.901 L 305.78 327 H 0 V 38.4543 L 28.8746 0 Z
+ */
+export const TACTICAL_FRAME_PATH =
+  "M 28.8746 0 H 274.621 L 305.78 46.2005 H 546.749 L 575 83.8249 V 327 H 497.309 L 467.187 286.886 H 335.901 L 305.78 327 H 0 V 38.4543 L 28.8746 0 Z";
+
+export const TACTICAL_FRAME_POLYGON =
+  "polygon(5.02% 0%, 47.76% 0%, 53.18% 14.13%, 95.09% 14.13%, 100% 25.63%, 100% 100%, 86.49% 100%, 81.25% 87.73%, 58.42% 87.73%, 53.18% 100%, 0% 100%, 0% 11.76%)";
+
+export const tacticalFrameStyles = css`
+  .frame {
+    position: relative;
+    aspect-ratio: 575 / 327;
+    width: 100%;
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.08));
+    box-sizing: border-box;
+  }
+
+  .frame-outer {
+    position: absolute;
+    inset: 0;
+    background: var(--frame-color, #ececec);
+    clip-path: polygon(
+      5.02% 0%,
+      47.76% 0%,
+      53.18% 14.13%,
+      95.09% 14.13%,
+      100% 25.63%,
+      100% 100%,
+      86.49% 100%,
+      81.25% 87.73%,
+      58.42% 87.73%,
+      53.18% 100%,
+      0% 100%,
+      0% 11.76%
+    );
+    opacity: 0.95;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .frame-inner {
+    position: absolute;
+    inset: clamp(10px, 2.2cqw, 18px);
+    clip-path: polygon(
+      5.02% 0%,
+      47.76% 0%,
+      53.18% 14.13%,
+      95.09% 14.13%,
+      100% 25.63%,
+      100% 100%,
+      86.49% 100%,
+      81.25% 87.73%,
+      58.42% 87.73%,
+      53.18% 100%,
+      0% 100%,
+      0% 11.76%
+    );
+    background: #2b2b2b;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .frame-inner img,
+  .frame-inner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .frame:hover .frame-inner img,
+  .frame:hover .frame-inner video {
+    transform: scale(1.03);
+  }
+`;
+
+export function renderTacticalFrame(contentNode: unknown) {
+  return html`
+    <div class="frame">
+      <div class="frame-outer"></div>
+      <div class="frame-inner">
+        ${contentNode || nothing}
+      </div>
+    </div>
   `;
 }

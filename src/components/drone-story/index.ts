@@ -4,8 +4,10 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import {
   renderSectionHeader,
   renderTacticalButton,
+  renderTacticalFrame,
   sectionHeaderStyles,
   tacticalButtonStyles,
+  tacticalFrameStyles,
 } from "../../shared/theme.js";
 
 type MediaType = "image" | "video";
@@ -104,6 +106,7 @@ export default class DroneStory extends LitElement {
   static styles = [
     tacticalButtonStyles,
     sectionHeaderStyles,
+    tacticalFrameStyles,
     css`
       :host {
         display: block;
@@ -200,61 +203,15 @@ export default class DroneStory extends LitElement {
         }
       }
 
-    /* ---------- framed media ---------- */
-    .frame {
-      position: relative;
-      aspect-ratio: 450 / 255;
-      width: 100%;
-    }
-    .frame-outer {
-      position: absolute;
-      inset: 0;
-      background: var(--frame-color, #ececec);
-      clip-path: polygon(
-        2% 0,
-        47% 0,
-        57% 10%,
-        100% 10%,
-        100% 100%,
-        64% 100%,
-        56% 88%,
-        0 88%,
-        0 12%
-      );
-      opacity: 0.85;
-    }
-    .frame-inner {
-      position: absolute;
-      inset: 0;
-      clip-path: polygon(
-        4.5% 10.5%,
-        43% 10.5%,
-        50% 20%,
-        92% 20%,
-        92% 93%,
-        65% 93%,
-        59% 82%,
-        4.5% 82%
-      );
-      background: #ddd;
-    }
-    .frame-inner img,
-    .frame-inner video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .empty {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      font-size: 0.8rem;
-      opacity: 0.6;
-    }
+      .empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
 
     /* ---------- mobile ---------- */
     @media (max-width: 768px) {
@@ -341,8 +298,9 @@ export default class DroneStory extends LitElement {
       .filter(Boolean)
       .join(";");
 
+    const mediaImg = c.media_image || "/drone-story-photo.jpg";
     const floatNode = this.renderMedia(floatType, floatImg, c.float_video);
-    const mediaNode = this.renderMedia(mediaType, c.media_image, c.media_video);
+    const mediaNode = this.renderMedia(mediaType, mediaImg, c.media_video);
 
     return html`
       <div class="wrap" style="${wrapStyle}${frameVars}">
@@ -391,13 +349,9 @@ export default class DroneStory extends LitElement {
             </div>
 
             <div class="col">
-              <div class="frame">
-                <div class="frame-outer"></div>
-                <div class="frame-inner">
-                  ${mediaNode ||
-                  html`<div class="empty"></div>`}
-                </div>
-              </div>
+              ${renderTacticalFrame(
+                mediaNode || html`<div class="empty"></div>`
+              )}
             </div>
           </div>
         </div>

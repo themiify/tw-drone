@@ -1,7 +1,12 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { renderSectionHeader, sectionHeaderStyles } from "../../shared/theme.js";
+import {
+  renderSectionHeader,
+  renderTacticalFrame,
+  sectionHeaderStyles,
+  tacticalFrameStyles,
+} from "../../shared/theme.js";
 
 type BgType = "none" | "color" | "image" | "video";
 
@@ -156,6 +161,7 @@ export default class DroneFaq extends LitElement {
 
   static styles = [
     sectionHeaderStyles,
+    tacticalFrameStyles,
     css`
       :host {
         display: block;
@@ -199,61 +205,15 @@ export default class DroneFaq extends LitElement {
         align-items: center;
         gap: 2rem;
       }
-    .body.reverse {
-      flex-direction: row-reverse;
-    }
-    .col {
-      flex: 1 1 0;
-      min-width: 0;
-    }
+      .body.reverse {
+        flex-direction: row-reverse;
+      }
+      .col {
+        flex: 1 1 0;
+        min-width: 0;
+      }
 
-    /* ---------- framed media ---------- */
-    .frame {
-      position: relative;
-      aspect-ratio: 450 / 255;
-      width: 100%;
-    }
-    .frame-outer {
-      position: absolute;
-      inset: 0;
-      background: var(--frame-color, #ececec);
-      clip-path: polygon(
-        2% 0,
-        47% 0,
-        57% 10%,
-        100% 10%,
-        100% 100%,
-        64% 100%,
-        56% 88%,
-        0 88%,
-        0 12%
-      );
-      opacity: 0.85;
-    }
-    .frame-inner {
-      position: absolute;
-      inset: 0;
-      clip-path: polygon(
-        4.5% 10.5%,
-        43% 10.5%,
-        50% 20%,
-        92% 20%,
-        92% 93%,
-        65% 93%,
-        59% 82%,
-        4.5% 82%
-      );
-      background: #ddd;
-    }
-    .frame-inner img,
-    .frame-inner video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ---------- accordion ---------- */
+      /* ---------- accordion ---------- */
     .faq {
       display: flex;
       flex-direction: column;
@@ -389,7 +349,8 @@ export default class DroneFaq extends LitElement {
           ></video>`
         : nothing;
     }
-    return c.media_image ? html`<img src=${c.media_image} alt="" />` : nothing;
+    const imgSrc = c.media_image || "/drone-faq-photo.jpg";
+    return html`<img src=${imgSrc} alt="" />`;
   }
 
   render() {
@@ -455,10 +416,7 @@ export default class DroneFaq extends LitElement {
 
           <div class="body ${c.reverse ? "reverse" : ""}">
             <div class="col">
-              <div class="frame">
-                <div class="frame-outer"></div>
-                <div class="frame-inner">${this.renderMedia()}</div>
-              </div>
+              ${renderTacticalFrame(this.renderMedia())}
             </div>
 
             <div class="col faq">
