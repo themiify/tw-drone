@@ -1,6 +1,11 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { renderTacticalButton, tacticalButtonStyles } from "../../shared/theme.js";
+import {
+  renderSocialBadge,
+  renderTacticalButton,
+  socialButtonStyles,
+  tacticalButtonStyles,
+} from "../../shared/theme.js";
 
 interface FooterLinkItem {
   label?: string;
@@ -170,6 +175,7 @@ export default class DroneFooter extends LitElement {
 
   static styles = [
     tacticalButtonStyles,
+    socialButtonStyles,
     css`
     :host {
       display: block;
@@ -182,7 +188,7 @@ export default class DroneFooter extends LitElement {
       --ftr-desc: #4a4a4a;
       --ftr-link: #0d0d0d;
       --ftr-line: #e0e0e0;
-      --social-bg: #ebebeb;
+      --social-bg: #E6E6E6;
       --social-color: #111111;
       --btn-bg: #0d0d0d;
       --btn-text: #ffffff;
@@ -314,88 +320,7 @@ export default class DroneFooter extends LitElement {
     .social-icons {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-    }
-
-    .social-badge {
-      width: 38px;
-      height: 38px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--social-bg);
-      color: var(--social-color);
-      clip-path: polygon(
-        22% 0%,
-        78% 0%,
-        100% 22%,
-        100% 78%,
-        78% 100%,
-        22% 100%,
-        0% 78%,
-        0% 22%
-      );
-      text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease,
-        box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    .social-badge:hover {
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .social-badge svg {
-      width: 17px;
-      height: 17px;
-    }
-
-    /* CTA Button */
-    .cta-btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.6rem;
-      text-decoration: none;
-      color: var(--btn-text);
-      font-weight: 700;
-      font-size: 0.88rem;
-      white-space: nowrap;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      min-width: 145px;
-      height: 42px;
-      margin-top: 0.3rem;
-      transition: transform 0.15s ease, filter 0.15s ease;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-    }
-
-    .cta-btn:active {
-      transform: translateY(1px);
-    }
-
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .cta-text {
-      position: relative;
-      z-index: 2;
-      line-height: 1;
+      gap: 0.75rem;
     }
 
     /* =================== LINKS COLUMN (LEFT IN RTL) =================== */
@@ -537,78 +462,45 @@ export default class DroneFooter extends LitElement {
     const x = c.x_url || "#";
     const li = c.linkedin_url || "#";
 
+    const fbIcon = html`<svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>`;
+
+    const igIcon = html`<svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>`;
+
+    const xIcon = html`<svg viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+      />
+    </svg>`;
+
+    const liIcon = html`<svg viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+      />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>`;
+
     return html`
       <div class="social-section">
         <h4 class="social-title">${this.socialTitle}</h4>
         <div class="social-icons">
-          <!-- Facebook -->
-          <a
-            class="social-badge"
-            href=${fb}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-              />
-            </svg>
-          </a>
-
-          <!-- Instagram -->
-          <a
-            class="social-badge"
-            href=${ig}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </a>
-
-          <!-- X (Twitter) -->
-          <a
-            class="social-badge"
-            href=${x}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-
-          <!-- LinkedIn -->
-          <a
-            class="social-badge"
-            href=${li}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-              />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
+          ${renderSocialBadge(fbIcon, fb, "Facebook", "var(--social-bg, #E6E6E6)")}
+          ${renderSocialBadge(igIcon, ig, "Instagram", "var(--social-bg, #E6E6E6)")}
+          ${renderSocialBadge(xIcon, x, "X", "var(--social-bg, #E6E6E6)")}
+          ${renderSocialBadge(liIcon, li, "LinkedIn", "var(--social-bg, #E6E6E6)")}
         </div>
       </div>
     `;
@@ -621,7 +513,7 @@ export default class DroneFooter extends LitElement {
     const desc = c.desc_color || "#4a4a4a";
     const link = c.link_color || "#0d0d0d";
     const line = c.line_color || "#e0e0e0";
-    const socialBg = c.social_bg || "#ebebeb";
+    const socialBg = c.social_bg || "#E6E6E6";
     const socialColor = c.social_color || "#111111";
     const btnBg = c.button_bg || "#0d0d0d";
     const btnText = c.button_color || "#ffffff";

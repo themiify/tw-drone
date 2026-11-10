@@ -269,50 +269,6 @@ export default class DroneHeader extends LitElement {
       color: var(--hdr-active);
     }
 
-    /* =================== CTA BUTTON =================== */
-    .cta-btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.55rem 1.6rem;
-      text-decoration: none;
-      color: var(--btn-text);
-      font-weight: 700;
-      font-size: 0.88rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      min-width: 140px;
-      height: 40px;
-      transition: transform 0.15s ease, filter 0.15s ease;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-1px);
-      filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.25));
-    }
-
-    .cta-btn:active {
-      transform: translateY(1px);
-    }
-
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .cta-text {
-      position: relative;
-      z-index: 2;
-      line-height: 1;
-    }
 
     /* =================== HAMBURGER =================== */
     .menu-toggle {

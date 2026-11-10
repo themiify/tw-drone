@@ -1,11 +1,12 @@
 import { css, html, nothing } from "lit";
 
 /**
- * Tactical notched button SVG path:
- * Precision bevel cuts at top-right and bottom-left with parallel notches.
+ * Tactical notched button SVG path (Figma exact vector):
+ * Central notches on top & bottom, side cutouts, chamfered top-right & bottom-left.
+ * Native dimensions: 62x57
  */
 export const TACTICAL_BTN_PATH =
-  "M 0 0 L 100 0 L 106 7 L 109 7 L 114 0 L 120 0 L 126 7 L 129 7 L 134 0 L 170 0 L 170 42 L 70 42 L 64 35 L 61 35 L 56 42 L 50 42 L 44 35 L 41 35 L 36 42 L 0 42 Z";
+  "M20.5 0H0V14H4.5V39H0V48L10.5 57H20.5V52H33V57H62V43.5H59V14H62V4L55 0H33V4H20.5V0Z";
 
 export const tacticalButtonStyles = css`
   .cta-btn {
@@ -13,7 +14,7 @@ export const tacticalButtonStyles = css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 1.6rem;
+    padding: 0.6rem 1.8rem;
     text-decoration: none;
     color: var(--btn-text, #0d0d0d);
     font-weight: 700;
@@ -52,6 +53,7 @@ export const tacticalButtonStyles = css`
     z-index: 2;
     line-height: 1;
     color: inherit;
+    display: inline-block;
   }
 `;
 
@@ -67,7 +69,7 @@ export function renderTacticalButton(
     <a class="cta-btn ${extraClass}" href=${link} style="${inlineStyle}">
       <svg
         class="cta-bg"
-        viewBox="0 0 170 42"
+        viewBox="0 0 62 57"
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +77,94 @@ export function renderTacticalButton(
         <path d="${TACTICAL_BTN_PATH}" fill="${bgVar}" />
       </svg>
       <span class="cta-text">${text}</span>
+    </a>
+  `;
+}
+
+/**
+ * Tactical Social Media Badges (Native 62x57 aspect ratio)
+ */
+export const socialButtonStyles = css`
+  .social-badge {
+    position: relative;
+    width: 44px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--social-color, #111111);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      color 0.2s ease;
+  }
+
+  .social-badge:hover {
+    transform: translateY(-2px);
+    color: var(--social-hover-color, #000000);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  }
+
+  .social-badge:active {
+    transform: translateY(0);
+  }
+
+  .social-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .social-icon {
+    position: relative;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+  }
+
+  .social-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+`;
+
+export function renderSocialBadge(
+  iconSvg: unknown,
+  link: string = "#",
+  label: string = "",
+  bgVar: string = "var(--social-bg, #E6E6E6)"
+) {
+  return html`
+    <a
+      class="social-badge"
+      href=${link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label=${label}
+    >
+      <svg
+        class="social-bg"
+        viewBox="0 0 62 57"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="${TACTICAL_BTN_PATH}" fill="${bgVar}" />
+      </svg>
+      <span class="social-icon">
+        ${iconSvg}
+      </span>
     </a>
   `;
 }
