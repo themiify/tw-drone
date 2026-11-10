@@ -1,0 +1,633 @@
+import { css, html, LitElement, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import {
+  renderSectionHeader,
+  renderTacticalButton,
+  sectionHeaderStyles,
+  tacticalButtonStyles,
+} from "../../shared/theme.js";
+
+interface FeatureItem {
+  id?: string;
+  title: string;
+  desc: string;
+  icon_type?: string;
+}
+
+interface DroneFeaturesConfig {
+  title?: string;
+  heading?: string;
+  bg_type?: unknown;
+  bg_color?: string;
+  bg_image?: string;
+  bg_overlay?: number;
+  drone_image?: string;
+
+  features?: FeatureItem[];
+
+  show_button?: boolean;
+  button_text?: string;
+  source_url?: unknown;
+
+  text_color?: string;
+  desc_color?: string;
+  line_color?: string;
+  button_bg?: string;
+  button_color?: string;
+}
+
+const DEFAULT_BG_IMAGE =
+  "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp";
+
+const DEFAULT_DRONE_IMAGE = "/images/drone-features-main.png";
+
+const DEFAULT_TITLE = "مميزات الدرون";
+const DEFAULT_HEADING = "استكشف العالم من زوايا جديدة مع تصميم متقدم";
+
+const DEFAULT_FEATURES: FeatureItem[] = [
+  {
+    id: "propellers",
+    title: "تصميم متعدد المراوح",
+    desc: "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
+    icon_type: "propeller",
+  },
+  {
+    id: "camera",
+    title: "كاميرا مدمجة",
+    desc: "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
+    icon_type: "camera",
+  },
+  {
+    id: "aerial",
+    title: "تصوير جوي",
+    desc: "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
+    icon_type: "aerial",
+  },
+  {
+    id: "guard",
+    title: "هيكل يحيط بالمراوح",
+    desc: "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
+    icon_type: "guard",
+  },
+  {
+    id: "record",
+    title: "وثّق مغامرتك",
+    desc: "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
+    icon_type: "record",
+  },
+  {
+    id: "wide",
+    title: "منظور أوسع",
+    desc: "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
+    icon_type: "wide",
+  },
+];
+
+function pick(v: unknown): string {
+  if (Array.isArray(v)) {
+    const first: any = v[0];
+    return String(first?.value ?? first ?? "");
+  }
+  if (v && typeof v === "object") return String((v as any).value ?? "");
+  return v == null ? "" : String(v);
+}
+
+function parseJsonSafe(val: unknown): any {
+  if (!val) return null;
+  if (typeof val === "object") return val;
+  if (typeof val === "string") {
+    try {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = val;
+      return JSON.parse(txt.value);
+    } catch {
+      try {
+        return JSON.parse(val);
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+export default class DroneFeatures extends LitElement {
+  @property({ type: Object })
+  config?: Record<string, any>;
+
+  private get cfg(): DroneFeaturesConfig {
+    const parsed = parseJsonSafe(this.config);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  }
+
+  private get titleText(): string {
+    return this.cfg.title ?? DEFAULT_TITLE;
+  }
+
+  private get headingText(): string {
+    return this.cfg.heading ?? DEFAULT_HEADING;
+  }
+
+  private get bgType(): string {
+    return pick(this.cfg.bg_type) || "image";
+  }
+
+  private get bgImage(): string {
+    const img = this.cfg.bg_image;
+    if (typeof img === "string" && img) return img;
+    return DEFAULT_BG_IMAGE;
+  }
+
+  private get droneImage(): string {
+    const img = this.cfg.drone_image;
+    if (typeof img === "string" && img) return img;
+    return DEFAULT_DRONE_IMAGE;
+  }
+
+  private get featuresList(): FeatureItem[] {
+    const list = this.cfg.features;
+    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_FEATURES;
+  }
+
+  private get showButton(): boolean {
+    return this.cfg.show_button !== false;
+  }
+
+  private get buttonText(): string {
+    return this.cfg.button_text ?? "اطلب درونك الآن";
+  }
+
+  private get buttonLink(): string {
+    const link = this.cfg.source_url;
+    if (typeof link === "string" && link) return link;
+    if (Array.isArray(link) && link.length > 0) {
+      const f: any = link[0];
+      return String(f?.value ?? f ?? "#");
+    }
+    return "#";
+  }
+
+  static styles = [
+    tacticalButtonStyles,
+    sectionHeaderStyles,
+    css`
+      :host {
+        display: block;
+        direction: rtl;
+        font-family: inherit;
+        width: 100%;
+        box-sizing: border-box;
+        --sec-bg: #ffffff;
+        --sec-text: #111111;
+        --sec-desc: #666666;
+        --sec-line: #e0e0e0;
+        --sec-tab: #0d0d0d;
+        --btn-bg: #0d0d0d;
+        --btn-text: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .features-section {
+        position: relative;
+        background: var(--sec-bg);
+        color: var(--sec-text);
+        overflow: hidden;
+        padding: 4rem 1.5rem 5rem;
+        isolation: isolate;
+      }
+
+      /* Blueprint wireframe background */
+      .bg-layer {
+        position: absolute;
+        inset: 0;
+        background-repeat: no-repeat;
+        background-position: right 20px top 40px;
+        background-size: 55% auto;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.35;
+      }
+
+      .bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--sec-bg);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* =================== SATELLITE FEATURES STAGE =================== */
+      .features-stage {
+        position: relative;
+        width: 100%;
+        max-width: 1120px;
+        margin: 3.5rem auto 2.5rem;
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .drone-center {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        max-width: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+      }
+
+      .drone-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.12));
+      }
+
+      /* =================== FEATURE CARD =================== */
+      .feature-item {
+        position: absolute;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        max-width: 240px;
+        transition: transform 0.25s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .feature-header {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .feature-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .feature-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .feature-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--sec-text);
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .feature-desc {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        color: var(--sec-desc);
+        margin: 0;
+      }
+
+      /* =================== DESKTOP RADIAL POSITIONS =================== */
+      /* 1. Top Center / slightly right (تصميم متعدد المراوح) */
+      .pos-0 {
+        top: 2%;
+        right: 42%;
+        text-align: right;
+      }
+      .pos-0 .feature-header {
+        flex-direction: row;
+      }
+
+      /* 2. Top Right (كاميرا مدمجة) */
+      .pos-1 {
+        top: 12%;
+        right: 4%;
+        text-align: right;
+      }
+      .pos-1 .feature-header {
+        flex-direction: row;
+      }
+
+      /* 3. Mid Right (تصوير جوي) */
+      .pos-2 {
+        top: 58%;
+        right: 5%;
+        text-align: right;
+      }
+      .pos-2 .feature-header {
+        flex-direction: row;
+      }
+
+      /* 4. Bottom Center (هيكل يحيط بالمراوح) */
+      .pos-3 {
+        bottom: 2%;
+        left: 45%;
+        text-align: right;
+      }
+      .pos-3 .feature-header {
+        flex-direction: row;
+      }
+
+      /* 5. Mid Left (وثّق مغامرتك) */
+      .pos-4 {
+        top: 58%;
+        left: 5%;
+        text-align: right;
+      }
+      .pos-4 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      /* 6. Top Left (منظور أوسع) */
+      .pos-5 {
+        top: 12%;
+        left: 4%;
+        text-align: right;
+      }
+      .pos-5 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      /* =================== CTA BUTTON CONTAINER =================== */
+      .cta-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+        position: relative;
+        z-index: 5;
+      }
+
+      /* =================== RESPONSIVE (MOBILE & TABLET) =================== */
+      @media (max-width: 990px) {
+        .bg-layer {
+          background-size: 90% auto;
+          background-position: center top;
+          opacity: 0.2;
+        }
+
+        .features-stage {
+          min-height: auto;
+          margin: 2rem auto;
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .drone-center {
+          max-width: 380px;
+          margin: 0 auto;
+        }
+
+        /* Convert absolute cards into an organized 2-column grid */
+        .feature-item,
+        .pos-0,
+        .pos-1,
+        .pos-2,
+        .pos-3,
+        .pos-4,
+        .pos-5 {
+          position: static;
+          max-width: 100%;
+          transform: none;
+        }
+
+        .mobile-features-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.8rem 1.5rem;
+          width: 100%;
+        }
+
+        .mobile-features-grid .feature-header {
+          flex-direction: row !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .features-section {
+          padding: 3rem 1rem 3.5rem;
+        }
+
+        .drone-center {
+          max-width: 300px;
+        }
+
+        .mobile-features-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .cta-wrapper {
+          margin-top: 2rem;
+        }
+      }
+    `,
+  ];
+
+  private renderIcon(type?: string) {
+    switch (type) {
+      case "propeller":
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <path
+              d="M16 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-7c-1.5 2-2 4.5-.5 6 1.5 1.5 4 1 6-.5 2-1.5 2.5-4 1-5.5s-4.5-1.5-6.5 0zm-5.5 13.5c-1.5-2-4-2.5-5.5-1s-1.5 4.5 0 6.5 4.5 2 6 .5 1-4-.5-6zm12 2c-.5 2.5 0 5 1.5 6s4 0 5-2-.5-4.5-2-5.5-4-.5-4.5 1.5z"
+              fill="#FFFFFF"
+            />
+          </svg>
+        `;
+      case "camera":
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <path
+              d="M12 11h2l1-1.5h2l1 1.5h2c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H12c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2zm4 2.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
+              fill="#FFFFFF"
+            />
+          </svg>
+        `;
+      case "aerial":
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <path
+              d="M16 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-4.24-2.24a6 6 0 0 1 8.48 0l1.42-1.42a8 8 0 0 0-11.32 0l1.42 1.42zm-2.83-2.83a10 10 0 0 1 14.14 0l1.42-1.42a12 12 0 0 0-16.98 0l1.42 1.42z"
+              fill="#FFFFFF"
+            />
+          </svg>
+        `;
+      case "guard":
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <circle
+              cx="16"
+              cy="16"
+              r="6"
+              stroke="#FFFFFF"
+              stroke-width="2.5"
+              fill="none"
+            />
+            <circle cx="16" cy="16" r="2" fill="#FFFFFF" />
+          </svg>
+        `;
+      case "record":
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <rect
+              x="10"
+              y="11"
+              width="12"
+              height="10"
+              rx="2"
+              stroke="#FFFFFF"
+              stroke-width="1.8"
+              fill="none"
+            />
+            <path d="M15 14l3 2-3 2v-4z" fill="#FFFFFF" />
+            <circle cx="12" cy="13" r="0.8" fill="#FFFFFF" />
+            <circle cx="20" cy="13" r="0.8" fill="#FFFFFF" />
+          </svg>
+        `;
+      case "wide":
+      default:
+        return html`
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
+            <circle
+              cx="16"
+              cy="16"
+              r="6.5"
+              stroke="#FFFFFF"
+              stroke-width="1.8"
+              fill="none"
+            />
+            <path
+              d="M16 9.5L18.5 14M22.5 16L18 18.5M16 22.5L13.5 18M9.5 16L14 13.5"
+              stroke="#FFFFFF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        `;
+    }
+  }
+
+  private renderButton() {
+    if (!this.showButton) return nothing;
+    return html`
+      <div class="cta-wrapper">
+        ${renderTacticalButton(
+          this.buttonText,
+          this.buttonLink,
+          "var(--btn-bg, #0d0d0d)"
+        )}
+      </div>
+    `;
+  }
+
+  render() {
+    const c = this.cfg;
+    const bg = c.bg_color || "#ffffff";
+    const text = c.text_color || "#111111";
+    const desc = c.desc_color || "#666666";
+    const line = c.line_color || "#e0e0e0";
+    const btnBg = c.button_bg || "#0d0d0d";
+    const btnText = c.button_color || "#ffffff";
+
+    const bgType = this.bgType;
+    const bgImage = this.bgImage;
+    const overlay = Number(c.bg_overlay || 0) / 100;
+
+    const customVars = [
+      `--sec-bg:${bg}`,
+      `--sec-text:${text}`,
+      `--sec-desc:${desc}`,
+      `--sec-line:${line}`,
+      `--btn-bg:${btnBg}`,
+      `--btn-text:${btnText}`,
+    ].join(";");
+
+    const features = this.featuresList;
+
+    return html`
+      <section class="features-section" style="${customVars}">
+        <!-- Wireframe blueprint drone background -->
+        ${bgType === "image" && bgImage
+          ? html`<div
+              class="bg-layer"
+              style="background-image: url('${bgImage}');"
+            ></div>`
+          : nothing}
+        ${overlay > 0
+          ? html`<div class="bg-overlay" style="opacity: ${overlay};"></div>`
+          : nothing}
+
+        <div class="container">
+          <!-- Section Header (Title on left, Heading on right in RTL) -->
+          ${renderSectionHeader(
+            this.headingText,
+            this.titleText,
+            "var(--sec-text, #111111)",
+            "var(--sec-text, #111111)",
+            "var(--sec-line, #e0e0e0)",
+            "var(--sec-text, #0d0d0d)"
+          )}
+
+          <!-- Satellite Features Stage for Desktop (with radial positions) -->
+          <div class="features-stage">
+            <div class="drone-center">
+              <img
+                src=${this.droneImage}
+                alt="Drone"
+                class="drone-img"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Absolute items on desktop / stacked items in mobile -->
+            ${features.map(
+              (f, i) => html`
+                <div class="feature-item pos-${i}">
+                  <div class="feature-header">
+                    <span class="feature-icon">
+                      ${this.renderIcon(f.icon_type)}
+                    </span>
+                    <h4 class="feature-title">${f.title}</h4>
+                  </div>
+                  <p class="feature-desc">${f.desc}</p>
+                </div>
+              `
+            )}
+          </div>
+
+          <!-- CTA Button -->
+          ${this.renderButton()}
+        </div>
+      </section>
+    `;
+  }
+}
