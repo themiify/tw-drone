@@ -1,12 +1,12 @@
 import { css, html, nothing } from "lit";
 
 /**
- * Tactical notched button SVG path (Figma exact vector):
- * Central notches on top & bottom, side cutouts, chamfered top-right & bottom-left.
- * Native dimensions: 62x57
+ * Main CTA Button SVG path (Figma exact vector):
+ * Diagonal parallel notches on top-right and bottom-left edges.
+ * Native dimensions: 179x56
  */
 export const TACTICAL_BTN_PATH =
-  "M20.5 0H0V14H4.5V39H0V48L10.5 57H20.5V52H33V57H62V43.5H59V14H62V4L55 0H33V4H20.5V0Z";
+  "M0 0H97.555L102.03 4.42105H115.007L111.427 0H116.35L121.72 4.42105H135.145L131.117 0H179V56H57.28L52.805 51.5789H37.59L42.065 56H35.8L30.43 51.5789H17.4525L21.0325 56H0V0Z";
 
 export const tacticalButtonStyles = css`
   .cta-btn {
@@ -69,7 +69,7 @@ export function renderTacticalButton(
     <a class="cta-btn ${extraClass}" href=${link} style="${inlineStyle}">
       <svg
         class="cta-bg"
-        viewBox="0 0 62 57"
+        viewBox="0 0 179 56"
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,10 @@ export function renderTacticalButton(
 
 /**
  * Tactical Social Media Badges (Native 62x57 aspect ratio)
+ * Figma exact vector for social badge icons
  */
+export const SOCIAL_BTN_PATH =
+  "M20.5 0H0V14H4.5V39H0V48L10.5 57H20.5V52H33V57H62V43.5H59V14H62V4L55 0H33V4H20.5V0Z";
 export const socialButtonStyles = css`
   .social-badge {
     position: relative;
@@ -160,7 +163,7 @@ export function renderSocialBadge(
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="${TACTICAL_BTN_PATH}" fill="${bgVar}" />
+        <path d="${SOCIAL_BTN_PATH}" fill="${bgVar}" />
       </svg>
       <span class="social-icon">
         ${iconSvg}
