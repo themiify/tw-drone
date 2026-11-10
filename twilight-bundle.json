@@ -2061,6 +2061,205 @@
       ]
     },
     {
+      "title": "فيديوهات الدرون",
+      "icon": "sicon-video",
+      "name": "drone-videos",
+      "key": "e5f2b9a1-6d3c-4e8f-9a1b-0e1d2c3b4a5f",
+      "image": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "icon": "sicon-tag",
+          "label": "نص الشارة الفرعية",
+          "format": "text",
+          "value": "فيديوهات للدرون",
+          "required": false
+        },
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "بنقرّبك من السماء.. وبنفتحلك آفاق جديدة",
+          "required": true
+        },
+        {
+          "id": "videos",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "item_label": "فيديو",
+          "value": [
+            {
+              "id": "v1",
+              "title": "تحليق جبلي ساحر",
+              "poster": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            },
+            {
+              "id": "v2",
+              "title": "استكشاف الطبيعة والوديان",
+              "poster": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80",
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+            },
+            {
+              "id": "v3",
+              "title": "ثبات وتصوير سينمائي دقيق",
+              "poster": "https://images.unsplash.com/photo-1507582020474-9a35b7d455d7?auto=format&fit=crop&w=1200&q=80",
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+            },
+            {
+              "id": "v4",
+              "title": "تصوير احترافي وقت الغروب",
+              "poster": "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&w=1200&q=80",
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+            }
+          ],
+          "fields": [
+            {
+              "id": "title",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": false,
+              "format": "text",
+              "label": "عنوان الفيديو"
+            },
+            {
+              "id": "poster",
+              "type": "string",
+              "icon": "sicon-image-landscape",
+              "required": true,
+              "format": "image",
+              "label": "صورة غلاف الفيديو (Poster)"
+            },
+            {
+              "id": "video_url",
+              "type": "string",
+              "icon": "sicon-video",
+              "required": true,
+              "format": "video",
+              "label": "رابط ملف الفيديو (MP4 / WebM)"
+            }
+          ]
+        },
+        {
+          "id": "autoplay",
+          "icon": "sicon-refresh",
+          "type": "boolean",
+          "label": "تشغيل تلقائي للسلايدر",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "autoplay_interval",
+          "type": "number",
+          "label": "الفاصل الزمني للتقليب (ثوانٍ)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 3,
+          "maximum": 15,
+          "step": 1,
+          "value": 5
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية القسم",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النصوص والعناوين",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خط الفاصل",
+          "required": false,
+          "value": "#e0e0e0"
+        },
+        {
+          "id": "frame_stroke",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار بطاقة الفيديو (Stroke)",
+          "required": false,
+          "value": "#D5D5D5"
+        },
+        {
+          "id": "play_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية زر التشغيل",
+          "required": false,
+          "value": "#0D0D0D"
+        },
+        {
+          "id": "play_stroke",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار زر التشغيل",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "play_icon_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة التشغيل",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "nav_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أزرار التنقل (الأسهم)",
+          "required": false,
+          "value": "#0D0D0D"
+        },
+        {
+          "id": "nav_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أسهم التنقل",
+          "required": false,
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
       "title": "تذييل درون (الفوتر)",
       "icon": "sicon-layout-grid-rearrange",
       "name": "drone-footer",

@@ -92,6 +92,20 @@ export function renderTacticalButton(
  */
 export const SOCIAL_BTN_PATH =
   "M20.5 0H0V14H4.5V39H0V48L10.5 57H20.5V52H33V57H62V43.5H59V14H62V4L55 0H33V4H20.5V0Z";
+
+/**
+ * Tactical Video Play Button (Native 63x58 aspect ratio)
+ * Figma exact vector for video play button
+ */
+export const PLAY_BTN_PATH =
+  "M21 0.5H0.5V14.5H5V39.5H0.5V48.5L11 57.5H21V52.5H33.5V57.5H62.5V44H59.5V14.5H62.5V4.5L55.5 0.5H33.5V4.5H21V0.5Z";
+
+/**
+ * Tactical Video Card Frame (Native 638x463 aspect ratio)
+ * Figma exact vector for video slider cards
+ */
+export const VIDEO_CARD_FRAME_PATH =
+  "M20.1564 15.5934L31.2997 8H195.917L206.554 22.1744H444.109L451.707 8H605.687L616.831 15.5934V77.8596L630 85.9592V374.51L616.831 383.622V443.863L605.687 455H444.109L432.459 443.863H206.554L195.917 455H31.2997L20.1564 443.863V383.622L8 374.51V85.9592L20.1564 77.8596V15.5934Z";
 export const socialButtonStyles = css`
   .social-badge {
     position: relative;
