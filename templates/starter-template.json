@@ -1,1811 +1,1794 @@
 {
-    "id":  "9af106ef-6bc9-4ae4-8bbd-c0a635b87045",
-    "components":  [
-                       {
-                           "title":  "Getting Started Guide",
-                           "icon":  "sicon-rocket",
-                           "name":  "getting-started-guide",
-                           "key":  "0a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p",
-                           "image":  "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png"
-                       },
-                       {
-                           "title":  "Basic Inputs",
-                           "icon":  "sicon-format-text-alt",
-                           "name":  "basic-inputs",
-                           "key":  "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
-                           "image":  "https://cdn.salla.network/images/themes/raed/preview-images/text-input.png",
-                           "fields":  [
-                                          {
-                                              "id":  "text",
-                                              "icon":  "sicon-format-text-alt",
-                                              "type":  "string",
-                                              "label":  "Text",
-                                              "placeholder":  "Enter text here...",
-                                              "format":  "text",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  100,
-                                              "value":  "Sample text value"
-                                          },
-                                          {
-                                              "id":  "email",
-                                              "icon":  "sicon-mail",
-                                              "type":  "string",
-                                              "label":  "Email Input",
-                                              "placeholder":  "Enter email address...",
-                                              "format":  "email",
-                                              "required":  true,
-                                              "description":  "An email input field with validation",
-                                              "value":  "example@salla.sa"
-                                          },
-                                          {
-                                              "id":  "url",
-                                              "icon":  "sicon-link",
-                                              "type":  "string",
-                                              "label":  "URL Input",
-                                              "placeholder":  "Enter website URL...",
-                                              "format":  "url",
-                                              "required":  false,
-                                              "description":  "A URL input field with validation",
-                                              "value":  "https://salla.dev"
-                                          },
-                                          {
-                                              "id":  "password",
-                                              "icon":  "sicon-lock",
-                                              "type":  "string",
-                                              "label":  "Password Input",
-                                              "placeholder":  "Enter password...",
-                                              "format":  "password",
-                                              "hide":  true,
-                                              "required":  false
-                                          },
-                                          {
-                                              "id":  "textarea",
-                                              "icon":  "sicon-paragraph",
-                                              "type":  "string",
-                                              "label":  "Textarea",
-                                              "placeholder":  "Enter multi-line text here...",
-                                              "format":  "textarea",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  500,
-                                              "rows":  4,
-                                              "value":  "This is a sample text\nwith multiple lines\nto demonstrate the textarea."
-                                          },
-                                          {
-                                              "id":  "number",
-                                              "icon":  "sicon-calculator",
-                                              "type":  "number",
-                                              "label":  "Basic Number",
-                                              "placeholder":  "Enter a number...",
-                                              "format":  "number",
-                                              "inputType":  "number",
-                                              "required":  true,
-                                              "value":  42
-                                          },
-                                          {
-                                              "id":  "float",
-                                              "icon":  "sicon-calculator",
-                                              "type":  "number",
-                                              "label":  "Float Number",
-                                              "placeholder":  "Enter a decimal number...",
-                                              "format":  "float",
-                                              "inputType":  "number",
-                                              "required":  false,
-                                              "step":  0.1,
-                                              "value":  3.14
-                                          },
-                                          {
-                                              "id":  "units",
-                                              "icon":  "sicon-tag",
-                                              "type":  "number",
-                                              "label":  "Units",
-                                              "placeholder":  "Enter units...",
-                                              "format":  "units",
-                                              "required":  true,
-                                              "step":  0.5,
-                                              "unit":  "kg",
-                                              "value":  1
-                                          },
-                                          {
-                                              "id":  "slider",
-                                              "type":  "number",
-                                              "label":  "Slider",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  0,
-                                              "maximum":  100,
-                                              "step":  1,
-                                              "value":  75
-                                          },
-                                          {
-                                              "id":  "checkbox",
-                                              "icon":  "sicon-check-circle",
-                                              "type":  "boolean",
-                                              "label":  "Checkbox",
-                                              "format":  "checkbox",
-                                              "required":  true,
-                                              "description":  "Enable or disable this feature",
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "switch",
-                                              "icon":  "sicon-bell",
-                                              "type":  "boolean",
-                                              "label":  "Switch",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "description":  "Enable notifications",
-                                              "value":  false
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "Ã˜Â¬Ã˜Â¯Ã™Ë†Ã™â€ž Ã™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€° Ã˜Â¨Ã˜Â³Ã™Å Ã˜Â·",
-                           "icon":  "sicon-layout-grid-rearrange",
-                           "name":  "table-list",
-                           "image":  "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg",
-                           "key":  "9f8e7d6c-5b4a-3c2d-1e0f-a9b8c7d6e5f4",
-                           "fields":  [
-                                          {
-                                              "id":  "items",
-                                              "type":  "collection",
-                                              "format":  "collection",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  100,
-                                              "item_label":  "Ã˜ÂµÃ™ÂÃ™Ë†Ã™Â Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â¯Ã™Ë†Ã™â€ž",
-                                              "value":  [
-                                                            {
-                                                                "title":  "Featured Products",
-                                                                "description":  "Our best-selling items with special discounts"
-                                                            },
-                                                            {
-                                                                "title":  "New Arrivals",
-                                                                "description":  "Latest additions to our collection"
-                                                            },
-                                                            {
-                                                                "title":  "Special Offers",
-                                                                "description":  "Limited-time deals and promotions"
-                                                            }
-                                                        ],
-                                              "fields":  [
-                                                             {
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "id":  "title",
-                                                                 "required":  true,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ã˜Â£Ã˜Â¯Ã˜Â®Ã™â€ž Ã˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜ÂµÃ™Â Ã™â€¡Ã™â€ Ã˜Â§...",
-                                                                 "minLength":  1,
-                                                                 "maxLength":  100
-                                                             },
-                                                             {
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "id":  "description",
-                                                                 "format":  "textarea",
-                                                                 "placeholder":  "Ã˜Â£Ã˜Â¯Ã˜Â®Ã™â€ž Ã™Ë†Ã˜ÂµÃ™Â Ã˜Â§Ã™â€žÃ˜ÂµÃ™Â Ã™â€¡Ã™â€ Ã˜Â§...",
-                                                                 "maxLength":  1000
-                                                             }
-                                                         ]
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "Ã˜Â£Ã˜Â¬Ã˜Â²Ã˜Â§Ã˜Â¡ Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                           "icon":  "sicon-rocket",
-                           "name":  "drone-parts",
-                           "key":  "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
-                           "image":  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
-                           "fields":  [
-                                          {
-                                              "id":  "heading",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "format":  "text",
-                                              "value":  "Ã™â€¦Ã˜Â´ Ã™â€¦Ã˜Â¬Ã˜Â±Ã˜Â¯ Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ .. Ã˜Â¯Ã™Å  Ã˜Â²Ã˜Â§Ã™Ë†Ã™Å Ã˜Â© Ã˜Â¬Ã˜Â¯Ã™Å Ã˜Â¯Ã˜Â© Ã™â€žÃ™â€žÃ˜Â¹Ã˜Â§Ã™â€žÃ™â€¦."
-                                          },
-                                          {
-                                              "id":  "title",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ™â€šÃ˜Â³Ã™â€¦",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â£Ã˜Â¬Ã˜Â²Ã˜Â§Ã˜Â¡ Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ "
-                                          },
-                                          {
-                                              "id":  "drone_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                                              "required":  false,
-                                              "value":  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
-                                          },
-                                          {
-                                              "id":  "button_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â§Ã˜Â·Ã™â€žÃ˜Â¨ Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ Ã™Æ’ Ã˜Â§Ã™â€žÃ˜Â¢Ã™â€ "
-                                          },
-                                          {
-                                              "id":  "source_url",
-                                              "icon":  "sicon-shopping-bag",
-                                              "type":  "items",
-                                              "label":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "variable-list",
-                                              "required":  true,
-                                              "source":  "custom",
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Article",
-                                                                   "key":  "blog_articles",
-                                                                   "value":  "blog_articles"
-                                                               }
-                                                           ],
-                                              "sources":  [
-                                                              {
-                                                                  "label":  "Product",
-                                                                  "key":  "products",
-                                                                  "value":  "products"
-                                                              },
-                                                              {
-                                                                  "label":  "Category",
-                                                                  "key":  "categories",
-                                                                  "value":  "categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand",
-                                                                  "key":  "brands",
-                                                                  "value":  "brands"
-                                                              },
-                                                              {
-                                                                  "label":  "Page",
-                                                                  "key":  "pages",
-                                                                  "value":  "pages"
-                                                              },
-                                                              {
-                                                                  "label":  "Article",
-                                                                  "key":  "blog_articles",
-                                                                  "value":  "blog_articles"
-                                                              },
-                                                              {
-                                                                  "label":  "Blog Category",
-                                                                  "key":  "blog_categories",
-                                                                  "value":  "blog_categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Offer",
-                                                                  "key":  "offers_link",
-                                                                  "value":  "offers_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand Link",
-                                                                  "key":  "brands_link",
-                                                                  "value":  "brands_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Blog Link",
-                                                                  "key":  "blog_link",
-                                                                  "value":  "blog_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Custom",
-                                                                  "key":  "custom",
-                                                                  "value":  "custom"
-                                                              }
-                                                          ]
-                                          },
-                                          {
-                                              "id":  "parts",
-                                              "type":  "collection",
-                                              "format":  "collection",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  8,
-                                              "item_label":  "Ã˜Â£Ã˜Â¬Ã˜Â²Ã˜Â§Ã˜Â¡ Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                                              "value":  [
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â±Ã˜Â§Ã™Ë†Ã˜Â­",
-                                                                "text":  "Ã™â€¦Ã˜Â±Ã˜Â§Ã™Ë†Ã˜Â­ Ã™â€šÃ™Ë†Ã™Å Ã˜Â© Ã™â€žÃ˜ÂªÃ˜Â­Ã™â€šÃ™Å Ã™â€š Ã˜Â§Ã˜Â³Ã˜ÂªÃ™â€šÃ˜Â±Ã˜Â§Ã˜Â± Ã™Ë†Ã˜Â³Ã˜Â±Ã˜Â¹Ã˜Â©",
-                                                                "image":  "https://cdn.files.salla.network/other/1343631853/bf7f9a93-b38e-4732-bc81-72a0efc8f6f1-original.png"
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ™Æ’Ã˜Â§Ã™â€¦Ã™Å Ã˜Â±Ã˜Â§",
-                                                                "text":  "Ã™â€ Ã˜Â¸Ã˜Â§Ã™â€¦ Ã˜Â§Ã˜Â³Ã˜ÂªÃ™â€šÃ˜Â±Ã˜Â§Ã˜Â± Ã™â€žÃ™â€žÃ™Æ’Ã˜Â§Ã™â€¦Ã™Å Ã˜Â±Ã˜Â§ Ã™Ë†Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂµÃ™Ë†Ã™Å Ã˜Â±",
-                                                                "image":  "https://cdn.files.salla.network/other/1343631853/dbe75395-d8f9-44dc-9efd-0b546c639792-original.png"
-                                                            },
-                                                            {
-                                                                "label":  "Ã™â€¡Ã™Å Ã™Æ’Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¡Ã˜Â¨Ã™Ë†Ã˜Â·",
-                                                                "text":  "Ã™â€¡Ã™Å Ã™Æ’Ã™â€ž Ã™â€¡Ã˜Â¨Ã™Ë†Ã˜Â· Ã™â€¦Ã˜ÂªÃ™Å Ã™â€  Ã™Ë†Ã˜Â¢Ã™â€¦Ã™â€ ",
-                                                                "image":  "https://cdn.files.salla.network/other/1343631853/0a173af6-0bd6-460d-8aae-57da6db532f2-original.png"
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â¬Ã˜Â³Ã™â€¦ Ã˜Â§Ã™â€žÃ˜Â·Ã˜Â§Ã˜Â¦Ã˜Â±Ã˜Â©",
-                                                                "text":  "Ã˜Â¬Ã˜Â³Ã™â€¦ Ã˜Â§Ã™â€žÃ˜Â·Ã˜Â§Ã˜Â¦Ã˜Â±Ã˜Â© Ã˜Â£Ã˜Â³Ã˜Â§Ã˜Â³Ã™Å  Ã™Ë†Ã™â€¦Ã˜ÂªÃ™Æ’Ã˜Â§Ã™â€¦Ã™â€ž",
-                                                                "image":  "https://cdn.files.salla.network/other/1343631853/3d1ba946-2089-41e1-8a7d-890dd4d0c972-original.png"
-                                                            }
-                                                        ],
-                                              "fields":  [
-                                                             {
-                                                                 "id":  "label",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "required":  true,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ã˜Â§Ã˜Â³Ã™â€¦ Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â²Ã˜Â¡",
-                                                                 "maxLength":  50
-                                                             },
-                                                             {
-                                                                 "id":  "text",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "format":  "textarea",
-                                                                 "placeholder":  "Ã™Ë†Ã˜ÂµÃ™Â Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â²Ã˜Â¡",
-                                                                 "maxLength":  200
-                                                             },
-                                                             {
-                                                                 "id":  "image",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-image-landscape",
-                                                                 "format":  "image",
-                                                                 "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â²Ã˜Â¡",
-                                                                 "required":  false
-                                                             }
-                                                         ]
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "Ã˜Â±Ã˜Â¬Ã™Ë†Ã˜Â¹ Ã™â€žÃ™â€žÃ˜Â£Ã˜Â¹Ã™â€žÃ™â€°",
-                           "icon":  "sicon-arrow-up",
-                           "name":  "scroll-top",
-                           "key":  "8c7b6a5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p",
-                           "image":  "https://cdn.salla.network/images/themes/raed/preview-images/main-links-with-bg.jpg"
-                       },
-                       {
-                           "title":  "Ã™â€šÃ˜ÂµÃ˜Â© Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                           "icon":  "sicon-album-photo",
-                           "name":  "drone-story",
-                           "key":  "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
-                           "image":  "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
-                           "props":  {
-                                         "min-height":  "400px"
-                                     },
-                           "fields":  [
-                                          {
-                                              "id":  "heading",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "format":  "text",
-                                              "value":  "Ã™â€¦Ã˜Â´ Ã™â€¦Ã˜Â¬Ã˜Â±Ã˜Â¯ Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ .. Ã˜Â¯Ã™Å  Ã˜Â²Ã˜Â§Ã™Ë†Ã™Å Ã˜Â© Ã˜Â¬Ã˜Â¯Ã™Å Ã˜Â¯Ã˜Â© Ã™â€žÃ™â€žÃ˜Â¹Ã˜Â§Ã™â€žÃ™â€¦.",
-                                              "multilanguage":  true
-                                          },
-                                          {
-                                              "id":  "badge",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â§Ã™â€ Ã˜Â¨Ã™Å ",
-                                              "format":  "text",
-                                              "value":  "Ã™â€šÃ˜ÂµÃ˜Â© Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                                              "multilanguage":  true
-                                          },
-                                          {
-                                              "id":  "text",
-                                              "type":  "string",
-                                              "icon":  "sicon-paragraph",
-                                              "label":  "Ã˜Â§Ã™â€žÃ™â€ Ã˜Âµ (Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â®Ã˜Â¯Ã™â€¦ **Ã™â€ Ã˜Âµ** Ã™â€žÃ™â€žÃ˜ÂªÃ˜ÂºÃ™â€žÃ™Å Ã˜Â¸)",
-                                              "format":  "textarea",
-                                              "rows":  6,
-                                              "multilanguage":  true,
-                                              "value":  "Ã˜Â¥Ã˜Â­Ã™â€ Ã˜Â§ Ã˜Â¨Ã™â€ Ã˜Â¤Ã™â€¦Ã™â€  Ã˜Â¥Ã™â€  Ã˜Â§Ã™â€žÃ˜ÂªÃ™Æ’Ã™â€ Ã™Ë†Ã™â€žÃ™Ë†Ã˜Â¬Ã™Å Ã˜Â§ Ã™â€¦Ã˜Â´ Ã™â€¦Ã˜Â¬Ã˜Â±Ã˜Â¯ Ã˜Â£Ã˜Â¯Ã™Ë†Ã˜Â§Ã˜ÂªÃ˜Å’ Ã™â€žÃ™Æ’Ã™â€ Ã™â€¡Ã˜Â§ Ã™Ë†Ã˜Â³Ã™Å Ã™â€žÃ˜Â© Ã™â€žÃ˜Â§Ã™Æ’Ã˜ÂªÃ˜Â´Ã˜Â§Ã™Â Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â§Ã™â€žÃ™â€¦ Ã™â€¦Ã™â€  **Ã™â€¦Ã™â€ Ã˜Â¸Ã™Ë†Ã˜Â± Ã™â€¦Ã˜Â®Ã˜ÂªÃ™â€žÃ™Â**.\nÃ™â€¦Ã™â€  Ã™â€¡Ã™â€ Ã˜Â§ Ã˜Â¬Ã˜Âª Ã™ÂÃ™Æ’Ã˜Â±Ã˜ÂªÃ™â€ Ã˜Â§ Ã˜Â¥Ã™â€ Ã™â€ Ã˜Â§ Ã™â€ Ã™â€šÃ˜Â¯Ã™â€¦Ã™â€žÃ™Æ’ Ã˜ÂªÃ˜Â¬Ã˜Â±Ã˜Â¨Ã˜Â© Ã™â€¦Ã™â€¦Ã™Å Ã˜Â²Ã˜Â© Ã™ÂÃ™Å  **Ã˜Â¹Ã˜Â§Ã™â€žÃ™â€¦ Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ** Ã™Ë†Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂµÃ™Ë†Ã™Å Ã˜Â± Ã˜Â§Ã™â€žÃ˜Â¬Ã™Ë†Ã™Å Ã˜Å’ Ã˜ÂªÃ˜Â¬Ã™â€¦Ã˜Â¹ Ã˜Â¨Ã™Å Ã™â€  Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â¨Ã˜ÂªÃ™Æ’Ã˜Â§Ã˜Â± Ã™Ë†Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¨Ã˜Â¯Ã˜Â§Ã˜Â¹ Ã™Ë†Ã™â€¦Ã˜ÂªÃ˜Â¹Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â³Ã˜ÂªÃ™Æ’Ã˜Â´Ã˜Â§Ã™Â. Ã˜Â¨Ã™â€ Ã™â€¡Ã˜ÂªÃ™â€¦ Ã˜Â¥Ã™â€ Ã™Æ’ Ã˜ÂªÃ™â€žÃ˜Â§Ã™â€šÃ™Å  Ã˜Â§Ã™â€žÃ™â€¦Ã™â€ Ã˜ÂªÃ˜Â¬ Ã˜Â§Ã™â€žÃ™â€žÃ™Å  Ã™Å Ã™â€ Ã˜Â§Ã˜Â³Ã˜Â¨ Ã˜Â§Ã˜Â­Ã˜ÂªÃ™Å Ã˜Â§Ã˜Â¬Ã˜Â§Ã˜ÂªÃ™Æ’Ã˜Å’ Ã˜Â³Ã™Ë†Ã˜Â§Ã˜Â¡ Ã™Æ’Ã™â€ Ã˜Âª Ã™â€¦Ã™â€  Ã˜Â¹Ã˜Â´Ã˜Â§Ã™â€š Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂµÃ™Ë†Ã™Å Ã˜Â±Ã˜Å’ Ã˜Â£Ã™Ë† Ã˜ÂµÃ™ÂÃ™â€ Ã™â€˜Ã˜Â§Ã˜Â¹ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€°Ã˜Å’ Ã˜Â£Ã™Ë† Ã˜Â¨Ã˜ÂªÃ˜Â­Ã˜Â¨ Ã˜Â§Ã™â€žÃ™â€¦Ã˜ÂºÃ˜Â§Ã™â€¦Ã˜Â±Ã˜Â§Ã˜Âª Ã™Ë†Ã˜Â§Ã™Æ’Ã˜ÂªÃ˜Â´Ã˜Â§Ã™Â Ã˜Â£Ã™â€¦Ã˜Â§Ã™Æ’Ã™â€  Ã˜Â¬Ã˜Â¯Ã™Å Ã˜Â¯Ã˜Â©."
-                                          },
-                                          {
-                                              "id":  "button_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â§Ã˜Â·Ã™â€žÃ˜Â¨ Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ Ã™Æ’ Ã˜Â§Ã™â€žÃ˜Â¢Ã™â€ ",
-                                              "multilanguage":  true
-                                          },
-                                          {
-                                              "id":  "source_url",
-                                              "icon":  "sicon-shopping-bag",
-                                              "type":  "items",
-                                              "label":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "variable-list",
-                                              "required":  true,
-                                              "source":  "custom",
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Article",
-                                                                   "key":  "blog_articles",
-                                                                   "value":  "blog_articles"
-                                                               }
-                                                           ],
-                                              "sources":  [
-                                                              {
-                                                                  "label":  "Product",
-                                                                  "key":  "products",
-                                                                  "value":  "products"
-                                                              },
-                                                              {
-                                                                  "label":  "Category",
-                                                                  "key":  "categories",
-                                                                  "value":  "categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand",
-                                                                  "key":  "brands",
-                                                                  "value":  "brands"
-                                                              },
-                                                              {
-                                                                  "label":  "Page",
-                                                                  "key":  "pages",
-                                                                  "value":  "pages"
-                                                              },
-                                                              {
-                                                                  "label":  "Article",
-                                                                  "key":  "blog_articles",
-                                                                  "value":  "blog_articles"
-                                                              },
-                                                              {
-                                                                  "label":  "Blog Category",
-                                                                  "key":  "blog_categories",
-                                                                  "value":  "blog_categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Offer",
-                                                                  "key":  "offers_link",
-                                                                  "value":  "offers_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand Link",
-                                                                  "key":  "brands_link",
-                                                                  "value":  "brands_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Blog Link",
-                                                                  "key":  "blog_link",
-                                                                  "value":  "blog_link"
-                                                              },
-                                                              {
-                                                                  "label":  "Custom",
-                                                                  "key":  "custom",
-                                                                  "value":  "custom"
-                                                              }
-                                                          ]
-                                          },
-                                          {
-                                              "id":  "reverse",
-                                              "icon":  "sicon-sort",
-                                              "type":  "boolean",
-                                              "label":  "Ã˜Â¹Ã™Æ’Ã˜Â³ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€° (Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã™Å Ã™â€¦Ã™Å Ã™â€  Ã™Ë†Ã˜Â§Ã™â€žÃ™â€ Ã˜Âµ Ã˜Â´Ã™â€¦Ã˜Â§Ã™â€ž)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  false
-                                          },
-                                          {
-                                              "id":  "float_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ™â€¦Ã™Å Ã˜Â¯Ã™Å Ã˜Â§ Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€žÃ™Ë†Ã™Å Ã˜Â© (Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€ )",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                                                  "value":  "video",
-                                                                  "key":  "video"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                   "value":  "image",
-                                                                   "key":  "image"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "float_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€žÃ™Ë†Ã™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
-                                          },
-                                          {
-                                              "id":  "float_video",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "format":  "url",
-                                              "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â±Ã™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€žÃ™Ë†Ã™Å ",
-                                              "placeholder":  "https://.../video.mp4",
-                                              "required":  false,
-                                              "description":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã™â€¦Ã˜Â¨Ã˜Â§Ã˜Â´Ã˜Â± (mp4 / webm)",
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "media_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ™â€¦Ã™Å Ã˜Â¯Ã™Å Ã˜Â§ Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å Ã˜Â© (Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â·Ã˜Â§Ã˜Â±)",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                                                  "value":  "video",
-                                                                  "key":  "video"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                   "value":  "image",
-                                                                   "key":  "image"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "media_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "media_video",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "format":  "url",
-                                              "label":  "Ã˜Â§Ã™â€žÃ™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "placeholder":  "https://.../video.mp4",
-                                              "required":  false,
-                                              "description":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã™â€¦Ã˜Â¨Ã˜Â§Ã˜Â´Ã˜Â± (mp4 / webm)",
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜Â¨Ã˜Â¯Ã™Ë†Ã™â€ ",
-                                                                  "value":  "none",
-                                                                  "key":  "none"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™â€žÃ™Ë†Ã™â€ ",
-                                                                  "value":  "color",
-                                                                  "key":  "color"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                                                  "value":  "video",
-                                                                  "key":  "video"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã™â€žÃ™Ë†Ã™â€ ",
-                                                                   "value":  "color",
-                                                                   "key":  "color"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "bg_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "bg_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_video",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "format":  "url",
-                                              "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "placeholder":  "https://.../video.mp4",
-                                              "required":  false,
-                                              "description":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã™â€¦Ã˜Â¨Ã˜Â§Ã˜Â´Ã˜Â± (mp4 / webm)",
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_overlay",
-                                              "type":  "number",
-                                              "label":  "Ã˜Â¹Ã˜ÂªÃ˜Â§Ã™â€¦Ã˜Â© Ã˜Â·Ã˜Â¨Ã™â€šÃ˜Â© Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂºÃ˜Â·Ã™Å Ã˜Â© (%) Ã™â€žÃ™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©/Ã˜Â§Ã™â€žÃ™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  0,
-                                              "maximum":  100,
-                                              "step":  1,
-                                              "value":  0
-                                          },
-                                          {
-                                              "id":  "heading_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "required":  false,
-                                              "value":  "#1a1a1a"
-                                          },
-                                          {
-                                              "id":  "badge_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â§Ã™â€ Ã˜Â¨Ã™Å ",
-                                              "required":  false,
-                                              "value":  "#000000"
-                                          },
-                                          {
-                                              "id":  "text_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ™â€ Ã˜Âµ",
-                                              "required":  false,
-                                              "value":  "#4a4a4a"
-                                          },
-                                          {
-                                              "id":  "line_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â·",
-                                              "required":  false,
-                                              "value":  "#bdbdbd"
-                                          },
-                                          {
-                                              "id":  "bar_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â±Ã™Å Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â³Ã™â€¦Ã™Å Ã™Æ’",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "frame_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â¥Ã˜Â·Ã˜Â§Ã˜Â± Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#ececec"
-                                          },
-                                          {
-                                              "id":  "button_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "button_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â³Ã˜Â¦Ã™â€žÃ˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â§Ã˜Â¦Ã˜Â¹Ã˜Â©",
-                           "icon":  "sicon-question-mark",
-                           "name":  "drone-faq",
-                           "key":  "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
-                           "image":  "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
-                           "props":  {
-                                         "min-height":  "400px"
-                                     },
-                           "fields":  [
-                                          {
-                                              "id":  "heading",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â¹Ã™â€ Ã˜Â¯Ã™Æ’ Ã˜Â³Ã˜Â¤Ã˜Â§Ã™â€žÃ˜Å¸ Ã˜Â¥Ã˜Â­Ã™â€ Ã˜Â§ Ã™â€¡Ã™â€ Ã˜Â§ Ã™â€ Ã˜Â³Ã˜Â§Ã˜Â¹Ã˜Â¯Ã™Æ’",
-                                              "multilanguage":  true
-                                          },
-                                          {
-                                              "id":  "badge",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â§Ã™â€ Ã˜Â¨Ã™Å ",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â³Ã˜Â¦Ã™â€žÃ˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â§Ã˜Â¦Ã˜Â¹Ã˜Â©",
-                                              "multilanguage":  true
-                                          },
-                                          {
-                                              "id":  "items",
-                                              "type":  "collection",
-                                              "format":  "collection",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  20,
-                                              "item_label":  "Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â³Ã˜Â¦Ã™â€žÃ˜Â©",
-                                              "value":  [
-                                                            {
-                                                                "question":  "Ã™Æ’Ã™Å Ã™Â Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™â€ Ã™Å  Ã˜Â·Ã™â€žÃ˜Â¨ Ã˜ÂªÃ™ÂÃ˜Â§Ã˜ÂµÃ™Å Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â¯Ã™â€¦Ã˜Â©Ã˜Å¸",
-                                                                "answer":  "Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™Æ’ Ã˜Â·Ã™â€žÃ˜Â¨ Ã˜ÂªÃ™ÂÃ˜Â§Ã˜ÂµÃ™Å Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â¯Ã™â€¦Ã˜Â© Ã™â€¦Ã™â€  Ã˜Â®Ã™â€žÃ˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜Â§Ã˜ÂµÃ™â€ž Ã™â€¦Ã˜Â¹Ã™â€ Ã˜Â§ Ã˜Â¹Ã˜Â¨Ã˜Â± Ã˜Â§Ã™â€žÃ™â€¡Ã˜Â§Ã˜ÂªÃ™Â Ã˜Â£Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â¨Ã˜Â±Ã™Å Ã˜Â¯ Ã˜Â§Ã™â€žÃ˜Â¥Ã™â€žÃ™Æ’Ã˜ÂªÃ˜Â±Ã™Ë†Ã™â€ Ã™Å Ã˜Å’ Ã˜Â£Ã™Ë† Ã˜Â¥Ã˜Â±Ã˜Â³Ã˜Â§Ã™â€ž Ã˜Â§Ã˜Â³Ã˜ÂªÃ™ÂÃ˜Â³Ã˜Â§Ã˜Â±Ã™Æ’ Ã˜Â¨Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â®Ã˜Â¯Ã˜Â§Ã™â€¦ Ã™â€ Ã™â€¦Ã™Ë†Ã˜Â°Ã˜Â¬ Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜Â§Ã˜ÂµÃ™â€ž Ã™ÂÃ™Å  Ã™â€¡Ã˜Â°Ã™â€¡ Ã˜Â§Ã™â€žÃ˜ÂµÃ™ÂÃ˜Â­Ã˜Â©."
-                                                            },
-                                                            {
-                                                                "question":  "Ã™â€¦Ã˜Â§ Ã™â€¡Ã™Å  Ã™â€¦Ã˜Â¯Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â­Ã™â€  Ã™Ë†Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â±Ã™Æ’Ã™Å Ã˜Â¨Ã˜Å¸",
-                                                                "answer":  "Ã˜ÂªÃ˜Â®Ã˜ÂªÃ™â€žÃ™Â Ã™â€¦Ã˜Â¯Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â­Ã™â€  Ã™Ë†Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â±Ã™Æ’Ã™Å Ã˜Â¨ Ã˜Â­Ã˜Â³Ã˜Â¨ Ã™â€¦Ã™Ë†Ã™â€šÃ˜Â¹Ã™Æ’ Ã™Ë†Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ™â€¦Ã™â€ Ã˜ÂªÃ˜Â¬Ã˜Å’ Ã™Ë†Ã˜ÂºÃ˜Â§Ã™â€žÃ˜Â¨Ã™â€¹Ã˜Â§ Ã™Å Ã˜ÂªÃ™â€¦ Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜ÂµÃ™Å Ã™â€ž Ã˜Â®Ã™â€žÃ˜Â§Ã™â€ž Ã˜Â£Ã™Å Ã˜Â§Ã™â€¦ Ã˜Â¹Ã™â€¦Ã™â€ž Ã™â€šÃ™â€žÃ™Å Ã™â€žÃ˜Â©."
-                                                            },
-                                                            {
-                                                                "question":  "Ã™â€¡Ã™â€ž Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™â€ Ã™Å  Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â±Ã˜Â¬Ã˜Â§Ã˜Â¹ Ã˜Â£Ã™Ë† Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â¨Ã˜Â¯Ã˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã™â€ Ã˜ÂªÃ˜Â¬Ã˜Å¸",
-                                                                "answer":  "Ã™â€ Ã˜Â¹Ã™â€¦Ã˜Å’ Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™Æ’ Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â³Ã˜ÂªÃ˜Â±Ã˜Â¬Ã˜Â§Ã˜Â¹ Ã˜Â£Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â³Ã˜ÂªÃ˜Â¨Ã˜Â¯Ã˜Â§Ã™â€ž Ã˜Â®Ã™â€žÃ˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â¯Ã˜Â© Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜Â¯Ã˜Â¯Ã˜Â© Ã™ÂÃ™Å  Ã˜Â³Ã™Å Ã˜Â§Ã˜Â³Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â³Ã˜ÂªÃ˜Â±Ã˜Â¬Ã˜Â§Ã˜Â¹ Ã˜Â¨Ã˜Â´Ã˜Â±Ã˜Â· Ã˜Â£Ã™â€  Ã™Å Ã™Æ’Ã™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ™â€¦Ã™â€ Ã˜ÂªÃ˜Â¬ Ã˜Â¨Ã˜Â­Ã˜Â§Ã™â€žÃ˜ÂªÃ™â€¡ Ã˜Â§Ã™â€žÃ˜Â£Ã˜ÂµÃ™â€žÃ™Å Ã˜Â©."
-                                                            },
-                                                            {
-                                                                "question":  "Ã™Æ’Ã™Å Ã™Â Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™â€ Ã™Å  Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜Â§Ã˜ÂµÃ™â€ž Ã™â€¦Ã˜Â¹ Ã™ÂÃ˜Â±Ã™Å Ã™â€š Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â¹Ã™â€¦Ã˜Å¸",
-                                                                "answer":  "Ã™Å Ã™â€¦Ã™Æ’Ã™â€ Ã™Æ’ Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜Â§Ã˜ÂµÃ™â€ž Ã™â€¦Ã˜Â¹ Ã™ÂÃ˜Â±Ã™Å Ã™â€š Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â¹Ã™â€¦ Ã˜Â¹Ã˜Â¨Ã˜Â± Ã˜Â§Ã™â€žÃ™â€¡Ã˜Â§Ã˜ÂªÃ™Â Ã˜Â£Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â¨Ã˜Â±Ã™Å Ã˜Â¯ Ã˜Â§Ã™â€žÃ˜Â¥Ã™â€žÃ™Æ’Ã˜ÂªÃ˜Â±Ã™Ë†Ã™â€ Ã™Å  Ã˜Â£Ã™Ë† Ã™â€¦Ã™â€  Ã˜Â®Ã™â€žÃ˜Â§Ã™â€ž Ã™â€ Ã™â€¦Ã™Ë†Ã˜Â°Ã˜Â¬ Ã˜Â§Ã™â€žÃ˜ÂªÃ™Ë†Ã˜Â§Ã˜ÂµÃ™â€ž Ã™ÂÃ™Å  Ã˜Â§Ã™â€žÃ™â€¦Ã™Ë†Ã™â€šÃ˜Â¹."
-                                                            }
-                                                        ],
-                                              "fields":  [
-                                                             {
-                                                                 "id":  "question",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "required":  true,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž",
-                                                                 "maxLength":  200,
-                                                                 "multilanguage":  true
-                                                             },
-                                                             {
-                                                                 "id":  "answer",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-paragraph",
-                                                                 "format":  "textarea",
-                                                                 "placeholder":  "Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¬Ã˜Â§Ã˜Â¨Ã˜Â© (Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â®Ã˜Â¯Ã™â€¦ **Ã™â€ Ã˜Âµ** Ã™â€žÃ™â€žÃ˜ÂªÃ˜ÂºÃ™â€žÃ™Å Ã˜Â¸)",
-                                                                 "maxLength":  1500,
-                                                                 "multilanguage":  true
-                                                             }
-                                                         ]
-                                          },
-                                          {
-                                              "id":  "single_open",
-                                              "icon":  "sicon-sort",
-                                              "type":  "boolean",
-                                              "label":  "Ã™ÂÃ˜ÂªÃ˜Â­ Ã˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž Ã™Ë†Ã˜Â§Ã˜Â­Ã˜Â¯ Ã™ÂÃ™â€šÃ˜Â· (Ã™Å Ã™â€šÃ™ÂÃ™â€ž Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â§Ã˜Â¨Ã™â€š)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "first_open",
-                                              "icon":  "sicon-sort",
-                                              "type":  "boolean",
-                                              "label":  "Ã™ÂÃ˜ÂªÃ˜Â­ Ã˜Â£Ã™Ë†Ã™â€ž Ã˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž Ã˜Â§Ã™ÂÃ˜ÂªÃ˜Â±Ã˜Â§Ã˜Â¶Ã™Å Ã™â€¹Ã˜Â§",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "anim_duration",
-                                              "type":  "number",
-                                              "label":  "Ã˜Â³Ã˜Â±Ã˜Â¹Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â­Ã˜Â±Ã™Æ’Ã˜Â© (Ã™â€¦Ã™â€žÃ™â€žÃ™Å  Ã˜Â«Ã˜Â§Ã™â€ Ã™Å Ã˜Â©)",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  100,
-                                              "maximum":  1000,
-                                              "step":  50,
-                                              "value":  400
-                                          },
-                                          {
-                                              "id":  "reverse",
-                                              "icon":  "sicon-sort",
-                                              "type":  "boolean",
-                                              "label":  "Ã˜Â¹Ã™Æ’Ã˜Â³ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€° (Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã™Å Ã™â€¦Ã™Å Ã™â€ /Ã˜Â´Ã™â€¦Ã˜Â§Ã™â€ž)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  false
-                                          },
-                                          {
-                                              "id":  "media_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ™â€¦Ã™Å Ã˜Â¯Ã™Å Ã˜Â§ Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å Ã˜Â© (Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â·Ã˜Â§Ã˜Â±)",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                                                  "value":  "video",
-                                                                  "key":  "video"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                   "value":  "image",
-                                                                   "key":  "image"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "media_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "media_video",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "format":  "url",
-                                              "label":  "Ã˜Â§Ã™â€žÃ™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "placeholder":  "https://.../video.mp4",
-                                              "required":  false,
-                                              "description":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã™â€¦Ã˜Â¨Ã˜Â§Ã˜Â´Ã˜Â± (mp4 / webm)",
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜Â¨Ã˜Â¯Ã™Ë†Ã™â€ ",
-                                                                  "value":  "none",
-                                                                  "key":  "none"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™â€žÃ™Ë†Ã™â€ ",
-                                                                  "value":  "color",
-                                                                  "key":  "color"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                                                  "value":  "video",
-                                                                  "key":  "video"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã™â€žÃ™Ë†Ã™â€ ",
-                                                                   "value":  "color",
-                                                                   "key":  "color"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "bg_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "bg_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_video",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "format":  "url",
-                                              "label":  "Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã˜Â§Ã™â€žÃ˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â©",
-                                              "placeholder":  "https://.../video.mp4",
-                                              "required":  false,
-                                              "description":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë† Ã™â€¦Ã˜Â¨Ã˜Â§Ã˜Â´Ã˜Â± (mp4 / webm)",
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "bg_overlay",
-                                              "type":  "number",
-                                              "label":  "Ã˜Â¹Ã˜ÂªÃ˜Â§Ã™â€¦Ã˜Â© Ã˜Â·Ã˜Â¨Ã™â€šÃ˜Â© Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂºÃ˜Â·Ã™Å Ã˜Â© (%) Ã™â€žÃ™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©/Ã˜Â§Ã™â€žÃ™ÂÃ™Å Ã˜Â¯Ã™Å Ã™Ë†",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  0,
-                                              "maximum":  100,
-                                              "step":  1,
-                                              "value":  0
-                                          },
-                                          {
-                                              "id":  "heading_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å ",
-                                              "required":  false,
-                                              "value":  "#1a1a1a"
-                                          },
-                                          {
-                                              "id":  "badge_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â§Ã™â€ Ã˜Â¨Ã™Å ",
-                                              "required":  false,
-                                              "value":  "#000000"
-                                          },
-                                          {
-                                              "id":  "line_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â·",
-                                              "required":  false,
-                                              "value":  "#bdbdbd"
-                                          },
-                                          {
-                                              "id":  "bar_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â±Ã™Å Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â³Ã™â€¦Ã™Å Ã™Æ’",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "frame_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â¥Ã˜Â·Ã˜Â§Ã˜Â± Ã˜Â§Ã™â€žÃ˜ÂµÃ™Ë†Ã˜Â±Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#ececec"
-                                          },
-                                          {
-                                              "id":  "item_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž",
-                                              "required":  false,
-                                              "value":  "#f4f4f4"
-                                          },
-                                          {
-                                              "id":  "question_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž",
-                                              "required":  false,
-                                              "value":  "#111111"
-                                          },
-                                          {
-                                              "id":  "answer_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¬Ã˜Â§Ã˜Â¨Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#555555"
-                                          },
-                                          {
-                                              "id":  "icon_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â£Ã™Å Ã™â€šÃ™Ë†Ã™â€ Ã˜Â© + / Ã¢Ë†â€™",
-                                              "required":  false,
-                                              "value":  "#111111"
-                                          },
-                                          {
-                                              "id":  "active_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã™ÂÃ˜ÂªÃ™Ë†Ã˜Â­",
-                                              "required":  false,
-                                              "value":  "#2b2b2b"
-                                          },
-                                          {
-                                              "id":  "active_question_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã™ÂÃ˜ÂªÃ™Ë†Ã˜Â­",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "active_answer_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¬Ã˜Â§Ã˜Â¨Ã˜Â© Ã˜Â§Ã™â€žÃ™â€¦Ã™ÂÃ˜ÂªÃ™Ë†Ã˜Â­Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#cfcfcf"
-                                          },
-                                          {
-                                              "id":  "active_icon_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â£Ã™Å Ã™â€šÃ™Ë†Ã™â€ Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â³Ã˜Â¤Ã˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã™ÂÃ˜ÂªÃ™Ë†Ã˜Â­",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "Ã˜ÂªÃ˜Â±Ã™Ë†Ã™Å Ã˜Â³Ã˜Â© Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ ",
-                           "icon":  "sicon-layout-grid-rearrange",
-                           "name":  "drone-header",
-                           "key":  "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
-                           "image":  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
-                           "props":  {
-                                         "min-height":  "72px"
-                                     },
-                           "fields":  [
-                                          {
-                                              "id":  "logo_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ã™â€ Ã™Ë†Ã˜Â¹ Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â¹Ã˜Â§Ã˜Â±",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ã˜Â´Ã˜Â¹Ã˜Â§Ã˜Â± Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â§Ã™ÂÃ˜ÂªÃ˜Â±Ã˜Â§Ã˜Â¶Ã™Å ",
-                                                                  "value":  "default",
-                                                                  "key":  "default"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã™â€¦Ã˜Â®Ã˜ÂµÃ˜ÂµÃ˜Â©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ã™â€ Ã˜Âµ Ã™â€¦Ã˜Â®Ã˜ÂµÃ˜Âµ",
-                                                                  "value":  "text",
-                                                                  "key":  "text"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ã˜Â´Ã˜Â¹Ã˜Â§Ã˜Â± Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â§Ã™ÂÃ˜ÂªÃ˜Â±Ã˜Â§Ã˜Â¶Ã™Å ",
-                                                                   "value":  "default",
-                                                                   "key":  "default"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "logo_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "Ã˜ÂµÃ™Ë†Ã˜Â±Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â¹Ã˜Â§Ã˜Â± Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â®Ã˜ÂµÃ˜Âµ",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "logo_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â¹Ã˜Â§Ã˜Â± (Ã˜Â¥Ã˜Â°Ã˜Â§ Ã™Æ’Ã˜Â§Ã™â€  Ã™â€ Ã˜ÂµÃ™Å Ã˜Â§Ã™â€¹)",
-                                              "format":  "text",
-                                              "value":  "Drone",
-                                              "required":  false
-                                          },
-                                          {
-                                              "id":  "logo_height",
-                                              "type":  "number",
-                                              "label":  "Ã˜Â§Ã˜Â±Ã˜ÂªÃ™ÂÃ˜Â§Ã˜Â¹ Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â¹Ã˜Â§Ã˜Â± (Ã˜Â¨Ã™Æ’Ã˜Â³Ã™â€ž)",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  24,
-                                              "maximum":  80,
-                                              "step":  2,
-                                              "value":  38
-                                          },
-                                          {
-                                              "id":  "links",
-                                              "type":  "collection",
-                                              "format":  "collection",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  12,
-                                              "item_label":  "Ã˜Â±Ã™Ë†Ã˜Â§Ã˜Â¨Ã˜Â· Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â±Ã™Ë†Ã™Å Ã˜Â³Ã˜Â©",
-                                              "value":  [
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â¦Ã™Å Ã˜Â³Ã™Å Ã˜Â©",
-                                                                "url":  "#",
-                                                                "active":  true
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ™â€¦Ã™â€¦Ã™Å Ã˜Â²Ã˜Â§Ã˜Âª",
-                                                                "url":  "#features",
-                                                                "active":  false
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ™â€šÃ˜ÂµÃ˜Â©",
-                                                                "url":  "#story",
-                                                                "active":  false
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â¬Ã˜Â²Ã˜Â§Ã˜Â¡",
-                                                                "url":  "#parts",
-                                                                "active":  false
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ˜Â§Ã˜Â³Ã˜Â¦Ã™â€žÃ˜Â© Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â§Ã˜Â¦Ã˜Â¹Ã˜Â©",
-                                                                "url":  "#faq",
-                                                                "active":  false
-                                                            },
-                                                            {
-                                                                "label":  "Ã˜Â§Ã™â€žÃ™ÂÃ™Å Ã˜Â¯Ã™Ë†Ã™â€¡Ã˜Â§Ã˜Âª",
-                                                                "url":  "#videos",
-                                                                "active":  false
-                                                            }
-                                                        ],
-                                              "fields":  [
-                                                             {
-                                                                 "id":  "label",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "required":  true,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â§Ã˜Â¨Ã˜Â·",
-                                                                 "maxLength":  40
-                                                             },
-                                                             {
-                                                                 "id":  "url",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-link",
-                                                                 "required":  false,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â§Ã˜Â¨Ã˜Â·",
-                                                                 "maxLength":  200
-                                                             },
-                                                             {
-                                                                 "id":  "active",
-                                                                 "type":  "boolean",
-                                                                 "icon":  "sicon-check-circle",
-                                                                 "label":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã™â€ Ã˜Â´Ã˜Â· (_ Ã™â€ Ã˜Âµ _)",
-                                                                 "format":  "switch",
-                                                                 "required":  false,
-                                                                 "value":  false
-                                                             }
-                                                         ]
-                                          },
-                                          {
-                                              "id":  "show_button",
-                                              "icon":  "sicon-eye",
-                                              "type":  "boolean",
-                                              "label":  "Ã˜Â¥Ã˜Â¸Ã™â€¡Ã˜Â§Ã˜Â± Ã˜Â²Ã˜Â± Ã˜Â§Ã™â€žÃ˜Â·Ã™â€žÃ˜Â¨ (CTA)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "button_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "text",
-                                              "value":  "Ã˜Â§Ã˜Â·Ã™â€žÃ˜Â¨ Ã˜Â¯Ã˜Â±Ã™Ë†Ã™â€ Ã™Æ’ Ã˜Â§Ã™â€žÃ˜Â¢Ã™â€ "
-                                          },
-                                          {
-                                              "id":  "source_url",
-                                              "icon":  "sicon-shopping-bag",
-                                              "type":  "items",
-                                              "label":  "Ã˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "format":  "variable-list",
-                                              "required":  true,
-                                              "source":  "custom",
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Custom",
-                                                                   "key":  "custom",
-                                                                   "value":  "#"
-                                                               }
-                                                           ],
-                                              "sources":  [
-                                                              {
-                                                                  "label":  "Product",
-                                                                  "key":  "products",
-                                                                  "value":  "products"
-                                                              },
-                                                              {
-                                                                  "label":  "Category",
-                                                                  "key":  "categories",
-                                                                  "value":  "categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand",
-                                                                  "key":  "brands",
-                                                                  "value":  "brands"
-                                                              },
-                                                              {
-                                                                  "label":  "Page",
-                                                                  "key":  "pages",
-                                                                  "value":  "pages"
-                                                              },
-                                                              {
-                                                                  "label":  "Custom",
-                                                                  "key":  "custom",
-                                                                  "value":  "custom"
-                                                              }
-                                                          ]
-                                          },
-                                          {
-                                              "id":  "sticky",
-                                              "icon":  "sicon-pin",
-                                              "type":  "boolean",
-                                              "label":  "Ã˜ÂªÃ˜Â«Ã˜Â¨Ã™Å Ã˜Âª Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â±Ã™Ë†Ã™Å Ã˜Â³Ã˜Â© Ã™ÂÃ™Å  Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â¹Ã™â€žÃ™â€° Ã˜Â¹Ã™â€ Ã˜Â¯ Ã˜Â§Ã™â€žÃ˜ÂªÃ™â€¦Ã˜Â±Ã™Å Ã˜Â± (Sticky)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  false
-                                          },
-                                          {
-                                              "id":  "bg_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â© Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â±Ã™Ë†Ã™Å Ã˜Â³Ã˜Â©",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "text_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜ÂµÃ™Ë†Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â±Ã™Ë†Ã˜Â§Ã˜Â¨Ã˜Â·",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "active_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â±Ã˜Â§Ã˜Â¨Ã˜Â· Ã˜Â§Ã™â€žÃ™â€ Ã˜Â´Ã˜Â·",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "button_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â®Ã™â€žÃ™ÂÃ™Å Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "button_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã™â€ Ã˜Âµ Ã˜Â§Ã™â€žÃ˜Â²Ã˜Â±",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "border_bottom",
-                                              "icon":  "sicon-stroke",
-                                              "type":  "boolean",
-                                              "label":  "Ã˜Â¥Ã˜Â¸Ã™â€¡Ã˜Â§Ã˜Â± Ã˜Â®Ã˜Â· Ã˜Â³Ã™ÂÃ™â€žÃ™Å  Ã™ÂÃ˜Â§Ã˜ÂµÃ™â€ž",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  false
-                                          },
-                                          {
-                                              "id":  "border_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ã™â€žÃ™Ë†Ã™â€  Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â· Ã˜Â§Ã™â€žÃ˜Â³Ã™ÂÃ™â€žÃ™Å ",
-                                              "required":  false,
-                                              "value":  "#262626"
-                                          }
-                                      ]
-                       },
-                       {
-                           "title":  "ØªØ°ÙŠÙŠÙ„ Ø¯Ø±ÙˆÙ† (Ø§Ù„ÙÙˆØªØ±)",
-                           "icon":  "sicon-layout-grid-rearrange",
-                           "name":  "drone-footer",
-                           "key":  "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
-                           "image":  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
-                           "props":  {
-                                         "min-height":  "400px"
-                                     },
-                           "fields":  [
-                                          {
-                                              "id":  "logo_type",
-                                              "icon":  "sicon-list",
-                                              "type":  "items",
-                                              "source":  "Manual",
-                                              "label":  "Ù†ÙˆØ¹ Ø§Ù„Ø´Ø¹Ø§Ø±",
-                                              "format":  "dropdown-list",
-                                              "required":  false,
-                                              "options":  [
-                                                              {
-                                                                  "label":  "Ø´Ø¹Ø§Ø± Ø¯Ø±ÙˆÙ† Ø§Ù„Ø§ÙØªØ±Ø§Ø¶ÙŠ",
-                                                                  "value":  "default",
-                                                                  "key":  "default"
-                                                              },
-                                                              {
-                                                                  "label":  "ØµÙˆØ±Ø© Ù…Ø®ØµØµØ©",
-                                                                  "value":  "image",
-                                                                  "key":  "image"
-                                                              },
-                                                              {
-                                                                  "label":  "Ù†Øµ Ù…Ø®ØµØµ",
-                                                                  "value":  "text",
-                                                                  "key":  "text"
-                                                              }
-                                                          ],
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Ø´Ø¹Ø§Ø± Ø¯Ø±ÙˆÙ† Ø§Ù„Ø§ÙØªØ±Ø§Ø¶ÙŠ",
-                                                                   "value":  "default",
-                                                                   "key":  "default"
-                                                               }
-                                                           ]
-                                          },
-                                          {
-                                              "id":  "logo_image",
-                                              "type":  "string",
-                                              "icon":  "sicon-image-landscape",
-                                              "format":  "image",
-                                              "label":  "ØµÙˆØ±Ø© Ø§Ù„Ø´Ø¹Ø§Ø± Ø§Ù„Ù…Ø®ØµØµ",
-                                              "required":  false,
-                                              "value":  ""
-                                          },
-                                          {
-                                              "id":  "logo_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ù†Øµ Ø§Ù„Ø´Ø¹Ø§Ø± (Ø¥Ø°Ø§ ÙƒØ§Ù† Ù†ØµÙŠØ§Ù‹)",
-                                              "format":  "text",
-                                              "value":  "Drone",
-                                              "required":  false
-                                          },
-                                          {
-                                              "id":  "logo_height",
-                                              "type":  "number",
-                                              "label":  "Ø§Ø±ØªÙØ§Ø¹ Ø§Ù„Ø´Ø¹Ø§Ø± (Ø¨ÙƒØ³Ù„)",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  24,
-                                              "maximum":  80,
-                                              "step":  2,
-                                              "value":  42
-                                          },
-                                          {
-                                              "id":  "description",
-                                              "type":  "string",
-                                              "icon":  "sicon-paragraph",
-                                              "label":  "Ø§Ù„ÙˆØµÙ Ø§Ù„ØªØ¹Ø±ÙŠÙÙŠ",
-                                              "format":  "textarea",
-                                              "rows":  4,
-                                              "multilanguage":  true,
-                                              "value":  "Ø§ÙƒØªØ´Ù Ø§Ù„Ø¹Ø§Ù„Ù… Ù…Ù† Ø²Ø§ÙˆÙŠØ© Ù…Ø®ØªÙ„ÙØ© Ù…Ø¹ Ø¯Ø±ÙˆÙ† ÙŠØ¬Ù…Ø¹ Ø¨ÙŠÙ† Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§ ÙˆØ§Ù„Ø¥Ø¨Ø¯Ø§Ø¹. Ø®Ù„ÙŠÙƒ Ù…Ø³ØªØ¹Ø¯ Ù„Ù…ØºØ§Ù…Ø±Ø§Øª Ø¬Ø¯ÙŠØ¯Ø©ØŒ ÙˆØ§Ù„ØªÙ‚Ø· Ù„Ø­Ø¸Ø§ØªÙƒ Ù…Ù† Ø§Ù„Ø³Ù…Ø§Ø¡ØŒ ÙˆØ­ÙˆÙ‘Ù„ ÙƒÙ„ ØªØ¬Ø±Ø¨Ø© Ù„Ø°ÙƒØ±Ù‰ ØªØ³ØªØ­Ù‚ Ø§Ù„Ø§Ø­ØªÙØ§Ø¸ Ø¨ÙŠÙ‡Ø§."
-                                          },
-                                          {
-                                              "id":  "links",
-                                              "type":  "collection",
-                                              "format":  "collection",
-                                              "required":  true,
-                                              "minLength":  1,
-                                              "maxLength":  12,
-                                              "item_label":  "Ø±ÙˆØ§Ø¨Ø· Ø§Ù„ÙÙˆØªØ±",
-                                              "value":  [
-                                                            {
-                                                                "label":  "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
-                                                                "url":  "#"
-                                                            },
-                                                            {
-                                                                "label":  "Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª",
-                                                                "url":  "#features"
-                                                            },
-                                                            {
-                                                                "label":  "Ø§Ù„Ù‚ØµØ©",
-                                                                "url":  "#story"
-                                                            },
-                                                            {
-                                                                "label":  "Ø§Ø¬Ø²Ø§Ø¡ Ø§Ù„Ø¯Ø±ÙˆÙ†",
-                                                                "url":  "#parts"
-                                                            },
-                                                            {
-                                                                "label":  "Ø§Ù„Ø§Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
-                                                                "url":  "#faq"
-                                                            },
-                                                            {
-                                                                "label":  "Ø§Ù„ÙÙŠØ¯ÙˆÙ‡Ø§Øª",
-                                                                "url":  "#videos"
-                                                            }
-                                                        ],
-                                              "fields":  [
-                                                             {
-                                                                 "id":  "label",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-format-text-alt",
-                                                                 "required":  true,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ø§Ø³Ù… Ø§Ù„Ø±Ø§Ø¨Ø·",
-                                                                 "maxLength":  40
-                                                             },
-                                                             {
-                                                                 "id":  "url",
-                                                                 "type":  "string",
-                                                                 "icon":  "sicon-link",
-                                                                 "required":  false,
-                                                                 "format":  "text",
-                                                                 "placeholder":  "Ø§Ù„Ø±Ø§Ø¨Ø·",
-                                                                 "maxLength":  200
-                                                             }
-                                                         ]
-                                          },
-                                          {
-                                              "id":  "social_title",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ø¹Ù†ÙˆØ§Ù† Ù…Ù†ØµØ§Øª Ø§Ù„ØªÙˆØ§ØµÙ„",
-                                              "format":  "text",
-                                              "value":  "ØªØ§Ø¨Ø¹Ù†Ø§ Ø¹Ù„Ù‰ Ù…ÙˆØ§Ù‚Ø¹Ù†Ø§ Ø§Ù„Ø¢ØªÙŠØ©"
-                                          },
-                                          {
-                                              "id":  "facebook_url",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "label":  "Ø±Ø§Ø¨Ø· ÙÙŠØ³Ø¨ÙˆÙƒ",
-                                              "format":  "url",
-                                              "required":  false,
-                                              "value":  "#"
-                                          },
-                                          {
-                                              "id":  "instagram_url",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "label":  "Ø±Ø§Ø¨Ø· Ø§Ù†Ø³ØªØºØ±Ø§Ù…",
-                                              "format":  "url",
-                                              "required":  false,
-                                              "value":  "#"
-                                          },
-                                          {
-                                              "id":  "x_url",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "label":  "Ø±Ø§Ø¨Ø· Ù…Ù†ØµØ© X (ØªÙˆÙŠØªØ±)",
-                                              "format":  "url",
-                                              "required":  false,
-                                              "value":  "#"
-                                          },
-                                          {
-                                              "id":  "linkedin_url",
-                                              "type":  "string",
-                                              "icon":  "sicon-link",
-                                              "label":  "Ø±Ø§Ø¨Ø· Ù„ÙŠÙ†ÙƒØ¯ Ø¥Ù†",
-                                              "format":  "url",
-                                              "required":  false,
-                                              "value":  "#"
-                                          },
-                                          {
-                                              "id":  "show_button",
-                                              "icon":  "sicon-eye",
-                                              "type":  "boolean",
-                                              "label":  "Ø¥Ø¸Ù‡Ø§Ø± Ø²Ø± Ø§Ù„Ø·Ù„Ø¨ (CTA)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "button_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ù†Øµ Ø§Ù„Ø²Ø±",
-                                              "format":  "text",
-                                              "value":  "Ø§Ø·Ù„Ø¨ Ø¯Ø±ÙˆÙ†Ùƒ Ø§Ù„Ø¢Ù†"
-                                          },
-                                          {
-                                              "id":  "source_url",
-                                              "icon":  "sicon-shopping-bag",
-                                              "type":  "items",
-                                              "label":  "Ø±Ø§Ø¨Ø· Ø§Ù„Ø²Ø±",
-                                              "format":  "variable-list",
-                                              "required":  true,
-                                              "source":  "custom",
-                                              "selected":  [
-                                                               {
-                                                                   "label":  "Custom",
-                                                                   "key":  "custom",
-                                                                   "value":  "#"
-                                                               }
-                                                           ],
-                                              "sources":  [
-                                                              {
-                                                                  "label":  "Product",
-                                                                  "key":  "products",
-                                                                  "value":  "products"
-                                                              },
-                                                              {
-                                                                  "label":  "Category",
-                                                                  "key":  "categories",
-                                                                  "value":  "categories"
-                                                              },
-                                                              {
-                                                                  "label":  "Brand",
-                                                                  "key":  "brands",
-                                                                  "value":  "brands"
-                                                              },
-                                                              {
-                                                                  "label":  "Page",
-                                                                  "key":  "pages",
-                                                                  "value":  "pages"
-                                                              },
-                                                              {
-                                                                  "label":  "Custom",
-                                                                  "key":  "custom",
-                                                                  "value":  "custom"
-                                                              }
-                                                          ]
-                                          },
-                                          {
-                                              "id":  "show_watermark",
-                                              "icon":  "sicon-eye",
-                                              "type":  "boolean",
-                                              "label":  "Ø¥Ø¸Ù‡Ø§Ø± Ø§Ù„ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø§Ø¦ÙŠØ© Ø§Ù„ÙƒØ¨ÙŠØ±Ø© (Drone)",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "watermark_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ù†Øµ Ø§Ù„ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø§Ø¦ÙŠØ© ÙÙŠ Ø§Ù„Ø£Ø³ÙÙ„",
-                                              "format":  "text",
-                                              "value":  "Drone"
-                                          },
-                                          {
-                                              "id":  "show_wireframe",
-                                              "icon":  "sicon-eye",
-                                              "type":  "boolean",
-                                              "label":  "Ø¥Ø¸Ù‡Ø§Ø± Ø±Ø³Ù… Ø§Ù„Ø¯Ø±ÙˆÙ† Ø§Ù„Ù‡Ù†Ø¯Ø³ÙŠ Ø¨Ø§Ù„Ø®Ù„ÙÙŠØ©",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  true
-                                          },
-                                          {
-                                              "id":  "wireframe_opacity",
-                                              "type":  "number",
-                                              "label":  "Ø¹ØªØ§Ù…Ø© Ø±Ø³Ù… Ø§Ù„Ø¯Ø±ÙˆÙ† Ø§Ù„Ø®Ù„ÙÙŠ (%)",
-                                              "format":  "slider",
-                                              "inputType":  "range",
-                                              "required":  false,
-                                              "minimum":  0,
-                                              "maximum":  100,
-                                              "step":  2,
-                                              "value":  12
-                                          },
-                                          {
-                                              "id":  "bg_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø®Ù„ÙÙŠØ© Ø§Ù„ÙÙˆØªØ±",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "text_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø§Ù„Ø¹Ù†Ø§ÙˆÙŠÙ† ÙˆØ§Ù„Ù†ØµÙˆØµ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
-                                              "required":  false,
-                                              "value":  "#111111"
-                                          },
-                                          {
-                                              "id":  "desc_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ù†Øµ Ø§Ù„ÙˆØµÙ",
-                                              "required":  false,
-                                              "value":  "#4a4a4a"
-                                          },
-                                          {
-                                              "id":  "link_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø§Ù„Ø±ÙˆØ§Ø¨Ø· ÙˆØ§Ù„Ø£Ø³Ù‡Ù…",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "line_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø®Ø·ÙˆØ· Ø§Ù„ÙÙˆØ§ØµÙ„",
-                                              "required":  false,
-                                              "value":  "#e0e0e0"
-                                          },
-                                          {
-                                              "id":  "social_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø®Ù„ÙÙŠØ© Ø£ÙŠÙ‚ÙˆÙ†Ø§Øª Ø§Ù„ØªÙˆØ§ØµÙ„",
-                                              "required":  false,
-                                              "value":  "#ebebeb"
-                                          },
-                                          {
-                                              "id":  "social_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø£ÙŠÙ‚ÙˆÙ†Ø§Øª Ø§Ù„ØªÙˆØ§ØµÙ„",
-                                              "required":  false,
-                                              "value":  "#111111"
-                                          },
-                                          {
-                                              "id":  "button_bg",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ø®Ù„ÙÙŠØ© Ø§Ù„Ø²Ø±",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "button_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† Ù†Øµ Ø§Ù„Ø²Ø±",
-                                              "required":  false,
-                                              "value":  "#ffffff"
-                                          },
-                                          {
-                                              "id":  "watermark_color",
-                                              "type":  "string",
-                                              "icon":  "sicon-color-palette",
-                                              "format":  "color",
-                                              "inputType":  "color",
-                                              "label":  "Ù„ÙˆÙ† ÙƒÙ„Ù…Ø© Drone Ø§Ù„Ù…Ø§Ø¦ÙŠØ©",
-                                              "required":  false,
-                                              "value":  "#0d0d0d"
-                                          },
-                                          {
-                                              "id":  "show_copyright",
-                                              "icon":  "sicon-shield",
-                                              "type":  "boolean",
-                                              "label":  "Ø¥Ø¸Ù‡Ø§Ø± Ø´Ø±ÙŠØ· Ø­Ù‚ÙˆÙ‚ Ø§Ù„Ù†Ø´Ø± Ø§Ù„Ø³ÙÙ„ÙŠ",
-                                              "format":  "switch",
-                                              "required":  false,
-                                              "value":  false
-                                          },
-                                          {
-                                              "id":  "copyright_text",
-                                              "type":  "string",
-                                              "icon":  "sicon-format-text-alt",
-                                              "label":  "Ù†Øµ Ø­Ù‚ÙˆÙ‚ Ø§Ù„Ù†Ø´Ø±",
-                                              "format":  "text",
-                                              "value":  "Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø© Â© 2026 Ø¯Ø±ÙˆÙ†"
-                                          }
-                                      ]
-                       }
-                   ]
+  "id": "9af106ef-6bc9-4ae4-8bbd-c0a635b87045",
+  "components": [
+    {
+      "title": "Getting Started Guide",
+      "icon": "sicon-rocket",
+      "name": "getting-started-guide",
+      "key": "0a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png"
+    },
+    {
+      "title": "Basic Inputs",
+      "icon": "sicon-format-text-alt",
+      "name": "basic-inputs",
+      "key": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/text-input.png",
+      "fields": [
+        {
+          "id": "text",
+          "icon": "sicon-format-text-alt",
+          "type": "string",
+          "label": "Text",
+          "placeholder": "Enter text here...",
+          "format": "text",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 100,
+          "value": "Sample text value"
+        },
+        {
+          "id": "email",
+          "icon": "sicon-mail",
+          "type": "string",
+          "label": "Email Input",
+          "placeholder": "Enter email address...",
+          "format": "email",
+          "required": true,
+          "description": "An email input field with validation",
+          "value": "example@salla.sa"
+        },
+        {
+          "id": "url",
+          "icon": "sicon-link",
+          "type": "string",
+          "label": "URL Input",
+          "placeholder": "Enter website URL...",
+          "format": "url",
+          "required": false,
+          "description": "A URL input field with validation",
+          "value": "https://salla.dev"
+        },
+        {
+          "id": "password",
+          "icon": "sicon-lock",
+          "type": "string",
+          "label": "Password Input",
+          "placeholder": "Enter password...",
+          "format": "password",
+          "hide": true,
+          "required": false
+        },
+        {
+          "id": "textarea",
+          "icon": "sicon-paragraph",
+          "type": "string",
+          "label": "Textarea",
+          "placeholder": "Enter multi-line text here...",
+          "format": "textarea",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 500,
+          "rows": 4,
+          "value": "This is a sample text\nwith multiple lines\nto demonstrate the textarea."
+        },
+        {
+          "id": "number",
+          "icon": "sicon-calculator",
+          "type": "number",
+          "label": "Basic Number",
+          "placeholder": "Enter a number...",
+          "format": "number",
+          "inputType": "number",
+          "required": true,
+          "value": 42
+        },
+        {
+          "id": "float",
+          "icon": "sicon-calculator",
+          "type": "number",
+          "label": "Float Number",
+          "placeholder": "Enter a decimal number...",
+          "format": "float",
+          "inputType": "number",
+          "required": false,
+          "step": 0.1,
+          "value": 3.14
+        },
+        {
+          "id": "units",
+          "icon": "sicon-tag",
+          "type": "number",
+          "label": "Units",
+          "placeholder": "Enter units...",
+          "format": "units",
+          "required": true,
+          "step": 0.5,
+          "unit": "kg",
+          "value": 1
+        },
+        {
+          "id": "slider",
+          "type": "number",
+          "label": "Slider",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 0,
+          "maximum": 100,
+          "step": 1,
+          "value": 75
+        },
+        {
+          "id": "checkbox",
+          "icon": "sicon-check-circle",
+          "type": "boolean",
+          "label": "Checkbox",
+          "format": "checkbox",
+          "required": true,
+          "description": "Enable or disable this feature",
+          "value": true
+        },
+        {
+          "id": "switch",
+          "icon": "sicon-bell",
+          "type": "boolean",
+          "label": "Switch",
+          "format": "switch",
+          "required": false,
+          "description": "Enable notifications",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Ã˜Â¬Ã˜Â¯Ã™Ë†Ã™â€ž Ã™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€° Ã˜Â¨Ã˜Â³Ã™Å Ã˜Â·",
+      "icon": "sicon-layout-grid-rearrange",
+      "name": "table-list",
+      "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg",
+      "key": "9f8e7d6c-5b4a-3c2d-1e0f-a9b8c7d6e5f4",
+      "fields": [
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 100,
+          "item_label": "Ã˜ÂµÃ™ÂÃ™Ë†Ã™Â Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â¯Ã™Ë†Ã™â€ž",
+          "value": [
+            {
+              "title": "Featured Products",
+              "description": "Our best-selling items with special discounts"
+            },
+            {
+              "title": "New Arrivals",
+              "description": "Latest additions to our collection"
+            },
+            {
+              "title": "Special Offers",
+              "description": "Limited-time deals and promotions"
+            }
+          ],
+          "fields": [
+            {
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "id": "title",
+              "required": true,
+              "format": "text",
+              "placeholder": "Ã˜Â£Ã˜Â¯Ã˜Â®Ã™â€ž Ã˜Â¹Ã™â€ Ã™Ë†Ã˜Â§Ã™â€  Ã˜Â§Ã™â€žÃ˜ÂµÃ™Â Ã™â€¡Ã™â€ Ã˜Â§...",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "id": "description",
+              "format": "textarea",
+              "placeholder": "Ã˜Â£Ã˜Â¯Ã˜Â®Ã™â€ž Ã™Ë†Ã˜ÂµÃ™Â Ã˜Â§Ã™â€žÃ˜ÂµÃ™Â Ã™â€¡Ã™â€ Ã˜Â§...",
+              "maxLength": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ã˜Â±Ã˜Â¬Ã™Ë†Ã˜Â¹ Ã™â€žÃ™â€žÃ˜Â£Ã˜Â¹Ã™â€žÃ™â€°",
+      "icon": "sicon-arrow-up",
+      "name": "scroll-top",
+      "key": "8c7b6a5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/main-links-with-bg.jpg"
+    },
+    {
+      "title": "أجزاء الدرون",
+      "icon": "sicon-rocket",
+      "name": "drone-parts",
+      "key": "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
+      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "مش مجرد درون.. دي زاوية جديدة للعالم."
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان القسم",
+          "format": "text",
+          "value": "أجزاء الدرون"
+        },
+        {
+          "id": "drone_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "parts",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "أجزاء الدرون",
+          "value": [
+            {
+              "label": "المراوح",
+              "text": "مراوح قوية لتحقيق استقرار وسرعة",
+              "image": "https://cdn.files.salla.network/other/1343631853/bf7f9a93-b38e-4732-bc81-72a0efc8f6f1-original.png"
+            },
+            {
+              "label": "الكاميرا",
+              "text": "نظام استقرار للكاميرا والتصوير",
+              "image": "https://cdn.files.salla.network/other/1343631853/dbe75395-d8f9-44dc-9efd-0b546c639792-original.png"
+            },
+            {
+              "label": "هيكل الهبوط",
+              "text": "هيكل هبوط متين وآمن",
+              "image": "https://cdn.files.salla.network/other/1343631853/0a173af6-0bd6-460d-8aae-57da6db532f2-original.png"
+            },
+            {
+              "label": "جسم الطائرة",
+              "text": "جسم الطائرة أساسي ومتكامل",
+              "image": "https://cdn.files.salla.network/other/1343631853/3d1ba946-2089-41e1-8a7d-890dd4d0c972-original.png"
+            }
+          ],
+          "fields": [
+            {
+              "id": "label",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "اسم الجزء",
+              "maxLength": 50
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "format": "textarea",
+              "placeholder": "وصف الجزء",
+              "maxLength": 200
+            },
+            {
+              "id": "image",
+              "type": "string",
+              "icon": "sicon-image-landscape",
+              "format": "image",
+              "label": "صورة الجزء",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "قصة درون",
+      "icon": "sicon-album-photo",
+      "name": "drone-story",
+      "key": "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "مش مجرد درون.. دي زاوية جديدة للعالم.",
+          "multilanguage": true
+        },
+        {
+          "id": "badge",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الجانبي",
+          "format": "text",
+          "value": "قصة درون",
+          "multilanguage": true
+        },
+        {
+          "id": "text",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "النص (استخدم **نص** للتغليظ)",
+          "format": "textarea",
+          "rows": 6,
+          "multilanguage": true,
+          "value": "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة."
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن",
+          "multilanguage": true
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "reverse",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "عكس المحتوى (الصورة يمين والنص شمال)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "float_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الميديا العلوية (الدرون)",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            }
+          ]
+        },
+        {
+          "id": "float_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون العلوية",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+        },
+        {
+          "id": "float_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "فيديو الدرون العلوي",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "media_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الميديا الرئيسية (الإطار)",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            }
+          ]
+        },
+        {
+          "id": "media_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "الصورة الرئيسية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "media_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "الفيديو الرئيسي",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الخلفية",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "بدون",
+              "value": "none",
+              "key": "none"
+            },
+            {
+              "label": "لون",
+              "value": "color",
+              "key": "color"
+            },
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "لون",
+              "value": "color",
+              "key": "color"
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "bg_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "فيديو الخلفية",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_overlay",
+          "type": "number",
+          "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 0,
+          "maximum": 100,
+          "step": 1,
+          "value": 0
+        },
+        {
+          "id": "heading_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الرئيسي",
+          "required": false,
+          "value": "#1a1a1a"
+        },
+        {
+          "id": "badge_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الجانبي",
+          "required": false,
+          "value": "#000000"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص",
+          "required": false,
+          "value": "#4a4a4a"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخط",
+          "required": false,
+          "value": "#bdbdbd"
+        },
+        {
+          "id": "bar_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الشريط السميك",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "frame_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار الصورة",
+          "required": false,
+          "value": "#ececec"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "title": "الأسئلة الشائعة",
+      "icon": "sicon-question-mark",
+      "name": "drone-faq",
+      "key": "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "عندك سؤال؟ إحنا هنا نساعدك",
+          "multilanguage": true
+        },
+        {
+          "id": "badge",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الجانبي",
+          "format": "text",
+          "value": "الأسئلة الشائعة",
+          "multilanguage": true
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 20,
+          "item_label": "الأسئلة",
+          "value": [
+            {
+              "question": "كيف يمكنني طلب تفاصيل الخدمة؟",
+              "answer": "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة."
+            },
+            {
+              "question": "ما هي مدة الشحن والتركيب؟",
+              "answer": "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة."
+            },
+            {
+              "question": "هل يمكنني استرجاع أو استبدال المنتج؟",
+              "answer": "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية."
+            },
+            {
+              "question": "كيف يمكنني التواصل مع فريق الدعم؟",
+              "answer": "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع."
+            }
+          ],
+          "fields": [
+            {
+              "id": "question",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "السؤال",
+              "maxLength": 200,
+              "multilanguage": true
+            },
+            {
+              "id": "answer",
+              "type": "string",
+              "icon": "sicon-paragraph",
+              "format": "textarea",
+              "placeholder": "الإجابة (استخدم **نص** للتغليظ)",
+              "maxLength": 1500,
+              "multilanguage": true
+            }
+          ]
+        },
+        {
+          "id": "single_open",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "فتح سؤال واحد فقط (يقفل السابق)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "first_open",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "فتح أول سؤال افتراضيًا",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "anim_duration",
+          "type": "number",
+          "label": "سرعة الحركة (مللي ثانية)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 100,
+          "maximum": 1000,
+          "step": 50,
+          "value": 400
+        },
+        {
+          "id": "reverse",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "عكس المحتوى (الصورة يمين/شمال)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "media_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الميديا الرئيسية (الإطار)",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            }
+          ]
+        },
+        {
+          "id": "media_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "الصورة الرئيسية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "media_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "الفيديو الرئيسي",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الخلفية",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "بدون",
+              "value": "none",
+              "key": "none"
+            },
+            {
+              "label": "لون",
+              "value": "color",
+              "key": "color"
+            },
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "لون",
+              "value": "color",
+              "key": "color"
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "bg_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "فيديو الخلفية",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_overlay",
+          "type": "number",
+          "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 0,
+          "maximum": 100,
+          "step": 1,
+          "value": 0
+        },
+        {
+          "id": "heading_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الرئيسي",
+          "required": false,
+          "value": "#1a1a1a"
+        },
+        {
+          "id": "badge_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الجانبي",
+          "required": false,
+          "value": "#000000"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخط",
+          "required": false,
+          "value": "#bdbdbd"
+        },
+        {
+          "id": "bar_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الشريط السميك",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "frame_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار الصورة",
+          "required": false,
+          "value": "#ececec"
+        },
+        {
+          "id": "item_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية السؤال",
+          "required": false,
+          "value": "#f4f4f4"
+        },
+        {
+          "id": "question_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص السؤال",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "answer_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الإجابة",
+          "required": false,
+          "value": "#555555"
+        },
+        {
+          "id": "icon_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة + / −",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "active_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية السؤال المفتوح",
+          "required": false,
+          "value": "#2b2b2b"
+        },
+        {
+          "id": "active_question_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص السؤال المفتوح",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "active_answer_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الإجابة المفتوحة",
+          "required": false,
+          "value": "#cfcfcf"
+        },
+        {
+          "id": "active_icon_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة السؤال المفتوح",
+          "required": false,
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "title": "ترويسة درون",
+      "icon": "sicon-layout-grid-rearrange",
+      "name": "drone-header",
+      "key": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "props": {
+        "min-height": "72px"
+      },
+      "fields": [
+        {
+          "id": "logo_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "شعار المتجر",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png"
+        },
+        {
+          "id": "logo_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الشعار (إذا كان نصياً)",
+          "format": "text",
+          "value": "Drone",
+          "required": false
+        },
+        {
+          "id": "logo_height",
+          "type": "number",
+          "label": "ارتفاع الشعار (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 24,
+          "maximum": 80,
+          "step": 2,
+          "value": 38
+        },
+        {
+          "id": "links",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "item_label": "روابط الترويسة",
+          "value": [
+            {
+              "label": "الرئيسية",
+              "url": "#",
+              "active": true
+            },
+            {
+              "label": "المميزات",
+              "url": "#features",
+              "active": false
+            },
+            {
+              "label": "القصة",
+              "url": "#story",
+              "active": false
+            },
+            {
+              "label": "الأجزاء",
+              "url": "#parts",
+              "active": false
+            },
+            {
+              "label": "الاسئلة الشائعة",
+              "url": "#faq",
+              "active": false
+            },
+            {
+              "label": "الفيدوهات",
+              "url": "#videos",
+              "active": false
+            }
+          ],
+          "fields": [
+            {
+              "id": "label",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "نص الرابط",
+              "maxLength": 40
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "icon": "sicon-link",
+              "required": false,
+              "format": "text",
+              "placeholder": "الرابط",
+              "maxLength": 200
+            },
+            {
+              "id": "active",
+              "type": "boolean",
+              "icon": "sicon-check-circle",
+              "label": "رابط نشط (_ نص _)",
+              "format": "switch",
+              "required": false,
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "show_button",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار زر الطلب (CTA)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "#"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "sticky",
+          "icon": "sicon-pin",
+          "type": "boolean",
+          "label": "تثبيت الترويسة في الأعلى عند التمرير (Sticky)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الترويسة",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نصوص الروابط",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "active_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الرابط النشط",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "border_bottom",
+          "icon": "sicon-stroke",
+          "type": "boolean",
+          "label": "إظهار خط سفلي فاصل",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخط السفلي",
+          "required": false,
+          "value": "#262626"
+        }
+      ]
+    },
+    {
+      "title": "تذييل درون (الفوتر)",
+      "icon": "sicon-layout-grid-rearrange",
+      "name": "drone-footer",
+      "key": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "bg_type",
+          "icon": "sicon-image-landscape",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الخلفية",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "لون",
+              "value": "color",
+              "key": "color"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            }
+          ]
+        },
+        {
+          "id": "bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1637672648/4a12a535-9334-4c39-a14e-3c8b16f71d1d-original.png"
+        },
+        {
+          "id": "bg_overlay",
+          "type": "number",
+          "label": "عتامة طبقة التغطية فوق الخلفية (%)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 0,
+          "maximum": 100,
+          "step": 5,
+          "value": 0
+        },
+        {
+          "id": "reverse",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "عكس ترتيب الأعمدة (الروابط يمين والعلامة يسار)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "invert_logo",
+          "icon": "sicon-magic-wand",
+          "type": "boolean",
+          "label": "عكس لون الشعار (أسود على خلفية فاتحة)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "logo_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "شعار الفوتر",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png"
+        },
+        {
+          "id": "logo_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الشعار (إذا كان نصياً)",
+          "format": "text",
+          "value": "Drone",
+          "required": false
+        },
+        {
+          "id": "logo_height",
+          "type": "number",
+          "label": "ارتفاع الشعار (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 24,
+          "maximum": 80,
+          "step": 2,
+          "value": 42
+        },
+        {
+          "id": "description",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "الوصف التعريفي",
+          "format": "textarea",
+          "rows": 4,
+          "multilanguage": true,
+          "value": "اكتشف العالم من زاوية مختلفة مع درون يجمع بين التكنولوجيا والإبداع. خليك مستعد لمغامرات جديدة، والتقط لحظاتك من السماء، وحوّل كل تجربة لذكرى تستحق الاحتفاظ بيها."
+        },
+        {
+          "id": "links",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "item_label": "روابط الفوتر",
+          "value": [
+            {
+              "label": "الرئيسية",
+              "url": "#"
+            },
+            {
+              "label": "المميزات",
+              "url": "#features"
+            },
+            {
+              "label": "القصة",
+              "url": "#story"
+            },
+            {
+              "label": "اجزاء الدرون",
+              "url": "#parts"
+            },
+            {
+              "label": "الاسئلة الشائعة",
+              "url": "#faq"
+            },
+            {
+              "label": "الفيدوهات",
+              "url": "#videos"
+            }
+          ],
+          "fields": [
+            {
+              "id": "label",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "اسم الرابط",
+              "maxLength": 40
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "icon": "sicon-link",
+              "required": false,
+              "format": "text",
+              "placeholder": "الرابط",
+              "maxLength": 200
+            }
+          ]
+        },
+        {
+          "id": "social_title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان منصات التواصل",
+          "format": "text",
+          "value": "تابعنا على مواقعنا الآتية"
+        },
+        {
+          "id": "facebook_url",
+          "type": "string",
+          "icon": "sicon-link",
+          "label": "رابط فيسبوك",
+          "format": "url",
+          "required": false,
+          "value": "#"
+        },
+        {
+          "id": "instagram_url",
+          "type": "string",
+          "icon": "sicon-link",
+          "label": "رابط انستغرام",
+          "format": "url",
+          "required": false,
+          "value": "#"
+        },
+        {
+          "id": "x_url",
+          "type": "string",
+          "icon": "sicon-link",
+          "label": "رابط منصة X (تويتر)",
+          "format": "url",
+          "required": false,
+          "value": "#"
+        },
+        {
+          "id": "linkedin_url",
+          "type": "string",
+          "icon": "sicon-link",
+          "label": "رابط لينكد إن",
+          "format": "url",
+          "required": false,
+          "value": "#"
+        },
+        {
+          "id": "show_button",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار زر الطلب (CTA)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "#"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "show_watermark",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار الكلمة المائية الكبيرة (Drone)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "watermark_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الكلمة المائية في الأسفل",
+          "format": "text",
+          "value": "Drone"
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الفوتر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العناوين والنصوص الرئيسية",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "desc_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الوصف",
+          "required": false,
+          "value": "#4a4a4a"
+        },
+        {
+          "id": "link_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الروابط والأسهم",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خطوط الفواصل",
+          "required": false,
+          "value": "#e0e0e0"
+        },
+        {
+          "id": "social_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية أيقونات التواصل",
+          "required": false,
+          "value": "#ebebeb"
+        },
+        {
+          "id": "social_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونات التواصل",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "watermark_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون كلمة Drone المائية",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "show_copyright",
+          "icon": "sicon-shield",
+          "type": "boolean",
+          "label": "إظهار شريط حقوق النشر السفلي",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "copyright_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص حقوق النشر",
+          "format": "text",
+          "value": "جميع الحقوق محفوظة © 2026 درون"
+        }
+      ]
+    }
+  ]
 }

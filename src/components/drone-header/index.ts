@@ -8,7 +8,6 @@ interface NavLinkItem {
 }
 
 interface DroneHeaderConfig {
-  logo_type?: unknown;
   logo_image?: string;
   logo_text?: string;
   logo_height?: number;
@@ -32,17 +31,17 @@ interface DroneHeaderConfig {
   border_color?: string;
 }
 
-const DEFAULT_LINKS: NavLinkItem[] = [
-  { label: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", url: "#", active: true },
-  { label: "Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª", url: "#features", active: false },
-  { label: "Ø§Ù„Ù‚ØµØ©", url: "#story", active: false },
-  { label: "Ø§Ù„Ø£Ø¬Ø²Ø§Ø¡", url: "#parts", active: false },
-  { label: "Ø§Ù„Ø§Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©", url: "#faq", active: false },
-  { label: "Ø§Ù„ÙÙŠØ¯ÙˆÙ‡Ø§Øª", url: "#videos", active: false },
-];
+const DEFAULT_LOGO_URL =
+  "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png";
 
-const DEFAULT_LOGO_B64 =
-  "data:image/png;base64,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";
+const DEFAULT_LINKS: NavLinkItem[] = [
+  { label: "الرئيسية", url: "#", active: true },
+  { label: "المميزات", url: "#features", active: false },
+  { label: "القصة", url: "#story", active: false },
+  { label: "الأجزاء", url: "#parts", active: false },
+  { label: "الاسئلة الشائعة", url: "#faq", active: false },
+  { label: "الفيدوهات", url: "#videos", active: false },
+];
 
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
@@ -84,13 +83,8 @@ export default class DroneHeader extends LitElement {
     return c;
   }
 
-  private get logoType(): string {
-    const t = pick(this.cfg.logo_type);
-    return t || "default";
-  }
-
   private get logoImage(): string {
-    return this.cfg.logo_image || DEFAULT_LOGO_B64;
+    return this.cfg.logo_image || DEFAULT_LOGO_URL;
   }
 
   private get logoText(): string {
@@ -99,7 +93,7 @@ export default class DroneHeader extends LitElement {
 
   private get logoHeight(): number {
     const h = Number(this.cfg.logo_height);
-    return Number.isFinite(h) && h > 0 ? h : 38;
+    return Number.isFinite(h) && h > 0 ? h : 40;
   }
 
   private get logoUrl(): string {
@@ -123,7 +117,7 @@ export default class DroneHeader extends LitElement {
   }
 
   private get buttonText(): string {
-    return this.cfg.button_text || "Ø§Ø·Ù„Ø¨ Ø¯Ø±ÙˆÙ†Ùƒ Ø§Ù„Ø¢Ù†";
+    return this.cfg.button_text || "اطلب درونك الآن";
   }
 
   private get buttonLink(): string {
@@ -143,6 +137,8 @@ export default class DroneHeader extends LitElement {
       font-family: inherit;
       width: 100%;
       box-sizing: border-box;
+      position: relative;
+      z-index: 9999;
       --hdr-bg: #0d0d0d;
       --hdr-text: #ffffff;
       --hdr-active: #ffffff;
@@ -155,20 +151,31 @@ export default class DroneHeader extends LitElement {
       box-sizing: border-box;
     }
 
+    .sticky-spacer {
+      height: 72px;
+      width: 100%;
+      display: block;
+    }
+
     .header-wrap {
       background: var(--hdr-bg);
       color: var(--hdr-text);
       width: 100%;
       position: relative;
       z-index: 100;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
     }
 
     .header-wrap.sticky {
-      position: sticky;
+      position: fixed;
       top: 0;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 99999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .header-wrap.bordered {
@@ -201,7 +208,7 @@ export default class DroneHeader extends LitElement {
     }
 
     .logo-img {
-      height: var(--logo-h, 38px);
+      height: var(--logo-h, 40px);
       width: auto;
       object-fit: contain;
       display: block;
@@ -404,14 +411,9 @@ export default class DroneHeader extends LitElement {
   }
 
   private renderLogo() {
-    const type = this.logoType;
     const height = `${this.logoHeight}px`;
+    const src = this.logoImage;
 
-    if (type === "text") {
-      return html`<span class="logo-text">${this.logoText}</span>`;
-    }
-
-    const src = type === "image" && this.cfg.logo_image ? this.cfg.logo_image : this.logoImage;
     return html`<img
       class="logo-img"
       src=${src}
@@ -463,6 +465,9 @@ export default class DroneHeader extends LitElement {
     const links = this.links;
 
     return html`
+      ${c.sticky
+        ? html`<div class="sticky-spacer" aria-hidden="true"></div>`
+        : nothing}
       <header
         class="header-wrap ${c.sticky ? "sticky" : ""} ${c.border_bottom ? "bordered" : ""}"
         style="${customVars}"
@@ -496,7 +501,7 @@ export default class DroneHeader extends LitElement {
           <button
             class="menu-toggle ${this.mobileMenuOpen ? "open" : ""}"
             @click=${this.toggleMenu}
-            aria-label="Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©"
+            aria-label="القائمة"
           >
             <span></span>
             <span></span>
@@ -527,4 +532,3 @@ export default class DroneHeader extends LitElement {
     `;
   }
 }
-

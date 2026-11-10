@@ -1,35 +1,29 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import {
-  DEFAULT_DESC,
-  DEFAULT_LINKS,
-  DEFAULT_LOGO_BLACK_B64,
-  DEFAULT_WIREFRAME_B64,
-} from "./assets.js";
 
 interface FooterLinkItem {
   label?: string;
   url?: string;
 }
 
-interface SocialLinkItem {
-  network?: string;
-  url?: string;
-}
-
 interface DroneFooterConfig {
-  logo_type?: unknown;
+  bg_type?: unknown;
+  bg_color?: string;
+  bg_image?: string;
+  bg_overlay?: number;
+
   logo_image?: string;
   logo_text?: string;
   logo_height?: number;
   logo_url?: unknown;
+  invert_logo?: boolean;
 
   description?: string;
 
   links?: FooterLinkItem[];
+  reverse?: boolean;
 
   social_title?: string;
-  social_links?: SocialLinkItem[];
   facebook_url?: string;
   instagram_url?: string;
   x_url?: string;
@@ -39,9 +33,6 @@ interface DroneFooterConfig {
   button_text?: string;
   source_url?: unknown;
 
-  show_wireframe?: boolean;
-  wireframe_opacity?: number;
-
   show_watermark?: boolean;
   watermark_text?: string;
   watermark_color?: string;
@@ -49,7 +40,6 @@ interface DroneFooterConfig {
   show_copyright?: boolean;
   copyright_text?: string;
 
-  bg_color?: string;
   text_color?: string;
   desc_color?: string;
   link_color?: string;
@@ -59,6 +49,24 @@ interface DroneFooterConfig {
   button_bg?: string;
   button_color?: string;
 }
+
+const DEFAULT_BG_IMAGE =
+  "https://cdn.files.salla.network/other/1637672648/4a12a535-9334-4c39-a14e-3c8b16f71d1d-original.png";
+
+const DEFAULT_LOGO_URL =
+  "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png";
+
+const DEFAULT_LINKS: FooterLinkItem[] = [
+  { label: "الرئيسية", url: "#" },
+  { label: "المميزات", url: "#features" },
+  { label: "القصة", url: "#story" },
+  { label: "اجزاء الدرون", url: "#parts" },
+  { label: "الاسئلة الشائعة", url: "#faq" },
+  { label: "الفيدوهات", url: "#videos" },
+];
+
+const DEFAULT_DESC =
+  "اكتشف العالم من زاوية مختلفة مع درون يجمع بين التكنولوجيا والإبداع. خليك مستعد لمغامرات جديدة، والتقط لحظاتك من السماء، وحوّل كل تجربة لذكرى تستحق الاحتفاظ بيها.";
 
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
@@ -97,12 +105,20 @@ export default class DroneFooter extends LitElement {
     return parsed && typeof parsed === "object" ? parsed : {};
   }
 
-  private get logoType(): string {
-    return pick(this.cfg.logo_type) || "default";
+  private get bgType(): string {
+    return pick(this.cfg.bg_type) || "image";
+  }
+
+  private get bgImage(): string {
+    const img = this.cfg.bg_image;
+    if (typeof img === "string" && img) return img;
+    return DEFAULT_BG_IMAGE;
   }
 
   private get logoImage(): string {
-    return this.cfg.logo_image || DEFAULT_LOGO_BLACK_B64;
+    const img = this.cfg.logo_image;
+    if (typeof img === "string" && img) return img;
+    return DEFAULT_LOGO_URL;
   }
 
   private get logoText(): string {
@@ -111,7 +127,7 @@ export default class DroneFooter extends LitElement {
 
   private get logoHeight(): number {
     const h = Number(this.cfg.logo_height);
-    return Number.isFinite(h) && h > 0 ? h : 42;
+    return Number.isFinite(h) && h > 0 ? h : 44;
   }
 
   private get logoUrl(): string {
@@ -185,16 +201,23 @@ export default class DroneFooter extends LitElement {
       isolation: isolate;
     }
 
-    /* Background Wireframe Drone */
-    .wireframe-layer {
+    /* Background image layer (wireframe blueprints) */
+    .bg-image-layer {
       position: absolute;
       inset: 0;
-      background-position: center;
+      background-position: center bottom;
       background-repeat: no-repeat;
       background-size: cover;
       pointer-events: none;
-      z-index: -1;
-      opacity: var(--wire-opacity, 0.12);
+      z-index: 0;
+    }
+
+    .bg-overlay-layer {
+      position: absolute;
+      inset: 0;
+      background: var(--ftr-bg);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .container {
@@ -205,20 +228,33 @@ export default class DroneFooter extends LitElement {
       z-index: 2;
     }
 
-    /* Main two-column layout */
+    /* Main two-column layout:
+       In RTL: Child 1 (Brand) is on the RIGHT.
+       Child 2 (Links) is on the LEFT. */
     .columns {
       display: grid;
-      grid-template-columns: 1.15fr 0.95fr;
+      grid-template-columns: 1fr 1.15fr;
       gap: 5rem;
       align-items: flex-start;
     }
 
-    /* =================== RIGHT COLUMN (Brand & Social) =================== */
+    .columns.reverse {
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    /* =================== BRAND COLUMN (RIGHT IN RTL) =================== */
     .col-brand {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       text-align: right;
+    }
+
+    .columns.reverse .col-brand {
+      order: 2;
+    }
+    .columns.reverse .col-links {
+      order: 1;
     }
 
     .logo-link {
@@ -235,10 +271,11 @@ export default class DroneFooter extends LitElement {
     }
 
     .logo-img {
-      height: var(--logo-h, 42px);
+      height: var(--logo-h, 44px);
       width: auto;
       object-fit: contain;
       display: block;
+      filter: var(--logo-filter, invert(1));
     }
 
     .logo-text {
@@ -358,7 +395,7 @@ export default class DroneFooter extends LitElement {
       line-height: 1;
     }
 
-    /* =================== LEFT COLUMN (Links List) =================== */
+    /* =================== LINKS COLUMN (LEFT IN RTL) =================== */
     .col-links {
       display: flex;
       flex-direction: column;
@@ -426,6 +463,8 @@ export default class DroneFooter extends LitElement {
       text-align: center;
       user-select: none;
       pointer-events: none;
+      position: relative;
+      z-index: 2;
     }
 
     .bottom-watermark {
@@ -448,6 +487,8 @@ export default class DroneFooter extends LitElement {
       text-align: center;
       font-size: 0.82rem;
       color: var(--ftr-desc);
+      position: relative;
+      z-index: 3;
     }
 
     /* Responsive */
@@ -455,7 +496,8 @@ export default class DroneFooter extends LitElement {
       .footer-wrap {
         padding-top: 3rem;
       }
-      .columns {
+      .columns,
+      .columns.reverse {
         grid-template-columns: 1fr;
         gap: 2.8rem;
       }
@@ -469,15 +511,9 @@ export default class DroneFooter extends LitElement {
   `;
 
   private renderLogo() {
-    const type = this.logoType;
     const height = `${this.logoHeight}px`;
+    const src = this.logoImage;
 
-    if (type === "text") {
-      return html`<span class="logo-text">${this.logoText}</span>`;
-    }
-
-    const src =
-      type === "image" && this.cfg.logo_image ? this.cfg.logo_image : this.logoImage;
     return html`<img
       class="logo-img"
       src=${src}
@@ -597,7 +633,7 @@ export default class DroneFooter extends LitElement {
     const bg = c.bg_color || "#ffffff";
     const text = c.text_color || "#111111";
     const desc = c.desc_color || "#4a4a4a";
-    const link = c.link_color || "#111111";
+    const link = c.link_color || "#0d0d0d";
     const line = c.line_color || "#e0e0e0";
     const socialBg = c.social_bg || "#ebebeb";
     const socialColor = c.social_color || "#111111";
@@ -605,10 +641,14 @@ export default class DroneFooter extends LitElement {
     const btnText = c.button_color || "#ffffff";
     const wmColor = c.watermark_color || "#0d0d0d";
     const wmText = c.watermark_text || "Drone";
-    const wireOpacity =
-      c.show_wireframe === false
-        ? 0
-        : Number(c.wireframe_opacity || 12) / 100;
+
+    const bgType = this.bgType;
+    const bgImage = this.bgImage;
+    const overlay = Number(c.bg_overlay || 0) / 100;
+
+    // Logo filter: Invert white logo to black on white background
+    const invertLogo = c.invert_logo !== false;
+    const logoFilter = invertLogo ? "invert(1)" : "none";
 
     const customVars = [
       `--ftr-bg:${bg}`,
@@ -621,24 +661,44 @@ export default class DroneFooter extends LitElement {
       `--btn-bg:${btnBg}`,
       `--btn-text:${btnText}`,
       `--wm-color:${wmColor}`,
-      `--wire-opacity:${wireOpacity}`,
+      `--logo-filter:${logoFilter}`,
     ].join(";");
 
     const links = this.links;
 
     return html`
       <footer class="footer-wrap" style="${customVars}">
-        <!-- Wireframe blueprint drone background -->
-        ${wireOpacity > 0
+        <!-- Background image layer (wireframe blueprints) -->
+        ${bgType === "image" && bgImage
           ? html`<div
-              class="wireframe-layer"
-              style="background-image: url('${DEFAULT_WIREFRAME_B64}');"
+              class="bg-image-layer"
+              style="background-image: url('${bgImage}');"
+            ></div>`
+          : nothing}
+
+        <!-- Background color overlay if specified -->
+        ${overlay > 0
+          ? html`<div
+              class="bg-overlay-layer"
+              style="opacity: ${overlay};"
             ></div>`
           : nothing}
 
         <div class="container">
-          <div class="columns">
-            <!-- Left Column in RTL: Links List with Up-Left Arrows -->
+          <div class="columns ${c.reverse ? "reverse" : ""}">
+            <!-- Child 1: Brand Column (Right side in RTL) -->
+            <div class="col-brand">
+              <a class="logo-link" href=${this.logoUrl}>
+                ${this.renderLogo()}
+              </a>
+
+              <p class="desc">${this.description}</p>
+
+              ${this.renderSocialIcons()}
+              ${this.renderButton()}
+            </div>
+
+            <!-- Child 2: Links Column (Left side in RTL) -->
             <div class="col-links">
               ${links.map(
                 (l) => html`
@@ -660,18 +720,6 @@ export default class DroneFooter extends LitElement {
                   </a>
                 `
               )}
-            </div>
-
-            <!-- Right Column in RTL: Logo, Description, Social, CTA Button -->
-            <div class="col-brand">
-              <a class="logo-link" href=${this.logoUrl}>
-                ${this.renderLogo()}
-              </a>
-
-              <p class="desc">${this.description}</p>
-
-              ${this.renderSocialIcons()}
-              ${this.renderButton()}
             </div>
           </div>
         </div>
