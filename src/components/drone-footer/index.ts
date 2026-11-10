@@ -106,6 +106,23 @@ export default class DroneFooter extends LitElement {
   @property({ type: Object })
   config?: Record<string, any>;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.ensureFontLoaded();
+  }
+
+  private ensureFontLoaded() {
+    const id = "drone-montserrat-font";
+    if (typeof document !== "undefined" && !document.getElementById(id)) {
+      const link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href =
+        "https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap";
+      document.head.appendChild(link);
+    }
+  }
+
   private get cfg(): DroneFooterConfig {
     const parsed = parseJsonSafe(this.config);
     return parsed && typeof parsed === "object" ? parsed : {};
@@ -177,6 +194,8 @@ export default class DroneFooter extends LitElement {
     tacticalButtonStyles,
     socialButtonStyles,
     css`
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap");
+
     :host {
       display: block;
       direction: rtl;
@@ -389,8 +408,10 @@ export default class DroneFooter extends LitElement {
       width: 100%;
       overflow: hidden;
       margin-top: 3.5rem;
-      line-height: 0.72;
+      line-height: 0.75;
       text-align: center;
+      direction: ltr;
+      unicode-bidi: isolate;
       user-select: none;
       pointer-events: none;
       position: relative;
@@ -398,16 +419,17 @@ export default class DroneFooter extends LitElement {
     }
 
     .bottom-watermark {
-      display: block;
-      font-size: clamp(6.5rem, 23vw, 19rem);
+      display: inline-block;
+      font-size: clamp(5.5rem, 20vw, 17.5rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: 0.025em;
       color: var(--wm-color);
       opacity: var(--wm-opacity);
-      margin-bottom: -0.08em;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
+      margin-bottom: -0.07em;
+      font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
       text-transform: capitalize;
+      white-space: nowrap;
     }
 
     /* Optional Copyright bar */
