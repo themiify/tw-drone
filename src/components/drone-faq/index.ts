@@ -63,6 +63,50 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#039;");
 }
 
+function parseJsonSafe(val: unknown): any {
+  if (!val) return null;
+  if (typeof val === "object") return val;
+  if (typeof val === "string") {
+    try {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = val;
+      return JSON.parse(txt.value);
+    } catch {
+      try {
+        return JSON.parse(val);
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+const DEFAULT_FAQ_ITEMS: FaqItem[] = [
+  {
+    question: "كيف يمكنني طلب تفاصيل الخدمة؟",
+    answer:
+      "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة.",
+  },
+  {
+    question: "ما هي مدة الشحن والتركيب؟",
+    answer:
+      "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة.",
+  },
+  {
+    question: "هل يمكنني استرجاع أو استبدال المنتج؟",
+    answer:
+      "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية.",
+  },
+  {
+    question: "كيف يمكنني التواصل مع فريق الدعم؟",
+    answer:
+      "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع.",
+  },
+];
+const DEFAULT_FAQ_HEADING = "عندك سؤال؟ إحنا هنا نساعدك";
+const DEFAULT_FAQ_BADGE = "الأسئلة الشائعة";
+
 function richText(s?: string): string {
   if (!s) return "";
   return escapeHtml(s)
@@ -77,19 +121,24 @@ export default class DroneFaq extends LitElement {
   @state() private openIndexes: Set<number> = new Set();
   private initialised = false;
 
+  private get cfg(): DroneFaqConfig {
+    const parsed = parseJsonSafe(this.config);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  }
+
   willUpdate() {
     // Apply the "first item open" option once, after the config arrives.
-    if (!this.initialised && this.config) {
+    if (!this.initialised) {
       this.initialised = true;
-      if (this.config.first_open && this.items.length) {
+      if (this.cfg.first_open !== false && this.items.length) {
         this.openIndexes = new Set([0]);
       }
     }
   }
 
   private get items(): FaqItem[] {
-    const list = this.config?.items;
-    return Array.isArray(list) ? list : [];
+    const list = this.cfg.items;
+    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_FAQ_ITEMS;
   }
 
   private toggle(i: number) {
@@ -98,7 +147,7 @@ export default class DroneFaq extends LitElement {
       next.delete(i);
     } else {
       // Single mode: opening one closes whichever was open before it.
-      if (this.config?.single_open !== false) next.clear();
+      if (this.cfg.single_open !== false) next.clear();
       next.add(i);
     }
     this.openIndexes = next;
@@ -361,7 +410,7 @@ export default class DroneFaq extends LitElement {
   `;
 
   private renderMedia() {
-    const c = this.config!;
+    const c = this.cfg;
     if (pick(c.media_type) === "video") {
       return c.media_video
         ? html`<video
@@ -377,8 +426,9 @@ export default class DroneFaq extends LitElement {
   }
 
   render() {
-    const c = this.config;
-    if (!c) return nothing;
+    const c = this.cfg;
+    const heading = c.heading ?? DEFAULT_FAQ_HEADING;
+    const badge = c.badge ?? DEFAULT_FAQ_BADGE;
 
     const bgType = (pick(c.bg_type) || "none") as BgType;
     const wrapBg =
@@ -429,10 +479,10 @@ export default class DroneFaq extends LitElement {
         <div class="inner">
           <div class="head">
             <h2 class="heading" style="color:${c.heading_color || "inherit"}">
-              ${c.heading ?? ""}
+              ${heading}
             </h2>
             <h3 class="badge" style="color:${c.badge_color || "inherit"}">
-              ${c.badge ?? ""}
+              ${badge}
             </h3>
           </div>
           <div

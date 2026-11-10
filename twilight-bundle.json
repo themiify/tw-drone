@@ -1518,6 +1518,229 @@
           "value": "#ffffff"
         }
       ]
+    },
+    {
+      "title": "ترويسة درون",
+      "icon": "sicon-layout-grid-rearrange",
+      "name": "drone-header",
+      "key": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "props": {
+        "min-height": "72px"
+      },
+      "fields": [
+        {
+          "id": "logo_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الشعار",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            { "label": "شعار درون الافتراضي", "value": "default", "key": "default" },
+            { "label": "صورة مخصصة", "value": "image", "key": "image" },
+            { "label": "نص مخصص", "value": "text", "key": "text" }
+          ],
+          "selected": [
+            { "label": "شعار درون الافتراضي", "value": "default", "key": "default" }
+          ]
+        },
+        {
+          "id": "logo_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الشعار المخصص",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png"
+        },
+        {
+          "id": "logo_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الشعار (إذا كان نصياً)",
+          "format": "text",
+          "value": "Drone",
+          "required": false
+        },
+        {
+          "id": "logo_height",
+          "type": "number",
+          "label": "ارتفاع الشعار (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 24,
+          "maximum": 80,
+          "step": 2,
+          "value": 38
+        },
+        {
+          "id": "links",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "item_label": "روابط الترويسة",
+          "value": [
+            { "label": "الرئيسية", "url": "#", "active": true },
+            { "label": "المميزات", "url": "#features", "active": false },
+            { "label": "القصة", "url": "#story", "active": false },
+            { "label": "الأجزاء", "url": "#parts", "active": false },
+            { "label": "الاسئلة الشائعة", "url": "#faq", "active": false },
+            { "label": "الفيدوهات", "url": "#videos", "active": false }
+          ],
+          "fields": [
+            {
+              "id": "label",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "نص الرابط",
+              "maxLength": 40
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "icon": "sicon-link",
+              "required": false,
+              "format": "text",
+              "placeholder": "الرابط",
+              "maxLength": 200
+            },
+            {
+              "id": "active",
+              "type": "boolean",
+              "icon": "sicon-check-circle",
+              "label": "رابط نشط (_ نص _)",
+              "format": "switch",
+              "required": false,
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "show_button",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار زر الطلب (CTA)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "#"
+            }
+          ],
+          "sources": [
+            { "label": "Product", "key": "products", "value": "products" },
+            { "label": "Category", "key": "categories", "value": "categories" },
+            { "label": "Brand", "key": "brands", "value": "brands" },
+            { "label": "Page", "key": "pages", "value": "pages" },
+            { "label": "Custom", "key": "custom", "value": "custom" }
+          ]
+        },
+        {
+          "id": "sticky",
+          "icon": "sicon-pin",
+          "type": "boolean",
+          "label": "تثبيت الترويسة في الأعلى عند التمرير (Sticky)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الترويسة",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نصوص الروابط",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "active_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الرابط النشط",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "border_bottom",
+          "icon": "sicon-stroke",
+          "type": "boolean",
+          "label": "إظهار خط سفلي فاصل",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
+          "id": "border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخط السفلي",
+          "required": false,
+          "value": "#262626"
+        }
+      ]
     }
   ],
   "features": [

@@ -56,6 +56,33 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#039;");
 }
 
+function parseJsonSafe(val: unknown): any {
+  if (!val) return null;
+  if (typeof val === "object") return val;
+  if (typeof val === "string") {
+    try {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = val;
+      return JSON.parse(txt.value);
+    } catch {
+      try {
+        return JSON.parse(val);
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+const DEFAULT_FLOAT_IMG =
+  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png";
+const DEFAULT_HEADING = "مش مجرد درون.. دي زاوية جديدة للعالم.";
+const DEFAULT_BADGE = "قصة درون";
+const DEFAULT_TEXT =
+  "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة.";
+const DEFAULT_BTN = "اطلب درونك الآن";
+
 /** Escapes the text, then turns **bold** into <strong> and new lines into <br>. */
 function richText(s?: string): string {
   if (!s) return "";
@@ -308,8 +335,13 @@ export default class DroneStory extends LitElement {
     return pick(v) === "video" ? "video" : "image";
   }
 
+  private get cfg(): DroneStoryConfig {
+    const parsed = parseJsonSafe(this.config);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  }
+
   private get link(): string {
-    const l = this.config?.source_url;
+    const l = this.cfg.source_url;
     if (typeof l === "string" && l) return l;
     if (Array.isArray(l) && l.length) {
       const first: any = l[0];
@@ -319,8 +351,12 @@ export default class DroneStory extends LitElement {
   }
 
   render() {
-    const c = this.config;
-    if (!c) return nothing;
+    const c = this.cfg;
+    const heading = c.heading ?? DEFAULT_HEADING;
+    const badge = c.badge ?? DEFAULT_BADGE;
+    const text = c.text ?? DEFAULT_TEXT;
+    const buttonText = c.button_text ?? DEFAULT_BTN;
+    const floatImg = c.float_image || DEFAULT_FLOAT_IMG;
 
     const bgType = (pick(c.bg_type) || "none") as BgType;
     const floatType = this.mediaType(c.float_type);
@@ -340,7 +376,7 @@ export default class DroneStory extends LitElement {
       .filter(Boolean)
       .join(";");
 
-    const floatNode = this.renderMedia(floatType, c.float_image, c.float_video);
+    const floatNode = this.renderMedia(floatType, floatImg, c.float_video);
     const mediaNode = this.renderMedia(mediaType, c.media_image, c.media_video);
 
     return html`
@@ -365,10 +401,10 @@ export default class DroneStory extends LitElement {
         <div class="inner">
           <div class="head">
             <h2 class="heading" style="color:${c.heading_color || "inherit"}">
-              ${c.heading ?? ""}
+              ${heading}
             </h2>
             <h3 class="badge" style="color:${c.badge_color || "inherit"}">
-              ${c.badge ?? ""}
+              ${badge}
             </h3>
           </div>
           <div
@@ -380,15 +416,15 @@ export default class DroneStory extends LitElement {
             <div class="col info">
               ${floatNode ? html`<div class="float">${floatNode}</div>` : nothing}
               <div class="text" style="color:${c.text_color || "inherit"}">
-                ${unsafeHTML(richText(c.text))}
+                ${unsafeHTML(richText(text))}
               </div>
-              ${c.button_text
+              ${buttonText
                 ? html`<a
                     class="cta"
                     href=${this.link}
                     style="background:${c.button_bg || "#0d0d0d"};color:${c.button_color ||
                     "#ffffff"}"
-                    >${c.button_text}</a
+                    >${buttonText}</a
                   >`
                 : nothing}
             </div>
