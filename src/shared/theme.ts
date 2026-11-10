@@ -26,17 +26,22 @@ export const tacticalButtonStyles = css`
     min-width: 145px;
     height: 42px;
     box-sizing: border-box;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-      filter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+      filter 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 0.35s ease;
   }
 
   .cta-btn:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+    transform: translateY(-3px) scale(1.015);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
   }
 
   .cta-btn:active {
-    transform: translateY(1px);
+    transform: translateY(0) scale(0.99);
+    transition: transform 0.15s ease, filter 0.15s ease;
   }
 
   .cta-bg {
@@ -46,6 +51,7 @@ export const tacticalButtonStyles = css`
     height: 100%;
     z-index: 1;
     pointer-events: none;
+    transition: opacity 0.35s ease, filter 0.35s ease;
   }
 
   .cta-text {
@@ -54,6 +60,7 @@ export const tacticalButtonStyles = css`
     line-height: 1;
     color: inherit;
     display: inline-block;
+    transition: color 0.35s ease;
   }
 `;
 
@@ -101,19 +108,23 @@ export const socialButtonStyles = css`
     border: none;
     cursor: pointer;
     box-sizing: border-box;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-      filter 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-      color 0.2s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+      filter 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+      color 0.3s ease;
   }
 
   .social-badge:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.04);
     color: var(--social-hover-color, #000000);
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
   }
 
   .social-badge:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+    transition: transform 0.15s ease, filter 0.15s ease;
   }
 
   .social-bg {
