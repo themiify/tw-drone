@@ -1,5 +1,11 @@
 import { css, html, LitElement, svg } from "lit";
 import { property } from "lit/decorators.js";
+import {
+  renderSectionHeader,
+  renderTacticalButton,
+  sectionHeaderStyles,
+  tacticalButtonStyles,
+} from "../../shared/theme.js";
 
 interface Part {
   label: string;
@@ -96,106 +102,52 @@ export default class DroneParts extends LitElement {
     return list;
   }
 
-  static styles = css`
-    :host {
-      display: block;
-      font-family: inherit;
-      color: #ffffff;
-      box-sizing: border-box;
-    }
+  static styles = [
+    tacticalButtonStyles,
+    sectionHeaderStyles,
+    css`
+      :host {
+        display: block;
+        font-family: inherit;
+        color: #ffffff;
+        box-sizing: border-box;
+      }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
 
-    .wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1600 / 1133;
-      color: #ffffff;
-      container-type: inline-size;
-      overflow: hidden;
-      box-sizing: border-box;
-      direction: ltr; /* Desktop layout: Drone on Left, Parts on Right */
-      background: #0D0D0D;
-      clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 40px, 100% 100%, 70px 100%, 0 calc(100% - 48px));
-    }
+      .wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1600 / 1133;
+        color: #ffffff;
+        container-type: inline-size;
+        overflow: hidden;
+        box-sizing: border-box;
+        direction: ltr; /* Desktop layout: Drone on Left, Parts on Right */
+        background: #0D0D0D;
+        clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 40px, 100% 100%, 70px 100%, 0 calc(100% - 48px));
+      }
 
-    .main-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+      .main-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
 
-    .content {
-      position: absolute;
-      inset: 0;
-      padding: 4.5cqw 5cqw 4cqw;
-      display: flex;
-      flex-direction: column;
-      z-index: 1;
-    }
+      .content {
+        position: absolute;
+        inset: 0;
+        padding: 4.5cqw 5cqw 4cqw;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+      }
 
-    .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 2cqw;
-      padding-bottom: 0.8cqw;
-    }
-
-    .head-left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex-shrink: 0;
-    }
-
-    .head-title {
-      margin: 0;
-      font-size: 1.35cqw;
-      font-weight: 700;
-      color: #ffffff;
-      direction: rtl;
-    }
-
-    .head-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .head-heading {
-      margin: 0;
-      font-size: 2.1cqw;
-      font-weight: 700;
-      color: #ffffff;
-      direction: rtl;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-    }
-
-    .line {
-      position: relative;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.45);
-      margin-bottom: 2.5cqw;
-    }
-
-    .line::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: 0;
-      width: 7.5cqw;
-      height: 4px;
-      background: #ffffff;
-    }
-
-    .body {
+      .body {
       flex: 1;
       display: grid;
       grid-template-columns: 1fr 1.35fr;
@@ -365,28 +317,11 @@ export default class DroneParts extends LitElement {
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
     }
 
-    .cta {
+    .content .cta-btn {
       position: absolute;
       bottom: 3.5cqw;
       right: 5cqw;
-      background: #ffffff;
-      color: #000000;
-      padding: 0.65cqw 1.8cqw;
-      font-size: 1.05cqw;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      direction: rtl;
-      clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
-      transition: transform 0.2s ease, background 0.2s ease;
-      cursor: pointer;
-    }
-
-    .cta:hover {
-      background: #f0f0f0;
-      transform: translateY(-2px);
+      z-index: 3;
     }
 
     /* ========================================================= */
@@ -402,47 +337,6 @@ export default class DroneParts extends LitElement {
       .content {
         position: relative;
         padding: 2.2rem 1.25rem 2.5rem;
-      }
-
-      .head {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding-bottom: 0.5rem;
-        gap: 0.75rem;
-      }
-
-      .head-left {
-        order: 1;
-        align-items: flex-start;
-      }
-
-      .head-title {
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
-
-      .head-right {
-        order: 2;
-        align-items: flex-end;
-        max-width: 65%;
-      }
-
-      .head-heading {
-        font-size: 1.15rem;
-        font-weight: 700;
-        text-align: right;
-        line-height: 1.35;
-      }
-
-      .line {
-        margin-bottom: 1.5rem;
-      }
-
-      .line::before {
-        width: 65px;
-        height: 3px;
       }
 
       .body {
@@ -550,31 +444,27 @@ export default class DroneParts extends LitElement {
         padding-top: 0.25rem;
       }
 
-      .cta {
+      .content .cta-btn {
         position: static;
         margin: 1.5rem auto 0;
         align-self: center;
-        padding: 0.75rem 2.25rem;
-        font-size: 1.05rem;
-        font-weight: 700;
       }
     }
-  `;
+  `];
 
   render() {
     return html`
       <div class="wrap">
         ${MAIN_BG}
         <div class="content">
-          <div class="head">
-            <div class="head-left">
-              <h3 class="head-title">${this.currentTitle}</h3>
-            </div>
-            <div class="head-right">
-              <h2 class="head-heading">${this.currentHeading}</h2>
-            </div>
-          </div>
-          <div class="line"></div>
+          ${renderSectionHeader(
+            this.currentHeading,
+            this.currentTitle,
+            "#ffffff",
+            "#ffffff",
+            "rgba(255, 255, 255, 0.45)",
+            "#ffffff"
+          )}
           <div class="body">
             <div class="drone">
               ${this.currentDroneImage
@@ -602,9 +492,11 @@ export default class DroneParts extends LitElement {
               )}
             </div>
           </div>
-          <a class="cta" href=${this.currentButtonLink}
-            >${this.currentButtonText}</a
-          >
+          ${renderTacticalButton(
+            this.currentButtonText,
+            this.currentButtonLink,
+            "#ffffff"
+          )}
         </div>
       </div>
     `;

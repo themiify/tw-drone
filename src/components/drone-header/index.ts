@@ -1,5 +1,6 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
+import { renderTacticalButton, tacticalButtonStyles } from "../../shared/theme.js";
 
 interface NavLinkItem {
   label?: string;
@@ -130,7 +131,9 @@ export default class DroneHeader extends LitElement {
     return "#";
   }
 
-  static styles = css`
+  static styles = [
+    tacticalButtonStyles,
+    css`
     :host {
       display: block;
       direction: rtl;
@@ -404,7 +407,7 @@ export default class DroneHeader extends LitElement {
         width: 100%;
       }
     }
-  `;
+  `];
 
   private toggleMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -424,24 +427,7 @@ export default class DroneHeader extends LitElement {
 
   private renderButton() {
     if (!this.showButton) return nothing;
-    return html`
-      <a class="cta-btn" href=${this.buttonLink}>
-        <svg
-          class="cta-bg"
-          viewBox="0 0 170 42"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <!-- Tactical sci-fi notched button -->
-          <path
-            d="M 0 0 L 100 0 L 106 7 L 109 7 L 114 0 L 120 0 L 126 7 L 129 7 L 134 0 L 170 0 L 170 42 L 70 42 L 64 35 L 61 35 L 56 42 L 50 42 L 44 35 L 41 35 L 36 42 L 0 42 Z"
-            fill="var(--btn-bg)"
-          />
-        </svg>
-        <span class="cta-text">${this.buttonText}</span>
-      </a>
-    `;
+    return renderTacticalButton(this.buttonText, this.buttonLink, "var(--btn-bg)");
   }
 
   render() {

@@ -1,6 +1,7 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import { renderSectionHeader, sectionHeaderStyles } from "../../shared/theme.js";
 
 type BgType = "none" | "color" | "image" | "video";
 
@@ -153,85 +154,51 @@ export default class DroneFaq extends LitElement {
     this.openIndexes = next;
   }
 
-  static styles = css`
-    :host {
-      display: block;
-      direction: rtl;
-      font-family: inherit;
-    }
+  static styles = [
+    sectionHeaderStyles,
+    css`
+      :host {
+        display: block;
+        direction: rtl;
+        font-family: inherit;
+      }
 
-    .wrap {
-      position: relative;
-      overflow: hidden;
-      container-type: inline-size;
-      box-sizing: border-box;
-      isolation: isolate;
-    }
-    .bg {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-    }
-    .bg img,
-    .bg video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .bg-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: #000;
-    }
-    .inner {
-      padding: 2.5rem 3rem;
-      box-sizing: border-box;
-    }
+      .wrap {
+        position: relative;
+        overflow: hidden;
+        container-type: inline-size;
+        box-sizing: border-box;
+        isolation: isolate;
+      }
+      .bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+      .bg img,
+      .bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .bg-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #000;
+      }
+      .inner {
+        padding: 2.5rem 3rem;
+        box-sizing: border-box;
+      }
 
-    .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      padding-bottom: 0.6rem;
-    }
-    .heading {
-      margin: 0;
-      font-size: clamp(1.4rem, 3.2cqw, 2.4rem);
-      font-weight: 800;
-      line-height: 1.3;
-    }
-    .badge {
-      margin: 0;
-      font-size: clamp(1rem, 1.7cqw, 1.4rem);
-      font-weight: 800;
-      white-space: nowrap;
-    }
-    .line {
-      position: relative;
-      height: 1px;
-      margin-bottom: 2rem;
-    }
-    .line::before {
-      content: "";
-      position: absolute;
-      top: -3px;
-      left: 0;
-      width: 7.5%;
-      min-width: 60px;
-      height: 6px;
-      background: var(--bar-color, #0d0d0d);
-      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-    }
-
-    .body {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 2rem;
-    }
+      .body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
     .body.reverse {
       flex-direction: row-reverse;
     }
@@ -407,7 +374,7 @@ export default class DroneFaq extends LitElement {
         width: 100%;
       }
     }
-  `;
+  `];
 
   private renderMedia() {
     const c = this.cfg;
@@ -477,18 +444,14 @@ export default class DroneFaq extends LitElement {
           : nothing}
 
         <div class="inner">
-          <div class="head">
-            <h2 class="heading" style="color:${c.heading_color || "inherit"}">
-              ${heading}
-            </h2>
-            <h3 class="badge" style="color:${c.badge_color || "inherit"}">
-              ${badge}
-            </h3>
-          </div>
-          <div
-            class="line"
-            style="background:${c.line_color || "currentColor"}"
-          ></div>
+          ${renderSectionHeader(
+            heading,
+            badge,
+            c.heading_color,
+            c.badge_color,
+            c.line_color,
+            c.bar_color
+          )}
 
           <div class="body ${c.reverse ? "reverse" : ""}">
             <div class="col">

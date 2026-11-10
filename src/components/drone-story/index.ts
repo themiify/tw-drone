@@ -1,6 +1,12 @@
 import { css, html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import {
+  renderSectionHeader,
+  renderTacticalButton,
+  sectionHeaderStyles,
+  tacticalButtonStyles,
+} from "../../shared/theme.js";
 
 type MediaType = "image" | "video";
 type BgType = "none" | "color" | "image" | "video";
@@ -95,145 +101,104 @@ export default class DroneStory extends LitElement {
   @property({ type: Object })
   config?: DroneStoryConfig;
 
-  static styles = css`
-    :host {
-      display: block;
-      direction: rtl;
-      font-family: inherit;
-    }
+  static styles = [
+    tacticalButtonStyles,
+    sectionHeaderStyles,
+    css`
+      :host {
+        display: block;
+        direction: rtl;
+        font-family: inherit;
+      }
 
-    .wrap {
-      position: relative;
-      overflow: hidden;
-      container-type: inline-size;
-      box-sizing: border-box;
-      isolation: isolate;
-    }
+      .wrap {
+        position: relative;
+        overflow: hidden;
+        container-type: inline-size;
+        box-sizing: border-box;
+        isolation: isolate;
+      }
 
-    .bg {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-    }
-    .bg img,
-    .bg video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .bg-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: #000;
-    }
+      .bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+      .bg img,
+      .bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .bg-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #000;
+      }
 
-    .inner {
-      padding: 2.5rem 3rem;
-      box-sizing: border-box;
-    }
+      .inner {
+        padding: 2.5rem 3rem;
+        box-sizing: border-box;
+      }
 
-    /* ---------- header ---------- */
-    .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      padding-bottom: 0.6rem;
-    }
-    .heading {
-      margin: 0;
-      font-size: clamp(1.4rem, 3.2cqw, 2.4rem);
-      font-weight: 800;
-      line-height: 1.3;
-    }
-    .badge {
-      margin: 0;
-      font-size: clamp(1rem, 1.7cqw, 1.4rem);
-      font-weight: 800;
-      white-space: nowrap;
-    }
-    .line {
-      position: relative;
-      height: 1px;
-      opacity: 1;
-      margin-bottom: 2rem;
-    }
-    .line::before {
-      content: "";
-      position: absolute;
-      top: -3px;
-      left: 0;
-      width: 7.5%;
-      min-width: 60px;
-      height: 6px;
-      background: var(--bar-color, #0d0d0d);
-      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-    }
+      /* ---------- body ---------- */
+      .body {
+        display: flex;
+        flex-direction: row; /* rtl => first child sits on the right */
+        align-items: center;
+        gap: 2rem;
+      }
+      .body.reverse {
+        flex-direction: row-reverse;
+      }
+      .col {
+        flex: 1 1 0;
+        min-width: 0;
+      }
 
-    /* ---------- body ---------- */
-    .body {
-      display: flex;
-      flex-direction: row; /* rtl => first child sits on the right */
-      align-items: center;
-      gap: 2rem;
-    }
-    .body.reverse {
-      flex-direction: row-reverse;
-    }
-    .col {
-      flex: 1 1 0;
-      min-width: 0;
-    }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.25rem;
+      }
 
-    .info {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1.25rem;
-    }
+      .float {
+        display: flex;
+        justify-content: center;
+      }
+      .float img,
+      .float video {
+        max-width: 100%;
+        max-height: 280px;
+        object-fit: contain;
+        display: block;
+      }
 
-    .float {
-      display: flex;
-      justify-content: center;
-    }
-    .float img,
-    .float video {
-      max-width: 100%;
-      max-height: 280px;
-      object-fit: contain;
-      display: block;
-    }
+      .text {
+        font-size: clamp(0.85rem, 1.25cqw, 1.05rem);
+        line-height: 1.9;
+        text-align: justify;
+      }
+      .text strong {
+        font-weight: 800;
+      }
 
-    .text {
-      font-size: clamp(0.85rem, 1.25cqw, 1.05rem);
-      line-height: 1.9;
-      text-align: justify;
-    }
-    .text strong {
-      font-weight: 800;
-    }
+      .info .cta-btn {
+        align-self: flex-end;
+      }
+      .body.reverse .info .cta-btn {
+        align-self: flex-start;
+      }
 
-    .cta {
-      align-self: flex-end;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.7rem 2rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      clip-path: polygon(0 0, 100% 0, 100% 72%, 90% 100%, 0 100%);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .body.reverse .cta {
-      align-self: flex-start;
-    }
-    .cta:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
+      @media (max-width: 768px) {
+        .info .cta-btn {
+          align-self: center;
+          margin: 0.5rem auto 0;
+        }
+      }
 
     /* ---------- framed media ---------- */
     .frame {
@@ -314,7 +279,7 @@ export default class DroneStory extends LitElement {
         align-self: stretch;
       }
     }
-  `;
+  `];
 
   private renderMedia(type: MediaType, image?: string, video?: string) {
     if (type === "video") {
@@ -399,18 +364,14 @@ export default class DroneStory extends LitElement {
           : nothing}
 
         <div class="inner">
-          <div class="head">
-            <h2 class="heading" style="color:${c.heading_color || "inherit"}">
-              ${heading}
-            </h2>
-            <h3 class="badge" style="color:${c.badge_color || "inherit"}">
-              ${badge}
-            </h3>
-          </div>
-          <div
-            class="line"
-            style="background:${c.line_color || "currentColor"}"
-          ></div>
+          ${renderSectionHeader(
+            heading,
+            badge,
+            c.heading_color,
+            c.badge_color,
+            c.line_color,
+            c.bar_color
+          )}
 
           <div class="body ${c.reverse ? "reverse" : ""}">
             <div class="col info">
@@ -419,13 +380,13 @@ export default class DroneStory extends LitElement {
                 ${unsafeHTML(richText(text))}
               </div>
               ${buttonText
-                ? html`<a
-                    class="cta"
-                    href=${this.link}
-                    style="background:${c.button_bg || "#0d0d0d"};color:${c.button_color ||
-                    "#ffffff"}"
-                    >${buttonText}</a
-                  >`
+                ? renderTacticalButton(
+                    buttonText,
+                    this.link,
+                    c.button_bg || "#0d0d0d",
+                    "",
+                    `--btn-text:${c.button_color || "#ffffff"};`
+                  )
                 : nothing}
             </div>
 
