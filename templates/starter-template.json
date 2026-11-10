@@ -1698,7 +1698,7 @@
           "id": "video_autoplay",
           "icon": "sicon-play",
           "type": "boolean",
-          "label": "تشغيل تلقائي للفيديوهات في مكانها (Autoplay Muted)",
+          "label": "تشغيل تلقائي لجميع الفيديوهات في مكانها (Autoplay Muted)",
           "format": "switch",
           "required": false,
           "value": false
@@ -1757,12 +1757,32 @@
             {
               "id": "video_url",
               "type": "string",
-              "icon": "sicon-video",
+              "icon": "sicon-link",
               "required": true,
-              "format": "video",
+              "format": "url",
+              "placeholder": "https://example.com/video.mp4",
               "label": "رابط ملف الفيديو (MP4 / WebM)"
+            },
+            {
+              "id": "autoplay",
+              "type": "boolean",
+              "icon": "sicon-play",
+              "required": false,
+              "format": "switch",
+              "label": "تشغيل تلقائي لهذا الفيديو (Muted)",
+              "value": false
             }
           ]
+        },
+        {
+          "id": "slider_speed",
+          "type": "number",
+          "icon": "sicon-timer",
+          "label": "سرعة انتقال السلايدر (ms)",
+          "placeholder": "1000",
+          "format": "number",
+          "required": false,
+          "value": 1000
         },
         {
           "id": "slider_autoplay",

@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { property, state } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import Swiper from "swiper";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import {
@@ -14,6 +14,7 @@ interface VideoItem {
   title?: string;
   poster?: string;
   video_url?: string;
+  autoplay?: boolean;
 }
 
 interface DroneVideosConfig {
@@ -25,6 +26,7 @@ interface DroneVideosConfig {
   video_autoplay?: boolean;
   slider_autoplay?: boolean;
   autoplay_interval?: number;
+  slider_speed?: number;
 
   bg_color?: string;
   text_color?: string;
@@ -75,17 +77,30 @@ const DEFAULT_VIDEOS: VideoItem[] = [
   },
 ];
 
+const PLAY_ICON_SVG = `
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <polygon points="8,5 19,12 8,19" />
+  </svg>
+`;
+
+const PAUSE_ICON_SVG = `
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <rect x="6" y="5" width="4" height="14" rx="1" />
+    <rect x="14" y="5" width="4" height="14" rx="1" />
+  </svg>
+`;
+
 function extractUrl(val: unknown): string {
   if (!val) return "";
-  if (typeof val === "string") return val;
+  if (typeof val === "string") return val.trim();
   if (Array.isArray(val)) {
     return extractUrl(val[0]);
   }
   if (typeof val === "object") {
     const obj = val as any;
-    return String(obj.url || obj.value || obj.src || obj.path || "");
+    return String(obj.url || obj.value || obj.src || obj.path || "").trim();
   }
-  return String(val);
+  return String(val).trim();
 }
 
 function parseJsonSafe(val: unknown): any {
@@ -111,9 +126,6 @@ export default class DroneVideos extends LitElement {
   @property({ type: Object })
   config?: Record<string, any>;
 
-  @state()
-  private playingStates: Record<number, boolean> = {};
-
   private swiperInstance: Swiper | null = null;
 
   private get cfg(): DroneVideosConfig {
@@ -129,7 +141,7 @@ export default class DroneVideos extends LitElement {
     return this.cfg.heading ?? DEFAULT_HEADING;
   }
 
-  private get videoAutoplay(): boolean {
+  private get globalVideoAutoplay(): boolean {
     const v = this.cfg.video_autoplay;
     return v === true || v === "true" || v === 1 || v === "1";
   }
@@ -137,6 +149,11 @@ export default class DroneVideos extends LitElement {
   private get sliderAutoplay(): boolean {
     const s = this.cfg.slider_autoplay;
     return s === true || s === "true" || s === 1 || s === "1";
+  }
+
+  private get sliderSpeed(): number {
+    const s = Number(this.cfg.slider_speed);
+    return Number.isFinite(s) && s > 0 ? s : 1000;
   }
 
   private get videosList(): VideoItem[] {
@@ -147,9 +164,14 @@ export default class DroneVideos extends LitElement {
         title: item.title || "",
         poster: extractUrl(item.poster),
         video_url: extractUrl(item.video_url),
+        autoplay: item.autoplay === true || item.autoplay === "true" || item.autoplay === 1,
       }));
     }
     return DEFAULT_VIDEOS;
+  }
+
+  private isVideoAutoplay(v: VideoItem): boolean {
+    return this.globalVideoAutoplay || !!v.autoplay;
   }
 
   firstUpdated() {
@@ -165,15 +187,97 @@ export default class DroneVideos extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.cleanEventListeners();
     if (this.swiperInstance) {
       this.swiperInstance.destroy(true, true);
       this.swiperInstance = null;
     }
   }
 
+  private cleanEventListeners() {
+    const swiperEl = this.renderRoot.querySelector<HTMLElement>(".swiper");
+    if (swiperEl) {
+      swiperEl.removeEventListener("click", this.onSwiperClick);
+      swiperEl.removeEventListener("play", this.onVideoPlay, true);
+      swiperEl.removeEventListener("pause", this.onVideoPause, true);
+      swiperEl.removeEventListener("ended", this.onVideoPause, true);
+    }
+  }
+
+  private onSwiperClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const card = target.closest(".card-aspect") as HTMLElement | null;
+    if (!card) return;
+
+    const videoEl = card.querySelector<HTMLVideoElement>("video");
+    if (!videoEl) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (videoEl.paused) {
+      // Pause all other videos
+      const allVideos =
+        this.renderRoot.querySelectorAll<HTMLVideoElement>("video");
+      allVideos.forEach((v) => {
+        if (v !== videoEl && !v.paused) {
+          v.pause();
+        }
+      });
+      videoEl.play().catch((err) => {
+        console.warn("Could not play video:", err);
+      });
+    } else {
+      videoEl.pause();
+    }
+  };
+
+  private onVideoPlay = (e: Event) => {
+    const video = e.target as HTMLVideoElement;
+    if (!video || video.tagName !== "VIDEO") return;
+    const card = video.closest(".card-aspect") as HTMLElement | null;
+    if (!card) return;
+
+    card.classList.add("is-playing-card");
+    const btn = card.querySelector<HTMLElement>(".tactical-play-btn");
+    if (btn) {
+      btn.classList.add("is-playing");
+      btn.setAttribute("aria-label", "إيقاف الفيديو");
+    }
+    const icon = card.querySelector<HTMLElement>(".play-icon");
+    if (icon) {
+      icon.innerHTML = PAUSE_ICON_SVG;
+    }
+  };
+
+  private onVideoPause = (e: Event) => {
+    const video = e.target as HTMLVideoElement;
+    if (!video || video.tagName !== "VIDEO") return;
+    const card = video.closest(".card-aspect") as HTMLElement | null;
+    if (!card) return;
+
+    card.classList.remove("is-playing-card");
+    const btn = card.querySelector<HTMLElement>(".tactical-play-btn");
+    if (btn) {
+      btn.classList.remove("is-playing");
+      btn.setAttribute("aria-label", "تشغيل الفيديو");
+    }
+    const icon = card.querySelector<HTMLElement>(".play-icon");
+    if (icon) {
+      icon.innerHTML = PLAY_ICON_SVG;
+    }
+  };
+
   private initSwiper() {
+    this.cleanEventListeners();
+
     const swiperEl = this.renderRoot.querySelector<HTMLElement>(".swiper");
     if (!swiperEl) return;
+
+    swiperEl.addEventListener("click", this.onSwiperClick);
+    swiperEl.addEventListener("play", this.onVideoPlay, true);
+    swiperEl.addEventListener("pause", this.onVideoPause, true);
+    swiperEl.addEventListener("ended", this.onVideoPause, true);
 
     if (this.swiperInstance) {
       this.swiperInstance.destroy(true, true);
@@ -189,6 +293,7 @@ export default class DroneVideos extends LitElement {
 
     this.swiperInstance = new Swiper(swiperEl, {
       modules: [Navigation, Pagination, Autoplay],
+      speed: this.sliderSpeed, // 1000ms transition speed
       slidesPerView: 1.1,
       spaceBetween: 16,
       loop: this.videosList.length > 3,
@@ -221,38 +326,6 @@ export default class DroneVideos extends LitElement {
         },
       },
     });
-  }
-
-  private toggleVideo(idx: number, e: Event) {
-    e.stopPropagation();
-    const videoEl = this.renderRoot.querySelector<HTMLVideoElement>(
-      `#video-el-${idx}`
-    );
-    if (!videoEl) return;
-
-    if (videoEl.paused) {
-      // Pause all other videos so only one plays at a time
-      const allVideos =
-        this.renderRoot.querySelectorAll<HTMLVideoElement>("video");
-      allVideos.forEach((v) => {
-        if (v !== videoEl && !v.paused) {
-          v.pause();
-        }
-      });
-      videoEl.play();
-      this.playingStates = { ...this.playingStates, [idx]: true };
-    } else {
-      videoEl.pause();
-      this.playingStates = { ...this.playingStates, [idx]: false };
-    }
-  }
-
-  private handleVideoPlay(idx: number) {
-    this.playingStates = { ...this.playingStates, [idx]: true };
-  }
-
-  private handleVideoPause(idx: number) {
-    this.playingStates = { ...this.playingStates, [idx]: false };
   }
 
   static styles = [
@@ -331,6 +404,7 @@ export default class DroneVideos extends LitElement {
         aspect-ratio: 638 / 463;
         box-sizing: border-box;
         cursor: pointer;
+        user-select: none;
         transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
@@ -389,8 +463,8 @@ export default class DroneVideos extends LitElement {
         inset: 0;
         background: radial-gradient(
           circle at center,
-          rgba(0, 0, 0, 0.1) 0%,
-          rgba(0, 0, 0, 0.45) 100%
+          rgba(0, 0, 0, 0.08) 0%,
+          rgba(0, 0, 0, 0.42) 100%
         );
         pointer-events: none;
         z-index: 2;
@@ -398,7 +472,7 @@ export default class DroneVideos extends LitElement {
       }
 
       .is-playing-card .vignette-overlay {
-        opacity: 0.15;
+        opacity: 0.12;
       }
 
       /* Exact Figma tactical frame SVG overlay with stroke */
@@ -431,31 +505,28 @@ export default class DroneVideos extends LitElement {
         justify-content: center;
         background: transparent;
         border: none;
-        cursor: pointer;
         padding: 0;
         box-sizing: border-box;
-        pointer-events: auto;
+        pointer-events: none;
         transform: translateZ(0);
         transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
           opacity 0.3s ease, filter 0.3s ease;
       }
 
-      .tactical-play-btn:hover {
-        transform: scale(1.1);
+      .card-aspect:hover .tactical-play-btn {
+        transform: scale(1.08);
         filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.4));
       }
 
-      .tactical-play-btn:active {
-        transform: scale(0.96);
-      }
-
-      /* When video is playing: fade out button, show on hover */
+      /* When video is playing: show pause button with clear opacity and 100% on hover */
       .tactical-play-btn.is-playing {
-        opacity: 0;
+        opacity: 0.75;
       }
 
       .card-aspect:hover .tactical-play-btn.is-playing {
-        opacity: 0.92;
+        opacity: 1;
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
       }
 
       .play-btn-bg {
@@ -507,26 +578,22 @@ export default class DroneVideos extends LitElement {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.25s ease, opacity 0.25s ease;
         clip-path: polygon(
-          20% 0%,
-          80% 0%,
-          100% 20%,
-          100% 80%,
-          80% 100%,
-          20% 100%,
-          0% 80%,
-          0% 20%
+          8px 0%,
+          calc(100% - 8px) 0%,
+          100% 8px,
+          100% calc(100% - 8px),
+          calc(100% - 8px) 100%,
+          8px 100%,
+          0% calc(100% - 8px),
+          0% 8px
         );
+        transition: transform 0.2s ease, opacity 0.2s ease;
       }
 
       .nav-arrow-btn:hover {
-        transform: translateY(-2px);
+        transform: scale(1.06);
         opacity: 0.9;
-      }
-
-      .nav-arrow-btn:active {
-        transform: translateY(0);
       }
 
       .nav-arrow-btn svg {
@@ -534,37 +601,36 @@ export default class DroneVideos extends LitElement {
         height: 20px;
       }
 
-      /* Swiper pagination styles */
+      .nav-arrow-btn.swiper-button-disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
       .swiper-pagination {
-        position: relative !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 6px !important;
-        width: auto !important;
-        inset: auto !important;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
 
       .swiper-pagination-bullet {
-        width: 10px !important;
-        height: 10px !important;
-        display: inline-block !important;
-        border-radius: 2px !important;
-        background: #d5d5d5 !important;
-        opacity: 0.6 !important;
-        cursor: pointer !important;
-        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-          background 0.3s ease, opacity 0.3s ease !important;
-        margin: 0 !important;
+        width: 24px;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--sec-line, #e0e0e0);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: inline-block;
       }
 
       .swiper-pagination-bullet-active {
-        width: 28px !important;
-        background: var(--nav-bg, #0D0D0D) !important;
-        opacity: 1 !important;
+        width: 40px;
+        background: var(--sec-text, #111111);
+        opacity: 1;
       }
 
-      /* =================== RESPONSIVE =================== */
-      @media (max-width: 680px) {
+      @media (max-width: 768px) {
         .videos-section {
           padding: 3rem 1rem 3.5rem;
         }
@@ -575,30 +641,12 @@ export default class DroneVideos extends LitElement {
         }
 
         .play-icon {
-          width: 16px;
-          height: 16px;
+          width: 18px;
+          height: 18px;
         }
       }
     `,
   ];
-
-  private renderPlayIcon(isPlaying: boolean) {
-    if (isPlaying) {
-      // Pause icon (two vertical bars ❚❚)
-      return html`
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <rect x="6" y="5" width="4" height="14" rx="1" />
-          <rect x="14" y="5" width="4" height="14" rx="1" />
-        </svg>
-      `;
-    }
-    // Play icon (triangle ▶)
-    return html`
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <polygon points="8,5 19,12 8,19" />
-      </svg>
-    `;
-  }
 
   render() {
     const c = this.cfg;
@@ -625,7 +673,6 @@ export default class DroneVideos extends LitElement {
     ].join(";");
 
     const videos = this.videosList;
-    const isAutoplay = this.videoAutoplay;
 
     return html`
       <section class="videos-section" style="${customVars}">
@@ -644,13 +691,10 @@ export default class DroneVideos extends LitElement {
           <div class="swiper" dir="rtl">
             <div class="swiper-wrapper">
               ${videos.map((v, idx) => {
-                const isPlaying = isAutoplay || !!this.playingStates[idx];
+                const auto = this.isVideoAutoplay(v);
                 return html`
                   <div class="swiper-slide">
-                    <div
-                      class="card-aspect ${isPlaying ? "is-playing-card" : ""}"
-                      @click=${(e: Event) => this.toggleVideo(idx, e)}
-                    >
+                    <div class="card-aspect ${auto ? "is-playing-card" : ""}">
                       <!-- Inner Media (clipped to exact tactical polygon) -->
                       <div class="video-media-wrap">
                         <video
@@ -660,11 +704,9 @@ export default class DroneVideos extends LitElement {
                           poster=${v.poster || ""}
                           playsinline
                           preload="metadata"
-                          ?autoplay=${isAutoplay}
-                          ?muted=${isAutoplay}
-                          ?loop=${isAutoplay}
-                          @play=${() => this.handleVideoPlay(idx)}
-                          @pause=${() => this.handleVideoPause(idx)}
+                          ?autoplay=${auto}
+                          ?muted=${auto}
+                          ?loop=${auto}
                         ></video>
                         <div class="vignette-overlay"></div>
                       </div>
@@ -700,12 +742,11 @@ export default class DroneVideos extends LitElement {
                         />
                       </svg>
 
-                      <!-- Center Play / Pause Button -->
+                      <!-- Center Play / Pause Indicator Badge -->
                       <div class="play-btn-wrapper">
-                        <button
-                          class="tactical-play-btn ${isPlaying ? "is-playing" : ""}"
-                          @click=${(e: Event) => this.toggleVideo(idx, e)}
-                          aria-label=${isPlaying ? "إيقاف الفيديو" : "تشغيل الفيديو"}
+                        <div
+                          class="tactical-play-btn ${auto ? "is-playing" : ""}"
+                          aria-label=${auto ? "إيقاف الفيديو" : "تشغيل الفيديو"}
                         >
                           <svg
                             class="play-btn-bg"
@@ -723,9 +764,20 @@ export default class DroneVideos extends LitElement {
                             class="play-icon"
                             style="color: var(--play-icon, #ffffff);"
                           >
-                            ${this.renderPlayIcon(isPlaying)}
+                            ${auto
+                              ? html`
+                                  <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="6" y="5" width="4" height="14" rx="1" />
+                                    <rect x="14" y="5" width="4" height="14" rx="1" />
+                                  </svg>
+                                `
+                              : html`
+                                  <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="8,5 19,12 8,19" />
+                                  </svg>
+                                `}
                           </span>
-                        </button>
+                        </div>
                       </div>
                     </div>
                   </div>
