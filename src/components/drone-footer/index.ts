@@ -190,6 +190,8 @@ export default class DroneFooter extends LitElement {
       --ftr-line: #e0e0e0;
       --social-bg: #E6E6E6;
       --social-color: #111111;
+      --social-hover-bg: #0d0d0d;
+      --social-hover-color: #ffffff;
       --btn-bg: #0d0d0d;
       --btn-text: #ffffff;
       --wm-color: #0d0d0d;

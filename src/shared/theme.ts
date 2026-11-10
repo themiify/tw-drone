@@ -28,20 +28,20 @@ export const tacticalButtonStyles = css`
     box-sizing: border-box;
     transform: translateZ(0);
     backface-visibility: hidden;
-    will-change: transform, filter;
-    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-      filter 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-      opacity 0.35s ease;
+    will-change: transform, opacity;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 0.3s ease;
   }
 
   .cta-btn:hover {
-    transform: translateY(-3px) scale(1.015);
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+    transform: translateY(-2.5px);
+    opacity: 0.92;
   }
 
   .cta-btn:active {
-    transform: translateY(0) scale(0.99);
-    transition: transform 0.15s ease, filter 0.15s ease;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.1s ease;
   }
 
   .cta-bg {
@@ -51,7 +51,6 @@ export const tacticalButtonStyles = css`
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    transition: opacity 0.35s ease, filter 0.35s ease;
   }
 
   .cta-text {
@@ -60,7 +59,6 @@ export const tacticalButtonStyles = css`
     line-height: 1;
     color: inherit;
     display: inline-block;
-    transition: color 0.35s ease;
   }
 `;
 
@@ -110,21 +108,19 @@ export const socialButtonStyles = css`
     box-sizing: border-box;
     transform: translateZ(0);
     backface-visibility: hidden;
-    will-change: transform, filter;
+    will-change: transform;
     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-      filter 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-      color 0.3s ease;
+      color 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .social-badge:hover {
-    transform: translateY(-2px) scale(1.04);
-    color: var(--social-hover-color, #000000);
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+    transform: translateY(-3px);
+    color: var(--social-hover-color, #ffffff);
   }
 
   .social-badge:active {
-    transform: translateY(0) scale(0.98);
-    transition: transform 0.15s ease, filter 0.15s ease;
+    transform: translateY(-1px);
+    transition: transform 0.12s ease;
   }
 
   .social-bg {
@@ -136,6 +132,14 @@ export const socialButtonStyles = css`
     pointer-events: none;
   }
 
+  .social-bg path {
+    transition: fill 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .social-badge:hover .social-bg path {
+    fill: var(--social-hover-bg, #0d0d0d);
+  }
+
   .social-icon {
     position: relative;
     z-index: 2;
@@ -145,6 +149,11 @@ export const socialButtonStyles = css`
     align-items: center;
     justify-content: center;
     color: inherit;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .social-badge:hover .social-icon {
+    transform: scale(1.1);
   }
 
   .social-icon svg {
