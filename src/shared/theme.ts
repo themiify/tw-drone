@@ -182,57 +182,47 @@ export const TACTICAL_FRAME_PATH =
   "M 28.8746 0 H 274.621 L 305.78 46.2005 H 546.749 L 575 83.8249 V 327 H 497.309 L 467.187 286.886 H 335.901 L 305.78 327 H 0 V 38.4543 L 28.8746 0 Z";
 
 export const TACTICAL_FRAME_POLYGON =
-  "polygon(5.02% 0%, 47.76% 0%, 53.18% 14.13%, 95.09% 14.13%, 100% 25.63%, 100% 100%, 86.49% 100%, 81.25% 87.73%, 58.42% 87.73%, 53.18% 100%, 0% 100%, 0% 11.76%)";
+  "polygon(5.0217% 0%, 47.7602% 0%, 53.1791% 14.1286%, 95.0868% 14.1286%, 100% 25.6345%, 100% 100%, 86.4885% 100%, 81.2499% 87.7327%, 58.4176% 87.7327%, 53.1791% 100%, 0% 100%, 0% 11.7597%)";
 
 export const tacticalFrameStyles = css`
   .frame {
     position: relative;
     aspect-ratio: 575 / 327;
     width: 100%;
-    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.1));
     box-sizing: border-box;
   }
 
   .frame-outer {
     position: absolute;
     inset: 0;
-    background: var(--frame-color, #ececec);
-    clip-path: polygon(
-      5.02% 0%,
-      47.76% 0%,
-      53.18% 14.13%,
-      95.09% 14.13%,
-      100% 25.63%,
-      100% 100%,
-      86.49% 100%,
-      81.25% 87.73%,
-      58.42% 87.73%,
-      53.18% 100%,
-      0% 100%,
-      0% 11.76%
-    );
-    opacity: 0.95;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
+    transition: transform 0.3s ease;
   }
 
   .frame-inner {
     position: absolute;
     inset: clamp(10px, 2.2cqw, 18px);
+    z-index: 2;
     clip-path: polygon(
-      5.02% 0%,
-      47.76% 0%,
-      53.18% 14.13%,
-      95.09% 14.13%,
-      100% 25.63%,
+      5.0217% 0%,
+      47.7602% 0%,
+      53.1791% 14.1286%,
+      95.0868% 14.1286%,
+      100% 25.6345%,
       100% 100%,
-      86.49% 100%,
-      81.25% 87.73%,
-      58.42% 87.73%,
-      53.18% 100%,
+      86.4885% 100%,
+      81.2499% 87.7327%,
+      58.4176% 87.7327%,
+      53.1791% 100%,
       0% 100%,
-      0% 11.76%
+      0% 11.7597%
     );
-    background: #2b2b2b;
+    background: #1e1e1e;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -252,12 +242,31 @@ export const tacticalFrameStyles = css`
   .frame:hover .frame-inner video {
     transform: scale(1.03);
   }
+
+  .frame-inner .empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    color: #999;
+  }
 `;
 
 export function renderTacticalFrame(contentNode: unknown) {
   return html`
     <div class="frame">
-      <div class="frame-outer"></div>
+      <svg
+        class="frame-outer"
+        viewBox="0 0 575 327"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="${TACTICAL_FRAME_PATH}" fill="var(--frame-color, #ececec)" />
+      </svg>
       <div class="frame-inner">
         ${contentNode || nothing}
       </div>
