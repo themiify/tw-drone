@@ -1,5 +1,7 @@
-import { css, html, LitElement, nothing } from "lit";
+import { css, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
+import Swiper from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import {
   PLAY_BTN_PATH,
   renderSectionHeader,
@@ -20,7 +22,8 @@ interface DroneVideosConfig {
 
   videos?: VideoItem[];
 
-  autoplay?: boolean;
+  video_autoplay?: boolean;
+  slider_autoplay?: boolean;
   autoplay_interval?: number;
 
   bg_color?: string;
@@ -72,6 +75,19 @@ const DEFAULT_VIDEOS: VideoItem[] = [
   },
 ];
 
+function extractUrl(val: unknown): string {
+  if (!val) return "";
+  if (typeof val === "string") return val;
+  if (Array.isArray(val)) {
+    return extractUrl(val[0]);
+  }
+  if (typeof val === "object") {
+    const obj = val as any;
+    return String(obj.url || obj.value || obj.src || obj.path || "");
+  }
+  return String(val);
+}
+
 function parseJsonSafe(val: unknown): any {
   if (!val) return null;
   if (typeof val === "object") return val;
@@ -96,12 +112,9 @@ export default class DroneVideos extends LitElement {
   config?: Record<string, any>;
 
   @state()
-  private currentIndex = 0;
+  private playingStates: Record<number, boolean> = {};
 
-  @state()
-  private activeModalVideo: VideoItem | null = null;
-
-  private autoplayTimer: any = null;
+  private swiperInstance: Swiper | null = null;
 
   private get cfg(): DroneVideosConfig {
     const parsed = parseJsonSafe(this.config);
@@ -116,65 +129,130 @@ export default class DroneVideos extends LitElement {
     return this.cfg.heading ?? DEFAULT_HEADING;
   }
 
-  private get videosList(): VideoItem[] {
-    const list = this.cfg.videos;
-    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_VIDEOS;
+  private get videoAutoplay(): boolean {
+    const v = this.cfg.video_autoplay;
+    return v === true || v === "true" || v === 1 || v === "1";
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.startAutoplay();
-    window.addEventListener("keydown", this.handleKeyDown);
+  private get sliderAutoplay(): boolean {
+    const s = this.cfg.slider_autoplay;
+    return s === true || s === "true" || s === 1 || s === "1";
+  }
+
+  private get videosList(): VideoItem[] {
+    const list = this.cfg.videos;
+    if (Array.isArray(list) && list.length > 0) {
+      return list.map((item, idx) => ({
+        id: item.id || `v-${idx}`,
+        title: item.title || "",
+        poster: extractUrl(item.poster),
+        video_url: extractUrl(item.video_url),
+      }));
+    }
+    return DEFAULT_VIDEOS;
+  }
+
+  firstUpdated() {
+    this.initSwiper();
+  }
+
+  updated(changedProperties: Map<string, any>) {
+    super.updated(changedProperties);
+    if (changedProperties.has("config")) {
+      this.initSwiper();
+    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.stopAutoplay();
-    window.removeEventListener("keydown", this.handleKeyDown);
-  }
-
-  private handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape" && this.activeModalVideo) {
-      this.closeModal();
-    }
-  };
-
-  private startAutoplay() {
-    if (!this.cfg.autoplay) return;
-    this.stopAutoplay();
-    const interval = Math.max(3000, Number(this.cfg.autoplay_interval || 5) * 1000);
-    this.autoplayTimer = setInterval(() => {
-      this.nextSlide();
-    }, interval);
-  }
-
-  private stopAutoplay() {
-    if (this.autoplayTimer) {
-      clearInterval(this.autoplayTimer);
-      this.autoplayTimer = null;
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+      this.swiperInstance = null;
     }
   }
 
-  private prevSlide() {
-    const total = this.videosList.length;
-    this.currentIndex = (this.currentIndex - 1 + total) % total;
+  private initSwiper() {
+    const swiperEl = this.renderRoot.querySelector<HTMLElement>(".swiper");
+    if (!swiperEl) return;
+
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
+      this.swiperInstance = null;
+    }
+
+    const nextBtn =
+      this.renderRoot.querySelector<HTMLElement>(".nav-arrow-next");
+    const prevBtn =
+      this.renderRoot.querySelector<HTMLElement>(".nav-arrow-prev");
+    const paginationEl =
+      this.renderRoot.querySelector<HTMLElement>(".swiper-pagination");
+
+    this.swiperInstance = new Swiper(swiperEl, {
+      modules: [Navigation, Pagination, Autoplay],
+      slidesPerView: 1.1,
+      spaceBetween: 16,
+      loop: this.videosList.length > 3,
+      autoplay: this.sliderAutoplay
+        ? {
+            delay: Math.max(
+              2500,
+              Number(this.cfg.autoplay_interval || 5) * 1000
+            ),
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }
+        : false,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prevBtn,
+      },
+      pagination: {
+        el: paginationEl,
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+      },
+    });
   }
 
-  private nextSlide() {
-    const total = this.videosList.length;
-    this.currentIndex = (this.currentIndex + 1) % total;
+  private toggleVideo(idx: number, e: Event) {
+    e.stopPropagation();
+    const videoEl = this.renderRoot.querySelector<HTMLVideoElement>(
+      `#video-el-${idx}`
+    );
+    if (!videoEl) return;
+
+    if (videoEl.paused) {
+      // Pause all other videos so only one plays at a time
+      const allVideos =
+        this.renderRoot.querySelectorAll<HTMLVideoElement>("video");
+      allVideos.forEach((v) => {
+        if (v !== videoEl && !v.paused) {
+          v.pause();
+        }
+      });
+      videoEl.play();
+      this.playingStates = { ...this.playingStates, [idx]: true };
+    } else {
+      videoEl.pause();
+      this.playingStates = { ...this.playingStates, [idx]: false };
+    }
   }
 
-  private goToSlide(i: number) {
-    this.currentIndex = i;
+  private handleVideoPlay(idx: number) {
+    this.playingStates = { ...this.playingStates, [idx]: true };
   }
 
-  private openModal(video: VideoItem) {
-    this.activeModalVideo = video;
-  }
-
-  private closeModal() {
-    this.activeModalVideo = null;
+  private handleVideoPause(idx: number) {
+    this.playingStates = { ...this.playingStates, [idx]: false };
   }
 
   static styles = [
@@ -206,7 +284,7 @@ export default class DroneVideos extends LitElement {
         background: var(--sec-bg);
         color: var(--sec-text);
         overflow: hidden;
-        padding: 4rem 1.5rem 5rem;
+        padding: 4.5rem 1.5rem 5rem;
       }
 
       .container {
@@ -215,41 +293,49 @@ export default class DroneVideos extends LitElement {
         position: relative;
       }
 
-      /* =================== SLIDER WRAPPER =================== */
-      .slider-container {
+      /* =================== SWIPER CORE CSS =================== */
+      .swiper {
+        margin-left: auto;
+        margin-right: auto;
         position: relative;
-        margin-top: 3.5rem;
-        width: 100%;
         overflow: hidden;
-        padding: 1rem 0 2rem;
+        list-style: none;
+        padding: 1.5rem 0 2rem;
+        z-index: 1;
+        display: block;
+        width: 100%;
       }
 
-      .slider-track {
+      .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
         display: flex;
-        align-items: center;
-        gap: 2rem;
-        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-        will-change: transform;
+        transition-property: transform;
+        box-sizing: content-box;
+      }
+
+      .swiper-slide {
+        flex-shrink: 0;
+        height: auto;
+        position: relative;
+        transition-property: transform;
+        display: block;
       }
 
       /* =================== VIDEO CARD =================== */
-      .video-card-slide {
-        flex: 0 0 calc((100% - 4rem) / 3);
-        min-width: 290px;
-        position: relative;
-        transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-          opacity 0.35s ease, filter 0.35s ease;
-      }
-
-      .video-card-slide:hover {
-        transform: translateY(-4px);
-      }
-
       .card-aspect {
         position: relative;
         width: 100%;
         aspect-ratio: 638 / 463;
         box-sizing: border-box;
+        cursor: pointer;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .card-aspect:hover {
+        transform: translateY(-4px);
       }
 
       /* Inner media clipped to exact tactical polygon */
@@ -289,24 +375,30 @@ export default class DroneVideos extends LitElement {
         );
       }
 
-      .video-poster {
+      .card-video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.4s ease;
+        background: #000000;
       }
 
-      .video-media-wrap::after {
-        content: "";
+      /* Vignette overlay */
+      .vignette-overlay {
         position: absolute;
         inset: 0;
         background: radial-gradient(
           circle at center,
-          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.1) 0%,
           rgba(0, 0, 0, 0.45) 100%
         );
         pointer-events: none;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+      }
+
+      .is-playing-card .vignette-overlay {
+        opacity: 0.15;
       }
 
       /* Exact Figma tactical frame SVG overlay with stroke */
@@ -315,18 +407,19 @@ export default class DroneVideos extends LitElement {
         inset: 0;
         width: 100%;
         height: 100%;
-        z-index: 2;
+        z-index: 3;
         pointer-events: none;
       }
 
-      /* Tactical Play Button */
+      /* Play / Pause Button Overlay */
       .play-btn-wrapper {
         position: absolute;
         inset: 0;
-        z-index: 3;
+        z-index: 4;
         display: flex;
         align-items: center;
         justify-content: center;
+        pointer-events: none;
       }
 
       .tactical-play-btn {
@@ -341,18 +434,28 @@ export default class DroneVideos extends LitElement {
         cursor: pointer;
         padding: 0;
         box-sizing: border-box;
+        pointer-events: auto;
         transform: translateZ(0);
         transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-          filter 0.3s ease;
+          opacity 0.3s ease, filter 0.3s ease;
       }
 
       .tactical-play-btn:hover {
         transform: scale(1.1);
-        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
+        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.4));
       }
 
       .tactical-play-btn:active {
         transform: scale(0.96);
+      }
+
+      /* When video is playing: fade out button, show on hover */
+      .tactical-play-btn.is-playing {
+        opacity: 0;
+      }
+
+      .card-aspect:hover .tactical-play-btn.is-playing {
+        opacity: 0.92;
       }
 
       .play-btn-bg {
@@ -371,7 +474,6 @@ export default class DroneVideos extends LitElement {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 2px;
       }
 
       .play-icon svg {
@@ -380,7 +482,7 @@ export default class DroneVideos extends LitElement {
         display: block;
       }
 
-      /* =================== SLIDER CONTROLS (ARROWS & DOTS) =================== */
+      /* =================== SLIDER CONTROLS (ARROWS & PAGINATION) =================== */
       .slider-controls {
         display: flex;
         align-items: center;
@@ -432,115 +534,39 @@ export default class DroneVideos extends LitElement {
         height: 20px;
       }
 
-      .slider-dots {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+      /* Swiper pagination styles */
+      .swiper-pagination {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: auto !important;
+        inset: auto !important;
       }
 
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 2px;
-        background: #d5d5d5;
-        border: none;
-        cursor: pointer;
-        transition: width 0.3s ease, background 0.3s ease;
-        padding: 0;
+      .swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+        display: inline-block !important;
+        border-radius: 2px !important;
+        background: #d5d5d5 !important;
+        opacity: 0.6 !important;
+        cursor: pointer !important;
+        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+          background 0.3s ease, opacity 0.3s ease !important;
+        margin: 0 !important;
       }
 
-      .dot.active {
-        width: 26px;
-        background: var(--nav-bg);
-      }
-
-      /* =================== MODAL VIDEO POPUP =================== */
-      .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        z-index: 999999;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        animation: fadeIn 0.25s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      .modal-content {
-        position: relative;
-        width: 100%;
-        max-width: 900px;
-        background: #000000;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-        border: 1px solid #333333;
-        overflow: hidden;
-      }
-
-      .modal-close {
-        position: absolute;
-        top: -45px;
-        left: 0;
-        background: transparent;
-        border: none;
-        color: #ffffff;
-        font-size: 2rem;
-        cursor: pointer;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.85;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .modal-close:hover {
-        opacity: 1;
-        transform: scale(1.1);
-      }
-
-      .modal-video-wrap {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        background: #000000;
-      }
-
-      .modal-video-wrap video {
-        width: 100%;
-        height: 100%;
-        display: block;
+      .swiper-pagination-bullet-active {
+        width: 28px !important;
+        background: var(--nav-bg, #0D0D0D) !important;
+        opacity: 1 !important;
       }
 
       /* =================== RESPONSIVE =================== */
-      @media (max-width: 1080px) {
-        .video-card-slide {
-          flex: 0 0 calc((100% - 2rem) / 2);
-        }
-      }
-
       @media (max-width: 680px) {
         .videos-section {
           padding: 3rem 1rem 3.5rem;
-        }
-
-        .slider-container {
-          margin-top: 2rem;
-        }
-
-        .video-card-slide {
-          flex: 0 0 100%;
         }
 
         .tactical-play-btn {
@@ -556,58 +582,21 @@ export default class DroneVideos extends LitElement {
     `,
   ];
 
-  private renderPlayButton() {
-    const playBg = this.cfg.play_bg || "#0D0D0D";
-    const playStroke = this.cfg.play_stroke || "#ffffff";
-    const playIcon = this.cfg.play_icon_color || "#ffffff";
-
-    return html`
-      <div class="tactical-play-btn">
-        <svg
-          class="play-btn-bg"
-          viewBox="0 0 63 58"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="${PLAY_BTN_PATH}"
-            fill="${playBg}"
-            stroke="${playStroke}"
-          />
+  private renderPlayIcon(isPlaying: boolean) {
+    if (isPlaying) {
+      // Pause icon (two vertical bars ❚❚)
+      return html`
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="5" width="4" height="14" rx="1" />
+          <rect x="14" y="5" width="4" height="14" rx="1" />
         </svg>
-        <span class="play-icon" style="color: ${playIcon};">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="8,5 19,12 8,19" />
-          </svg>
-        </span>
-      </div>
-    `;
-  }
-
-  private renderModal() {
-    if (!this.activeModalVideo) return nothing;
-    const v = this.activeModalVideo;
-
+      `;
+    }
+    // Play icon (triangle ▶)
     return html`
-      <div class="modal-backdrop" @click=${this.closeModal}>
-        <div class="modal-content" @click=${(e: Event) => e.stopPropagation()}>
-          <button
-            class="modal-close"
-            @click=${this.closeModal}
-            aria-label="إغلاق"
-          >
-            ✕
-          </button>
-          <div class="modal-video-wrap">
-            <video
-              src=${v.video_url || ""}
-              poster=${v.poster || ""}
-              controls
-              autoplay
-            ></video>
-          </div>
-        </div>
-      </div>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="8,5 19,12 8,19" />
+      </svg>
     `;
   }
 
@@ -636,11 +625,7 @@ export default class DroneVideos extends LitElement {
     ].join(";");
 
     const videos = this.videosList;
-    const total = videos.length;
-
-    // Calculate slider offset in percentage
-    // In RTL, positive translateX moves items to the right
-    const offset = this.currentIndex * (100 / Math.min(3, total));
+    const isAutoplay = this.videoAutoplay;
 
     return html`
       <section class="videos-section" style="${customVars}">
@@ -655,31 +640,33 @@ export default class DroneVideos extends LitElement {
             "var(--sec-text, #0d0d0d)"
           )}
 
-          <!-- Slider Container -->
-          <div
-            class="slider-container"
-            @mouseenter=${this.stopAutoplay}
-            @mouseleave=${this.startAutoplay}
-          >
-            <div
-              class="slider-track"
-              style="transform: translateX(${offset}%);"
-            >
-              ${videos.map(
-                (v, idx) => html`
-                  <div
-                    class="video-card-slide"
-                    @click=${() => this.openModal(v)}
-                  >
-                    <div class="card-aspect">
+          <!-- Swiper Slider Container -->
+          <div class="swiper" dir="rtl">
+            <div class="swiper-wrapper">
+              ${videos.map((v, idx) => {
+                const isPlaying = isAutoplay || !!this.playingStates[idx];
+                return html`
+                  <div class="swiper-slide">
+                    <div
+                      class="card-aspect ${isPlaying ? "is-playing-card" : ""}"
+                      @click=${(e: Event) => this.toggleVideo(idx, e)}
+                    >
                       <!-- Inner Media (clipped to exact tactical polygon) -->
                       <div class="video-media-wrap">
-                        <img
-                          class="video-poster"
-                          src=${v.poster || ""}
-                          alt=${v.title || "Drone Video"}
-                          loading="lazy"
-                        />
+                        <video
+                          id="video-el-${idx}"
+                          class="card-video"
+                          src=${v.video_url || ""}
+                          poster=${v.poster || ""}
+                          playsinline
+                          preload="metadata"
+                          ?autoplay=${isAutoplay}
+                          ?muted=${isAutoplay}
+                          ?loop=${isAutoplay}
+                          @play=${() => this.handleVideoPlay(idx)}
+                          @pause=${() => this.handleVideoPause(idx)}
+                        ></video>
+                        <div class="vignette-overlay"></div>
                       </div>
 
                       <!-- Exact Figma Tactical Frame SVG Overlay with Stroke -->
@@ -691,7 +678,7 @@ export default class DroneVideos extends LitElement {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <mask
-                          id="stroke-mask-${idx}"
+                          id="video-stroke-mask-${idx}"
                           maskUnits="userSpaceOnUse"
                           x="0"
                           y="0"
@@ -709,64 +696,70 @@ export default class DroneVideos extends LitElement {
                           d="${VIDEO_CARD_FRAME_PATH}"
                           stroke-width="14"
                           stroke="var(--frame-stroke, #D5D5D5)"
-                          mask="url(#stroke-mask-${idx})"
+                          mask="url(#video-stroke-mask-${idx})"
                         />
                       </svg>
 
-                      <!-- Center Play Button -->
+                      <!-- Center Play / Pause Button -->
                       <div class="play-btn-wrapper">
-                        ${this.renderPlayButton()}
+                        <button
+                          class="tactical-play-btn ${isPlaying ? "is-playing" : ""}"
+                          @click=${(e: Event) => this.toggleVideo(idx, e)}
+                          aria-label=${isPlaying ? "إيقاف الفيديو" : "تشغيل الفيديو"}
+                        >
+                          <svg
+                            class="play-btn-bg"
+                            viewBox="0 0 63 58"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="${PLAY_BTN_PATH}"
+                              fill="var(--play-bg, #0D0D0D)"
+                              stroke="var(--play-stroke, #ffffff)"
+                            />
+                          </svg>
+                          <span
+                            class="play-icon"
+                            style="color: var(--play-icon, #ffffff);"
+                          >
+                            ${this.renderPlayIcon(isPlaying)}
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
-                `
-              )}
+                `;
+              })}
             </div>
           </div>
 
           <!-- Slider Navigation & Indicators -->
           <div class="slider-controls">
-            <!-- Next & Previous Arrows (RTL aware) -->
+            <!-- Next & Previous Arrows (RTL aware: Right is Prev, Left is Next) -->
             <div class="slider-arrows">
               <button
-                class="nav-arrow-btn"
-                @click=${this.prevSlide}
+                class="nav-arrow-btn nav-arrow-prev"
                 aria-label="السابق"
               >
-                <!-- Right Arrow in RTL is Prev -->
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
                 </svg>
               </button>
               <button
-                class="nav-arrow-btn"
-                @click=${this.nextSlide}
+                class="nav-arrow-btn nav-arrow-next"
                 aria-label="التالي"
               >
-                <!-- Left Arrow in RTL is Next -->
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
                 </svg>
               </button>
             </div>
 
-            <!-- Dots -->
-            <div class="slider-dots">
-              ${videos.map(
-                (_, idx) => html`
-                  <button
-                    class="dot ${idx === this.currentIndex ? "active" : ""}"
-                    @click=${() => this.goToSlide(idx)}
-                    aria-label="شريحة ${idx + 1}"
-                  ></button>
-                `
-              )}
-            </div>
+            <!-- Swiper Pagination Dots -->
+            <div class="swiper-pagination"></div>
           </div>
         </div>
-
-        <!-- Video Modal Overlay -->
-        ${this.renderModal()}
       </section>
     `;
   }

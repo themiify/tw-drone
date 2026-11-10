@@ -2086,6 +2086,15 @@
           "required": true
         },
         {
+          "id": "video_autoplay",
+          "icon": "sicon-play",
+          "type": "boolean",
+          "label": "تشغيل تلقائي للفيديوهات في مكانها (Autoplay Muted)",
+          "format": "switch",
+          "required": false,
+          "value": false
+        },
+        {
           "id": "videos",
           "type": "collection",
           "format": "collection",
@@ -2147,10 +2156,10 @@
           ]
         },
         {
-          "id": "autoplay",
+          "id": "slider_autoplay",
           "icon": "sicon-refresh",
           "type": "boolean",
-          "label": "تشغيل تلقائي للسلايدر",
+          "label": "تقليب تلقائي للسلايدر",
           "format": "switch",
           "required": false,
           "value": false
