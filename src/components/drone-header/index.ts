@@ -33,16 +33,16 @@ interface DroneHeaderConfig {
 }
 
 const DEFAULT_LINKS: NavLinkItem[] = [
-  { label: "الرئيسية", url: "#", active: true },
-  { label: "المميزات", url: "#features", active: false },
-  { label: "القصة", url: "#story", active: false },
-  { label: "الأجزاء", url: "#parts", active: false },
-  { label: "الاسئلة الشائعة", url: "#faq", active: false },
-  { label: "الفيدوهات", url: "#videos", active: false },
+  { label: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", url: "#", active: true },
+  { label: "Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª", url: "#features", active: false },
+  { label: "Ø§Ù„Ù‚ØµØ©", url: "#story", active: false },
+  { label: "Ø§Ù„Ø£Ø¬Ø²Ø§Ø¡", url: "#parts", active: false },
+  { label: "Ø§Ù„Ø§Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©", url: "#faq", active: false },
+  { label: "Ø§Ù„ÙÙŠØ¯ÙˆÙ‡Ø§Øª", url: "#videos", active: false },
 ];
 
 const DEFAULT_LOGO_B64 =
-  "data:image/png;base64,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";
+  "data:image/png;base64,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";
 
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
@@ -123,7 +123,7 @@ export default class DroneHeader extends LitElement {
   }
 
   private get buttonText(): string {
-    return this.cfg.button_text || "اطلب درونك الآن";
+    return this.cfg.button_text || "Ø§Ø·Ù„Ø¨ Ø¯Ø±ÙˆÙ†Ùƒ Ø§Ù„Ø¢Ù†";
   }
 
   private get buttonLink(): string {
@@ -496,7 +496,7 @@ export default class DroneHeader extends LitElement {
           <button
             class="menu-toggle ${this.mobileMenuOpen ? "open" : ""}"
             @click=${this.toggleMenu}
-            aria-label="القائمة"
+            aria-label="Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©"
           >
             <span></span>
             <span></span>
@@ -527,3 +527,4 @@ export default class DroneHeader extends LitElement {
     `;
   }
 }
+
