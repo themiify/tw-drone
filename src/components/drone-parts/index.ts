@@ -45,6 +45,22 @@ const TEXT_BG = svg`<svg class="text-bg" viewBox="0 0 368 125" preserveAspectRat
   <path d="M225.26 18.3051H347.413L367.5 41.1974V124.5H172.056L160.655 111.146H150.34L138.939 124.5H15.7012L0.5 106.695V18.3051H76.5059L91.7071 0.5H205.173L225.26 18.3051Z" fill="#2B2B2B" stroke="white" vector-effect="non-scaling-stroke"/>
 </svg>`;
 
+const BUTTON_BG = svg`<svg class="cta-bg" viewBox="0 0 179 56" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <use xlink:href="#stroke0_209_3" fill="white"/>
+  <mask id="stroke1_209_3" fill="white">
+    <use xlink:href="#stroke0_209_3"/>
+  </mask>
+  <path d="M0 0H97.555L102.03 4.42105H115.007L111.427 0H116.35L121.72 4.42105H135.145L131.117 0H179V56H57.28L52.805 51.5789H37.59L42.065 56H35.8L30.43 51.5789H17.4525L21.0325 56H0V0Z" stroke-width="3" stroke="#959595" mask="url(#stroke1_209_3)"/>
+  <defs>
+    <path id="stroke0_209_3" d="M0 0H97.555L102.03 4.42105H115.007L111.427 0H116.35L121.72 4.42105H135.145L131.117 0H179V56H57.28L52.805 51.5789H37.59L42.065 56H35.8L30.43 51.5789H17.4525L21.0325 56H0V0Z"/>
+  </defs>
+</svg>`;
+
+const ARROW_SVG = svg`<svg class="pointer-arrow" viewBox="0 0 196 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M195 3.68201V3.18201L0 3.18201V3.68201V4.18201L195 4.18201V3.68201ZM195.354 4.03556C195.549 3.8403 195.549 3.52372 195.354 3.32845L192.172 0.146473C191.976 -0.0487893 191.66 -0.0487893 191.464 0.146473C191.269 0.341735 191.269 0.658318 191.464 0.85358L194.293 3.68201L191.464 6.51043C191.269 6.7057 191.269 7.02228 191.464 7.21754C191.66 7.4128 191.976 7.4128 192.172 7.21754L195.354 4.03556Z" fill="white"/>
+  <path d="M0 3.68201H129L117.273 10.682H0V3.68201Z" fill="white"/>
+</svg>`;
+
 export default class DroneParts extends LitElement {
   @property({ type: Object })
   config?: Record<string, any>;
@@ -212,7 +228,7 @@ export default class DroneParts extends LitElement {
     }
 
     .drone img {
-      width: 49.5cqw;
+      // width: 49.5cqw;
       height: 33cqw;
       max-width: none;
       object-fit: contain;
@@ -230,7 +246,7 @@ export default class DroneParts extends LitElement {
 
     .part-item {
       display: grid;
-      grid-template-columns: 7.5cqw 23cqw 11cqw;
+      grid-template-columns: 12.25cqw 23cqw 11cqw;
       grid-template-areas: "label card thumb";
       align-items: center;
       gap: 1.5cqw;
@@ -247,19 +263,18 @@ export default class DroneParts extends LitElement {
       transform: scale(1.08);
     }
 
-    .part-item:hover .pointer-line {
-      background: #ffffff;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    .part-item:hover .pointer-arrow {
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
     }
 
     .label-wrap {
       grid-area: label;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      gap: 0.4cqw;
-      min-width: 0;
+      gap: 0.35cqw;
+      width: 12.25cqw;
     }
 
     .label-name {
@@ -269,39 +284,15 @@ export default class DroneParts extends LitElement {
       white-space: nowrap;
       text-align: center;
       direction: rtl;
+      width: 8.0625cqw; /* 129px / 1600px - aligns directly over the 129px bar */
     }
 
-    .pointer-line {
-      position: relative;
+    .pointer-arrow {
       width: 100%;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.4);
-      display: flex;
-      align-items: center;
-    }
-
-    .pointer-line::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: -2px;
-      height: 4px;
-      width: 60%;
-      background: #ffffff;
-      clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
-    }
-
-    .pointer-line::after {
-      content: "";
-      position: absolute;
-      right: -4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-top: 3.5px solid transparent;
-      border-bottom: 3.5px solid transparent;
-      border-left: 6px solid #ffffff;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+      transition: filter 0.2s ease;
     }
 
     .card {
@@ -365,28 +356,48 @@ export default class DroneParts extends LitElement {
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
     }
 
+    .cta-wrap {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 1cqw;
+    }
+
     .cta {
-      position: absolute;
-      bottom: 3.5cqw;
-      right: 5cqw;
-      background: #ffffff;
-      color: #000000;
-      padding: 0.65cqw 1.8cqw;
-      font-size: 1.05cqw;
-      font-weight: 700;
-      text-decoration: none;
+      position: relative;
+      width: 11.2cqw;
+      aspect-ratio: 179 / 56;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
       direction: rtl;
-      clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, filter 0.2s ease;
       cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .cta-text {
+      position: relative;
+      z-index: 1;
+      color: #000000;
+      font-size: 1.15cqw;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
     }
 
     .cta:hover {
-      background: #f0f0f0;
       transform: translateY(-2px);
+      filter: drop-shadow(0 4px 16px rgba(255, 255, 255, 0.25));
     }
 
     /* ========================================================= */
@@ -401,6 +412,10 @@ export default class DroneParts extends LitElement {
 
       .content {
         position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
         padding: 2.2rem 1.25rem 2.5rem;
       }
 
@@ -504,23 +519,21 @@ export default class DroneParts extends LitElement {
         align-items: flex-start;
         justify-content: center;
         width: 100%;
+        max-width: 196px;
         gap: 0.35rem;
       }
 
       .label-name {
         font-size: 1.15rem;
-        text-align: left;
+        text-align: center;
+        width: 129px;
       }
 
-      .pointer-line {
+      .pointer-arrow {
         width: 100%;
-        height: 2px;
-      }
-
-      .pointer-line::before {
-        height: 4px;
-        width: 50%;
-        min-width: 55px;
+        max-width: 196px;
+        height: auto;
+        display: block;
       }
 
       .thumb {
@@ -550,13 +563,25 @@ export default class DroneParts extends LitElement {
         padding-top: 0.25rem;
       }
 
+      .cta-wrap {
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
       .cta {
-        position: static;
-        margin: 1.5rem auto 0;
-        align-self: center;
-        padding: 0.75rem 2.25rem;
+        position: relative;
+        width: 179px;
+        height: 56px;
+        min-width: 179px;
+        min-height: 56px;
+        max-width: 179px;
+        max-height: 56px;
+        flex-shrink: 0;
+      }
+
+      .cta-text {
         font-size: 1.05rem;
-        font-weight: 700;
+        font-weight: 800;
       }
     }
   `;
@@ -587,7 +612,7 @@ export default class DroneParts extends LitElement {
                   <div class="part-item">
                     <div class="label-wrap">
                       <span class="label-name">${p.label}</span>
-                      <div class="pointer-line"></div>
+                      ${ARROW_SVG}
                     </div>
                     <div class="thumb">
                       ${p.image
@@ -600,11 +625,14 @@ export default class DroneParts extends LitElement {
                     </div>
                   </div>`
               )}
+              <div class="cta-wrap">
+                <a class="cta" href=${this.currentButtonLink}>
+                  ${BUTTON_BG}
+                  <span class="cta-text">${this.currentButtonText}</span>
+                </a>
+              </div>
             </div>
           </div>
-          <a class="cta" href=${this.currentButtonLink}
-            >${this.currentButtonText}</a
-          >
         </div>
       </div>
     `;
