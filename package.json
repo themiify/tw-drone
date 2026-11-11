@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@salla.sa/twilight-bundles": "^0.1.0",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@types/node": "^22.13.1",
@@ -21,8 +22,7 @@
     "prettier": "^3.5.0",
     "typescript": "^5.7.3",
     "vite": "^5.0.0",
-    "vitest": "^3.0.5",
-    "@salla.sa/twilight-bundles": "^0.1.0"
+    "vitest": "^3.0.5"
   },
   "author": "MahmoudSalah@azzrk.com",
   "repository": {
@@ -31,8 +31,9 @@
   },
   "private": true,
   "dependencies": {
+    "@salla.sa/twilight-bundles": "0.1.64",
     "@salla.sa/twilight-bundles-starter-kit": "^0.1.58",
     "lit": "^3.2.1",
-    "@salla.sa/twilight-bundles": "0.1.64"
+    "swiper": "^14.4.0"
   }
 }
