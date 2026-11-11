@@ -761,6 +761,174 @@
           ]
         }
       ]
+    },
+    {
+      "title": "هيرو الدرون",
+      "icon": "sicon-rocket",
+      "name": "drone-hero",
+      "key": "d8a3f5c2-1b4e-4d9f-a6c7-2f3b4c5d6e7f",
+      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "شوف العالم من زاوية مختلفة"
+        },
+        {
+          "id": "description",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "الوصف",
+          "format": "textarea",
+          "value": "اكتشف آفاق جديدة مع درون يجمع بين متعة الطيران وإبداع التصوير الجوي. التقط لحظاتك من السماء، وحوّل كل مغامرة إلى تجربة تستحق التوثيق."
+        },
+        {
+          "id": "drone_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "label": "صورة الدرون",
+          "format": "image",
+          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+        },
+        {
+          "id": "feature1_title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان الميزة 1",
+          "format": "text",
+          "value": "كاميرا مدمجة"
+        },
+        {
+          "id": "feature1_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "وصف الميزة 1",
+          "format": "textarea",
+          "value": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى."
+        },
+        {
+          "id": "feature2_title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان الميزة 2",
+          "format": "text",
+          "value": "تصميم متعدد المراوح"
+        },
+        {
+          "id": "feature2_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "وصف الميزة 2",
+          "format": "textarea",
+          "value": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز."
+        },
+        {
+          "id": "price_label",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "وسم السعر",
+          "format": "text",
+          "value": "سعر منافس"
+        },
+        {
+          "id": "price",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "السعر",
+          "format": "text",
+          "value": "999.99"
+        },
+        {
+          "id": "price_note",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "وصف السعر",
+          "format": "textarea",
+          "value": "استمتع بتجربة التصوير الجوي الرائعة مع أجهزتنا المتطورة. استكشف الأفق، واكتشف جمال العالم من الأعلى."
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        }
+      ]
     }
   ],
   "features": [
