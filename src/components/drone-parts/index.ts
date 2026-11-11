@@ -8,7 +8,7 @@ interface Part {
 }
 
 const DEFAULT_MAIN_IMAGE =
-  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png";
+  "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png";
 
 const DEFAULT_PARTS: Part[] = [
   {
