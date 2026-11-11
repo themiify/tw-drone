@@ -837,6 +837,7 @@ export default class DroneParts extends LitElement {
         align-items: center;
         padding: 0;
         gap: 20px;
+        margin:auto;
         width: 343px;
         max-width: 100%;
         min-height: auto;
