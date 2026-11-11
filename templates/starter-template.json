@@ -496,7 +496,7 @@
       "icon": "sicon-rocket",
       "name": "drone-parts",
       "key": "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
-      "image": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png",
+      "image": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png",
       "fields": [
         {
           "id": "heading",
@@ -521,7 +521,7 @@
           "format": "image",
           "label": "صورة الدرون",
           "required": false,
-          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+          "value": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png"
         },
         {
           "id": "button_text",
@@ -611,22 +611,22 @@
             {
               "label": "المراوح",
               "text": "مراوح قوية لتحقيق استقرار وسرعة",
-              "image": "https://cdn.files.salla.network/other/1343631853/bf7f9a93-b38e-4732-bc81-72a0efc8f6f1-original.png"
+              "image": "https://cdn.files.salla.network/other/1343631853/891c4f0b-f26e-4ea9-a565-22b47a63a4c4-original.webp"
             },
             {
               "label": "الكاميرا",
               "text": "نظام استقرار للكاميرا والتصوير",
-              "image": "https://cdn.files.salla.network/other/1343631853/dbe75395-d8f9-44dc-9efd-0b546c639792-original.png"
+              "image": "https://cdn.files.salla.network/other/1343631853/a3affed3-1f7b-4e9b-ab38-711774c1e0a5-original.webp"
             },
             {
               "label": "هيكل الهبوط",
               "text": "هيكل هبوط متين وآمن",
-              "image": "https://cdn.files.salla.network/other/1343631853/0a173af6-0bd6-460d-8aae-57da6db532f2-original.png"
+              "image": "https://cdn.files.salla.network/other/1343631853/9142b156-0fc5-4f22-81f5-62993db4cf38-original.webp"
             },
             {
               "label": "جسم الطائرة",
               "text": "جسم الطائرة أساسي ومتكامل",
-              "image": "https://cdn.files.salla.network/other/1343631853/3d1ba946-2089-41e1-8a7d-890dd4d0c972-original.png"
+              "image": "https://cdn.files.salla.network/other/1343631853/2774442d-6065-42f7-ad4f-44dea60a39eb-original.webp"
             }
           ],
           "fields": [
@@ -656,6 +656,146 @@
               "required": false
             }
           ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون خلفية القسم",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "title_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون عنوان القسم (أجزاء الدرون)",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "heading_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون العنوان الرئيسي",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون الخط الفاصل العلوي",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#e6e6e6"
+        },
+        {
+          "id": "bar_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون الشريط العريض العلوي",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "part_label_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون اسم الجزء",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "arrow_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون السهم المؤشر",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "card_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون خلفية بطاقة الجزء",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#2b2b2b"
+        },
+        {
+          "id": "card_border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون إطار بطاقة الجزء",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "card_text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون وصف الجزء داخل البطاقة",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "thumb_glow_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون توهج الصورة المصغرة",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون خلفية الزر",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون نص الزر",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "label": "لون إطار الزر",
+          "format": "color",
+          "inputType": "color",
+          "required": false,
+          "value": "#959595"
         }
       ]
     },
@@ -1663,6 +1803,522 @@
           "label": "لون الخط السفلي",
           "required": false,
           "value": "#262626"
+        }
+      ]
+    },
+    {
+      "title": "هيرو الدرون",
+      "icon": "sicon-rocket",
+      "name": "drone-hero",
+      "key": "d8a3f5c2-1b4e-4d9f-a6c7-2f3b4c5d6e7f",
+      "image": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png",
+      "props": {
+        "min-height": "500px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "required": true,
+          "value": "شوف العالم من زاوية مختلفة"
+        },
+        {
+          "id": "description",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "الوصف التعريفي",
+          "format": "textarea",
+          "required": false,
+          "value": "اكتشف آفاق جديدة مع درون يجمع بين متعة الطيران وإبداع التصوير الجوي. التقط لحظاتك من السماء، وحوّل كل مغامرة إلى تجربة تستحق التوثيق."
+        },
+        {
+          "id": "drone_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون الرئيسية",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png"
+        },
+        {
+          "id": "panel_bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة خلفية اللوحة المضلعة (اختياري)",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "feature1_title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان الميزة الأولى (اليسار)",
+          "format": "text",
+          "required": false,
+          "value": "كاميرا مدمجة"
+        },
+        {
+          "id": "feature1_text",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "وصف الميزة الأولى",
+          "format": "textarea",
+          "required": false,
+          "value": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى."
+        },
+        {
+          "id": "feature1_icon",
+          "type": "string",
+          "icon": "sicon-star",
+          "format": "select",
+          "label": "أيقونة الميزة الأولى",
+          "required": false,
+          "options": [
+            {
+              "label": "كاميرا (Camera)",
+              "value": "camera"
+            },
+            {
+              "label": "مراوح / هواء (Wind)",
+              "value": "wind"
+            },
+            {
+              "label": "مروحة درون (Propeller)",
+              "value": "propeller"
+            },
+            {
+              "label": "درع حماية (Shield)",
+              "value": "shield"
+            },
+            {
+              "label": "طاقة / سرعة (Bolt)",
+              "value": "bolt"
+            }
+          ],
+          "selected": [
+            {
+              "label": "كاميرا (Camera)",
+              "key": "camera",
+              "value": "camera"
+            }
+          ]
+        },
+        {
+          "id": "feature1_icon_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة أيقونة مخصصة للميزة الأولى (اختياري)",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "feature2_title",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان الميزة الثانية (اليمين)",
+          "format": "text",
+          "required": false,
+          "value": "تصميم متعدد المراوح"
+        },
+        {
+          "id": "feature2_text",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "وصف الميزة الثانية",
+          "format": "textarea",
+          "required": false,
+          "value": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز."
+        },
+        {
+          "id": "feature2_icon",
+          "type": "string",
+          "icon": "sicon-star",
+          "format": "select",
+          "label": "أيقونة الميزة الثانية",
+          "required": false,
+          "options": [
+            {
+              "label": "كاميرا (Camera)",
+              "value": "camera"
+            },
+            {
+              "label": "مراوح / هواء (Wind)",
+              "value": "wind"
+            },
+            {
+              "label": "مروحة درون (Propeller)",
+              "value": "propeller"
+            },
+            {
+              "label": "درع حماية (Shield)",
+              "value": "shield"
+            },
+            {
+              "label": "طاقة / سرعة (Bolt)",
+              "value": "bolt"
+            }
+          ],
+          "selected": [
+            {
+              "label": "مراوح / هواء (Wind)",
+              "key": "wind",
+              "value": "wind"
+            }
+          ]
+        },
+        {
+          "id": "feature2_icon_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة أيقونة مخصصة للميزة الثانية (اختياري)",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "show_connectors",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار خطوط التوصيل بالدرون",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "show_price_box",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار صندوق السعر",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "price_label",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص شارة السعر",
+          "format": "text",
+          "required": false,
+          "value": "سعر منافس"
+        },
+        {
+          "id": "price",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "السعر",
+          "format": "text",
+          "required": false,
+          "value": "999.99"
+        },
+        {
+          "id": "show_currency",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار رمز الريال السعودي",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "price_note",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "ملاحظة السعر",
+          "format": "textarea",
+          "required": false,
+          "value": "استمتع بتجربة التصوير الجوي الرائعة مع أجهزتنا المتطورة. استكشف الأفق، واكتشف جمال العالم من الأعلى."
+        },
+        {
+          "id": "show_button",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار زر الطلب (CTA)",
+          "format": "switch",
+          "required": false,
+          "value": true
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "required": false,
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "#"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية القسم",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "panel_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون اللوحة الخلفية المضلعة",
+          "required": false,
+          "value": "#ebebeb"
+        },
+        {
+          "id": "heading_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الرئيسي",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "description_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الوصف التعريفي",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "feature1_title_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون عنوان الميزة الأولى",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "feature1_text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون وصف الميزة الأولى",
+          "required": false,
+          "value": "#747474"
+        },
+        {
+          "id": "feature2_title_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون عنوان الميزة الثانية",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "feature2_text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون وصف الميزة الثانية",
+          "required": false,
+          "value": "#747474"
+        },
+        {
+          "id": "feature_card_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية بطاقات المميزات",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "feature_border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون حدود المميزات وخطوط التوصيل",
+          "required": false,
+          "value": "#959595"
+        },
+        {
+          "id": "feature_icon_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية دائرة الأيقونة",
+          "required": false,
+          "value": "#1a1a1a"
+        },
+        {
+          "id": "feature_icon_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الأيقونة",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "price_box_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية صندوق السعر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "price_label_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية شارة السعر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "price_label_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص شارة السعر",
+          "required": false,
+          "value": "#000000"
+        },
+        {
+          "id": "price_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون رقم السعر ورمز العملة",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "price_note_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون ملاحظة السعر",
+          "required": false,
+          "value": "#d5d5d5"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "button_border_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار الزر",
+          "required": false,
+          "value": "#959595"
         }
       ]
     },
