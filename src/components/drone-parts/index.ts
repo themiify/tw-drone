@@ -54,6 +54,11 @@ export default class DroneParts extends LitElement {
   @property({ type: Object })
   config?: Record<string, any>;
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "parts";
+  }
+
   @property({ type: String }) title = "أجزاء الدرون";
   @property({ type: String }) heading = "مش مجرد درون.. دي زاوية جديدة للعالم.";
   @property({ type: String, attribute: "drone-image" }) droneImage =
@@ -203,6 +208,7 @@ export default class DroneParts extends LitElement {
       font-family: inherit;
       color: #ffffff;
       box-sizing: border-box;
+      scroll-margin-top: 80px;
     }
 
     *,
@@ -1043,7 +1049,7 @@ export default class DroneParts extends LitElement {
 
     return html`
       <!-- Frame 34362 (Desktop) / Frame 34416 (Mobile) -->
-      <div class="wrap" style=${cssVars}>
+      <div class="wrap" id="parts" style=${cssVars}>
         ${this.renderMainBg()}
 
         <!-- Frame 34375 -->

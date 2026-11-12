@@ -103,6 +103,11 @@ export default class DroneStory extends LitElement {
   @property({ type: Object })
   config?: DroneStoryConfig;
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "story";
+  }
+
   static styles = [
     tacticalButtonStyles,
     sectionHeaderStyles,
@@ -112,6 +117,7 @@ export default class DroneStory extends LitElement {
         display: block;
         direction: rtl;
         font-family: inherit;
+        scroll-margin-top: 80px;
       }
 
       .wrap {
@@ -150,7 +156,7 @@ export default class DroneStory extends LitElement {
       .body {
         display: flex;
         flex-direction: row; /* rtl => first child sits on the right */
-        align-items: center;
+        align-items: flex-start;
         gap: 2rem;
       }
       .body.reverse {
@@ -170,11 +176,12 @@ export default class DroneStory extends LitElement {
 
       .float {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        width: 100%;
       }
       .float img,
       .float video {
-        max-width: 100%;
+        max-width: 260px;
         max-height: 280px;
         object-fit: contain;
         display: block;
@@ -303,7 +310,7 @@ export default class DroneStory extends LitElement {
     const mediaNode = this.renderMedia(mediaType, mediaImg, c.media_video);
 
     return html`
-      <div class="wrap" style="${wrapStyle}${frameVars}">
+      <div class="wrap" id="story" style="${wrapStyle}${frameVars}">
         ${bgType === "image" && c.bg_image
           ? html`<div class="bg"><img src=${c.bg_image} alt="" /></div>`
           : bgType === "video" && c.bg_video

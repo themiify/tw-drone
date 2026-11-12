@@ -630,45 +630,45 @@
           "type": "collection",
           "format": "collection",
           "required": true,
-          "minLength": 1,
-          "maxLength": 8,
+          "minLength": 3,
+          "maxLength": 6,
           "item_label": "ميزة",
           "value": [
             {
               "id": "propellers",
               "title": "تصميم متعدد المراوح",
               "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
-              "icon_type": "propeller"
+              "icon_image": ""
             },
             {
               "id": "camera",
               "title": "كاميرا مدمجة",
               "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
-              "icon_type": "camera"
+              "icon_image": ""
             },
             {
               "id": "aerial",
               "title": "تصوير جوي",
               "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
-              "icon_type": "aerial"
+              "icon_image": ""
             },
             {
               "id": "guard",
               "title": "هيكل يحيط بالمراوح",
               "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
-              "icon_type": "guard"
+              "icon_image": ""
             },
             {
               "id": "record",
               "title": "وثّق مغامرتك",
               "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
-              "icon_type": "record"
+              "icon_image": ""
             },
             {
               "id": "wide",
               "title": "منظور أوسع",
               "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
-              "icon_type": "wide"
+              "icon_image": ""
             }
           ],
           "fields": [
@@ -691,38 +691,12 @@
               "placeholder": "شرح موجز للميزة"
             },
             {
-              "id": "icon_type",
+              "id": "icon_image",
               "type": "string",
-              "icon": "sicon-star",
-              "required": false,
-              "format": "select",
-              "label": "نوع الأيقونة",
-              "options": [
-                {
-                  "label": "مراوح متعددة",
-                  "value": "propeller"
-                },
-                {
-                  "label": "كاميرا مدمجة",
-                  "value": "camera"
-                },
-                {
-                  "label": "تصوير جوي",
-                  "value": "aerial"
-                },
-                {
-                  "label": "هيكل واقي",
-                  "value": "guard"
-                },
-                {
-                  "label": "توثيق وتسجيل",
-                  "value": "record"
-                },
-                {
-                  "label": "منظور واسع",
-                  "value": "wide"
-                }
-              ]
+              "icon": "sicon-image-landscape",
+              "format": "image",
+              "label": "صورة الأيقونة",
+              "required": false
             }
           ]
         },
@@ -788,19 +762,22 @@
         },
         {
           "id": "bg_type",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-image-landscape",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "نوع الخلفية",
           "required": false,
           "options": [
             {
               "label": "صورة",
-              "value": "image"
+              "value": "image",
+              "key": "image"
             },
             {
               "label": "لون موحد",
-              "value": "color"
+              "value": "color",
+              "key": "color"
             }
           ],
           "selected": [
@@ -1991,6 +1968,18 @@
           "value": 38
         },
         {
+          "id": "logo_height_mobile",
+          "type": "number",
+          "label": "ارتفاع الشعار في الموبايل (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 16,
+          "maximum": 60,
+          "step": 2,
+          "value": 30
+        },
+        {
           "id": "links",
           "type": "collection",
           "format": "collection",
@@ -2266,31 +2255,37 @@
         },
         {
           "id": "feature1_icon",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-star",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "أيقونة الميزة الأولى",
           "required": false,
           "options": [
             {
               "label": "كاميرا (Camera)",
-              "value": "camera"
+              "value": "camera",
+              "key": "camera"
             },
             {
               "label": "مراوح / هواء (Wind)",
-              "value": "wind"
+              "value": "wind",
+              "key": "wind"
             },
             {
               "label": "مروحة درون (Propeller)",
-              "value": "propeller"
+              "value": "propeller",
+              "key": "propeller"
             },
             {
               "label": "درع حماية (Shield)",
-              "value": "shield"
+              "value": "shield",
+              "key": "shield"
             },
             {
               "label": "طاقة / سرعة (Bolt)",
-              "value": "bolt"
+              "value": "bolt",
+              "key": "bolt"
             }
           ],
           "selected": [
@@ -2330,31 +2325,37 @@
         },
         {
           "id": "feature2_icon",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-star",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "أيقونة الميزة الثانية",
           "required": false,
           "options": [
             {
               "label": "كاميرا (Camera)",
-              "value": "camera"
+              "value": "camera",
+              "key": "camera"
             },
             {
               "label": "مراوح / هواء (Wind)",
-              "value": "wind"
+              "value": "wind",
+              "key": "wind"
             },
             {
               "label": "مروحة درون (Propeller)",
-              "value": "propeller"
+              "value": "propeller",
+              "key": "propeller"
             },
             {
               "label": "درع حماية (Shield)",
-              "value": "shield"
+              "value": "shield",
+              "key": "shield"
             },
             {
               "label": "طاقة / سرعة (Bolt)",
-              "value": "bolt"
+              "value": "bolt",
+              "key": "bolt"
             }
           ],
           "selected": [
@@ -3050,6 +3051,18 @@
           "maximum": 80,
           "step": 2,
           "value": 42
+        },
+        {
+          "id": "logo_height_mobile",
+          "type": "number",
+          "label": "ارتفاع الشعار في الموبايل (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 16,
+          "maximum": 60,
+          "step": 2,
+          "value": 34
         },
         {
           "id": "description",

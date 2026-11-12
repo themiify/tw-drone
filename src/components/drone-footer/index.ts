@@ -21,6 +21,7 @@ interface DroneFooterConfig {
   logo_image?: string;
   logo_text?: string;
   logo_height?: number;
+  logo_height_mobile?: number;
   logo_url?: unknown;
   invert_logo?: boolean;
 
@@ -151,6 +152,12 @@ export default class DroneFooter extends LitElement {
   private get logoHeight(): number {
     const h = Number(this.cfg.logo_height);
     return Number.isFinite(h) && h > 0 ? h : 44;
+  }
+
+  private get logoHeightMobile(): number {
+    const hm = Number(this.cfg.logo_height_mobile);
+    if (Number.isFinite(hm) && hm > 0) return hm;
+    return Math.min(this.logoHeight, 34);
   }
 
   private get logoUrl(): string {
@@ -420,12 +427,12 @@ export default class DroneFooter extends LitElement {
 
     .bottom-watermark {
       display: inline-block;
-      font-size: clamp(5.5rem, 20vw, 17.5rem);
+      font-size: clamp(6.5rem, 24vw, 24rem);
       font-weight: 900;
-      letter-spacing: 0.025em;
+      letter-spacing: 0.05em;
       color: var(--wm-color);
       opacity: var(--wm-opacity);
-      margin-bottom: -0.07em;
+      margin-bottom: -0.06em;
       font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, "Helvetica Neue", Arial, sans-serif;
       text-transform: capitalize;
@@ -456,21 +463,97 @@ export default class DroneFooter extends LitElement {
       .desc {
         max-width: 100%;
       }
+      .logo-img {
+        height: var(--logo-h-mobile, var(--logo-h, 34px));
+      }
       .bottom-watermark-wrap {
         margin-top: 2rem;
+        width: 100%;
+        overflow: hidden;
+      }
+      .bottom-watermark {
+        font-size: clamp(6.2rem, 26.5vw, 13rem);
+        letter-spacing: 0.055em;
+        line-height: 0.78;
+        margin-bottom: -0.05em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bottom-watermark-wrap {
+        margin-top: 1.5rem;
+      }
+      .bottom-watermark {
+        font-size: 27vw;
+        letter-spacing: 0.06em;
       }
     }
   `];
 
+  private handleNavClick(e: Event, rawUrl?: string) {
+    const url = (rawUrl || "").trim();
+
+    if (!url.startsWith("#")) {
+      return;
+    }
+
+    e.preventDefault();
+
+    if (url === "#" || url === "" || url === "#hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        history.pushState(null, "", window.location.pathname);
+      } catch {}
+      return;
+    }
+
+    const targetId = url.replace(/^#/, "");
+    let target =
+      document.getElementById(targetId) ||
+      document.querySelector(`drone-${targetId}`) ||
+      document.querySelector(`[component-name="drone-${targetId}"]`) ||
+      document.querySelector(`[component-name="${targetId}"]`) ||
+      document.querySelector(url);
+
+    if (!target) {
+      const allCustom = document.querySelectorAll(
+        "drone-hero, drone-features, drone-story, drone-parts, drone-faq, drone-videos, salla-custom-component"
+      );
+      for (const el of Array.from(allCustom)) {
+        if ((el as any).shadowRoot) {
+          const inner = (el as any).shadowRoot.getElementById(targetId);
+          if (inner) {
+            target = el;
+            break;
+          }
+        }
+      }
+    }
+
+    if (target) {
+      const headerOffset = 76;
+      const rect = target.getBoundingClientRect();
+      const targetTop = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+      try {
+        history.pushState(null, "", url);
+      } catch {}
+    }
+  }
+
   private renderLogo() {
     const height = `${this.logoHeight}px`;
+    const heightMobile = `${this.logoHeightMobile}px`;
     const src = this.logoImage;
 
     return html`<img
       class="logo-img"
       src=${src}
       alt=${this.logoText}
-      style="--logo-h: ${height};"
+      style="--logo-h: ${height}; --logo-h-mobile: ${heightMobile};"
     />`;
   }
 
@@ -590,7 +673,11 @@ export default class DroneFooter extends LitElement {
           <div class="columns ${c.reverse ? "reverse" : ""}">
             <!-- Child 1: Brand Column (Right side in RTL) -->
             <div class="col-brand">
-              <a class="logo-link" href=${this.logoUrl}>
+              <a
+                class="logo-link"
+                href=${this.logoUrl}
+                @click=${(e: Event) => this.handleNavClick(e, this.logoUrl)}
+              >
                 ${this.renderLogo()}
               </a>
 
@@ -604,7 +691,11 @@ export default class DroneFooter extends LitElement {
             <div class="col-links">
               ${links.map(
                 (l) => html`
-                  <a class="link-row" href=${l.url || "#"}>
+                  <a
+                    class="link-row"
+                    href=${l.url || "#"}
+                    @click=${(e: Event) => this.handleNavClick(e, l.url)}
+                  >
                     <span class="link-label">${l.label || ""}</span>
                     <span class="link-arrow">
                       <!-- Up-Left arrow ↖ -->
