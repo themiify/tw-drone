@@ -11,7 +11,8 @@ interface FeatureItem {
   id?: string;
   title: string;
   desc: string;
-  icon_type?: string;
+  icon_type?: unknown;
+  icon_image?: string;
 }
 
 interface DroneFeaturesConfig {
@@ -86,10 +87,13 @@ const DEFAULT_FEATURES: FeatureItem[] = [
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
     const first: any = v[0];
-    return String(first?.value ?? first ?? "");
+    return String(first?.value ?? first?.key ?? first ?? "").trim();
   }
-  if (v && typeof v === "object") return String((v as any).value ?? "");
-  return v == null ? "" : String(v);
+  if (v && typeof v === "object") {
+    const obj = v as any;
+    return String(obj.value ?? obj.key ?? "").trim();
+  }
+  return v == null ? "" : String(v).trim();
 }
 
 function parseJsonSafe(val: unknown): any {
@@ -226,7 +230,7 @@ export default class DroneFeatures extends LitElement {
         z-index: 2;
       }
 
-      /* =================== SATELLITE FEATURES STAGE =================== */
+      /* =================== SATELLITE FEATURES STAGE (DESKTOP) =================== */
       .features-stage {
         position: relative;
         width: 100%;
@@ -240,7 +244,7 @@ export default class DroneFeatures extends LitElement {
 
       .drone-center {
         position: relative;
-        z-index: 3;
+        z-index: 2;
         width: 100%;
         max-width: 520px;
         display: flex;
@@ -257,9 +261,18 @@ export default class DroneFeatures extends LitElement {
         filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.12));
       }
 
+      /* Container for radial items on desktop / grid on mobile */
+      .features-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+      }
+
       /* =================== FEATURE CARD =================== */
       .feature-item {
         position: absolute;
+        pointer-events: auto;
         z-index: 4;
         display: flex;
         flex-direction: column;
@@ -290,6 +303,13 @@ export default class DroneFeatures extends LitElement {
       .feature-icon svg {
         width: 100%;
         height: 100%;
+        display: block;
+      }
+
+      .feature-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         display: block;
       }
 
@@ -379,7 +399,7 @@ export default class DroneFeatures extends LitElement {
         z-index: 5;
       }
 
-      /* =================== RESPONSIVE (MOBILE & TABLET) =================== */
+      /* =================== RESPONSIVE (TABLET) =================== */
       @media (max-width: 990px) {
         .bg-layer {
           background-size: 90% auto;
@@ -392,15 +412,24 @@ export default class DroneFeatures extends LitElement {
           margin: 2rem auto;
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 2rem;
         }
 
         .drone-center {
-          max-width: 380px;
+          max-width: 360px;
           margin: 0 auto;
         }
 
-        /* Convert absolute cards into an organized 2-column grid */
+        .features-grid {
+          position: static;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem 1.25rem;
+          width: 100%;
+          pointer-events: auto;
+        }
+
         .feature-item,
         .pos-0,
         .pos-1,
@@ -411,32 +440,63 @@ export default class DroneFeatures extends LitElement {
           position: static;
           max-width: 100%;
           transform: none;
+          text-align: right !important;
         }
 
-        .mobile-features-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.8rem 1.5rem;
-          width: 100%;
-        }
-
-        .mobile-features-grid .feature-header {
+        .feature-header {
           flex-direction: row !important;
+          gap: 0.65rem;
+          margin-bottom: 0.35rem;
+        }
+
+        .feature-title {
+          font-size: 1.05rem;
+          white-space: normal;
+        }
+
+        .feature-desc {
+          font-size: 0.88rem;
+          line-height: 1.6;
         }
       }
 
+      /* =================== RESPONSIVE (MOBILE PHONES) =================== */
       @media (max-width: 640px) {
         .features-section {
-          padding: 3rem 1rem 3.5rem;
+          padding: 2.75rem 1rem 3.5rem;
         }
 
         .drone-center {
-          max-width: 300px;
+          max-width: 260px;
         }
 
-        .mobile-features-grid {
+        /* 1 column layout on mobile phones: clean, readable, spacious */
+        .features-grid {
           grid-template-columns: 1fr;
-          gap: 1.5rem;
+          gap: 1.15rem;
+        }
+
+        .feature-item {
+          padding: 0.85rem 1rem;
+          background: rgba(0, 0, 0, 0.02);
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          border-radius: 8px;
+          text-align: right;
+        }
+
+        .feature-header {
+          flex-direction: row !important;
+          gap: 0.75rem;
+        }
+
+        .feature-title {
+          font-size: 1.05rem;
+        }
+
+        .feature-desc {
+          font-size: 0.88rem;
+          line-height: 1.6;
+          color: var(--sec-desc);
         }
 
         .cta-wrapper {
@@ -446,9 +506,24 @@ export default class DroneFeatures extends LitElement {
     `,
   ];
 
-  private renderIcon(type?: string) {
+  private renderIcon(typeRaw?: unknown, customImg?: string) {
+    if (customImg && typeof customImg === "string" && customImg.trim()) {
+      return html`
+        <img
+          src=${customImg.trim()}
+          alt="icon"
+          loading="lazy"
+        />
+      `;
+    }
+
+    const type = pick(typeRaw).toLowerCase();
+
     switch (type) {
       case "propeller":
+      case "propellers":
+      case "wind":
+      case "rotor":
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -469,6 +544,7 @@ export default class DroneFeatures extends LitElement {
           </svg>
         `;
       case "aerial":
+      case "drone":
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -479,6 +555,7 @@ export default class DroneFeatures extends LitElement {
           </svg>
         `;
       case "guard":
+      case "shield":
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -494,6 +571,7 @@ export default class DroneFeatures extends LitElement {
           </svg>
         `;
       case "record":
+      case "video":
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -597,7 +675,7 @@ export default class DroneFeatures extends LitElement {
             "var(--sec-text, #0d0d0d)"
           )}
 
-          <!-- Satellite Features Stage for Desktop (with radial positions) -->
+          <!-- Satellite Features Stage for Desktop & Mobile -->
           <div class="features-stage">
             <div class="drone-center">
               <img
@@ -608,20 +686,22 @@ export default class DroneFeatures extends LitElement {
               />
             </div>
 
-            <!-- Absolute items on desktop / stacked items in mobile -->
-            ${features.map(
-              (f, i) => html`
-                <div class="feature-item pos-${i}">
-                  <div class="feature-header">
-                    <span class="feature-icon">
-                      ${this.renderIcon(f.icon_type)}
-                    </span>
-                    <h4 class="feature-title">${f.title}</h4>
+            <!-- Absolute items on desktop / clean grid on mobile -->
+            <div class="features-grid">
+              ${features.map(
+                (f, i) => html`
+                  <div class="feature-item pos-${i}">
+                    <div class="feature-header">
+                      <span class="feature-icon">
+                        ${this.renderIcon(f.icon_type, (f as any).icon_image)}
+                      </span>
+                      <h4 class="feature-title">${f.title}</h4>
+                    </div>
+                    <p class="feature-desc">${f.desc}</p>
                   </div>
-                  <p class="feature-desc">${f.desc}</p>
-                </div>
-              `
-            )}
+                `
+              )}
+            </div>
           </div>
 
           <!-- CTA Button -->
@@ -631,4 +711,3 @@ export default class DroneFeatures extends LitElement {
     `;
   }
 }
-

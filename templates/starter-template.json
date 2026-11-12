@@ -301,37 +301,59 @@
             },
             {
               "id": "icon_type",
-              "type": "string",
+              "type": "items",
+              "source": "Manual",
               "icon": "sicon-star",
               "required": false,
-              "format": "select",
+              "format": "dropdown-list",
               "label": "نوع الأيقونة",
               "options": [
                 {
-                  "label": "مراوح متعددة",
+                  "label": "مراوح متعددة (Propeller)",
+                  "value": "propeller",
+                  "key": "propeller"
+                },
+                {
+                  "label": "كاميرا مدمجة (Camera)",
+                  "value": "camera",
+                  "key": "camera"
+                },
+                {
+                  "label": "تصوير جوي (Aerial)",
+                  "value": "aerial",
+                  "key": "aerial"
+                },
+                {
+                  "label": "هيكل واقي (Guard)",
+                  "value": "guard",
+                  "key": "guard"
+                },
+                {
+                  "label": "توثيق وتسجيل (Record)",
+                  "value": "record",
+                  "key": "record"
+                },
+                {
+                  "label": "منظور واسع (Wide)",
+                  "value": "wide",
+                  "key": "wide"
+                }
+              ],
+              "selected": [
+                {
+                  "label": "مراوح متعددة (Propeller)",
+                  "key": "propeller",
                   "value": "propeller"
-                },
-                {
-                  "label": "كاميرا مدمجة",
-                  "value": "camera"
-                },
-                {
-                  "label": "تصوير جوي",
-                  "value": "aerial"
-                },
-                {
-                  "label": "هيكل واقي",
-                  "value": "guard"
-                },
-                {
-                  "label": "توثيق وتسجيل",
-                  "value": "record"
-                },
-                {
-                  "label": "منظور واسع",
-                  "value": "wide"
                 }
               ]
+            },
+            {
+              "id": "icon_image",
+              "type": "string",
+              "icon": "sicon-image-landscape",
+              "format": "image",
+              "label": "أو صورة أيقونة مخصصة (SVG / PNG)",
+              "required": false
             }
           ]
         },
@@ -397,19 +419,22 @@
         },
         {
           "id": "bg_type",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-image-landscape",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "نوع الخلفية",
           "required": false,
           "options": [
             {
               "label": "صورة",
-              "value": "image"
+              "value": "image",
+              "key": "image"
             },
             {
               "label": "لون موحد",
-              "value": "color"
+              "value": "color",
+              "key": "color"
             }
           ],
           "selected": [
@@ -1872,31 +1897,37 @@
         },
         {
           "id": "feature1_icon",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-star",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "أيقونة الميزة الأولى",
           "required": false,
           "options": [
             {
               "label": "كاميرا (Camera)",
-              "value": "camera"
+              "value": "camera",
+              "key": "camera"
             },
             {
               "label": "مراوح / هواء (Wind)",
-              "value": "wind"
+              "value": "wind",
+              "key": "wind"
             },
             {
               "label": "مروحة درون (Propeller)",
-              "value": "propeller"
+              "value": "propeller",
+              "key": "propeller"
             },
             {
               "label": "درع حماية (Shield)",
-              "value": "shield"
+              "value": "shield",
+              "key": "shield"
             },
             {
               "label": "طاقة / سرعة (Bolt)",
-              "value": "bolt"
+              "value": "bolt",
+              "key": "bolt"
             }
           ],
           "selected": [
@@ -1936,31 +1967,37 @@
         },
         {
           "id": "feature2_icon",
-          "type": "string",
+          "type": "items",
+          "source": "Manual",
           "icon": "sicon-star",
-          "format": "select",
+          "format": "dropdown-list",
           "label": "أيقونة الميزة الثانية",
           "required": false,
           "options": [
             {
               "label": "كاميرا (Camera)",
-              "value": "camera"
+              "value": "camera",
+              "key": "camera"
             },
             {
               "label": "مراوح / هواء (Wind)",
-              "value": "wind"
+              "value": "wind",
+              "key": "wind"
             },
             {
               "label": "مروحة درون (Propeller)",
-              "value": "propeller"
+              "value": "propeller",
+              "key": "propeller"
             },
             {
               "label": "درع حماية (Shield)",
-              "value": "shield"
+              "value": "shield",
+              "key": "shield"
             },
             {
               "label": "طاقة / سرعة (Bolt)",
-              "value": "bolt"
+              "value": "bolt",
+              "key": "bolt"
             }
           ],
           "selected": [
