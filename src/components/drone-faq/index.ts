@@ -336,8 +336,8 @@ export default class DroneFaq extends LitElement {
 
   render() {
     const c = this.cfg;
-    const heading = c.heading || "";
-    const badge = c.badge || "";
+    const heading = c.heading || "عندك سؤال؟ إحنا هنا نساعدك";
+    const badge = c.badge || "الأسئلة الشائعة";
 
     const bgType = (pick(c.bg_type) || "none") as BgType;
     const wrapBg =

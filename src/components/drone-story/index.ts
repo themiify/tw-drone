@@ -273,8 +273,8 @@ export default class DroneStory extends LitElement {
 
   render() {
     const c = this.cfg;
-    const heading = c.heading || "";
-    const badge = c.badge || "";
+    const heading = c.heading || "مش مجرد درون.. دي زاوية جديدة للعالم.";
+    const badge = c.badge || "قصة درون";
     const text = c.text || "";
     const buttonText = c.button_text || "";
     const floatImg = c.float_image || "";

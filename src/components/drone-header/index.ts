@@ -157,9 +157,9 @@ export default class DroneHeader extends LitElement {
     }
 
     :host(.sticky-header) {
-      position: sticky;
-      top: 0;
-      z-index: 99999;
+      display: block;
+      width: 100%;
+      height: 72px;
       min-height: 72px;
     }
 
@@ -177,21 +177,13 @@ export default class DroneHeader extends LitElement {
     }
 
     .header-wrap.sticky {
-      position: sticky;
-      top: 0;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .header-wrap.is-scrolled {
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
       width: 100% !important;
       z-index: 99999 !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -415,30 +407,13 @@ export default class DroneHeader extends LitElement {
   private updateStickyHost() {
     if (this.isSticky) {
       this.classList.add("sticky-header");
-      this.style.position = "sticky";
-      this.style.top = "0";
-      this.style.zIndex = "99999";
-      if (this.parentElement) {
-        const tag = this.parentElement.tagName.toLowerCase();
-        if (tag.includes("custom-component") || tag.includes("salla") || tag.includes("section")) {
-          this.parentElement.style.position = "sticky";
-          this.parentElement.style.top = "0";
-          this.parentElement.style.zIndex = "99999";
-        }
-      }
+      this.style.height = "72px";
+      this.style.minHeight = "72px";
+      this.style.display = "block";
     } else {
       this.classList.remove("sticky-header");
-      this.style.position = "relative";
-      this.style.top = "";
-      this.style.zIndex = "9999";
-      if (this.parentElement) {
-        const tag = this.parentElement.tagName.toLowerCase();
-        if (tag.includes("custom-component") || tag.includes("salla") || tag.includes("section")) {
-          this.parentElement.style.position = "";
-          this.parentElement.style.top = "";
-          this.parentElement.style.zIndex = "";
-        }
-      }
+      this.style.height = "";
+      this.style.minHeight = "";
     }
   }
 
@@ -668,7 +643,7 @@ export default class DroneHeader extends LitElement {
 
     return html`
       <header
-        class="header-wrap ${this.isSticky ? "sticky" : ""} ${this.isSticky && this.isScrolled ? "is-scrolled" : ""} ${c.border_bottom ? "bordered" : ""}"
+        class="header-wrap ${this.isSticky ? "sticky" : ""} ${c.border_bottom ? "bordered" : ""}"
         style="${customVars}"
       >
         <div class="container">

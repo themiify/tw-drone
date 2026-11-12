@@ -2334,7 +2334,7 @@
           "id": "title",
           "type": "string",
           "icon": "sicon-tag",
-          "label": "نص الشارة الفرعية",
+          "label": "شارة السكشن (فيديوهات للدرون)",
           "format": "text",
           "value": "فيديوهات للدرون",
           "required": false
