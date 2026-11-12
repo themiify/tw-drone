@@ -1136,7 +1136,7 @@
           "format": "image",
           "label": "صورة الدرون المركزية",
           "required": false,
-          "value": "/images/drone-features-main.png"
+          "value": "https://cdn.files.salla.network/other/1708236750/0173b226-0ef8-4e28-97ef-507140dd482e-standard.png"
         },
         {
           "id": "features",
@@ -1150,32 +1150,32 @@
             {
               "title": "تصميم متعدد المراوح",
               "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/ffc0d4ff-bd13-4e2d-9a78-66298fa2c9f6-standard.png"
             },
             {
               "title": "كاميرا مدمجة",
               "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/c3187843-c9cc-4e5c-a317-a60615585fe4-standard.png"
             },
             {
               "title": "تصوير جوي",
               "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/2cf366d0-d5f7-4c6a-a393-f48911933d24-standard.png"
             },
             {
               "title": "هيكل يحيط بالمراوح",
               "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/48843d62-efef-4f62-bede-6d785a3b7cab-standard.png"
             },
             {
               "title": "وثّق مغامرتك",
               "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/ba57d39b-ae9a-44c0-9afc-a11d16de5fc4-standard.png"
             },
             {
               "title": "منظور أوسع",
               "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
-              "icon_image": ""
+              "icon_image": "https://cdn.files.salla.network/other/1708236750/2647cab8-30fa-43ea-a5e3-e3617c9060e2-standard.png"
             }
           ],
           "fields": [
@@ -1535,7 +1535,7 @@
           "format": "image",
           "label": "صورة الدرون العلوية",
           "required": false,
-          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+          "value": "https://cdn.files.salla.network/other/1708236750/a21959ca-382e-46b7-bacc-1d8f05770aa4-standard.png"
         },
         {
           "id": "float_video",
@@ -1582,7 +1582,7 @@
           "format": "image",
           "label": "الصورة الرئيسية",
           "required": false,
-          "value": ""
+          "value": "https://cdn.files.salla.network/other/1708236750/139bc0e8-d310-4941-b76c-c7273bdd985b-standard.jpeg"
         },
         {
           "id": "media_video",
@@ -1938,7 +1938,7 @@
           "format": "image",
           "label": "الصورة الرئيسية",
           "required": false,
-          "value": ""
+          "value": "https://cdn.files.salla.network/other/1708236750/adb52835-3b95-4cca-bc27-6cd0a6738142-standard.jpeg"
         },
         {
           "id": "media_video",

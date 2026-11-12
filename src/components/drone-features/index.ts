@@ -194,52 +194,58 @@ export default class DroneFeatures extends LitElement {
       }
 
       /* =================== SATELLITE FEATURES STAGE (DESKTOP) =================== */
+      /* CSS Grid Layout: Eliminates absolute positioning completely so text never overlaps the image */
       .features-stage {
         position: relative;
         width: 100%;
-        max-width: 1120px;
+        max-width: 1200px;
         margin: 3.5rem auto 2.5rem;
         min-height: 520px;
-        display: flex;
+        display: grid;
+        grid-template-columns: minmax(220px, 280px) minmax(280px, 1fr) minmax(220px, 280px);
+        grid-template-rows: auto minmax(280px, 1fr) auto;
         align-items: center;
-        justify-content: center;
+        gap: 1.5rem 2.5rem;
       }
 
       .drone-center {
+        grid-column: 2;
+        grid-row: 2;
         position: relative;
         z-index: 2;
         width: 100%;
-        max-width: 520px;
+        max-width: 480px;
+        margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
         user-select: none;
+        justify-self: center;
+        align-self: center;
       }
 
       .drone-img {
         width: 100%;
+        max-height: 380px;
         height: auto;
         display: block;
         object-fit: contain;
         filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.12));
       }
 
-      /* Container for radial items on desktop / 2-col grid on mobile */
+      /* Container for radial items on desktop: display contents lets items sit directly in 3x3 grid */
       .features-grid {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 3;
+        display: contents;
       }
 
       /* =================== FEATURE CARD =================== */
       .feature-item {
-        position: absolute;
-        pointer-events: auto;
+        position: relative;
         z-index: 4;
         display: flex;
         flex-direction: column;
-        max-width: 240px;
+        width: 100%;
+        max-width: 280px;
         transition: transform 0.25s ease;
       }
 
@@ -251,6 +257,7 @@ export default class DroneFeatures extends LitElement {
         display: inline-flex;
         align-items: center;
         gap: 0.65rem;
+        justify-content: flex-start;
         margin-bottom: 0.35rem;
       }
 
@@ -261,12 +268,11 @@ export default class DroneFeatures extends LitElement {
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .feature-icon svg {
-        width: 100%;
-        height: 100%;
-        display: block;
+        background: var(--icon-bg, #0d0d0d);
+        border-radius: 50%;
+        padding: 6px;
+        box-sizing: border-box;
+        overflow: hidden;
       }
 
       .feature-icon img {
@@ -282,6 +288,7 @@ export default class DroneFeatures extends LitElement {
         color: var(--sec-text);
         margin: 0;
         white-space: nowrap;
+        text-align: right;
       }
 
       .feature-desc {
@@ -291,183 +298,189 @@ export default class DroneFeatures extends LitElement {
         margin: 0;
       }
 
-      /* =================== DESKTOP RADIAL POSITIONS =================== */
+      /* =================== DESKTOP GRID POSITIONS (NO ABSOLUTE OVERLAP) =================== */
       /* --- Default / 6 Items Layout --- */
       .features-grid.count-6 .pos-0,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-0 {
-        top: 2%;
-        right: 42%;
-        text-align: right;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        align-self: end;
+        text-align: center;
+        align-items: center;
       }
       .features-grid.count-6 .pos-0 .feature-header,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-0 .feature-header {
-        flex-direction: row;
+        justify-content: center;
       }
 
       .features-grid.count-6 .pos-1,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-1 {
-        top: 12%;
-        right: 4%;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-6 .pos-1 .feature-header,
-      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-1 .feature-header {
-        flex-direction: row;
+        margin-top: 1.5rem;
       }
 
       .features-grid.count-6 .pos-2,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-2 {
-        top: 58%;
-        right: 5%;
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-6 .pos-2 .feature-header,
-      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-2 .feature-header {
-        flex-direction: row;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-6 .pos-3,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-3 {
-        bottom: 2%;
-        left: 45%;
-        text-align: right;
+        grid-column: 2;
+        grid-row: 3;
+        justify-self: center;
+        align-self: start;
+        text-align: center;
+        align-items: center;
       }
       .features-grid.count-6 .pos-3 .feature-header,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-3 .feature-header {
-        flex-direction: row;
+        justify-content: center;
       }
 
       .features-grid.count-6 .pos-4,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-4 {
-        top: 58%;
-        left: 5%;
+        grid-column: 3;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-6 .pos-4 .feature-header,
-      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-4 .feature-header {
-        flex-direction: row-reverse;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-6 .pos-5,
       .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-5 {
-        top: 12%;
-        left: 4%;
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-6 .pos-5 .feature-header,
-      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-5 .feature-header {
-        flex-direction: row-reverse;
+        margin-top: 1.5rem;
       }
 
       /* --- 5 Items Layout: 1 Top Center, 2 on Right, 2 on Left --- */
       .features-grid.count-5 .pos-0 {
-        top: 2%;
-        right: 42%;
-        text-align: right;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        align-self: end;
+        text-align: center;
+        align-items: center;
       }
       .features-grid.count-5 .pos-0 .feature-header {
-        flex-direction: row;
+        justify-content: center;
       }
 
       .features-grid.count-5 .pos-1 {
-        top: 20%;
-        right: 5%;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-5 .pos-1 .feature-header {
-        flex-direction: row;
+        margin-top: 1.5rem;
       }
 
       .features-grid.count-5 .pos-2 {
-        top: 60%;
-        right: 5%;
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-5 .pos-2 .feature-header {
-        flex-direction: row;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-5 .pos-3 {
-        top: 60%;
-        left: 5%;
+        grid-column: 3;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-5 .pos-3 .feature-header {
-        flex-direction: row-reverse;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-5 .pos-4 {
-        top: 20%;
-        left: 5%;
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-5 .pos-4 .feature-header {
-        flex-direction: row-reverse;
+        margin-top: 1.5rem;
       }
 
-      /* --- 4 Items Layout: 2 on Right, 2 on Left (Balanced 2x2) --- */
+      /* --- 4 Items Layout: 2 on Right, 2 on Left --- */
       .features-grid.count-4 .pos-0 {
-        top: 20%;
-        right: 6%;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-4 .pos-0 .feature-header {
-        flex-direction: row;
+        margin-top: 1.5rem;
       }
 
       .features-grid.count-4 .pos-1 {
-        top: 60%;
-        right: 6%;
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-4 .pos-1 .feature-header {
-        flex-direction: row;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-4 .pos-2 {
-        top: 60%;
-        left: 6%;
+        grid-column: 3;
+        grid-row: 2 / span 2;
+        align-self: end;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-4 .pos-2 .feature-header {
-        flex-direction: row-reverse;
+        margin-bottom: 1.5rem;
       }
 
       .features-grid.count-4 .pos-3 {
-        top: 20%;
-        left: 6%;
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        align-self: start;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-4 .pos-3 .feature-header {
-        flex-direction: row-reverse;
+        margin-top: 1.5rem;
       }
 
-      /* --- 3 Items Layout: 1 Top Center, 1 Mid Right, 1 Mid Left (Balanced Triangle) --- */
+      /* --- 3 Items Layout: 1 Top Center, 1 Right, 1 Left --- */
       .features-grid.count-3 .pos-0 {
-        top: 2%;
-        right: 42%;
-        text-align: right;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        align-self: end;
+        text-align: center;
+        align-items: center;
       }
       .features-grid.count-3 .pos-0 .feature-header {
-        flex-direction: row;
+        justify-content: center;
       }
 
       .features-grid.count-3 .pos-1 {
-        top: 48%;
-        right: 6%;
+        grid-column: 1;
+        grid-row: 2;
+        align-self: center;
+        justify-self: end;
         text-align: right;
-      }
-      .features-grid.count-3 .pos-1 .feature-header {
-        flex-direction: row;
       }
 
       .features-grid.count-3 .pos-2 {
-        top: 48%;
-        left: 6%;
+        grid-column: 3;
+        grid-row: 2;
+        align-self: center;
+        justify-self: start;
         text-align: right;
-      }
-      .features-grid.count-3 .pos-2 .feature-header {
-        flex-direction: row-reverse;
       }
 
       /* =================== CTA BUTTON CONTAINER =================== */
@@ -495,25 +508,27 @@ export default class DroneFeatures extends LitElement {
         .features-stage {
           min-height: auto;
           margin: 1.5rem auto 2rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 1.5rem !important;
         }
 
         .drone-center {
-          max-width: 320px;
-          margin: 0 auto;
+          grid-column: auto !important;
+          grid-row: auto !important;
+          max-width: 320px !important;
+          margin: 0 auto !important;
         }
 
-        /* 2-Column Grid exactly matching Image 2 */
+        /* 2-Column Grid exactly matching mobile UI */
         .features-grid {
           position: static;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem 1rem;
-          width: 100%;
-          pointer-events: auto;
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 1.5rem 1rem !important;
+          width: 100% !important;
+          pointer-events: auto !important;
         }
 
         .feature-item,
@@ -523,13 +538,16 @@ export default class DroneFeatures extends LitElement {
         .pos-3,
         .pos-4,
         .pos-5 {
-          position: static;
-          max-width: 100%;
-          transform: none;
+          grid-column: auto !important;
+          grid-row: auto !important;
+          position: static !important;
+          max-width: 100% !important;
+          transform: none !important;
           text-align: right !important;
-          background: transparent;
-          border: none;
-          padding: 0;
+          background: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
         }
 
         .feature-item:hover {
@@ -547,6 +565,7 @@ export default class DroneFeatures extends LitElement {
         .feature-icon {
           width: 30px;
           height: 30px;
+          padding: 5px;
         }
 
         .feature-title {
@@ -572,106 +591,19 @@ export default class DroneFeatures extends LitElement {
     `,
   ];
 
-  private renderIcon(customImg?: string, index: number = 0) {
+  private renderIcon(customImg?: string) {
     if (customImg && typeof customImg === "string" && customImg.trim()) {
       return html`
-        <img
-          src=${customImg.trim()}
-          alt="icon"
-          loading="lazy"
-        />
+        <span class="feature-icon">
+          <img
+            src=${customImg.trim()}
+            alt=""
+            loading="lazy"
+          />
+        </span>
       `;
     }
-
-    const idx = index % 6;
-
-    switch (idx) {
-      case 0: // propeller
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <path
-              d="M16 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-7c-1.5 2-2 4.5-.5 6 1.5 1.5 4 1 6-.5 2-1.5 2.5-4 1-5.5s-4.5-1.5-6.5 0zm-5.5 13.5c-1.5-2-4-2.5-5.5-1s-1.5 4.5 0 6.5 4.5 2 6 .5 1-4-.5-6zm12 2c-.5 2.5 0 5 1.5 6s4 0 5-2-.5-4.5-2-5.5-4-.5-4.5 1.5z"
-              fill="#FFFFFF"
-            />
-          </svg>
-        `;
-      case 1: // camera
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <path
-              d="M12 11h2l1-1.5h2l1 1.5h2c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H12c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2zm4 2.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
-              fill="#FFFFFF"
-            />
-          </svg>
-        `;
-      case 2: // aerial
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <path
-              d="M16 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-4.24-2.24a6 6 0 0 1 8.48 0l1.42-1.42a8 8 0 0 0-11.32 0l1.42 1.42zm-2.83-2.83a10 10 0 0 1 14.14 0l1.42-1.42a12 12 0 0 0-16.98 0l1.42 1.42z"
-              fill="#FFFFFF"
-            />
-          </svg>
-        `;
-      case 3: // guard
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <circle
-              cx="16"
-              cy="16"
-              r="6"
-              stroke="#FFFFFF"
-              stroke-width="2.5"
-              fill="none"
-            />
-            <circle cx="16" cy="16" r="2" fill="#FFFFFF" />
-          </svg>
-        `;
-      case 4: // record
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <rect
-              x="10"
-              y="11"
-              width="12"
-              height="10"
-              rx="2"
-              stroke="#FFFFFF"
-              stroke-width="1.8"
-              fill="none"
-            />
-            <path d="M15 14l3 2-3 2v-4z" fill="#FFFFFF" />
-            <circle cx="12" cy="13" r="0.8" fill="#FFFFFF" />
-            <circle cx="20" cy="13" r="0.8" fill="#FFFFFF" />
-          </svg>
-        `;
-      case 5: // wide
-      default:
-        return html`
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
-            <circle
-              cx="16"
-              cy="16"
-              r="6.5"
-              stroke="#FFFFFF"
-              stroke-width="1.8"
-              fill="none"
-            />
-            <path
-              d="M16 9.5L18.5 14M22.5 16L18 18.5M16 22.5L13.5 18M9.5 16L14 13.5"
-              stroke="#FFFFFF"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-        `;
-    }
+    return nothing;
   }
 
   private renderButton() {
@@ -700,6 +632,8 @@ export default class DroneFeatures extends LitElement {
     const bgImage = this.bgImage;
     const overlay = Number(c.bg_overlay || 0) / 100;
 
+    const iconBg = c.icon_bg || c.button_bg || "#0d0d0d";
+
     const customVars = [
       `--sec-bg:${bg}`,
       `--sec-text:${text}`,
@@ -707,6 +641,7 @@ export default class DroneFeatures extends LitElement {
       `--sec-line:${line}`,
       `--btn-bg:${btnBg}`,
       `--btn-text:${btnText}`,
+      `--icon-bg:${iconBg}`,
     ].join(";");
 
     const features = this.featuresList;
@@ -754,9 +689,7 @@ export default class DroneFeatures extends LitElement {
                 (f, i) => html`
                   <div class="feature-item pos-${i}">
                     <div class="feature-header">
-                      <span class="feature-icon">
-                        ${this.renderIcon(f.icon_image, i)}
-                      </span>
+                      ${this.renderIcon(f.icon_image)}
                       <h4 class="feature-title">${f.title || ""}</h4>
                     </div>
                     <p class="feature-desc">${f.desc || ""}</p>
