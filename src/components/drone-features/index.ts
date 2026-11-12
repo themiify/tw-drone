@@ -87,11 +87,11 @@ export default class DroneFeatures extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title || "مميزات الدرون";
+    return this.cfg.title || "";
   }
 
   private get headingText(): string {
-    return this.cfg.heading || "استكشف العالم من زوايا جديدة مع تصميم متقدم";
+    return this.cfg.heading || "";
   }
 
   private get bgType(): string {

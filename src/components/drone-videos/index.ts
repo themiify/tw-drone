@@ -96,11 +96,11 @@ export default class DroneVideos extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title || "فيديوهات للدرون";
+    return this.cfg.title || "";
   }
 
   private get headingText(): string {
-    return this.cfg.heading || "بنقرّبك من السماء.. وبنفتحلك آفاق جديدة";
+    return this.cfg.heading || "";
   }
 
   private get globalVideoAutoplay(): boolean {
