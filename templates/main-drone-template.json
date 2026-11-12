@@ -1,5 +1,5 @@
 {
-  "id": "9af106ef-6bc9-4ae4-8bbd-c0a635b87045",
+  "id": "5ff36d96-d2a5-4406-847a-98e9eed51f4b",
   "components": [
     {
       "title": "ترويسة درون",
@@ -130,7 +130,8 @@
           "label": "إظهار زر الطلب (CTA)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "button_text",
@@ -150,9 +151,8 @@
           "source": "custom",
           "selected": [
             {
-              "label": "Custom",
-              "key": "custom",
-              "value": "#"
+              "value": 1361945446,
+              "label": "كرسي خشيي حسب الطلب 99"
             }
           ],
           "sources": [
@@ -190,7 +190,8 @@
           "label": "تثبيت الترويسة في الأعلى عند التمرير (Sticky)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "bg_color",
@@ -249,7 +250,8 @@
           "label": "إظهار خط سفلي فاصل",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
         },
         {
           "id": "border_color",
@@ -365,7 +367,6 @@
           "selected": [
             {
               "label": "كاميرا (Camera)",
-              "key": "camera",
               "value": "camera"
             }
           ]
@@ -435,7 +436,6 @@
           "selected": [
             {
               "label": "مراوح / هواء (Wind)",
-              "key": "wind",
               "value": "wind"
             }
           ]
@@ -456,7 +456,8 @@
           "label": "إظهار خطوط التوصيل بالدرون",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": true
         },
         {
           "id": "show_price_box",
@@ -465,7 +466,8 @@
           "label": "إظهار صندوق السعر",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": true
         },
         {
           "id": "price_label",
@@ -492,7 +494,8 @@
           "label": "إظهار رمز الريال السعودي",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "price_note",
@@ -510,7 +513,8 @@
           "label": "إظهار زر الطلب (CTA)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "button_text",
@@ -531,9 +535,8 @@
           "source": "custom",
           "selected": [
             {
-              "label": "Custom",
-              "key": "custom",
-              "value": "#"
+              "value": 1416906154,
+              "label": "تي شيرت كلاسيكي للرجال"
             }
           ],
           "sources": [
@@ -792,656 +795,6 @@
       ]
     },
     {
-      "title": "مميزات الدرون",
-      "icon": "sicon-star",
-      "name": "drone-features",
-      "key": "c4e1a8b9-5f2d-4c3e-8b1a-9f0e1d2c3b4a",
-      "image": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp",
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "icon": "sicon-tag",
-          "label": "نص الشارة الفرعية",
-          "format": "text",
-          "value": "مميزات الدرون",
-          "required": false
-        },
-        {
-          "id": "heading",
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "العنوان الرئيسي",
-          "format": "text",
-          "value": "استكشف العالم من زوايا جديدة مع تصميم متقدم",
-          "required": true
-        },
-        {
-          "id": "drone_image",
-          "type": "string",
-          "icon": "sicon-image-landscape",
-          "format": "image",
-          "label": "صورة الدرون المركزية",
-          "required": false,
-          "value": ""
-        },
-        {
-          "id": "features",
-          "type": "collection",
-          "format": "collection",
-          "required": true,
-          "minLength": 3,
-          "maxLength": 6,
-          "item_label": "ميزة",
-          "value": [
-            {
-              "id": "propellers",
-              "title": "تصميم متعدد المراوح",
-              "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
-              "icon_image": ""
-            },
-            {
-              "id": "camera",
-              "title": "كاميرا مدمجة",
-              "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
-              "icon_image": ""
-            },
-            {
-              "id": "aerial",
-              "title": "تصوير جوي",
-              "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
-              "icon_image": ""
-            },
-            {
-              "id": "guard",
-              "title": "هيكل يحيط بالمراوح",
-              "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
-              "icon_image": ""
-            },
-            {
-              "id": "record",
-              "title": "وثّق مغامرتك",
-              "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
-              "icon_image": ""
-            },
-            {
-              "id": "wide",
-              "title": "منظور أوسع",
-              "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
-              "icon_image": ""
-            }
-          ],
-          "fields": [
-            {
-              "id": "title",
-              "type": "string",
-              "icon": "sicon-format-text-alt",
-              "required": true,
-              "format": "text",
-              "label": "عنوان الميزة",
-              "placeholder": "عنوان الميزة"
-            },
-            {
-              "id": "desc",
-              "type": "string",
-              "icon": "sicon-paragraph",
-              "required": true,
-              "format": "textarea",
-              "label": "وصف الميزة",
-              "placeholder": "شرح موجز للميزة"
-            },
-            {
-              "id": "icon_image",
-              "type": "string",
-              "icon": "sicon-image-landscape",
-              "format": "image",
-              "label": "صورة الأيقونة",
-              "required": false
-            }
-          ]
-        },
-        {
-          "id": "show_button",
-          "icon": "sicon-eye",
-          "type": "boolean",
-          "label": "إظهار زر الطلب (CTA)",
-          "format": "switch",
-          "required": false,
-          "value": true
-        },
-        {
-          "id": "button_text",
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "نص الزر",
-          "format": "text",
-          "value": "اطلب درونك الآن"
-        },
-        {
-          "id": "source_url",
-          "icon": "sicon-shopping-bag",
-          "type": "items",
-          "label": "رابط الزر",
-          "format": "variable-list",
-          "required": true,
-          "source": "custom",
-          "selected": [
-            {
-              "label": "Custom",
-              "key": "custom",
-              "value": "#"
-            }
-          ],
-          "sources": [
-            {
-              "label": "Product",
-              "key": "products",
-              "value": "products"
-            },
-            {
-              "label": "Category",
-              "key": "categories",
-              "value": "categories"
-            },
-            {
-              "label": "Brand",
-              "key": "brands",
-              "value": "brands"
-            },
-            {
-              "label": "Page",
-              "key": "pages",
-              "value": "pages"
-            },
-            {
-              "label": "Custom",
-              "key": "custom",
-              "value": "custom"
-            }
-          ]
-        },
-        {
-          "id": "bg_type",
-          "type": "items",
-          "source": "Manual",
-          "icon": "sicon-image-landscape",
-          "format": "dropdown-list",
-          "label": "نوع الخلفية",
-          "required": false,
-          "options": [
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            },
-            {
-              "label": "لون موحد",
-              "value": "color",
-              "key": "color"
-            }
-          ],
-          "selected": [
-            {
-              "label": "صورة",
-              "key": "image",
-              "value": "image"
-            }
-          ]
-        },
-        {
-          "id": "bg_image",
-          "type": "string",
-          "icon": "sicon-image-landscape",
-          "format": "image",
-          "label": "صورة خلفية القسم (Blueprint Wireframe)",
-          "required": false,
-          "value": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp"
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية القسم",
-          "required": false,
-          "value": "#ffffff"
-        },
-        {
-          "id": "text_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون العناوين",
-          "required": false,
-          "value": "#111111"
-        },
-        {
-          "id": "desc_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نصوص الشرح",
-          "required": false,
-          "value": "#666666"
-        },
-        {
-          "id": "line_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خط الفاصل",
-          "required": false,
-          "value": "#e0e0e0"
-        },
-        {
-          "id": "button_bg",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية الزر",
-          "required": false,
-          "value": "#0d0d0d"
-        },
-        {
-          "id": "button_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نص الزر",
-          "required": false,
-          "value": "#ffffff"
-        }
-      ]
-    },
-    {
-      "title": "قصة درون",
-      "icon": "sicon-album-photo",
-      "name": "drone-story",
-      "key": "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
-      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
-      "props": {
-        "min-height": "400px"
-      },
-      "fields": [
-        {
-          "id": "heading",
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "العنوان الرئيسي",
-          "format": "text",
-          "value": "مش مجرد درون.. دي زاوية جديدة للعالم.",
-          "multilanguage": true
-        },
-        {
-          "id": "badge",
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "العنوان الجانبي",
-          "format": "text",
-          "value": "قصة درون",
-          "multilanguage": true
-        },
-        {
-          "id": "text",
-          "type": "string",
-          "icon": "sicon-paragraph",
-          "label": "النص (استخدم **نص** للتغليظ)",
-          "format": "textarea",
-          "rows": 6,
-          "multilanguage": true,
-          "value": "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة."
-        },
-        {
-          "id": "button_text",
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "نص الزر",
-          "format": "text",
-          "value": "اطلب درونك الآن",
-          "multilanguage": true
-        },
-        {
-          "id": "source_url",
-          "icon": "sicon-shopping-bag",
-          "type": "items",
-          "label": "رابط الزر",
-          "format": "variable-list",
-          "required": true,
-          "source": "custom",
-          "selected": [
-            {
-              "label": "Article",
-              "key": "blog_articles",
-              "value": "blog_articles"
-            }
-          ],
-          "sources": [
-            {
-              "label": "Product",
-              "key": "products",
-              "value": "products"
-            },
-            {
-              "label": "Category",
-              "key": "categories",
-              "value": "categories"
-            },
-            {
-              "label": "Brand",
-              "key": "brands",
-              "value": "brands"
-            },
-            {
-              "label": "Page",
-              "key": "pages",
-              "value": "pages"
-            },
-            {
-              "label": "Article",
-              "key": "blog_articles",
-              "value": "blog_articles"
-            },
-            {
-              "label": "Blog Category",
-              "key": "blog_categories",
-              "value": "blog_categories"
-            },
-            {
-              "label": "Offer",
-              "key": "offers_link",
-              "value": "offers_link"
-            },
-            {
-              "label": "Brand Link",
-              "key": "brands_link",
-              "value": "brands_link"
-            },
-            {
-              "label": "Blog Link",
-              "key": "blog_link",
-              "value": "blog_link"
-            },
-            {
-              "label": "Custom",
-              "key": "custom",
-              "value": "custom"
-            }
-          ]
-        },
-        {
-          "id": "reverse",
-          "icon": "sicon-sort",
-          "type": "boolean",
-          "label": "عكس المحتوى (الصورة يمين والنص شمال)",
-          "format": "switch",
-          "required": false,
-          "value": false
-        },
-        {
-          "id": "float_type",
-          "icon": "sicon-list",
-          "type": "items",
-          "source": "Manual",
-          "label": "نوع الميديا العلوية (الدرون)",
-          "format": "dropdown-list",
-          "required": false,
-          "options": [
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            },
-            {
-              "label": "فيديو",
-              "value": "video",
-              "key": "video"
-            }
-          ],
-          "selected": [
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            }
-          ]
-        },
-        {
-          "id": "float_image",
-          "type": "string",
-          "icon": "sicon-image-landscape",
-          "format": "image",
-          "label": "صورة الدرون العلوية",
-          "required": false,
-          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
-        },
-        {
-          "id": "float_video",
-          "type": "string",
-          "icon": "sicon-link",
-          "format": "url",
-          "label": "فيديو الدرون العلوي",
-          "placeholder": "https://.../video.mp4",
-          "required": false,
-          "description": "رابط فيديو مباشر (mp4 / webm)",
-          "value": ""
-        },
-        {
-          "id": "media_type",
-          "icon": "sicon-list",
-          "type": "items",
-          "source": "Manual",
-          "label": "نوع الميديا الرئيسية (الإطار)",
-          "format": "dropdown-list",
-          "required": false,
-          "options": [
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            },
-            {
-              "label": "فيديو",
-              "value": "video",
-              "key": "video"
-            }
-          ],
-          "selected": [
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            }
-          ]
-        },
-        {
-          "id": "media_image",
-          "type": "string",
-          "icon": "sicon-image-landscape",
-          "format": "image",
-          "label": "الصورة الرئيسية",
-          "required": false,
-          "value": ""
-        },
-        {
-          "id": "media_video",
-          "type": "string",
-          "icon": "sicon-link",
-          "format": "url",
-          "label": "الفيديو الرئيسي",
-          "placeholder": "https://.../video.mp4",
-          "required": false,
-          "description": "رابط فيديو مباشر (mp4 / webm)",
-          "value": ""
-        },
-        {
-          "id": "bg_type",
-          "icon": "sicon-list",
-          "type": "items",
-          "source": "Manual",
-          "label": "نوع الخلفية",
-          "format": "dropdown-list",
-          "required": false,
-          "options": [
-            {
-              "label": "بدون",
-              "value": "none",
-              "key": "none"
-            },
-            {
-              "label": "لون",
-              "value": "color",
-              "key": "color"
-            },
-            {
-              "label": "صورة",
-              "value": "image",
-              "key": "image"
-            },
-            {
-              "label": "فيديو",
-              "value": "video",
-              "key": "video"
-            }
-          ],
-          "selected": [
-            {
-              "label": "لون",
-              "value": "color",
-              "key": "color"
-            }
-          ]
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخلفية",
-          "required": false,
-          "value": "#ffffff"
-        },
-        {
-          "id": "bg_image",
-          "type": "string",
-          "icon": "sicon-image-landscape",
-          "format": "image",
-          "label": "صورة الخلفية",
-          "required": false,
-          "value": ""
-        },
-        {
-          "id": "bg_video",
-          "type": "string",
-          "icon": "sicon-link",
-          "format": "url",
-          "label": "فيديو الخلفية",
-          "placeholder": "https://.../video.mp4",
-          "required": false,
-          "description": "رابط فيديو مباشر (mp4 / webm)",
-          "value": ""
-        },
-        {
-          "id": "bg_overlay",
-          "type": "number",
-          "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
-          "format": "slider",
-          "inputType": "range",
-          "required": false,
-          "minimum": 0,
-          "maximum": 100,
-          "step": 1,
-          "value": 0
-        },
-        {
-          "id": "heading_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون العنوان الرئيسي",
-          "required": false,
-          "value": "#1a1a1a"
-        },
-        {
-          "id": "badge_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون العنوان الجانبي",
-          "required": false,
-          "value": "#000000"
-        },
-        {
-          "id": "text_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون النص",
-          "required": false,
-          "value": "#4a4a4a"
-        },
-        {
-          "id": "line_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخط",
-          "required": false,
-          "value": "#bdbdbd"
-        },
-        {
-          "id": "bar_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الشريط السميك",
-          "required": false,
-          "value": "#0d0d0d"
-        },
-        {
-          "id": "frame_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون إطار الصورة",
-          "required": false,
-          "value": "#ececec"
-        },
-        {
-          "id": "button_bg",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية الزر",
-          "required": false,
-          "value": "#0d0d0d"
-        },
-        {
-          "id": "button_color",
-          "type": "string",
-          "icon": "sicon-color-palette",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نص الزر",
-          "required": false,
-          "value": "#ffffff"
-        }
-      ]
-    },
-    {
       "title": "أجزاء الدرون",
       "icon": "sicon-rocket",
       "name": "drone-parts",
@@ -1494,9 +847,8 @@
           "source": "custom",
           "selected": [
             {
-              "label": "Article",
-              "key": "blog_articles",
-              "value": "blog_articles"
+              "value": 1309167683,
+              "label": "اكسسورات"
             }
           ],
           "sources": [
@@ -1753,10 +1105,271 @@
       ]
     },
     {
-      "title": "الأسئلة الشائعة",
-      "icon": "sicon-question-mark",
-      "name": "drone-faq",
-      "key": "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
+      "title": "مميزات الدرون",
+      "icon": "sicon-star",
+      "name": "drone-features",
+      "key": "c4e1a8b9-5f2d-4c3e-8b1a-9f0e1d2c3b4a",
+      "image": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "icon": "sicon-tag",
+          "label": "نص الشارة الفرعية",
+          "format": "text",
+          "value": "مميزات الدرون",
+          "required": false
+        },
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": "استكشف العالم من زوايا جديدة مع تصميم متقدم",
+          "required": true
+        },
+        {
+          "id": "drone_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون المركزية",
+          "required": false,
+          "value": "/images/drone-features-main.png"
+        },
+        {
+          "id": "features",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 3,
+          "maxLength": 6,
+          "item_label": "ميزة",
+          "value": [
+            {
+              "title": "تصميم متعدد المراوح",
+              "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
+              "icon_image": ""
+            },
+            {
+              "title": "كاميرا مدمجة",
+              "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
+              "icon_image": ""
+            },
+            {
+              "title": "تصوير جوي",
+              "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
+              "icon_image": ""
+            },
+            {
+              "title": "هيكل يحيط بالمراوح",
+              "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
+              "icon_image": ""
+            },
+            {
+              "title": "وثّق مغامرتك",
+              "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
+              "icon_image": ""
+            },
+            {
+              "title": "منظور أوسع",
+              "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
+              "icon_image": ""
+            }
+          ],
+          "fields": [
+            {
+              "id": "title",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "label": "عنوان الميزة",
+              "placeholder": "عنوان الميزة"
+            },
+            {
+              "id": "desc",
+              "type": "string",
+              "icon": "sicon-paragraph",
+              "required": true,
+              "format": "textarea",
+              "label": "وصف الميزة",
+              "placeholder": "شرح موجز للميزة"
+            },
+            {
+              "id": "icon_image",
+              "type": "string",
+              "icon": "sicon-image-landscape",
+              "format": "image",
+              "label": "صورة الأيقونة",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": "show_button",
+          "icon": "sicon-eye",
+          "type": "boolean",
+          "label": "إظهار زر الطلب (CTA)",
+          "format": "switch",
+          "required": false,
+          "value": true,
+          "selected": false
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": "اطلب درونك الآن"
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
+          "required": true,
+          "source": "custom",
+          "selected": [
+            {
+              "value": 1416906154,
+              "label": "تي شيرت كلاسيكي للرجال"
+            }
+          ],
+          "sources": [
+            {
+              "label": "Product",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
+            }
+          ]
+        },
+        {
+          "id": "bg_type",
+          "type": "items",
+          "source": "Manual",
+          "icon": "sicon-image-landscape",
+          "format": "dropdown-list",
+          "label": "نوع الخلفية",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "لون موحد",
+              "value": "color",
+              "key": "color"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image"
+            }
+          ]
+        },
+        {
+          "id": "bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة خلفية القسم (Blueprint Wireframe)",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp"
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية القسم",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العناوين",
+          "required": false,
+          "value": "#111111"
+        },
+        {
+          "id": "desc_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نصوص الشرح",
+          "required": false,
+          "value": "#666666"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خط الفاصل",
+          "required": false,
+          "value": "#e0e0e0"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "title": "قصة درون",
+      "icon": "sicon-album-photo",
+      "name": "drone-story",
+      "key": "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
       "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
       "props": {
         "min-height": "400px"
@@ -1768,7 +1381,10 @@
           "icon": "sicon-format-text-alt",
           "label": "العنوان الرئيسي",
           "format": "text",
-          "value": "عندك سؤال؟ إحنا هنا نساعدك",
+          "value": {
+            "ar": "مش مجرد درون.. دي زاوية جديدة للعالم.",
+            "en": ""
+          },
           "multilanguage": true
         },
         {
@@ -1777,95 +1393,160 @@
           "icon": "sicon-format-text-alt",
           "label": "العنوان الجانبي",
           "format": "text",
-          "value": "الأسئلة الشائعة",
+          "value": {
+            "ar": "قصة درون",
+            "en": ""
+          },
           "multilanguage": true
         },
         {
-          "id": "items",
-          "type": "collection",
-          "format": "collection",
+          "id": "text",
+          "type": "string",
+          "icon": "sicon-paragraph",
+          "label": "النص (استخدم **نص** للتغليظ)",
+          "format": "textarea",
+          "rows": 6,
+          "multilanguage": true,
+          "value": {
+            "ar": "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة.",
+            "en": ""
+          }
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "format": "text",
+          "value": {
+            "ar": "اطلب درونك الآن",
+            "en": ""
+          },
+          "multilanguage": true
+        },
+        {
+          "id": "source_url",
+          "icon": "sicon-shopping-bag",
+          "type": "items",
+          "label": "رابط الزر",
+          "format": "variable-list",
           "required": true,
-          "minLength": 1,
-          "maxLength": 20,
-          "item_label": "الأسئلة",
-          "value": [
+          "source": "custom",
+          "selected": [
             {
-              "question": "كيف يمكنني طلب تفاصيل الخدمة؟",
-              "answer": "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة."
-            },
-            {
-              "question": "ما هي مدة الشحن والتركيب؟",
-              "answer": "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة."
-            },
-            {
-              "question": "هل يمكنني استرجاع أو استبدال المنتج؟",
-              "answer": "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية."
-            },
-            {
-              "question": "كيف يمكنني التواصل مع فريق الدعم؟",
-              "answer": "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع."
+              "value": 1416906154,
+              "label": "تي شيرت كلاسيكي للرجال"
             }
           ],
-          "fields": [
+          "sources": [
             {
-              "id": "question",
-              "type": "string",
-              "icon": "sicon-format-text-alt",
-              "required": true,
-              "format": "text",
-              "placeholder": "السؤال",
-              "maxLength": 200,
-              "multilanguage": true
+              "label": "Product",
+              "key": "products",
+              "value": "products"
             },
             {
-              "id": "answer",
-              "type": "string",
-              "icon": "sicon-paragraph",
-              "format": "textarea",
-              "placeholder": "الإجابة (استخدم **نص** للتغليظ)",
-              "maxLength": 1500,
-              "multilanguage": true
+              "label": "Category",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "Brand",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "Page",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "Article",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "Blog Category",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "Offer",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "Brand Link",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "Blog Link",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "Custom",
+              "key": "custom",
+              "value": "custom"
             }
           ]
-        },
-        {
-          "id": "single_open",
-          "icon": "sicon-sort",
-          "type": "boolean",
-          "label": "فتح سؤال واحد فقط (يقفل السابق)",
-          "format": "switch",
-          "required": false,
-          "value": true
-        },
-        {
-          "id": "first_open",
-          "icon": "sicon-sort",
-          "type": "boolean",
-          "label": "فتح أول سؤال افتراضيًا",
-          "format": "switch",
-          "required": false,
-          "value": true
-        },
-        {
-          "id": "anim_duration",
-          "type": "number",
-          "label": "سرعة الحركة (مللي ثانية)",
-          "format": "slider",
-          "inputType": "range",
-          "required": false,
-          "minimum": 100,
-          "maximum": 1000,
-          "step": 50,
-          "value": 400
         },
         {
           "id": "reverse",
           "icon": "sicon-sort",
           "type": "boolean",
-          "label": "عكس المحتوى (الصورة يمين/شمال)",
+          "label": "عكس المحتوى (الصورة يمين والنص شمال)",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "float_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الميديا العلوية (الدرون)",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image"
+            }
+          ]
+        },
+        {
+          "id": "float_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الدرون العلوية",
+          "required": false,
+          "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+        },
+        {
+          "id": "float_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "فيديو الدرون العلوي",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
         },
         {
           "id": "media_type",
@@ -1890,8 +1571,7 @@
           "selected": [
             {
               "label": "صورة",
-              "value": "image",
-              "key": "image"
+              "value": "image"
             }
           ]
         },
@@ -1948,8 +1628,363 @@
           "selected": [
             {
               "label": "لون",
+              "value": "color"
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "required": false,
+          "value": "#ffffff"
+        },
+        {
+          "id": "bg_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "bg_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "فيديو الخلفية",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_overlay",
+          "type": "number",
+          "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 0,
+          "maximum": 100,
+          "step": 1,
+          "value": 0
+        },
+        {
+          "id": "heading_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الرئيسي",
+          "required": false,
+          "value": "#1a1a1a"
+        },
+        {
+          "id": "badge_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الجانبي",
+          "required": false,
+          "value": "#000000"
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص",
+          "required": false,
+          "value": "#4a4a4a"
+        },
+        {
+          "id": "line_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخط",
+          "required": false,
+          "value": "#bdbdbd"
+        },
+        {
+          "id": "bar_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الشريط السميك",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "frame_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون إطار الصورة",
+          "required": false,
+          "value": "#ececec"
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "required": false,
+          "value": "#0d0d0d"
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "icon": "sicon-color-palette",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "required": false,
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "title": "الأسئلة الشائعة",
+      "icon": "sicon-question-mark",
+      "name": "drone-faq",
+      "key": "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+      "props": {
+        "min-height": "400px"
+      },
+      "fields": [
+        {
+          "id": "heading",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الرئيسي",
+          "format": "text",
+          "value": {
+            "ar": "عندك سؤال؟ إحنا هنا نساعدك",
+            "en": ""
+          },
+          "multilanguage": true
+        },
+        {
+          "id": "badge",
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "العنوان الجانبي",
+          "format": "text",
+          "value": {
+            "ar": "الأسئلة الشائعة",
+            "en": ""
+          },
+          "multilanguage": true
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 20,
+          "item_label": "الأسئلة",
+          "value": [
+            {
+              "question": {
+                "ar": "كيف يمكنني طلب تفاصيل الخدمة؟",
+                "en": ""
+              },
+              "answer": {
+                "ar": "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة.",
+                "en": ""
+              }
+            },
+            {
+              "question": {
+                "ar": "ما هي مدة الشحن والتركيب؟",
+                "en": ""
+              },
+              "answer": {
+                "ar": "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة.",
+                "en": ""
+              }
+            },
+            {
+              "question": {
+                "ar": "هل يمكنني استرجاع أو استبدال المنتج؟",
+                "en": ""
+              },
+              "answer": {
+                "ar": "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية.",
+                "en": ""
+              }
+            },
+            {
+              "question": {
+                "ar": "كيف يمكنني التواصل مع فريق الدعم؟",
+                "en": ""
+              },
+              "answer": {
+                "ar": "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع.",
+                "en": ""
+              }
+            }
+          ],
+          "fields": [
+            {
+              "id": "question",
+              "type": "string",
+              "icon": "sicon-format-text-alt",
+              "required": true,
+              "format": "text",
+              "placeholder": "السؤال",
+              "maxLength": 200,
+              "multilanguage": true
+            },
+            {
+              "id": "answer",
+              "type": "string",
+              "icon": "sicon-paragraph",
+              "format": "textarea",
+              "placeholder": "الإجابة (استخدم **نص** للتغليظ)",
+              "maxLength": 1500,
+              "multilanguage": true
+            }
+          ]
+        },
+        {
+          "id": "single_open",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "فتح سؤال واحد فقط (يقفل السابق)",
+          "format": "switch",
+          "required": false,
+          "value": true,
+          "selected": false
+        },
+        {
+          "id": "first_open",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "فتح أول سؤال افتراضيًا",
+          "format": "switch",
+          "required": false,
+          "value": true,
+          "selected": false
+        },
+        {
+          "id": "anim_duration",
+          "type": "number",
+          "label": "سرعة الحركة (مللي ثانية)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 100,
+          "maximum": 1000,
+          "step": 50,
+          "value": 400
+        },
+        {
+          "id": "reverse",
+          "icon": "sicon-sort",
+          "type": "boolean",
+          "label": "عكس المحتوى (الصورة يمين/شمال)",
+          "format": "switch",
+          "required": false,
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "media_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الميديا الرئيسية (الإطار)",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image"
+            }
+          ]
+        },
+        {
+          "id": "media_image",
+          "type": "string",
+          "icon": "sicon-image-landscape",
+          "format": "image",
+          "label": "الصورة الرئيسية",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "media_video",
+          "type": "string",
+          "icon": "sicon-link",
+          "format": "url",
+          "label": "الفيديو الرئيسي",
+          "placeholder": "https://.../video.mp4",
+          "required": false,
+          "description": "رابط فيديو مباشر (mp4 / webm)",
+          "value": ""
+        },
+        {
+          "id": "bg_type",
+          "icon": "sicon-list",
+          "type": "items",
+          "source": "Manual",
+          "label": "نوع الخلفية",
+          "format": "dropdown-list",
+          "required": false,
+          "options": [
+            {
+              "label": "بدون",
+              "value": "none",
+              "key": "none"
+            },
+            {
+              "label": "لون",
               "value": "color",
               "key": "color"
+            },
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "video"
+            }
+          ],
+          "selected": [
+            {
+              "label": "لون",
+              "value": "color"
             }
           ]
         },
@@ -2138,7 +2173,7 @@
           "id": "title",
           "type": "string",
           "icon": "sicon-tag",
-          "label": "شارة السكشن (فيديوهات للدرون)",
+          "label": "نص الشارة الفرعية",
           "format": "text",
           "value": "فيديوهات للدرون",
           "required": false
@@ -2159,7 +2194,8 @@
           "label": "تشغيل تلقائي لجميع الفيديوهات في مكانها (Autoplay Muted)",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
         },
         {
           "id": "videos",
@@ -2171,28 +2207,28 @@
           "item_label": "فيديو",
           "value": [
             {
-              "id": "v1",
               "title": "تحليق جبلي ساحر",
               "poster": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+              "autoplay": false
             },
             {
-              "id": "v2",
               "title": "استكشاف الطبيعة والوديان",
               "poster": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+              "autoplay": false
             },
             {
-              "id": "v3",
               "title": "ثبات وتصوير سينمائي دقيق",
               "poster": "https://images.unsplash.com/photo-1507582020474-9a35b7d455d7?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+              "autoplay": false
             },
             {
-              "id": "v4",
               "title": "تصوير احترافي وقت الغروب",
               "poster": "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+              "autoplay": false
             }
           ],
           "fields": [
@@ -2249,7 +2285,8 @@
           "label": "تقليب تلقائي للسلايدر",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
         },
         {
           "id": "autoplay_interval",
@@ -2388,8 +2425,7 @@
           "selected": [
             {
               "label": "صورة",
-              "value": "image",
-              "key": "image"
+              "value": "image"
             }
           ]
         },
@@ -2421,7 +2457,8 @@
           "label": "عكس ترتيب الأعمدة (الروابط يمين والعلامة يسار)",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
         },
         {
           "id": "invert_logo",
@@ -2430,7 +2467,8 @@
           "label": "عكس لون الشعار (أسود على خلفية فاتحة)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "logo_image",
@@ -2482,7 +2520,10 @@
           "format": "textarea",
           "rows": 4,
           "multilanguage": true,
-          "value": "اكتشف العالم من زاوية مختلفة مع درون يجمع بين التكنولوجيا والإبداع. خليك مستعد لمغامرات جديدة، والتقط لحظاتك من السماء، وحوّل كل تجربة لذكرى تستحق الاحتفاظ بيها."
+          "value": {
+            "ar": "اكتشف العالم من زاوية مختلفة مع درون يجمع بين التكنولوجيا والإبداع. خليك مستعد لمغامرات جديدة، والتقط لحظاتك من السماء، وحوّل كل تجربة لذكرى تستحق الاحتفاظ بيها.",
+            "en": ""
+          }
         },
         {
           "id": "links",
@@ -2554,7 +2595,7 @@
           "label": "رابط فيسبوك",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": ""
         },
         {
           "id": "instagram_url",
@@ -2563,7 +2604,7 @@
           "label": "رابط انستغرام",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": ""
         },
         {
           "id": "x_url",
@@ -2572,7 +2613,7 @@
           "label": "رابط منصة X (تويتر)",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": ""
         },
         {
           "id": "linkedin_url",
@@ -2581,7 +2622,7 @@
           "label": "رابط لينكد إن",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": ""
         },
         {
           "id": "show_button",
@@ -2590,7 +2631,8 @@
           "label": "إظهار زر الطلب (CTA)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": true
         },
         {
           "id": "button_text",
@@ -2610,9 +2652,8 @@
           "source": "custom",
           "selected": [
             {
-              "label": "Custom",
-              "key": "custom",
-              "value": "#"
+              "value": 1309167685,
+              "label": "ملابس نسائية"
             }
           ],
           "sources": [
@@ -2650,7 +2691,8 @@
           "label": "إظهار الكلمة المائية الكبيرة (Drone)",
           "format": "switch",
           "required": false,
-          "value": true
+          "value": true,
+          "selected": false
         },
         {
           "id": "watermark_text",
@@ -2767,7 +2809,8 @@
           "label": "إظهار شريط حقوق النشر السفلي",
           "format": "switch",
           "required": false,
-          "value": false
+          "value": false,
+          "selected": false
         },
         {
           "id": "copyright_text",

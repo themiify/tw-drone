@@ -219,7 +219,6 @@ export default class DroneHero extends LitElement {
       color: #0d0d0d;
       font-family: inherit;
       scroll-margin-top: 80px;
-    }
       box-sizing: border-box;
       direction: ltr;
     }
@@ -630,45 +629,46 @@ export default class DroneHero extends LitElement {
     }
 
     /* ============================================================ */
-    /* MOBILE LAYOUT: Exact Figma Frame 34409 (343px x 541px)       */
+    /* MOBILE LAYOUT: Frame 34409 (Fluid mobile layout)             */
     /* ============================================================ */
     @media (max-width: 768px) {
       :host {
         padding: 16px 0;
       }
 
-      /* Frame 34409: flex column, gap 4px, width 343px, height 541px */
+      /* Frame 34409: flex column, gap 4px, fluid width */
       .hero {
         aspect-ratio: auto;
+        width: 100%;
         max-width: 100%;
-        min-height: 541px;
+        min-height: auto;
         margin: 0 auto;
         display: flex;
-        padding-block:30px;
+        padding-block: 20px;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 0;
-        gap: 4px;
+        align-items: center;
+        padding-inline: 16px;
+        gap: 16px;
         overflow: visible;
       }
 
-      /* Frame 1: flex column, align-items flex-end, gap 12px, 343x289 */
+      /* Frame 1: flex column, align-items flex-end, gap 12px, fluid width */
       .frame-1 {
-      margin:auto;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         padding: 0;
         gap: 12px;
-        width: 343px;
+        width: 100%;
         max-width: 100%;
-        height: 289px;
+        height: auto;
         flex: none;
         order: 0;
         align-self: stretch;
       }
 
-      /* Frame 5: flex column, justify center, align flex-end, gap 12px, 343x147 */
+      /* Frame 5: flex column, justify center, align flex-end, gap 12px, fluid width */
       .frame-5 {
         position: static;
         display: flex;
@@ -677,53 +677,54 @@ export default class DroneHero extends LitElement {
         align-items: flex-end;
         padding: 0;
         gap: 12px;
-        width: 343px;
+        width: 100%;
         max-width: 100%;
-        height: 147px;
+        height: auto;
         flex: none;
         order: 0;
         align-self: stretch;
       }
 
-      /* شــوف العالــم من زاويــة مختلفـــة: 343x72, 32px/36px Bold */
+      /* شــوف العالــم من زاويــة مختلفـــة: fluid width, 32px/36px Bold */
       .hero-title {
-        width: 343px;
+        width: 100%;
         max-width: 100%;
-        height: 72px;
+        height: auto;
         font-weight: 700;
-        font-size: 32px;
-        line-height: 36px;
+        font-size: clamp(24px, 7vw, 32px);
+        line-height: 1.25;
         display: flex;
         align-items: center;
         text-align: right;
       }
 
-      /* اكتشف آفاق جديدة...: 343x63, 14px/21px Regular */
+      /* اكتشف آفاق جديدة...: fluid width, 14px/21px Regular */
       .hero-desc {
-        width: 343px;
+        width: 100%;
         max-width: 100%;
-        height: 63px;
+        height: auto;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
+        font-size: clamp(12px, 3.8vw, 14px);
+        line-height: 1.5;
         text-align: right;
       }
 
-      /* Frame 34392: 243x130 inside Frame 1 */
+      /* Frame 34392: Price Box inside Frame 1 */
       .frame-34392 {
         position: relative;
         left: auto;
         top: auto;
-        width: 243px;
+        width: 100%;
+        max-width: 280px;
         height: 130px;
         flex: none;
         order: 1;
       }
 
-      /* Vector 6: 243x115 @ right 0px, top 15px */
+      /* Vector 6: 100% width of price box */
       .frame-34392 .vector-6 {
         position: absolute;
-        width: 243px;
+        width: 100%;
         height: 115px;
         right: 0;
         left: auto;
@@ -731,20 +732,21 @@ export default class DroneHero extends LitElement {
         bottom: auto;
       }
 
-      /* Frame 34350: 107x30 @ left 120px, top 0px */
+      /* Frame 34350: price tag */
       .frame-34350 {
         position: absolute;
-        width: 107px;
+        width: 44%;
+        max-width: 110px;
         height: 30px;
-        left: 120px;
+        left: 50%;
         top: 0;
         filter: none;
       }
 
-      /* سعــر منافـس: 83x21, 14px/21px Regular */
+      /* سعــر منافـس: 14px/21px Regular */
       .price-tag-label {
-        width: 83px;
-        height: 21px;
+        width: 100%;
+        height: auto;
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
@@ -754,13 +756,13 @@ export default class DroneHero extends LitElement {
         text-align: right;
       }
 
-      /* Frame 34351: 211x84 @ left calc(50% - 211px/2), top calc(50% - 84px/2 + 15px) */
+      /* Frame 34351: inner price container */
       .frame-34351 {
         position: absolute;
-        width: 211px;
-        height: 84px;
-        left: calc(50% - 211px / 2);
-        top: calc(50% - 84px / 2 + 15px);
+        width: 88%;
+        height: auto;
+        left: 6%;
+        top: calc(50% - 42px + 15px);
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -768,7 +770,7 @@ export default class DroneHero extends LitElement {
         gap: 4px;
       }
 
-      /* Frame 34359: 112x22, gap 4px */
+      /* Frame 34359: Price row, gap 4px */
       .frame-34359 {
         display: flex;
         flex-direction: row;
@@ -776,259 +778,262 @@ export default class DroneHero extends LitElement {
         align-items: center;
         padding: 0;
         gap: 4px;
-        width: 112px;
-        height: 22px;
+        width: auto;
+        height: auto;
       }
 
       .riyal-icon {
         width: 22px;
         height: 22px;
+        flex-shrink: 0;
       }
 
-      /* 999.99: 86x22, Inter 700, 24px/22px */
+      /* 999.99: Inter 700, 24px/22px */
       .price-number {
-        width: 86px;
-        height: 22px;
+        width: auto;
+        height: auto;
         font-size: 24px;
-        line-height: 22px;
+        line-height: 1;
         display: flex;
         align-items: center;
         text-align: right;
       }
 
-      /* Price note: 211x58, 10px/18px Regular */
+      /* Price note: fluid width */
       .price-note {
-        width: 211px;
-        height: 58px;
+        width: 100%;
+        height: auto;
         font-weight: 400;
         font-size: 10px;
-        line-height: 18px;
+        line-height: 1.5;
         text-align: right;
       }
 
       /* ========================================================== */
-      /* Frame 34408: 343x248 (Drone + Frame 34349 + Button)        */
+      /* Frame 34408: Drone + Frame 34349 + Button                  */
       /* ========================================================== */
       .frame-34408 {
-      margin:auto;
+        margin: 0 auto;
         display: block;
         position: relative;
-        width: 343px;
+        width: 100%;
         max-width: 100%;
-        height: 248px;
+        aspect-ratio: 343 / 248;
+        min-height: 240px;
         flex: none;
         order: 1;
         align-self: stretch;
       }
 
-      /* drone_front_3q 1: 223.63x110.64 @ left 22.16px, top -14.09px */
+      /* drone_front_3q 1: scaled proportionally to container */
       .drone-img {
         position: absolute;
-        width: 223.63px;
-        height: 110.64px;
-        left: 22.16px;
-        top: -14.09px;
+        width: 65%;
+        height: auto;
+        aspect-ratio: 223.63 / 110.64;
+        left: 6%;
+        top: -6%;
         transform: matrix(-0.99, -0.1, -0.1, 0.99, 0, 0);
         filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.16));
       }
 
-      /* Frame 34349: 343x146 @ left 0px, top 38px */
+      /* Frame 34349: Panel container */
       .frame-34349 {
         position: absolute;
-        width: 343px;
-        height: 146px;
+        width: 100%;
+        height: 60%;
         left: 0;
-        top: 38px;
+        top: 15%;
       }
 
-      /* Vector 3: 343x146.47 @ left calc(50% - 343px/2), top 0px */
+      /* Vector 3: 100% width and height of panel */
       .vector-3 {
         position: absolute;
-        width: 343px;
-        height: 146.47px;
-        left: calc(50% - 343px / 2);
+        width: 100%;
+        height: 100%;
+        left: 0;
         top: 0;
       }
 
-      /* Frame 34353 (Left Feature): row, align center, padding 0 1px, 143x96 @ left 4px, top 39px */
+      /* Frame 34353 (Left Feature): fluid width */
       .frame-34353 {
         position: absolute;
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0 1px;
-        width: 143px;
-        height: 96px;
-        left: 4px;
-        top: 39px;
+        width: 42%;
+        height: 66%;
+        left: 1%;
+        top: 26%;
       }
 
-      /* Frame 34346 (Left Card): 106x96, order 0 */
+      /* Frame 34346 (Left Card): fluid */
       .frame-34346 {
         position: relative;
         left: auto;
         top: auto;
-        width: 106px;
-        height: 96px;
+        width: 74%;
+        height: 100%;
         flex: none;
         order: 0;
         flex-grow: 0;
       }
 
-      /* Vector 4 (Left Connector): 33.14x25.26, order 1 */
+      /* Vector 4 (Left Connector): fluid */
       .vector-4 {
         position: relative;
         left: auto;
         top: auto;
-        width: 33.14px;
-        height: 25.26px;
+        width: 26%;
+        height: 26%;
         flex: none;
         order: 1;
         flex-grow: 0;
       }
 
-      /* Frame 34346 feature-top-right: 105.85x93, padding 8px, gap 2px */
+      /* Frame 34346 feature-top-right: fluid */
       .frame-34346 .feature-content {
         position: absolute;
-        width: 105.85px;
-        height: 93px;
-        left: calc(50% - 105.85px / 2);
-        top: calc(50% - 93px / 2);
+        width: 100%;
+        height: 100%;
+        inset: 0;
         transform: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        padding: 8px;
+        padding: clamp(4px, 1.5vw, 8px);
         gap: 2px;
       }
 
       .frame-34346 .feature-header {
-        width: 89.85px;
-        height: 21px;
-        gap: 1.85px;
+        width: 100%;
+        height: auto;
+        gap: 4px;
         justify-content: flex-start;
       }
 
-      /* كاميرا مدمجة: 76x21, 14px/21px Regular */
+      /* كاميرا مدمجة: fluid */
       .feature-title-lg {
-        width: 76px;
-        height: 21px;
+        width: auto;
+        height: auto;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
+        font-size: clamp(10px, 3.2vw, 14px);
+        line-height: 1.3;
         white-space: nowrap;
       }
 
       .feature-text-1 {
-        width: 89.85px;
-        height: 54px;
+        width: 100%;
+        height: auto;
         font-weight: 400;
-        font-size: 10px;
-        line-height: 18px;
+        font-size: clamp(8px, 2.5vw, 10px);
+        line-height: 1.4;
       }
 
-      /* Frame 34354 (Right Feature): 179x117 @ left 160px, top calc(50% - 117px/2 + 10.5px) */
+      /* Frame 34354 (Right Feature): fluid */
       .frame-34354 {
         position: absolute;
-        width: 179px;
-        height: 117px;
-        left: 160px;
-        top: calc(50% - 117px / 2 + 10.5px);
+        width: 52%;
+        height: 80%;
+        left: 47%;
+        top: calc(50% - 40%);
       }
 
-      /* Vector 5 (Right Connector): 61x37 @ left 9px, top 21px */
+      /* Vector 5 (Right Connector): fluid */
       .vector-5-line {
         position: absolute;
-        width: 61px;
-        height: 37px;
-        left: 9px;
-        top: 21px;
+        width: 34%;
+        height: 32%;
+        left: 5%;
+        top: 18%;
       }
 
-      /* Frame 34348 (Right Card): 108x115 @ left 70px, top 1px */
+      /* Frame 34348 (Right Card): fluid */
       .frame-34348 {
         position: absolute;
-        width: 108px;
-        height: 115px;
-        left: 70px;
-        top: 1px;
+        width: 60%;
+        height: 98%;
+        left: 39%;
+        top: 1%;
       }
 
-      /* Right card feature-top-right: 106x114, padding 8px 4px, gap 2px */
+      /* Right card feature-top-right: fluid */
       .frame-34348 .feature-content {
         position: absolute;
-        width: 106px;
-        height: 114px;
-        left: calc(50% - 106px / 2);
-        top: calc(50% - 114px / 2);
+        width: 100%;
+        height: 100%;
+        inset: 0;
         transform: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        padding: 8px 4px;
+        padding: clamp(4px, 1.5vw, 8px);
         gap: 2px;
       }
 
       .frame-34348 .feature-header {
-        width: 98px;
-        height: 42px;
-        gap: 1.85px;
+        width: 100%;
+        height: auto;
+        gap: 4px;
         justify-content: flex-start;
       }
 
-      /* تصميم متعدد المراوح: 84.15x42, 14px/21px Regular */
+      /* تصميم متعدد المراوح: fluid */
       .feature-title-md {
-        width: 84.15px;
-        height: 42px;
+        width: auto;
+        height: auto;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
+        font-size: clamp(10px, 3.2vw, 14px);
+        line-height: 1.3;
       }
 
       .feature-text-2 {
-        width: 98px;
-        height: 54px;
+        width: 100%;
+        height: auto;
         font-weight: 400;
-        font-size: 10px;
-        line-height: 18px;
+        font-size: clamp(8px, 2.5vw, 10px);
+        line-height: 1.4;
       }
 
-      /* Shared mobile icon circle: 12x12 with 8x8 icon */
+      /* Shared mobile icon circle */
       .feature-icon {
-        width: 12px;
-        height: 12px;
-        min-width: 12px;
-        border-radius: 50px;
+        width: clamp(12px, 3.5vw, 16px);
+        height: clamp(12px, 3.5vw, 16px);
+        min-width: clamp(12px, 3.5vw, 16px);
+        border-radius: 50%;
       }
 
       .feat-svg,
       .feat-custom-img {
-        width: 8px;
-        height: 8px;
+        width: clamp(8px, 2.2vw, 10px);
+        height: clamp(8px, 2.2vw, 10px);
       }
 
-      /* Button: 159x48 @ left calc(50% - 159px/2), top 200px inside Frame 34408 */
+      /* Button: responsive width inside Frame 34408 */
       .cta-btn {
         position: absolute;
-        width: 159px;
+        width: auto;
+        min-width: 140px;
+        max-width: 80%;
         height: 48px;
         aspect-ratio: auto;
-        left: calc(50% - 159px / 2);
-        top: 200px;
-        transform: none;
-        padding: 8px 16px;
+        left: 50%;
+        top: 80%;
+        transform: translateX(-50%);
+        padding: 8px 24px;
       }
 
       .cta-btn:hover {
-        transform: translateY(-2px);
+        transform: translateX(-50%) translateY(-2px);
       }
 
-      /* Label: 127x24, 16px/24px Bold */
+      /* Label: fluid width */
       .cta-label {
-        width: 127px;
-        height: 24px;
+        width: auto;
+        height: auto;
         font-weight: 700;
         font-size: 16px;
         line-height: 24px;

@@ -12,6 +12,1922 @@
     "repository": "https://github.com/themiify/tw-drone",
     "components": [
         {
+            "title": "Getting Started Guide",
+            "icon": "sicon-rocket",
+            "name": "getting-started-guide",
+            "key": "0a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+            "props": {
+                "min-height": "160px",
+                "aspect-ratio": "3/1"
+            }
+        },
+        {
+            "title": "Basic Inputs",
+            "icon": "sicon-format-text-alt",
+            "name": "basic-inputs",
+            "key": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/text-input.png",
+            "fields": [
+                {
+                    "id": "text",
+                    "icon": "sicon-format-text-alt",
+                    "type": "string",
+                    "label": "Text",
+                    "placeholder": "Enter text here...",
+                    "format": "text",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "value": "Sample text value"
+                },
+                {
+                    "id": "email",
+                    "icon": "sicon-mail",
+                    "type": "string",
+                    "label": "Email Input",
+                    "placeholder": "Enter email address...",
+                    "format": "email",
+                    "required": true,
+                    "description": "An email input field with validation",
+                    "value": "example@salla.sa"
+                },
+                {
+                    "id": "url",
+                    "icon": "sicon-link",
+                    "type": "string",
+                    "label": "URL Input",
+                    "placeholder": "Enter website URL...",
+                    "format": "url",
+                    "required": false,
+                    "description": "A URL input field with validation",
+                    "value": "https://salla.dev"
+                },
+                {
+                    "id": "password",
+                    "icon": "sicon-lock",
+                    "type": "string",
+                    "label": "Password Input",
+                    "placeholder": "Enter password...",
+                    "format": "password",
+                    "hide": true,
+                    "required": false
+                },
+                {
+                    "id": "textarea",
+                    "icon": "sicon-paragraph",
+                    "type": "string",
+                    "label": "Textarea",
+                    "placeholder": "Enter multi-line text here...",
+                    "format": "textarea",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 500,
+                    "rows": 4,
+                    "value": "This is a sample text\nwith multiple lines\nto demonstrate the textarea."
+                },
+                {
+                    "id": "number",
+                    "icon": "sicon-calculator",
+                    "type": "number",
+                    "label": "Basic Number",
+                    "placeholder": "Enter a number...",
+                    "format": "number",
+                    "inputType": "number",
+                    "required": true,
+                    "value": 42
+                },
+                {
+                    "id": "float",
+                    "icon": "sicon-calculator",
+                    "type": "number",
+                    "label": "Float Number",
+                    "placeholder": "Enter a decimal number...",
+                    "format": "float",
+                    "inputType": "number",
+                    "required": false,
+                    "step": 0.1,
+                    "value": 3.14
+                },
+                {
+                    "id": "units",
+                    "icon": "sicon-tag",
+                    "type": "number",
+                    "label": "Units",
+                    "placeholder": "Enter units...",
+                    "format": "units",
+                    "required": true,
+                    "step": 0.5,
+                    "unit": "kg",
+                    "value": 1
+                },
+                {
+                    "id": "slider",
+                    "type": "number",
+                    "label": "Slider",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "step": 1,
+                    "value": 75
+                },
+                {
+                    "id": "checkbox",
+                    "icon": "sicon-check-circle",
+                    "type": "boolean",
+                    "label": "Checkbox",
+                    "format": "checkbox",
+                    "required": true,
+                    "description": "Enable or disable this feature",
+                    "value": true
+                },
+                {
+                    "id": "switch",
+                    "icon": "sicon-bell",
+                    "type": "boolean",
+                    "label": "Switch",
+                    "format": "switch",
+                    "required": false,
+                    "description": "Enable notifications",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "title": "Items Select Input",
+            "icon": "sicon-list",
+            "name": "items-select-input",
+            "key": "5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/items-select-input.png",
+            "fields": [
+                {
+                    "id": "dropdown-list",
+                    "icon": "sicon-folder",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "Dropdown List",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "options": [
+                        {
+                            "label": "Clothing",
+                            "value": "clothing",
+                            "key": "clothing"
+                        },
+                        {
+                            "label": "Electronics",
+                            "value": "electronics",
+                            "key": "electronics"
+                        },
+                        {
+                            "label": "Home & Garden",
+                            "value": "home",
+                            "key": "home"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "Electronics",
+                            "value": "electronics",
+                            "key": "electronics"
+                        }
+                    ]
+                },
+                {
+                    "id": "checkbox-list",
+                    "icon": "sicon-tag",
+                    "type": "items",
+                    "label": "Checkbox List",
+                    "format": "checkbox-list",
+                    "required": false,
+                    "multichoice": true,
+                    "description": "Select multiple tags",
+                    "options": [
+                        {
+                            "label": "New",
+                            "value": "new",
+                            "key": "new"
+                        },
+                        {
+                            "label": "Featured",
+                            "value": "featured",
+                            "key": "featured"
+                        },
+                        {
+                            "label": "Offer",
+                            "value": "offer",
+                            "key": "offer"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "New",
+                            "value": "new",
+                            "key": "new"
+                        },
+                        {
+                            "label": "Offer",
+                            "value": "offer",
+                            "key": "offer"
+                        }
+                    ]
+                },
+                {
+                    "id": "radio-list",
+                    "icon": "sicon-truck",
+                    "type": "items",
+                    "label": "Radio List",
+                    "format": "radio-list",
+                    "required": true,
+                    "options": [
+                        {
+                            "label": "Standard",
+                            "value": "standard",
+                            "key": "standard"
+                        },
+                        {
+                            "label": "Express",
+                            "value": "express",
+                            "key": "express"
+                        },
+                        {
+                            "label": "Priority",
+                            "value": "priority",
+                            "key": "priority"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "Standard",
+                            "value": "standard",
+                            "key": "standard"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Dropdown List Source Input",
+            "icon": "sicon-database",
+            "name": "dropdown-list-source-input",
+            "key": "9i0j1k2l-3m4n-5o6p-7q8r-9s0t1u2v3w4x",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/dropdown-list-source-input.png",
+            "fields": [
+                {
+                    "id": "product",
+                    "icon": "sicon-box",
+                    "type": "items",
+                    "label": "Product",
+                    "format": "dropdown-list",
+                    "multichoice": true,
+                    "required": true,
+                    "description": "Select multiple products",
+                    "source": "products"
+                },
+                {
+                    "id": "category",
+                    "icon": "sicon-folder",
+                    "type": "items",
+                    "label": "Category",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "categories"
+                },
+                {
+                    "id": "brand",
+                    "icon": "sicon-brand",
+                    "type": "items",
+                    "label": "Brand",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "source": "brands"
+                },
+                {
+                    "id": "blog_article",
+                    "icon": "sicon-article",
+                    "type": "items",
+                    "label": "Blog Article",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "blog_articles"
+                },
+                {
+                    "id": "blog_category",
+                    "icon": "sicon-folder-article",
+                    "type": "items",
+                    "label": "Blog Category",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "blog_categories"
+                },
+                {
+                    "id": "page",
+                    "icon": "sicon-page",
+                    "type": "items",
+                    "label": "Page",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "pages"
+                },
+                {
+                    "id": "special_offer",
+                    "icon": "sicon-discount",
+                    "type": "items",
+                    "label": "Special Offer",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "special_offers"
+                },
+                {
+                    "id": "branch",
+                    "icon": "sicon-store",
+                    "type": "items",
+                    "label": "Branch",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "branches"
+                },
+                {
+                    "id": "product_tag",
+                    "icon": "sicon-tag",
+                    "type": "items",
+                    "label": "Product Tag",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "source": "products_tags"
+                },
+                {
+                    "id": "source_url",
+                    "icon": "sicon-shopping-bag",
+                    "type": "items",
+                    "label": "Multi Conditional Sources",
+                    "format": "variable-list",
+                    "required": true,
+                    "source": "custom",
+                    "selected": [
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        }
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "Category",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "Brand",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "Page",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "Blog Category",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "Offer",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "Brand Link",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "Blog Link",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "Custom",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Advanced Inputs",
+            "icon": "sicon-star",
+            "name": "advanced-inputs",
+            "key": "2l3m4n5o-6p7q-8r9s-0t1u-2v3w4x5y6z7a",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/advanced-inputs.png",
+            "fields": [
+                {
+                    "id": "icon",
+                    "type": "string",
+                    "format": "icon",
+                    "label": "Icon",
+                    "class": "inline form--inline",
+                    "required": false,
+                    "value": "sicon-star"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "id": "lingual_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "Enter icon title here...",
+                    "minLength": 2,
+                    "maxLength": 80
+                },
+                {
+                    "id": "color",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "type": "string",
+                    "inputType": "color",
+                    "label": "Color",
+                    "required": true,
+                    "value": "#2377CD",
+                    "class": "mt-4"
+                },
+                {
+                    "id": "image",
+                    "icon": "sicon-image-landscape",
+                    "type": "string",
+                    "format": "image",
+                    "label": "Image",
+                    "required": false,
+                    "value": "https://cdn.salla.sa/form-builder/EMl1Ae8o35qzaG0HvVqz0IpeqcK9uyHliKksscja.jpg"
+                },
+                {
+                    "id": "date",
+                    "icon": "sicon-calendar",
+                    "type": "string",
+                    "format": "date",
+                    "inputType": "date",
+                    "label": "Date",
+                    "required": true,
+                    "value": "2025-07-15"
+                },
+                {
+                    "id": "time",
+                    "icon": "sicon-clock",
+                    "type": "string",
+                    "format": "time",
+                    "inputType": "date",
+                    "label": "Time",
+                    "required": false,
+                    "value": "09:00"
+                },
+                {
+                    "id": "datetime",
+                    "icon": "sicon-calendar-time",
+                    "type": "string",
+                    "format": "datetime",
+                    "inputType": "date",
+                    "label": "Date & Time",
+                    "required": false,
+                    "value": "2025-07-20T14:30:00"
+                }
+            ]
+        },
+        {
+            "title": "بطاقة منتج",
+            "icon": "sicon-album-photo",
+            "name": "product-card",
+            "key": "0d1f3b8e-6a2c-4f5d-9e7b-8c1a2b3d4e5f",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png",
+            "fields": [
+                {
+                    "id": "product",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "type": "items",
+                    "label": "اختر المنتج",
+                    "placeholder": "البحث في قائمة المنتجات...",
+                    "format": "dropdown-list",
+                    "source": "products",
+                    "options": [],
+                    "required": true,
+                    "selected": [],
+                    "searchable": true,
+                    "multichoice": false
+                }
+            ]
+        },
+        {
+            "title": "جدول محتوى بسيط",
+            "icon": "sicon-layout-grid-rearrange",
+            "name": "table-list",
+            "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg",
+            "key": "9f8e7d6c-5b4a-3c2d-1e0f-a9b8c7d6e5f4",
+            "fields": [
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "item_label": "صفوف الجدول",
+                    "value": [
+                        {
+                            "title": "Featured Products",
+                            "description": "Our best-selling items with special discounts"
+                        },
+                        {
+                            "title": "New Arrivals",
+                            "description": "Latest additions to our collection"
+                        },
+                        {
+                            "title": "Special Offers",
+                            "description": "Limited-time deals and promotions"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "title",
+                            "required": true,
+                            "format": "text",
+                            "placeholder": "أدخل عنوان الصف هنا...",
+                            "minLength": 1,
+                            "maxLength": 100
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "description",
+                            "format": "textarea",
+                            "placeholder": "أدخل وصف الصف هنا...",
+                            "maxLength": 1000
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "رجوع للأعلى",
+            "icon": "sicon-arrow-up",
+            "name": "scroll-top",
+            "key": "8c7b6a5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/main-links-with-bg.jpg"
+        },
+        {
+            "title": "مميزات الدرون",
+            "icon": "sicon-star",
+            "name": "drone-features",
+            "key": "c4e1a8b9-5f2d-4c3e-8b1a-9f0e1d2c3b4a",
+            "image": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp",
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "icon": "sicon-tag",
+                    "label": "نص الشارة الفرعية",
+                    "format": "text",
+                    "value": "مميزات الدرون",
+                    "required": false
+                },
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "format": "text",
+                    "value": "استكشف العالم من زوايا جديدة مع تصميم متقدم",
+                    "required": true
+                },
+                {
+                    "id": "drone_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة الدرون المركزية",
+                    "required": false,
+                    "value": "/images/drone-features-main.png"
+                },
+                {
+                    "id": "features",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 6,
+                    "item_label": "ميزة",
+                    "value": [
+                        {
+                            "id": "propellers",
+                            "title": "تصميم متعدد المراوح",
+                            "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
+                            "icon_image": ""
+                        },
+                        {
+                            "id": "camera",
+                            "title": "كاميرا مدمجة",
+                            "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
+                            "icon_image": ""
+                        },
+                        {
+                            "id": "aerial",
+                            "title": "تصوير جوي",
+                            "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
+                            "icon_image": ""
+                        },
+                        {
+                            "id": "guard",
+                            "title": "هيكل يحيط بالمراوح",
+                            "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
+                            "icon_image": ""
+                        },
+                        {
+                            "id": "record",
+                            "title": "وثّق مغامرتك",
+                            "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
+                            "icon_image": ""
+                        },
+                        {
+                            "id": "wide",
+                            "title": "منظور أوسع",
+                            "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
+                            "icon_image": ""
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "title",
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "required": true,
+                            "format": "text",
+                            "label": "عنوان الميزة",
+                            "placeholder": "عنوان الميزة"
+                        },
+                        {
+                            "id": "desc",
+                            "type": "string",
+                            "icon": "sicon-paragraph",
+                            "required": true,
+                            "format": "textarea",
+                            "label": "وصف الميزة",
+                            "placeholder": "شرح موجز للميزة"
+                        },
+                        {
+                            "id": "icon_image",
+                            "type": "string",
+                            "icon": "sicon-image-landscape",
+                            "format": "image",
+                            "label": "صورة الأيقونة",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "show_button",
+                    "icon": "sicon-eye",
+                    "type": "boolean",
+                    "label": "إظهار زر الطلب (CTA)",
+                    "format": "switch",
+                    "required": false,
+                    "value": true
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر",
+                    "format": "text",
+                    "value": "اطلب درونك الآن"
+                },
+                {
+                    "id": "source_url",
+                    "icon": "sicon-shopping-bag",
+                    "type": "items",
+                    "label": "رابط الزر",
+                    "format": "variable-list",
+                    "required": true,
+                    "source": "custom",
+                    "selected": [
+                        {
+                            "label": "Custom",
+                            "key": "custom",
+                            "value": "#"
+                        }
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "Category",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "Brand",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "Page",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "Custom",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_type",
+                    "type": "items",
+                    "source": "Manual",
+                    "icon": "sicon-image-landscape",
+                    "format": "dropdown-list",
+                    "label": "نوع الخلفية",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "لون موحد",
+                            "value": "color",
+                            "key": "color"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "صورة",
+                            "key": "image",
+                            "value": "image"
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة خلفية القسم (Blueprint Wireframe)",
+                    "required": false,
+                    "value": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp"
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "text_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العناوين",
+                    "required": false,
+                    "value": "#111111"
+                },
+                {
+                    "id": "desc_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نصوص الشرح",
+                    "required": false,
+                    "value": "#666666"
+                },
+                {
+                    "id": "line_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خط الفاصل",
+                    "required": false,
+                    "value": "#e0e0e0"
+                },
+                {
+                    "id": "button_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "button_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "required": false,
+                    "value": "#ffffff"
+                }
+            ]
+        },
+        {
+            "title": "أجزاء الدرون",
+            "icon": "sicon-rocket",
+            "name": "drone-parts",
+            "key": "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
+            "image": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png",
+            "props": {
+                "min-height": "400px"
+            },
+            "fields": [
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "format": "text",
+                    "value": "مش مجرد درون.. دي زاوية جديدة للعالم."
+                },
+                {
+                    "id": "title",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "format": "text",
+                    "value": "أجزاء الدرون"
+                },
+                {
+                    "id": "drone_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة الدرون",
+                    "required": false,
+                    "value": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png"
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر",
+                    "format": "text",
+                    "value": "اطلب درونك الآن"
+                },
+                {
+                    "id": "source_url",
+                    "icon": "sicon-shopping-bag",
+                    "type": "items",
+                    "label": "رابط الزر",
+                    "format": "variable-list",
+                    "required": true,
+                    "source": "custom",
+                    "selected": [
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        }
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "Category",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "Brand",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "Page",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "Blog Category",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "Offer",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "Brand Link",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "Blog Link",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "Custom",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "parts",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "item_label": "أجزاء الدرون",
+                    "value": [
+                        {
+                            "label": "المراوح",
+                            "text": "مراوح قوية لتحقيق استقرار وسرعة",
+                            "image": "https://cdn.files.salla.network/other/1343631853/891c4f0b-f26e-4ea9-a565-22b47a63a4c4-original.webp"
+                        },
+                        {
+                            "label": "الكاميرا",
+                            "text": "نظام استقرار للكاميرا والتصوير",
+                            "image": "https://cdn.files.salla.network/other/1343631853/a3affed3-1f7b-4e9b-ab38-711774c1e0a5-original.webp"
+                        },
+                        {
+                            "label": "هيكل الهبوط",
+                            "text": "هيكل هبوط متين وآمن",
+                            "image": "https://cdn.files.salla.network/other/1343631853/9142b156-0fc5-4f22-81f5-62993db4cf38-original.webp"
+                        },
+                        {
+                            "label": "جسم الطائرة",
+                            "text": "جسم الطائرة أساسي ومتكامل",
+                            "image": "https://cdn.files.salla.network/other/1343631853/2774442d-6065-42f7-ad4f-44dea60a39eb-original.webp"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "label",
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "required": true,
+                            "format": "text",
+                            "placeholder": "اسم الجزء",
+                            "maxLength": 50
+                        },
+                        {
+                            "id": "text",
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "format": "textarea",
+                            "placeholder": "وصف الجزء",
+                            "maxLength": 200
+                        },
+                        {
+                            "id": "image",
+                            "type": "string",
+                            "icon": "sicon-image-landscape",
+                            "format": "image",
+                            "label": "صورة الجزء",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون خلفية القسم",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "title_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون عنوان القسم (أجزاء الدرون)",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "heading_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون العنوان الرئيسي",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "line_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون الخط الفاصل العلوي",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#e6e6e6"
+                },
+                {
+                    "id": "bar_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون الشريط العريض العلوي",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "part_label_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون اسم الجزء",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "arrow_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون السهم المؤشر",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "card_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون خلفية بطاقة الجزء",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#2b2b2b"
+                },
+                {
+                    "id": "card_border_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون إطار بطاقة الجزء",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "card_text_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون وصف الجزء داخل البطاقة",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "thumb_glow_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون توهج الصورة المصغرة",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "button_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون خلفية الزر",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "button_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون نص الزر",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "button_border_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "label": "لون إطار الزر",
+                    "format": "color",
+                    "inputType": "color",
+                    "required": false,
+                    "value": "#959595"
+                }
+            ]
+        },
+        {
+            "title": "قصة درون",
+            "icon": "sicon-album-photo",
+            "name": "drone-story",
+            "key": "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+            "props": {
+                "min-height": "400px"
+            },
+            "fields": [
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "format": "text",
+                    "value": "مش مجرد درون.. دي زاوية جديدة للعالم.",
+                    "multilanguage": true
+                },
+                {
+                    "id": "badge",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الجانبي",
+                    "format": "text",
+                    "value": "قصة درون",
+                    "multilanguage": true
+                },
+                {
+                    "id": "text",
+                    "type": "string",
+                    "icon": "sicon-paragraph",
+                    "label": "النص (استخدم **نص** للتغليظ)",
+                    "format": "textarea",
+                    "rows": 6,
+                    "multilanguage": true,
+                    "value": "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة."
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر",
+                    "format": "text",
+                    "value": "اطلب درونك الآن",
+                    "multilanguage": true
+                },
+                {
+                    "id": "source_url",
+                    "icon": "sicon-shopping-bag",
+                    "type": "items",
+                    "label": "رابط الزر",
+                    "format": "variable-list",
+                    "required": true,
+                    "source": "custom",
+                    "selected": [
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        }
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "Category",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "Brand",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "Page",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "Article",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "Blog Category",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "Offer",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "Brand Link",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "Blog Link",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "Custom",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "reverse",
+                    "icon": "sicon-sort",
+                    "type": "boolean",
+                    "label": "عكس المحتوى (الصورة يمين والنص شمال)",
+                    "format": "switch",
+                    "required": false,
+                    "value": false
+                },
+                {
+                    "id": "float_type",
+                    "icon": "sicon-list",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "نوع الميديا العلوية (الدرون)",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video",
+                            "key": "video"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        }
+                    ]
+                },
+                {
+                    "id": "float_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة الدرون العلوية",
+                    "required": false,
+                    "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
+                },
+                {
+                    "id": "float_video",
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "format": "url",
+                    "label": "فيديو الدرون العلوي",
+                    "placeholder": "https://.../video.mp4",
+                    "required": false,
+                    "description": "رابط فيديو مباشر (mp4 / webm)",
+                    "value": ""
+                },
+                {
+                    "id": "media_type",
+                    "icon": "sicon-list",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "نوع الميديا الرئيسية (الإطار)",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video",
+                            "key": "video"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        }
+                    ]
+                },
+                {
+                    "id": "media_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "الصورة الرئيسية",
+                    "required": false,
+                    "value": ""
+                },
+                {
+                    "id": "media_video",
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "format": "url",
+                    "label": "الفيديو الرئيسي",
+                    "placeholder": "https://.../video.mp4",
+                    "required": false,
+                    "description": "رابط فيديو مباشر (mp4 / webm)",
+                    "value": ""
+                },
+                {
+                    "id": "bg_type",
+                    "icon": "sicon-list",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "نوع الخلفية",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "بدون",
+                            "value": "none",
+                            "key": "none"
+                        },
+                        {
+                            "label": "لون",
+                            "value": "color",
+                            "key": "color"
+                        },
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video",
+                            "key": "video"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "لون",
+                            "value": "color",
+                            "key": "color"
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "bg_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة الخلفية",
+                    "required": false,
+                    "value": ""
+                },
+                {
+                    "id": "bg_video",
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "format": "url",
+                    "label": "فيديو الخلفية",
+                    "placeholder": "https://.../video.mp4",
+                    "required": false,
+                    "description": "رابط فيديو مباشر (mp4 / webm)",
+                    "value": ""
+                },
+                {
+                    "id": "bg_overlay",
+                    "type": "number",
+                    "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "step": 1,
+                    "value": 0
+                },
+                {
+                    "id": "heading_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "required": false,
+                    "value": "#1a1a1a"
+                },
+                {
+                    "id": "badge_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الجانبي",
+                    "required": false,
+                    "value": "#000000"
+                },
+                {
+                    "id": "text_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص",
+                    "required": false,
+                    "value": "#4a4a4a"
+                },
+                {
+                    "id": "line_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخط",
+                    "required": false,
+                    "value": "#bdbdbd"
+                },
+                {
+                    "id": "bar_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الشريط السميك",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "frame_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون إطار الصورة",
+                    "required": false,
+                    "value": "#ececec"
+                },
+                {
+                    "id": "button_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "button_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "required": false,
+                    "value": "#ffffff"
+                }
+            ]
+        },
+        {
+            "title": "الأسئلة الشائعة",
+            "icon": "sicon-question-mark",
+            "name": "drone-faq",
+            "key": "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
+            "props": {
+                "min-height": "400px"
+            },
+            "fields": [
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "format": "text",
+                    "value": "عندك سؤال؟ إحنا هنا نساعدك",
+                    "multilanguage": true
+                },
+                {
+                    "id": "badge",
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الجانبي",
+                    "format": "text",
+                    "value": "الأسئلة الشائعة",
+                    "multilanguage": true
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 20,
+                    "item_label": "الأسئلة",
+                    "value": [
+                        {
+                            "question": "كيف يمكنني طلب تفاصيل الخدمة؟",
+                            "answer": "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة."
+                        },
+                        {
+                            "question": "ما هي مدة الشحن والتركيب؟",
+                            "answer": "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة."
+                        },
+                        {
+                            "question": "هل يمكنني استرجاع أو استبدال المنتج؟",
+                            "answer": "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية."
+                        },
+                        {
+                            "question": "كيف يمكنني التواصل مع فريق الدعم؟",
+                            "answer": "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "question",
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "required": true,
+                            "format": "text",
+                            "placeholder": "السؤال",
+                            "maxLength": 200,
+                            "multilanguage": true
+                        },
+                        {
+                            "id": "answer",
+                            "type": "string",
+                            "icon": "sicon-paragraph",
+                            "format": "textarea",
+                            "placeholder": "الإجابة (استخدم **نص** للتغليظ)",
+                            "maxLength": 1500,
+                            "multilanguage": true
+                        }
+                    ]
+                },
+                {
+                    "id": "single_open",
+                    "icon": "sicon-sort",
+                    "type": "boolean",
+                    "label": "فتح سؤال واحد فقط (يقفل السابق)",
+                    "format": "switch",
+                    "required": false,
+                    "value": true
+                },
+                {
+                    "id": "first_open",
+                    "icon": "sicon-sort",
+                    "type": "boolean",
+                    "label": "فتح أول سؤال افتراضيًا",
+                    "format": "switch",
+                    "required": false,
+                    "value": true
+                },
+                {
+                    "id": "anim_duration",
+                    "type": "number",
+                    "label": "سرعة الحركة (مللي ثانية)",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 100,
+                    "maximum": 1000,
+                    "step": 50,
+                    "value": 400
+                },
+                {
+                    "id": "reverse",
+                    "icon": "sicon-sort",
+                    "type": "boolean",
+                    "label": "عكس المحتوى (الصورة يمين/شمال)",
+                    "format": "switch",
+                    "required": false,
+                    "value": false
+                },
+                {
+                    "id": "media_type",
+                    "icon": "sicon-list",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "نوع الميديا الرئيسية (الإطار)",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video",
+                            "key": "video"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        }
+                    ]
+                },
+                {
+                    "id": "media_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "الصورة الرئيسية",
+                    "required": false,
+                    "value": ""
+                },
+                {
+                    "id": "media_video",
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "format": "url",
+                    "label": "الفيديو الرئيسي",
+                    "placeholder": "https://.../video.mp4",
+                    "required": false,
+                    "description": "رابط فيديو مباشر (mp4 / webm)",
+                    "value": ""
+                },
+                {
+                    "id": "bg_type",
+                    "icon": "sicon-list",
+                    "type": "items",
+                    "source": "Manual",
+                    "label": "نوع الخلفية",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "options": [
+                        {
+                            "label": "بدون",
+                            "value": "none",
+                            "key": "none"
+                        },
+                        {
+                            "label": "لون",
+                            "value": "color",
+                            "key": "color"
+                        },
+                        {
+                            "label": "صورة",
+                            "value": "image",
+                            "key": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video",
+                            "key": "video"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "لون",
+                            "value": "color",
+                            "key": "color"
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "bg_image",
+                    "type": "string",
+                    "icon": "sicon-image-landscape",
+                    "format": "image",
+                    "label": "صورة الخلفية",
+                    "required": false,
+                    "value": ""
+                },
+                {
+                    "id": "bg_video",
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "format": "url",
+                    "label": "فيديو الخلفية",
+                    "placeholder": "https://.../video.mp4",
+                    "required": false,
+                    "description": "رابط فيديو مباشر (mp4 / webm)",
+                    "value": ""
+                },
+                {
+                    "id": "bg_overlay",
+                    "type": "number",
+                    "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
+                    "format": "slider",
+                    "inputType": "range",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "step": 1,
+                    "value": 0
+                },
+                {
+                    "id": "heading_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "required": false,
+                    "value": "#1a1a1a"
+                },
+                {
+                    "id": "badge_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الجانبي",
+                    "required": false,
+                    "value": "#000000"
+                },
+                {
+                    "id": "line_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخط",
+                    "required": false,
+                    "value": "#bdbdbd"
+                },
+                {
+                    "id": "bar_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الشريط السميك",
+                    "required": false,
+                    "value": "#0d0d0d"
+                },
+                {
+                    "id": "frame_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون إطار الصورة",
+                    "required": false,
+                    "value": "#ececec"
+                },
+                {
+                    "id": "item_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية السؤال",
+                    "required": false,
+                    "value": "#f4f4f4"
+                },
+                {
+                    "id": "question_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص السؤال",
+                    "required": false,
+                    "value": "#111111"
+                },
+                {
+                    "id": "answer_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الإجابة",
+                    "required": false,
+                    "value": "#555555"
+                },
+                {
+                    "id": "icon_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون أيقونة + / −",
+                    "required": false,
+                    "value": "#111111"
+                },
+                {
+                    "id": "active_bg",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية السؤال المفتوح",
+                    "required": false,
+                    "value": "#2b2b2b"
+                },
+                {
+                    "id": "active_question_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص السؤال المفتوح",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "active_answer_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الإجابة المفتوحة",
+                    "required": false,
+                    "value": "#cfcfcf"
+                },
+                {
+                    "id": "active_icon_color",
+                    "type": "string",
+                    "icon": "sicon-color-palette",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون أيقونة السؤال المفتوح",
+                    "required": false,
+                    "value": "#ffffff"
+                }
+            ]
+        },
+        {
             "title": "ترويسة درون",
             "icon": "sicon-layout-grid-rearrange",
             "name": "drone-header",
@@ -802,1342 +2718,6 @@
             ]
         },
         {
-            "title": "مميزات الدرون",
-            "icon": "sicon-star",
-            "name": "drone-features",
-            "key": "c4e1a8b9-5f2d-4c3e-8b1a-9f0e1d2c3b4a",
-            "image": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp",
-            "fields": [
-                {
-                    "id": "title",
-                    "type": "string",
-                    "icon": "sicon-tag",
-                    "label": "نص الشارة الفرعية",
-                    "format": "text",
-                    "value": "مميزات الدرون",
-                    "required": false
-                },
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الرئيسي",
-                    "format": "text",
-                    "value": "استكشف العالم من زوايا جديدة مع تصميم متقدم",
-                    "required": true
-                },
-                {
-                    "id": "drone_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة الدرون المركزية",
-                    "required": false,
-                    "value": ""
-                },
-                {
-                    "id": "features",
-                    "type": "collection",
-                    "format": "collection",
-                    "required": true,
-                    "minLength": 3,
-                    "maxLength": 6,
-                    "item_label": "ميزة",
-                    "value": [
-                        {
-                            "id": "propellers",
-                            "title": "تصميم متعدد المراوح",
-                            "desc": "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
-                            "icon_image": ""
-                        },
-                        {
-                            "id": "camera",
-                            "title": "كاميرا مدمجة",
-                            "desc": "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
-                            "icon_image": ""
-                        },
-                        {
-                            "id": "aerial",
-                            "title": "تصوير جوي",
-                            "desc": "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
-                            "icon_image": ""
-                        },
-                        {
-                            "id": "guard",
-                            "title": "هيكل يحيط بالمراوح",
-                            "desc": "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
-                            "icon_image": ""
-                        },
-                        {
-                            "id": "record",
-                            "title": "وثّق مغامرتك",
-                            "desc": "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
-                            "icon_image": ""
-                        },
-                        {
-                            "id": "wide",
-                            "title": "منظور أوسع",
-                            "desc": "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
-                            "icon_image": ""
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "id": "title",
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "required": true,
-                            "format": "text",
-                            "label": "عنوان الميزة",
-                            "placeholder": "عنوان الميزة"
-                        },
-                        {
-                            "id": "desc",
-                            "type": "string",
-                            "icon": "sicon-paragraph",
-                            "required": true,
-                            "format": "textarea",
-                            "label": "وصف الميزة",
-                            "placeholder": "شرح موجز للميزة"
-                        },
-                        {
-                            "id": "icon_image",
-                            "type": "string",
-                            "icon": "sicon-image-landscape",
-                            "format": "image",
-                            "label": "صورة الأيقونة",
-                            "required": false
-                        }
-                    ]
-                },
-                {
-                    "id": "show_button",
-                    "icon": "sicon-eye",
-                    "type": "boolean",
-                    "label": "إظهار زر الطلب (CTA)",
-                    "format": "switch",
-                    "required": false,
-                    "value": true
-                },
-                {
-                    "id": "button_text",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "نص الزر",
-                    "format": "text",
-                    "value": "اطلب درونك الآن"
-                },
-                {
-                    "id": "source_url",
-                    "icon": "sicon-shopping-bag",
-                    "type": "items",
-                    "label": "رابط الزر",
-                    "format": "variable-list",
-                    "required": true,
-                    "source": "custom",
-                    "selected": [
-                        {
-                            "label": "Custom",
-                            "key": "custom",
-                            "value": "#"
-                        }
-                    ],
-                    "sources": [
-                        {
-                            "label": "Product",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "Category",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "Brand",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "Page",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "Custom",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "id": "bg_type",
-                    "type": "items",
-                    "source": "Manual",
-                    "icon": "sicon-image-landscape",
-                    "format": "dropdown-list",
-                    "label": "نوع الخلفية",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "لون موحد",
-                            "value": "color",
-                            "key": "color"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "صورة",
-                            "key": "image",
-                            "value": "image"
-                        }
-                    ]
-                },
-                {
-                    "id": "bg_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة خلفية القسم (Blueprint Wireframe)",
-                    "required": false,
-                    "value": "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp"
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية القسم",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "text_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العناوين",
-                    "required": false,
-                    "value": "#111111"
-                },
-                {
-                    "id": "desc_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نصوص الشرح",
-                    "required": false,
-                    "value": "#666666"
-                },
-                {
-                    "id": "line_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خط الفاصل",
-                    "required": false,
-                    "value": "#e0e0e0"
-                },
-                {
-                    "id": "button_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية الزر",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "button_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الزر",
-                    "required": false,
-                    "value": "#ffffff"
-                }
-            ]
-        },
-        {
-            "title": "قصة درون",
-            "icon": "sicon-album-photo",
-            "name": "drone-story",
-            "key": "d5a1f7c2-3b8e-4e6a-9c41-7a2b5d9e1f03",
-            "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
-            "props": {
-                "min-height": "400px"
-            },
-            "fields": [
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الرئيسي",
-                    "format": "text",
-                    "value": "مش مجرد درون.. دي زاوية جديدة للعالم.",
-                    "multilanguage": true
-                },
-                {
-                    "id": "badge",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الجانبي",
-                    "format": "text",
-                    "value": "قصة درون",
-                    "multilanguage": true
-                },
-                {
-                    "id": "text",
-                    "type": "string",
-                    "icon": "sicon-paragraph",
-                    "label": "النص (استخدم **نص** للتغليظ)",
-                    "format": "textarea",
-                    "rows": 6,
-                    "multilanguage": true,
-                    "value": "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة."
-                },
-                {
-                    "id": "button_text",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "نص الزر",
-                    "format": "text",
-                    "value": "اطلب درونك الآن",
-                    "multilanguage": true
-                },
-                {
-                    "id": "source_url",
-                    "icon": "sicon-shopping-bag",
-                    "type": "items",
-                    "label": "رابط الزر",
-                    "format": "variable-list",
-                    "required": true,
-                    "source": "custom",
-                    "selected": [
-                        {
-                            "label": "Article",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        }
-                    ],
-                    "sources": [
-                        {
-                            "label": "Product",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "Category",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "Brand",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "Page",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "Article",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "Blog Category",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "Offer",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "Brand Link",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "Blog Link",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "Custom",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "id": "reverse",
-                    "icon": "sicon-sort",
-                    "type": "boolean",
-                    "label": "عكس المحتوى (الصورة يمين والنص شمال)",
-                    "format": "switch",
-                    "required": false,
-                    "value": false
-                },
-                {
-                    "id": "float_type",
-                    "icon": "sicon-list",
-                    "type": "items",
-                    "source": "Manual",
-                    "label": "نوع الميديا العلوية (الدرون)",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "فيديو",
-                            "value": "video",
-                            "key": "video"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        }
-                    ]
-                },
-                {
-                    "id": "float_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة الدرون العلوية",
-                    "required": false,
-                    "value": "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png"
-                },
-                {
-                    "id": "float_video",
-                    "type": "string",
-                    "icon": "sicon-link",
-                    "format": "url",
-                    "label": "فيديو الدرون العلوي",
-                    "placeholder": "https://.../video.mp4",
-                    "required": false,
-                    "description": "رابط فيديو مباشر (mp4 / webm)",
-                    "value": ""
-                },
-                {
-                    "id": "media_type",
-                    "icon": "sicon-list",
-                    "type": "items",
-                    "source": "Manual",
-                    "label": "نوع الميديا الرئيسية (الإطار)",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "فيديو",
-                            "value": "video",
-                            "key": "video"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        }
-                    ]
-                },
-                {
-                    "id": "media_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "الصورة الرئيسية",
-                    "required": false,
-                    "value": ""
-                },
-                {
-                    "id": "media_video",
-                    "type": "string",
-                    "icon": "sicon-link",
-                    "format": "url",
-                    "label": "الفيديو الرئيسي",
-                    "placeholder": "https://.../video.mp4",
-                    "required": false,
-                    "description": "رابط فيديو مباشر (mp4 / webm)",
-                    "value": ""
-                },
-                {
-                    "id": "bg_type",
-                    "icon": "sicon-list",
-                    "type": "items",
-                    "source": "Manual",
-                    "label": "نوع الخلفية",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "بدون",
-                            "value": "none",
-                            "key": "none"
-                        },
-                        {
-                            "label": "لون",
-                            "value": "color",
-                            "key": "color"
-                        },
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "فيديو",
-                            "value": "video",
-                            "key": "video"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "لون",
-                            "value": "color",
-                            "key": "color"
-                        }
-                    ]
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الخلفية",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "bg_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة الخلفية",
-                    "required": false,
-                    "value": ""
-                },
-                {
-                    "id": "bg_video",
-                    "type": "string",
-                    "icon": "sicon-link",
-                    "format": "url",
-                    "label": "فيديو الخلفية",
-                    "placeholder": "https://.../video.mp4",
-                    "required": false,
-                    "description": "رابط فيديو مباشر (mp4 / webm)",
-                    "value": ""
-                },
-                {
-                    "id": "bg_overlay",
-                    "type": "number",
-                    "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
-                    "format": "slider",
-                    "inputType": "range",
-                    "required": false,
-                    "minimum": 0,
-                    "maximum": 100,
-                    "step": 1,
-                    "value": 0
-                },
-                {
-                    "id": "heading_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "required": false,
-                    "value": "#1a1a1a"
-                },
-                {
-                    "id": "badge_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الجانبي",
-                    "required": false,
-                    "value": "#000000"
-                },
-                {
-                    "id": "text_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص",
-                    "required": false,
-                    "value": "#4a4a4a"
-                },
-                {
-                    "id": "line_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الخط",
-                    "required": false,
-                    "value": "#bdbdbd"
-                },
-                {
-                    "id": "bar_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الشريط السميك",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "frame_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون إطار الصورة",
-                    "required": false,
-                    "value": "#ececec"
-                },
-                {
-                    "id": "button_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية الزر",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "button_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الزر",
-                    "required": false,
-                    "value": "#ffffff"
-                }
-            ]
-        },
-        {
-            "title": "أجزاء الدرون",
-            "icon": "sicon-rocket",
-            "name": "drone-parts",
-            "key": "c7f2e4b1-9a3d-4c8e-b5f6-1e2a3b4c5d6e",
-            "image": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png",
-            "props": {
-                "min-height": "400px"
-            },
-            "fields": [
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الرئيسي",
-                    "format": "text",
-                    "value": "مش مجرد درون.. دي زاوية جديدة للعالم."
-                },
-                {
-                    "id": "title",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "عنوان القسم",
-                    "format": "text",
-                    "value": "أجزاء الدرون"
-                },
-                {
-                    "id": "drone_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة الدرون",
-                    "required": false,
-                    "value": "https://cdn.files.salla.network/other/1170101317/60160ecd-c557-4213-b5c0-3c8d0b555b05-standard.png"
-                },
-                {
-                    "id": "button_text",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "نص الزر",
-                    "format": "text",
-                    "value": "اطلب درونك الآن"
-                },
-                {
-                    "id": "source_url",
-                    "icon": "sicon-shopping-bag",
-                    "type": "items",
-                    "label": "رابط الزر",
-                    "format": "variable-list",
-                    "required": true,
-                    "source": "custom",
-                    "selected": [
-                        {
-                            "label": "Article",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        }
-                    ],
-                    "sources": [
-                        {
-                            "label": "Product",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "Category",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "Brand",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "Page",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "Article",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "Blog Category",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "Offer",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "Brand Link",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "Blog Link",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "Custom",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "id": "parts",
-                    "type": "collection",
-                    "format": "collection",
-                    "required": true,
-                    "minLength": 1,
-                    "maxLength": 8,
-                    "item_label": "أجزاء الدرون",
-                    "value": [
-                        {
-                            "label": "المراوح",
-                            "text": "مراوح قوية لتحقيق استقرار وسرعة",
-                            "image": "https://cdn.files.salla.network/other/1343631853/891c4f0b-f26e-4ea9-a565-22b47a63a4c4-original.webp"
-                        },
-                        {
-                            "label": "الكاميرا",
-                            "text": "نظام استقرار للكاميرا والتصوير",
-                            "image": "https://cdn.files.salla.network/other/1343631853/a3affed3-1f7b-4e9b-ab38-711774c1e0a5-original.webp"
-                        },
-                        {
-                            "label": "هيكل الهبوط",
-                            "text": "هيكل هبوط متين وآمن",
-                            "image": "https://cdn.files.salla.network/other/1343631853/9142b156-0fc5-4f22-81f5-62993db4cf38-original.webp"
-                        },
-                        {
-                            "label": "جسم الطائرة",
-                            "text": "جسم الطائرة أساسي ومتكامل",
-                            "image": "https://cdn.files.salla.network/other/1343631853/2774442d-6065-42f7-ad4f-44dea60a39eb-original.webp"
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "id": "label",
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "required": true,
-                            "format": "text",
-                            "placeholder": "اسم الجزء",
-                            "maxLength": 50
-                        },
-                        {
-                            "id": "text",
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "format": "textarea",
-                            "placeholder": "وصف الجزء",
-                            "maxLength": 200
-                        },
-                        {
-                            "id": "image",
-                            "type": "string",
-                            "icon": "sicon-image-landscape",
-                            "format": "image",
-                            "label": "صورة الجزء",
-                            "required": false
-                        }
-                    ]
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون خلفية القسم",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "title_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون عنوان القسم (أجزاء الدرون)",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "heading_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون العنوان الرئيسي",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "line_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون الخط الفاصل العلوي",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#e6e6e6"
-                },
-                {
-                    "id": "bar_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون الشريط العريض العلوي",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "part_label_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون اسم الجزء",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "arrow_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون السهم المؤشر",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "card_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون خلفية بطاقة الجزء",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#2b2b2b"
-                },
-                {
-                    "id": "card_border_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون إطار بطاقة الجزء",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "card_text_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون وصف الجزء داخل البطاقة",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "thumb_glow_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون توهج الصورة المصغرة",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "button_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون خلفية الزر",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "button_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون نص الزر",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "button_border_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "label": "لون إطار الزر",
-                    "format": "color",
-                    "inputType": "color",
-                    "required": false,
-                    "value": "#959595"
-                }
-            ]
-        },
-        {
-            "title": "الأسئلة الشائعة",
-            "icon": "sicon-question-mark",
-            "name": "drone-faq",
-            "key": "e7b2c9d4-5a1f-4c3e-8b60-2d4f6a8c0e12",
-            "image": "https://cdn.salla.network/images/themes/raed/preview-images/getting-started.png",
-            "props": {
-                "min-height": "400px"
-            },
-            "fields": [
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الرئيسي",
-                    "format": "text",
-                    "value": "عندك سؤال؟ إحنا هنا نساعدك",
-                    "multilanguage": true
-                },
-                {
-                    "id": "badge",
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان الجانبي",
-                    "format": "text",
-                    "value": "الأسئلة الشائعة",
-                    "multilanguage": true
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "required": true,
-                    "minLength": 1,
-                    "maxLength": 20,
-                    "item_label": "الأسئلة",
-                    "value": [
-                        {
-                            "question": "كيف يمكنني طلب تفاصيل الخدمة؟",
-                            "answer": "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة."
-                        },
-                        {
-                            "question": "ما هي مدة الشحن والتركيب؟",
-                            "answer": "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة."
-                        },
-                        {
-                            "question": "هل يمكنني استرجاع أو استبدال المنتج؟",
-                            "answer": "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية."
-                        },
-                        {
-                            "question": "كيف يمكنني التواصل مع فريق الدعم؟",
-                            "answer": "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع."
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "id": "question",
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "required": true,
-                            "format": "text",
-                            "placeholder": "السؤال",
-                            "maxLength": 200,
-                            "multilanguage": true
-                        },
-                        {
-                            "id": "answer",
-                            "type": "string",
-                            "icon": "sicon-paragraph",
-                            "format": "textarea",
-                            "placeholder": "الإجابة (استخدم **نص** للتغليظ)",
-                            "maxLength": 1500,
-                            "multilanguage": true
-                        }
-                    ]
-                },
-                {
-                    "id": "single_open",
-                    "icon": "sicon-sort",
-                    "type": "boolean",
-                    "label": "فتح سؤال واحد فقط (يقفل السابق)",
-                    "format": "switch",
-                    "required": false,
-                    "value": true
-                },
-                {
-                    "id": "first_open",
-                    "icon": "sicon-sort",
-                    "type": "boolean",
-                    "label": "فتح أول سؤال افتراضيًا",
-                    "format": "switch",
-                    "required": false,
-                    "value": true
-                },
-                {
-                    "id": "anim_duration",
-                    "type": "number",
-                    "label": "سرعة الحركة (مللي ثانية)",
-                    "format": "slider",
-                    "inputType": "range",
-                    "required": false,
-                    "minimum": 100,
-                    "maximum": 1000,
-                    "step": 50,
-                    "value": 400
-                },
-                {
-                    "id": "reverse",
-                    "icon": "sicon-sort",
-                    "type": "boolean",
-                    "label": "عكس المحتوى (الصورة يمين/شمال)",
-                    "format": "switch",
-                    "required": false,
-                    "value": false
-                },
-                {
-                    "id": "media_type",
-                    "icon": "sicon-list",
-                    "type": "items",
-                    "source": "Manual",
-                    "label": "نوع الميديا الرئيسية (الإطار)",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "فيديو",
-                            "value": "video",
-                            "key": "video"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        }
-                    ]
-                },
-                {
-                    "id": "media_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "الصورة الرئيسية",
-                    "required": false,
-                    "value": ""
-                },
-                {
-                    "id": "media_video",
-                    "type": "string",
-                    "icon": "sicon-link",
-                    "format": "url",
-                    "label": "الفيديو الرئيسي",
-                    "placeholder": "https://.../video.mp4",
-                    "required": false,
-                    "description": "رابط فيديو مباشر (mp4 / webm)",
-                    "value": ""
-                },
-                {
-                    "id": "bg_type",
-                    "icon": "sicon-list",
-                    "type": "items",
-                    "source": "Manual",
-                    "label": "نوع الخلفية",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "options": [
-                        {
-                            "label": "بدون",
-                            "value": "none",
-                            "key": "none"
-                        },
-                        {
-                            "label": "لون",
-                            "value": "color",
-                            "key": "color"
-                        },
-                        {
-                            "label": "صورة",
-                            "value": "image",
-                            "key": "image"
-                        },
-                        {
-                            "label": "فيديو",
-                            "value": "video",
-                            "key": "video"
-                        }
-                    ],
-                    "selected": [
-                        {
-                            "label": "لون",
-                            "value": "color",
-                            "key": "color"
-                        }
-                    ]
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الخلفية",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "bg_image",
-                    "type": "string",
-                    "icon": "sicon-image-landscape",
-                    "format": "image",
-                    "label": "صورة الخلفية",
-                    "required": false,
-                    "value": ""
-                },
-                {
-                    "id": "bg_video",
-                    "type": "string",
-                    "icon": "sicon-link",
-                    "format": "url",
-                    "label": "فيديو الخلفية",
-                    "placeholder": "https://.../video.mp4",
-                    "required": false,
-                    "description": "رابط فيديو مباشر (mp4 / webm)",
-                    "value": ""
-                },
-                {
-                    "id": "bg_overlay",
-                    "type": "number",
-                    "label": "عتامة طبقة التغطية (%) للصورة/الفيديو",
-                    "format": "slider",
-                    "inputType": "range",
-                    "required": false,
-                    "minimum": 0,
-                    "maximum": 100,
-                    "step": 1,
-                    "value": 0
-                },
-                {
-                    "id": "heading_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "required": false,
-                    "value": "#1a1a1a"
-                },
-                {
-                    "id": "badge_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الجانبي",
-                    "required": false,
-                    "value": "#000000"
-                },
-                {
-                    "id": "line_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الخط",
-                    "required": false,
-                    "value": "#bdbdbd"
-                },
-                {
-                    "id": "bar_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الشريط السميك",
-                    "required": false,
-                    "value": "#0d0d0d"
-                },
-                {
-                    "id": "frame_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون إطار الصورة",
-                    "required": false,
-                    "value": "#ececec"
-                },
-                {
-                    "id": "item_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية السؤال",
-                    "required": false,
-                    "value": "#f4f4f4"
-                },
-                {
-                    "id": "question_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص السؤال",
-                    "required": false,
-                    "value": "#111111"
-                },
-                {
-                    "id": "answer_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الإجابة",
-                    "required": false,
-                    "value": "#555555"
-                },
-                {
-                    "id": "icon_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون أيقونة + / −",
-                    "required": false,
-                    "value": "#111111"
-                },
-                {
-                    "id": "active_bg",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية السؤال المفتوح",
-                    "required": false,
-                    "value": "#2b2b2b"
-                },
-                {
-                    "id": "active_question_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص السؤال المفتوح",
-                    "required": false,
-                    "value": "#ffffff"
-                },
-                {
-                    "id": "active_answer_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الإجابة المفتوحة",
-                    "required": false,
-                    "value": "#cfcfcf"
-                },
-                {
-                    "id": "active_icon_color",
-                    "type": "string",
-                    "icon": "sicon-color-palette",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون أيقونة السؤال المفتوح",
-                    "required": false,
-                    "value": "#ffffff"
-                }
-            ]
-        },
-        {
             "title": "فيديوهات الدرون",
             "icon": "sicon-video",
             "name": "drone-videos",
@@ -2148,7 +2728,7 @@
                     "id": "title",
                     "type": "string",
                     "icon": "sicon-tag",
-                    "label": "شارة السكشن (فيديوهات للدرون)",
+                    "label": "نص الشارة الفرعية",
                     "format": "text",
                     "value": "فيديوهات للدرون",
                     "required": false
@@ -2795,11 +3375,11 @@
     ],
     "templates": [
         {
-            "id": "9af106ef-6bc9-4ae4-8bbd-c0a635b87045",
-            "path": "templates.starter-template",
-            "category_id": "570785420",
+            "id": "5ff36d96-d2a5-4406-847a-98e9eed51f4b",
+            "path": "templates.main-drone-template",
+            "category_id": "569758432",
             "primary_color": "",
-            "thumbnail": "",
+            "thumbnail": "templates-thumbs/main-drone-template.png",
             "is_default": true
         }
     ]
