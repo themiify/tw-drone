@@ -174,8 +174,8 @@ export default class DroneStory extends LitElement {
       }
       .float img,
       .float video {
-        max-width: 260px;
-        max-height: 280px;
+        max-width: 400px;
+        max-height: 200px;
         object-fit: contain;
         display: block;
       }
