@@ -719,7 +719,6 @@ export default class DroneHero extends LitElement {
         height: 130px;
         flex: none;
         order: 1;
-        align-self: flex-start;
       }
 
       /* Vector 6: 100% width of price box */
