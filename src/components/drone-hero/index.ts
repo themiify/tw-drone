@@ -886,7 +886,7 @@ export default class DroneHero extends LitElement {
         left: auto;
         top: auto;
         width: 26%;
-        height: 26%;
+        height: 27%;
         flex: none;
         order: 1;
         flex-grow: 0;
@@ -955,8 +955,8 @@ export default class DroneHero extends LitElement {
         position: absolute;
         width: 60%;
         height: 98%;
-        left: 39%;
-        top: 1%;
+        left: 38%;
+        top: 8%;
       }
 
       /* Right card feature-top-right: fluid */
