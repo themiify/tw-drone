@@ -845,7 +845,7 @@ export default class DroneFooter extends LitElement {
         ${c.show_copyright
           ? html`
               <div class="copyright-bar">
-                ${c.copyright_text || "جميع الحقوق محفوظة © 2026 درون"}
+                ${c.copyright_text || ""}
               </div>
             `
           : nothing}
