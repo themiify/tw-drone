@@ -63,18 +63,6 @@ const DEFAULT_BG_IMAGE =
 const DEFAULT_LOGO_URL =
   "https://cdn.files.salla.network/other/1637672648/216e55b8-cde0-4628-ba37-b6dc387cc7a4-original.png";
 
-const DEFAULT_LINKS: FooterLinkItem[] = [
-  { label: "الرئيسية", url: "#" },
-  { label: "المميزات", url: "#features" },
-  { label: "القصة", url: "#story" },
-  { label: "اجزاء الدرون", url: "#parts" },
-  { label: "الاسئلة الشائعة", url: "#faq" },
-  { label: "الفيديوهات", url: "#videos" },
-];
-
-const DEFAULT_DESC =
-  "اكتشف العالم من زاوية مختلفة مع درون يجمع بين التكنولوجيا والإبداع. خليك مستعد لمغامرات جديدة، والتقط لحظاتك من السماء، وحوّل كل تجربة لذكرى تستحق الاحتفاظ بيها.";
-
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
     const first: any = v[0];
@@ -146,7 +134,7 @@ export default class DroneFooter extends LitElement {
   }
 
   private get logoText(): string {
-    return this.cfg.logo_text || "Drone";
+    return this.cfg.logo_text || "";
   }
 
   private get logoHeight(): number {
@@ -171,20 +159,20 @@ export default class DroneFooter extends LitElement {
   }
 
   private get description(): string {
-    return this.cfg.description ?? DEFAULT_DESC;
+    return this.cfg.description ?? "";
   }
 
   private get links(): FooterLinkItem[] {
     const list = this.cfg.links;
-    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_LINKS;
+    return Array.isArray(list) ? list : [];
   }
 
   private get socialTitle(): string {
-    return this.cfg.social_title ?? "تابعنا على مواقعنا الآتية";
+    return this.cfg.social_title ?? "";
   }
 
   private get buttonText(): string {
-    return this.cfg.button_text ?? "اطلب درونك الآن";
+    return this.cfg.button_text ?? "";
   }
 
   private get buttonLink(): string {
@@ -490,40 +478,125 @@ export default class DroneFooter extends LitElement {
     }
   `];
 
-  private handleNavClick(e: Event, rawUrl?: string) {
-    const url = (rawUrl || "").trim();
+  private handleNavClick(e: Event, rawUrl?: unknown, label?: string) {
+    // Extract clean URL string from whatever Salla passed (string, object, array)
+    let url = "";
+    if (typeof rawUrl === "string") {
+      url = rawUrl.trim();
+    } else if (Array.isArray(rawUrl) && rawUrl.length) {
+      const f: any = rawUrl[0];
+      url = String(f?.value ?? f?.url ?? f ?? "").trim();
+    } else if (rawUrl && typeof rawUrl === "object") {
+      const o = rawUrl as any;
+      url = String(o.value ?? o.url ?? "").trim();
+    }
 
-    if (!url.startsWith("#")) {
+    const cleanLabel = (label || "").trim();
+
+    // Check if this is an in-page navigation (contains #, or starts with #, or has a section keyword in label)
+    const hasHash = url.includes("#");
+    const isLocalAnchor = !url || url === "#" || url === "/" || url === "#hero" || hasHash;
+    const isSectionLabel =
+      cleanLabel.includes("رئيسية") ||
+      cleanLabel.includes("مميزات") ||
+      cleanLabel.includes("قصة") ||
+      cleanLabel.includes("أجزاء") ||
+      cleanLabel.includes("اجزاء") ||
+      cleanLabel.includes("أسئلة") ||
+      cleanLabel.includes("اسئلة") ||
+      cleanLabel.includes("فيديو") ||
+      cleanLabel.includes("فيديوهات");
+
+    if (!isLocalAnchor && !isSectionLabel) {
+      // External page URL
       return;
     }
 
     e.preventDefault();
 
-    if (url === "#" || url === "" || url === "#hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    // 1. Home / Hero navigation
+    if (
+      url === "#" ||
+      url === "" ||
+      url === "/" ||
+      url === "#hero" ||
+      cleanLabel.includes("الرئيسية")
+    ) {
+      try {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch {}
+      if (document.documentElement) {
+        try {
+          document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+        } catch {}
+      }
+      if (document.body) {
+        try {
+          document.body.scrollTo({ top: 0, behavior: "smooth" });
+        } catch {}
+      }
       try {
         history.pushState(null, "", window.location.pathname);
       } catch {}
       return;
     }
 
-    const targetId = url.replace(/^#/, "");
-    let target =
-      document.getElementById(targetId) ||
-      document.querySelector(`drone-${targetId}`) ||
-      document.querySelector(`[component-name="drone-${targetId}"]`) ||
-      document.querySelector(`[component-name="${targetId}"]`) ||
-      document.querySelector(url);
+    // 2. Extract section hash or match by keyword
+    let hash = "";
+    if (hasHash) {
+      hash = url.substring(url.indexOf("#") + 1).toLowerCase().trim();
+    }
 
+    // Map section names to DOM tags and IDs
+    const componentKeywords: Array<{ tag: string; id: string; keywords: string[] }> = [
+      { tag: "drone-hero", id: "hero", keywords: ["hero", "رئيسية", "الرئيسية"] },
+      { tag: "drone-features", id: "features", keywords: ["features", "feature", "مميزات", "المميزات", "ميزات"] },
+      { tag: "drone-story", id: "story", keywords: ["story", "قصة", "القصة", "قصه"] },
+      { tag: "drone-parts", id: "parts", keywords: ["parts", "part", "اجزاء", "أجزاء", "الأجزاء", "اجزاء الدرون", "أجزاء الدرون", "قطع"] },
+      { tag: "drone-faq", id: "faq", keywords: ["faq", "أسئلة", "اسئلة", "الاسئلة", "الأسئلة", "سؤال"] },
+      { tag: "drone-videos", id: "videos", keywords: ["videos", "video", "فيديو", "الفيديو", "فيديوهات", "الفيديوهات"] },
+    ];
+
+    let target: HTMLElement | null = null;
+
+    // A) Try finding by exact hash ID if given
+    if (hash) {
+      target = document.getElementById(hash);
+      if (!target) {
+        target =
+          document.querySelector(`drone-${hash}`) ||
+          document.querySelector(`[component-name="drone-${hash}"]`) ||
+          document.querySelector(`[component-name="${hash}"]`);
+      }
+    }
+
+    // B) If not found yet, search via matching keywords on hash and label
     if (!target) {
+      const searchTerms = [hash, cleanLabel.toLowerCase()].filter(Boolean);
+      for (const comp of componentKeywords) {
+        const matches = comp.keywords.some((k) =>
+          searchTerms.some((t) => t.includes(k.toLowerCase()))
+        );
+        if (matches) {
+          target =
+            document.querySelector(comp.tag) ||
+            document.querySelector(`[component-name="${comp.tag}"]`) ||
+            document.getElementById(comp.id);
+          if (target) break;
+        }
+      }
+    }
+
+    // C) Deep shadowRoot search fallback
+    if (!target && hash) {
       const allCustom = document.querySelectorAll(
         "drone-hero, drone-features, drone-story, drone-parts, drone-faq, drone-videos, salla-custom-component"
       );
       for (const el of Array.from(allCustom)) {
         if ((el as any).shadowRoot) {
-          const inner = (el as any).shadowRoot.getElementById(targetId);
+          const inner = (el as any).shadowRoot.getElementById(hash);
           if (inner) {
-            target = el;
+            target = el as HTMLElement;
             break;
           }
         }
@@ -531,16 +604,57 @@ export default class DroneFooter extends LitElement {
     }
 
     if (target) {
-      const headerOffset = 76;
-      const rect = target.getBoundingClientRect();
-      const targetTop = rect.top + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior: "smooth",
-      });
+      const scrollTarget =
+        (target.parentElement && target.parentElement.tagName.toLowerCase().includes("custom-component"))
+          ? target.parentElement
+          : target;
+
+      scrollTarget.style.scrollMarginTop = "80px";
+      target.style.scrollMarginTop = "80px";
+
+      // 1. Native scrollIntoView (works across all containers: window, div, iframe, body)
       try {
-        history.pushState(null, "", url);
+        scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch {
+        try {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch {}
+      }
+
+      // 2. Exact pixel offset scroll across window and document elements
+      const headerOffset = 76;
+      const rect = scrollTarget.getBoundingClientRect();
+      const currentScrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      const targetTop = Math.max(0, rect.top + currentScrollTop - headerOffset);
+
+      try {
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
       } catch {}
+      if (document.documentElement) {
+        try {
+          document.documentElement.scrollTo({ top: targetTop, behavior: "smooth" });
+        } catch {}
+      }
+      if (document.body) {
+        try {
+          document.body.scrollTo({ top: targetTop, behavior: "smooth" });
+        } catch {}
+      }
+      if (document.scrollingElement) {
+        try {
+          (document.scrollingElement as HTMLElement).scrollTo({ top: targetTop, behavior: "smooth" });
+        } catch {}
+      }
+
+      if (hash) {
+        try {
+          history.pushState(null, "", `#${hash}`);
+        } catch {}
+      }
     }
   }
 
@@ -558,7 +672,7 @@ export default class DroneFooter extends LitElement {
   }
 
   private renderButton() {
-    if (this.cfg.show_button === false) return nothing;
+    if (this.cfg.show_button === false || !this.buttonText) return nothing;
     return renderTacticalButton(this.buttonText, this.buttonLink, "var(--btn-bg)");
   }
 
@@ -694,7 +808,7 @@ export default class DroneFooter extends LitElement {
                   <a
                     class="link-row"
                     href=${l.url || "#"}
-                    @click=${(e: Event) => this.handleNavClick(e, l.url)}
+                    @click=${(e: Event) => this.handleNavClick(e, l.url, l.label)}
                   >
                     <span class="link-label">${l.label || ""}</span>
                     <span class="link-arrow">

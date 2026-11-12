@@ -88,31 +88,6 @@ function parseJsonSafe(val: unknown): any {
   return null;
 }
 
-const DEFAULT_FAQ_ITEMS: FaqItem[] = [
-  {
-    question: "كيف يمكنني طلب تفاصيل الخدمة؟",
-    answer:
-      "يمكنك طلب تفاصيل الخدمة من خلال التواصل معنا عبر الهاتف أو البريد الإلكتروني، أو إرسال استفسارك باستخدام نموذج التواصل في هذه الصفحة.",
-  },
-  {
-    question: "ما هي مدة الشحن والتركيب؟",
-    answer:
-      "تختلف مدة الشحن والتركيب حسب موقعك ونوع المنتج، وغالبًا يتم التوصيل خلال أيام عمل قليلة.",
-  },
-  {
-    question: "هل يمكنني استرجاع أو استبدال المنتج؟",
-    answer:
-      "نعم، يمكنك الاسترجاع أو الاستبدال خلال المدة المحددة في سياسة الاسترجاع بشرط أن يكون المنتج بحالته الأصلية.",
-  },
-  {
-    question: "كيف يمكنني التواصل مع فريق الدعم؟",
-    answer:
-      "يمكنك التواصل مع فريق الدعم عبر الهاتف أو البريد الإلكتروني أو من خلال نموذج التواصل في الموقع.",
-  },
-];
-const DEFAULT_FAQ_HEADING = "عندك سؤال؟ إحنا هنا نساعدك";
-const DEFAULT_FAQ_BADGE = "الأسئلة الشائعة";
-
 function richText(s?: string): string {
   if (!s) return "";
   return escapeHtml(s)
@@ -149,7 +124,7 @@ export default class DroneFaq extends LitElement {
 
   private get items(): FaqItem[] {
     const list = this.cfg.items;
-    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_FAQ_ITEMS;
+    return Array.isArray(list) ? list : [];
   }
 
   private toggle(i: number) {
@@ -361,8 +336,8 @@ export default class DroneFaq extends LitElement {
 
   render() {
     const c = this.cfg;
-    const heading = c.heading ?? DEFAULT_FAQ_HEADING;
-    const badge = c.badge ?? DEFAULT_FAQ_BADGE;
+    const heading = c.heading || "";
+    const badge = c.badge || "";
 
     const bgType = (pick(c.bg_type) || "none") as BgType;
     const wrapBg =

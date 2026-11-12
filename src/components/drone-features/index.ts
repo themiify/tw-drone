@@ -120,7 +120,7 @@ export default class DroneFeatures extends LitElement {
   }
 
   private get buttonText(): string {
-    return this.cfg.button_text ?? "اطلب درونك الآن";
+    return this.cfg.button_text || "";
   }
 
   private get buttonLink(): string {
@@ -675,7 +675,7 @@ export default class DroneFeatures extends LitElement {
   }
 
   private renderButton() {
-    if (!this.showButton) return nothing;
+    if (!this.showButton || !this.buttonText) return nothing;
     return html`
       <div class="cta-wrapper">
         ${renderTacticalButton(
