@@ -150,7 +150,7 @@ export default class DroneStory extends LitElement {
       .body {
         display: flex;
         flex-direction: row; /* rtl => first child sits on the right */
-        align-items: center;
+        align-items: flex-start;
         gap: 2rem;
       }
       .body.reverse {
@@ -170,11 +170,12 @@ export default class DroneStory extends LitElement {
 
       .float {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        width: 100%;
       }
       .float img,
       .float video {
-        max-width: 100%;
+        max-width: 260px;
         max-height: 280px;
         object-fit: contain;
         display: block;
