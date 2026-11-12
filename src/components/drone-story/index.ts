@@ -5,6 +5,7 @@ import {
   renderSectionHeader,
   renderTacticalButton,
   renderTacticalFrame,
+  renderTacticalMedia,
   sectionHeaderStyles,
   tacticalButtonStyles,
   tacticalFrameStyles,
@@ -271,6 +272,14 @@ export default class DroneStory extends LitElement {
     return "#";
   }
 
+    private get hasMedia(): boolean {
+    const c = this.cfg;
+    if (pick(c.media_type) === "video") {
+      return Boolean(c.media_video && c.media_video.trim());
+    }
+    return Boolean(c.media_image && c.media_image.trim());
+  }
+
   render() {
     const c = this.cfg;
     const heading = c.heading || "";
@@ -331,7 +340,7 @@ export default class DroneStory extends LitElement {
           )}
 
           <div class="body ${c.reverse ? "reverse" : ""}">
-            <div class="col info">
+            <div class="col info ${!this.hasMedia ? "full-width" : ""}">
               ${floatNode ? html`<div class="float">${floatNode}</div>` : nothing}
               <div class="text" style="color:${c.text_color || "inherit"}">
                 ${unsafeHTML(richText(text))}
@@ -347,11 +356,19 @@ export default class DroneStory extends LitElement {
                 : nothing}
             </div>
 
-            <div class="col">
-              ${renderTacticalFrame(
-                mediaNode || html`<div class="empty"></div>`
-              )}
-            </div>
+            ${this.hasMedia
+              ? html`
+                  <div class="col media-col">
+                    ${renderTacticalMedia({
+                      id: "story-media",
+                      type: pick(c.media_type) === "video" ? "video" : "image",
+                      imageUrl: c.media_image,
+                      videoUrl: c.media_video,
+                      frameColor: c.frame_color,
+                    })}
+                  </div>
+                `
+              : nothing}
           </div>
         </div>
       </div>

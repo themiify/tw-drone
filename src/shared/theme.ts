@@ -300,95 +300,129 @@ export function renderSectionHeader(
   `;
 }
 
+
 /**
- * Tactical Framed Media (Outer notched frame & inner media container)
- * Precision 12-point vector polygon matching Figma design 575x327:
- * M 28.8746 0 H 274.621 L 305.78 46.2005 H 546.749 L 575 83.8249 V 327 H 497.309 L 467.187 286.886 H 335.901 L 305.78 327 H 0 V 38.4543 L 28.8746 0 Z
+ * Tactical Framed Media SVG (matching Vector 3: 698x397)
+ * M35.0513 0H333.366L371.191 56.0905H663.705L698 101.769V397H603.689L567.125 348.299H407.755L371.191 397H0V46.6861L35.0513 0Z
  */
 export const TACTICAL_FRAME_PATH =
-  "M 28.8746 0 H 274.621 L 305.78 46.2005 H 546.749 L 575 83.8249 V 327 H 497.309 L 467.187 286.886 H 335.901 L 305.78 327 H 0 V 38.4543 L 28.8746 0 Z";
-
-export const TACTICAL_FRAME_POLYGON =
-  "polygon(5.0217% 0%, 47.7602% 0%, 53.1791% 14.1286%, 95.0868% 14.1286%, 100% 25.6345%, 100% 100%, 86.4885% 100%, 81.2499% 87.7327%, 58.4176% 87.7327%, 53.1791% 100%, 0% 100%, 0% 11.7597%)";
+  "M35.0513 0H333.366L371.191 56.0905H663.705L698 101.769V397H603.689L567.125 348.299H407.755L371.191 397H0V46.6861L35.0513 0Z";
 
 export const tacticalFrameStyles = css`
   .frame {
     position: relative;
-    aspect-ratio: 575 / 327;
+    aspect-ratio: 698 / 397;
     width: 100%;
-    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
     box-sizing: border-box;
   }
 
-  .frame-outer {
-    position: absolute;
-    inset: 0;
+  .tactical-svg {
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
-  }
-
-  .frame-inner {
-    position: absolute;
-    inset: clamp(10px, 2.2cqw, 18px);
-    z-index: 2;
-    clip-path: polygon(
-      5.0217% 0%,
-      47.7602% 0%,
-      53.1791% 14.1286%,
-      95.0868% 14.1286%,
-      100% 25.6345%,
-      100% 100%,
-      81.2499% 87.7327%,
-      58.4176% 87.7327%,
-      53.1791% 100%,
-      0% 100%,
-      0% 11.7597%
-    );
-    background: #1e1e1e;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .frame-inner img,
-  .frame-inner video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     display: block;
+    overflow: hidden;
   }
 
-  .frame-inner .empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    color: #999;
+  .floating-thumb {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: 5;
+    pointer-events: none;
   }
 `;
 
-export function renderTacticalFrame(contentNode: unknown) {
+export function renderTacticalMedia(opts: {
+  id?: string;
+  type?: "image" | "video";
+  imageUrl?: string;
+  videoUrl?: string;
+  frameColor?: string;
+  floatingNode?: unknown;
+}) {
+  const isVideo = opts.type === "video";
+  const hasVideo = isVideo && Boolean(opts.videoUrl && opts.videoUrl.trim());
+  const hasImage = !isVideo && Boolean(opts.imageUrl && opts.imageUrl.trim());
+
+  // لو محطش صورة او فيديو الاسفيجي متظهرش
+  if (!hasVideo && !hasImage) {
+    return nothing;
+  }
+
+  const uid = opts.id || Math.random().toString(36).substring(2, 9);
+  const stroke = opts.frameColor || "var(--frame-color, transparent)";
+
+  if (hasVideo) {
+    const maskId = `mask-${uid}`;
+    return html`
+      <div class="frame">
+        <svg
+          class="tactical-svg"
+          viewBox="0 0 698 397"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <mask id="${maskId}">
+              <path d="${TACTICAL_FRAME_PATH}" fill="#ffffff" />
+            </mask>
+          </defs>
+          <foreignObject width="698" height="397" mask="url(#${maskId})">
+            <video
+              src="${opts.videoUrl}"
+              autoplay
+              muted
+              loop
+              playsinline
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            ></video>
+          </foreignObject>
+          <path
+            d="${TACTICAL_FRAME_PATH}"
+            fill="none"
+            stroke="${stroke}"
+            stroke-width="1.5"
+          />
+        </svg>
+        ${opts.floatingNode || nothing}
+      </div>
+    `;
+  }
+
+  const patId = `pat-${uid}`;
   return html`
     <div class="frame">
       <svg
-        class="frame-outer"
-        viewBox="0 0 575 327"
+        class="tactical-svg"
+        viewBox="0 0 698 397"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
       >
-        <path d="${TACTICAL_FRAME_PATH}" fill="var(--frame-color, #ececec)" />
+        <defs>
+          <pattern id="${patId}" patternContentUnits="objectBoundingBox" width="1" height="1">
+            <image href="${opts.imageUrl}" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+          </pattern>
+        </defs>
+        <path
+          d="${TACTICAL_FRAME_PATH}"
+          fill="url(#${patId})"
+          stroke="${stroke}"
+          stroke-width="1.5"
+        />
       </svg>
-      <div class="frame-inner">
-        ${contentNode || nothing}
-      </div>
+      ${opts.floatingNode || nothing}
+    </div>
+  `;
+}
+
+export function renderTacticalFrame(contentNode: unknown) {
+  if (!contentNode) return nothing;
+  return html`
+    <div class="frame">
+      ${contentNode}
     </div>
   `;
 }
