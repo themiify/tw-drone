@@ -4,6 +4,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import {
   renderSectionHeader,
   renderTacticalFrame,
+  renderTacticalMedia,
   sectionHeaderStyles,
   tacticalFrameStyles,
 } from "../../shared/theme.js";
@@ -334,6 +335,14 @@ export default class DroneFaq extends LitElement {
     return imgSrc ? html`<img src=${imgSrc} alt="" />` : nothing;
   }
 
+    private get hasMedia(): boolean {
+    const c = this.cfg;
+    if (pick(c.media_type) === "video") {
+      return Boolean(c.media_video && c.media_video.trim());
+    }
+    return Boolean(c.media_image && c.media_image.trim());
+  }
+
   render() {
     const c = this.cfg;
     const heading = c.heading || "";
@@ -396,11 +405,21 @@ export default class DroneFaq extends LitElement {
           )}
 
           <div class="body ${c.reverse ? "reverse" : ""}">
-            <div class="col">
-              ${renderTacticalFrame(this.renderMedia())}
-            </div>
+            ${this.hasMedia
+              ? html`
+                  <div class="col media-col">
+                    ${renderTacticalMedia({
+                      id: "faq-media",
+                      type: pick(c.media_type) === "video" ? "video" : "image",
+                      imageUrl: c.media_image,
+                      videoUrl: c.media_video,
+                      frameColor: c.frame_color,
+                    })}
+                  </div>
+                `
+              : nothing}
 
-            <div class="col faq">
+            <div class="col faq ${!this.hasMedia ? "full-width" : ""}">
               ${this.items.map((item, i) => {
                 const open = this.openIndexes.has(i);
                 return html`
