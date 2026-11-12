@@ -297,7 +297,7 @@ export default class DroneStory extends LitElement {
       .filter(Boolean)
       .join(";");
 
-    const mediaImg = c.media_image || "/drone-story-photo.jpg";
+    const mediaImg = c.media_image || "";
     const floatNode = this.renderMedia(floatType, floatImg, c.float_video);
     const mediaNode = this.renderMedia(mediaType, mediaImg, c.media_video);
 
