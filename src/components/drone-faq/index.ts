@@ -29,6 +29,7 @@ interface DroneFaqConfig {
   media_type?: unknown;
   media_image?: string;
   media_video?: string;
+  use_svg_frame?: boolean;
 
   bg_type?: unknown;
   bg_color?: string;
@@ -414,6 +415,7 @@ export default class DroneFaq extends LitElement {
                       imageUrl: c.media_image,
                       videoUrl: c.media_video,
                       frameColor: c.frame_color,
+                      useSvgFrame: c.use_svg_frame !== false,
                     })}
                   </div>
                 `

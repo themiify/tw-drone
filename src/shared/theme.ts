@@ -324,6 +324,20 @@ export const tacticalFrameStyles = css`
     overflow: hidden;
   }
 
+  .normal-media-frame {
+    border-radius: 14px;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .normal-media-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+  }
+
   .floating-thumb {
     position: absolute;
     bottom: -10px;
@@ -340,6 +354,7 @@ export function renderTacticalMedia(opts: {
   videoUrl?: string;
   frameColor?: string;
   floatingNode?: unknown;
+  useSvgFrame?: boolean;
 }) {
   const isVideo = opts.type === "video";
   const hasVideo = isVideo && Boolean(opts.videoUrl && opts.videoUrl.trim());
@@ -350,8 +365,43 @@ export function renderTacticalMedia(opts: {
     return nothing;
   }
 
+  const useSvg = opts.useSvgFrame !== false;
   const uid = opts.id || Math.random().toString(36).substring(2, 9);
   const stroke = opts.frameColor || "var(--frame-color, transparent)";
+  const hasCustomStroke =
+    Boolean(opts.frameColor) &&
+    opts.frameColor !== "transparent" &&
+    opts.frameColor !== "none";
+
+  if (!useSvg) {
+    const borderStyle = hasCustomStroke
+      ? `border: 1.5px solid ${opts.frameColor};`
+      : "";
+    return html`
+      <div class="frame normal-media-frame" style="${borderStyle}">
+        ${hasVideo
+          ? html`
+              <video
+                src="${opts.videoUrl}"
+                autoplay
+                muted
+                loop
+                playsinline
+                class="normal-media-content"
+              ></video>
+            `
+          : html`
+              <img
+                src="${opts.imageUrl}"
+                alt=""
+                loading="lazy"
+                class="normal-media-content"
+              />
+            `}
+        ${opts.floatingNode || nothing}
+      </div>
+    `;
+  }
 
   if (hasVideo) {
     const maskId = `mask-${uid}`;
