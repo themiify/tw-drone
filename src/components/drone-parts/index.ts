@@ -803,7 +803,7 @@ export default class DroneParts extends LitElement {
         align-items: flex-end;
         padding: 0;
         gap: 8px;
-        width: 275px;
+        max-width: 275px;
         min-height: 48px;
         height: auto;
         flex: none;
@@ -881,6 +881,7 @@ export default class DroneParts extends LitElement {
         gap: 24px;
         width: 343px;
         max-width: 100%;
+        padding-inline:16px !important;
         height: auto;
         flex: none;
         order: 1;
