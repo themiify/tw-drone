@@ -183,6 +183,11 @@ const SAUDI_RIYAL_SVG = html`<svg
 export default class DroneHero extends LitElement {
   @property({ type: Object }) config?: DroneHeroConfig | Record<string, any>;
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "hero";
+  }
+
   private get cfg(): DroneHeroConfig {
     const parsed = parseJsonSafe(this.config);
     return parsed && typeof parsed === "object" ? parsed : {};
@@ -213,6 +218,8 @@ export default class DroneHero extends LitElement {
       background: var(--hero-bg, #ffffff);
       color: #0d0d0d;
       font-family: inherit;
+      scroll-margin-top: 80px;
+    }
       box-sizing: border-box;
       direction: ltr;
     }
@@ -1206,7 +1213,7 @@ export default class DroneHero extends LitElement {
 
     return html`
       <!-- Frame 34409 (Mobile) / Hero (Desktop) -->
-      <section class="hero" style=${cssVars}>
+      <section class="hero" id="hero" style=${cssVars}>
         <!-- Frame 1: Intro (Frame 5) + Price Box (Frame 34392) -->
         <div class="frame-1">
           <div class="frame-5">
