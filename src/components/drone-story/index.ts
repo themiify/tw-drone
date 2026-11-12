@@ -83,14 +83,6 @@ function parseJsonSafe(val: unknown): any {
   return null;
 }
 
-const DEFAULT_FLOAT_IMG =
-  "https://cdn.files.salla.network/other/1343631853/f3a3c1ac-5721-40f7-8ef4-d65c99129987-original.png";
-const DEFAULT_HEADING = "مش مجرد درون.. دي زاوية جديدة للعالم.";
-const DEFAULT_BADGE = "قصة درون";
-const DEFAULT_TEXT =
-  "إحنا بنؤمن إن التكنولوجيا مش مجرد أدوات، لكنها وسيلة لاكتشاف العالم من **منظور مختلف**.\nمن هنا جت فكرتنا إننا نقدملك تجربة مميزة في **عالم الدرون** والتصوير الجوي، تجمع بين الابتكار والإبداع ومتعة الاستكشاف. بنهتم إنك تلاقي المنتج اللي يناسب احتياجاتك، سواء كنت من عشاق التصوير، أو صُنّاع المحتوى، أو بتحب المغامرات واكتشاف أماكن جديدة.";
-const DEFAULT_BTN = "اطلب درونك الآن";
-
 /** Escapes the text, then turns **bold** into <strong> and new lines into <br>. */
 function richText(s?: string): string {
   if (!s) return "";
@@ -281,11 +273,11 @@ export default class DroneStory extends LitElement {
 
   render() {
     const c = this.cfg;
-    const heading = c.heading ?? DEFAULT_HEADING;
-    const badge = c.badge ?? DEFAULT_BADGE;
-    const text = c.text ?? DEFAULT_TEXT;
-    const buttonText = c.button_text ?? DEFAULT_BTN;
-    const floatImg = c.float_image || DEFAULT_FLOAT_IMG;
+    const heading = c.heading || "";
+    const badge = c.badge || "";
+    const text = c.text || "";
+    const buttonText = c.button_text || "";
+    const floatImg = c.float_image || "";
 
     const bgType = (pick(c.bg_type) || "none") as BgType;
     const floatType = this.mediaType(c.float_type);

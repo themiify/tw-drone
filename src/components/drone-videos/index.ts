@@ -1,4 +1,4 @@
-import { css, html, LitElement } from "lit";
+import { css, html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import Swiper from "swiper";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -38,44 +38,6 @@ interface DroneVideosConfig {
   nav_bg?: string;
   nav_color?: string;
 }
-
-const DEFAULT_TITLE = "فيديوهات للدرون";
-const DEFAULT_HEADING = "بنقرّبك من السماء.. وبنفتحلك آفاق جديدة";
-
-const DEFAULT_VIDEOS: VideoItem[] = [
-  {
-    id: "v1",
-    title: "تحليق جبلي ساحر",
-    poster:
-      "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-    video_url:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-  },
-  {
-    id: "v2",
-    title: "استكشاف الطبيعة والوديان",
-    poster:
-      "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80",
-    video_url:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
-  },
-  {
-    id: "v3",
-    title: "ثبات وتصوير سينمائي دقيق",
-    poster:
-      "https://images.unsplash.com/photo-1507582020474-9a35b7d455d7?auto=format&fit=crop&w=1200&q=80",
-    video_url:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-  },
-  {
-    id: "v4",
-    title: "تصوير احترافي وقت الغروب",
-    poster:
-      "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&w=1200&q=80",
-    video_url:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-  },
-];
 
 const PLAY_ICON_SVG = `
   <svg viewBox="0 0 24 24" fill="currentColor">
@@ -134,11 +96,11 @@ export default class DroneVideos extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title ?? DEFAULT_TITLE;
+    return this.cfg.title ?? "";
   }
 
   private get headingText(): string {
-    return this.cfg.heading ?? DEFAULT_HEADING;
+    return this.cfg.heading ?? "";
   }
 
   private get globalVideoAutoplay(): boolean {
@@ -158,7 +120,7 @@ export default class DroneVideos extends LitElement {
 
   private get videosList(): VideoItem[] {
     const list = this.cfg.videos;
-    if (Array.isArray(list) && list.length > 0) {
+    if (Array.isArray(list)) {
       return list.map((item, idx) => ({
         id: item.id || `v-${idx}`,
         title: item.title || "",
@@ -167,7 +129,7 @@ export default class DroneVideos extends LitElement {
         autoplay: item.autoplay === true || item.autoplay === "true" || item.autoplay === 1,
       }));
     }
-    return DEFAULT_VIDEOS;
+    return [];
   }
 
   private isVideoAutoplay(v: VideoItem): boolean {
@@ -221,14 +183,6 @@ export default class DroneVideos extends LitElement {
     e.stopPropagation();
 
     if (videoEl.paused) {
-      // Pause all other videos
-      const allVideos =
-        this.renderRoot.querySelectorAll<HTMLVideoElement>("video");
-      allVideos.forEach((v) => {
-        if (v !== videoEl && !v.paused) {
-          v.pause();
-        }
-      });
       videoEl.play().catch((err) => {
         console.warn("Could not play video:", err);
       });
@@ -748,43 +702,38 @@ export default class DroneVideos extends LitElement {
                         />
                       </svg>
 
-                      <!-- Center Play / Pause Indicator Badge -->
-                      <div class="play-btn-wrapper">
-                        <div
-                          class="tactical-play-btn ${auto ? "is-playing" : ""}"
-                          aria-label=${auto ? "إيقاف الفيديو" : "تشغيل الفيديو"}
-                        >
-                          <svg
-                            class="play-btn-bg"
-                            viewBox="0 0 63 58"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="${PLAY_BTN_PATH}"
-                              fill="var(--play-bg, #0D0D0D)"
-                              stroke="var(--play-stroke, #ffffff)"
-                            />
-                          </svg>
-                          <span
-                            class="play-icon"
-                            style="color: var(--play-icon, #ffffff);"
-                          >
-                            ${auto
-                              ? html`
-                                  <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <rect x="6" y="5" width="4" height="14" rx="1" />
-                                    <rect x="14" y="5" width="4" height="14" rx="1" />
-                                  </svg>
-                                `
-                              : html`
+                      <!-- Center Play / Pause Indicator Badge (hidden completely when autoplay is active) -->
+                      ${auto
+                        ? nothing
+                        : html`
+                            <div class="play-btn-wrapper">
+                              <div
+                                class="tactical-play-btn"
+                                aria-label="تشغيل الفيديو"
+                              >
+                                <svg
+                                  class="play-btn-bg"
+                                  viewBox="0 0 63 58"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="${PLAY_BTN_PATH}"
+                                    fill="var(--play-bg, #0D0D0D)"
+                                    stroke="var(--play-stroke, #ffffff)"
+                                  />
+                                </svg>
+                                <span
+                                  class="play-icon"
+                                  style="color: var(--play-icon, #ffffff);"
+                                >
                                   <svg viewBox="0 0 24 24" fill="currentColor">
                                     <polygon points="8,5 19,12 8,19" />
                                   </svg>
-                                `}
-                          </span>
-                        </div>
-                      </div>
+                                </span>
+                              </div>
+                            </div>
+                          `}
                     </div>
                   </div>
                 `;
