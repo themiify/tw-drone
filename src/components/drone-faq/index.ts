@@ -330,8 +330,8 @@ export default class DroneFaq extends LitElement {
           ></video>`
         : nothing;
     }
-    const imgSrc = c.media_image || "/drone-faq-photo.jpg";
-    return html`<img src=${imgSrc} alt="" />`;
+    const imgSrc = c.media_image;
+    return imgSrc ? html`<img src=${imgSrc} alt="" />` : nothing;
   }
 
   render() {

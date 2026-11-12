@@ -39,7 +39,7 @@ interface DroneFeaturesConfig {
 const DEFAULT_BG_IMAGE =
   "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp";
 
-const DEFAULT_DRONE_IMAGE = "/images/drone-features-main.png";
+const DEFAULT_DRONE_IMAGE = "";
 
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
@@ -87,11 +87,11 @@ export default class DroneFeatures extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title ?? "";
+    return this.cfg.title || "";
   }
 
   private get headingText(): string {
-    return this.cfg.heading ?? "";
+    return this.cfg.heading || "";
   }
 
   private get bgType(): string {
@@ -107,7 +107,7 @@ export default class DroneFeatures extends LitElement {
   private get droneImage(): string {
     const img = this.cfg.drone_image;
     if (typeof img === "string" && img) return img;
-    return DEFAULT_DRONE_IMAGE;
+    return "";
   }
 
   private get featuresList(): FeatureItem[] {
@@ -738,12 +738,14 @@ export default class DroneFeatures extends LitElement {
           <!-- Satellite Features Stage for Desktop & Mobile -->
           <div class="features-stage">
             <div class="drone-center">
-              <img
-                src=${this.droneImage}
-                alt="Drone"
-                class="drone-img"
-                loading="lazy"
-              />
+              ${this.droneImage
+                ? html`<img
+                    src=${this.droneImage}
+                    alt="Drone"
+                    class="drone-img"
+                    loading="lazy"
+                  />`
+                : nothing}
             </div>
 
             <!-- Absolute items on desktop / 2-column grid on mobile -->
