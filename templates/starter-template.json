@@ -1574,6 +1574,18 @@
           "value": 38
         },
         {
+          "id": "logo_height_mobile",
+          "type": "number",
+          "label": "ارتفاع الشعار في الموبايل (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 16,
+          "maximum": 60,
+          "step": 2,
+          "value": 30
+        },
+        {
           "id": "links",
           "type": "collection",
           "format": "collection",
@@ -2645,6 +2657,18 @@
           "maximum": 80,
           "step": 2,
           "value": 42
+        },
+        {
+          "id": "logo_height_mobile",
+          "type": "number",
+          "label": "ارتفاع الشعار في الموبايل (بكسل)",
+          "format": "slider",
+          "inputType": "range",
+          "required": false,
+          "minimum": 16,
+          "maximum": 60,
+          "step": 2,
+          "value": 34
         },
         {
           "id": "description",

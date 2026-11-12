@@ -124,6 +124,11 @@ export default class DroneFaq extends LitElement {
   @property({ type: Object })
   config?: DroneFaqConfig;
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "faq";
+  }
+
   @state() private openIndexes: Set<number> = new Set();
   private initialised = false;
 
@@ -167,6 +172,7 @@ export default class DroneFaq extends LitElement {
         display: block;
         direction: rtl;
         font-family: inherit;
+        scroll-margin-top: 80px;
       }
 
       .wrap {
@@ -386,7 +392,7 @@ export default class DroneFaq extends LitElement {
       .join(";");
 
     return html`
-      <div class="wrap" style="${wrapBg}${varStyle}">
+      <div class="wrap" id="faq" style="${wrapBg}${varStyle}">
         ${bgType === "image" && c.bg_image
           ? html`<div class="bg"><img src=${c.bg_image} alt="" /></div>`
           : bgType === "video" && c.bg_video

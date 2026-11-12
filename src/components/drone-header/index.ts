@@ -12,6 +12,7 @@ interface DroneHeaderConfig {
   logo_image?: string;
   logo_text?: string;
   logo_height?: number;
+  logo_height_mobile?: number;
   logo_url?: unknown;
 
   links?: NavLinkItem[];
@@ -79,6 +80,9 @@ export default class DroneHeader extends LitElement {
   @state()
   private mobileMenuOpen = false;
 
+  @state()
+  private isScrolled = false;
+
   private get cfg(): DroneHeaderConfig {
     const c = parseJsonSafe(this.config) || {};
     return c;
@@ -95,6 +99,12 @@ export default class DroneHeader extends LitElement {
   private get logoHeight(): number {
     const h = Number(this.cfg.logo_height);
     return Number.isFinite(h) && h > 0 ? h : 40;
+  }
+
+  private get logoHeightMobile(): number {
+    const hm = Number(this.cfg.logo_height_mobile);
+    if (Number.isFinite(hm) && hm > 0) return hm;
+    return Math.min(this.logoHeight, 30);
   }
 
   private get logoUrl(): string {
@@ -160,6 +170,7 @@ export default class DroneHeader extends LitElement {
       position: sticky;
       top: 0;
       z-index: 99999;
+      min-height: 72px;
     }
 
     * {
@@ -179,6 +190,18 @@ export default class DroneHeader extends LitElement {
       position: sticky;
       top: 0;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-wrap.is-scrolled {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 99999 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -364,12 +387,34 @@ export default class DroneHeader extends LitElement {
         display: inline-flex;
         width: 100%;
       }
+
+      .logo-img {
+        height: var(--logo-h-mobile, var(--logo-h, 30px));
+      }
     }
   `];
+
+  private onWindowScroll = () => {
+    if (!this.isSticky) {
+      if (this.isScrolled) this.isScrolled = false;
+      return;
+    }
+    const scrolled = window.scrollY > 10;
+    if (scrolled !== this.isScrolled) {
+      this.isScrolled = scrolled;
+    }
+  };
 
   connectedCallback() {
     super.connectedCallback();
     this.updateStickyHost();
+    window.addEventListener("scroll", this.onWindowScroll, { passive: true });
+    this.onWindowScroll();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("scroll", this.onWindowScroll);
   }
 
   updated(changedProperties: Map<string, any>) {
@@ -383,11 +428,82 @@ export default class DroneHeader extends LitElement {
       this.style.position = "sticky";
       this.style.top = "0";
       this.style.zIndex = "99999";
+      if (this.parentElement) {
+        const tag = this.parentElement.tagName.toLowerCase();
+        if (tag.includes("custom-component") || tag.includes("salla") || tag.includes("section")) {
+          this.parentElement.style.position = "sticky";
+          this.parentElement.style.top = "0";
+          this.parentElement.style.zIndex = "99999";
+        }
+      }
     } else {
       this.classList.remove("sticky-header");
       this.style.position = "relative";
       this.style.top = "";
       this.style.zIndex = "9999";
+      if (this.parentElement) {
+        const tag = this.parentElement.tagName.toLowerCase();
+        if (tag.includes("custom-component") || tag.includes("salla") || tag.includes("section")) {
+          this.parentElement.style.position = "";
+          this.parentElement.style.top = "";
+          this.parentElement.style.zIndex = "";
+        }
+      }
+    }
+  }
+
+  private handleNavClick(e: Event, rawUrl?: string) {
+    this.mobileMenuOpen = false;
+    const url = (rawUrl || "").trim();
+
+    if (!url.startsWith("#")) {
+      return;
+    }
+
+    e.preventDefault();
+
+    if (url === "#" || url === "" || url === "#hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        history.pushState(null, "", window.location.pathname);
+      } catch {}
+      return;
+    }
+
+    const targetId = url.replace(/^#/, "");
+    let target =
+      document.getElementById(targetId) ||
+      document.querySelector(`drone-${targetId}`) ||
+      document.querySelector(`[component-name="drone-${targetId}"]`) ||
+      document.querySelector(`[component-name="${targetId}"]`) ||
+      document.querySelector(url);
+
+    if (!target) {
+      const allCustom = document.querySelectorAll(
+        "drone-hero, drone-features, drone-story, drone-parts, drone-faq, drone-videos, salla-custom-component"
+      );
+      for (const el of Array.from(allCustom)) {
+        if ((el as any).shadowRoot) {
+          const inner = (el as any).shadowRoot.getElementById(targetId);
+          if (inner) {
+            target = el;
+            break;
+          }
+        }
+      }
+    }
+
+    if (target) {
+      const headerOffset = 76;
+      const rect = target.getBoundingClientRect();
+      const targetTop = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+      try {
+        history.pushState(null, "", url);
+      } catch {}
     }
   }
 
@@ -397,13 +513,14 @@ export default class DroneHeader extends LitElement {
 
   private renderLogo() {
     const height = `${this.logoHeight}px`;
+    const heightMobile = `${this.logoHeightMobile}px`;
     const src = this.logoImage;
 
     return html`<img
       class="logo-img"
       src=${src}
       alt=${this.logoText}
-      style="--logo-h: ${height};"
+      style="--logo-h: ${height}; --logo-h-mobile: ${heightMobile};"
     />`;
   }
 
@@ -434,12 +551,16 @@ export default class DroneHeader extends LitElement {
 
     return html`
       <header
-        class="header-wrap ${this.isSticky ? "sticky" : ""} ${c.border_bottom ? "bordered" : ""}"
+        class="header-wrap ${this.isSticky ? "sticky" : ""} ${this.isSticky && this.isScrolled ? "is-scrolled" : ""} ${c.border_bottom ? "bordered" : ""}"
         style="${customVars}"
       >
         <div class="container">
           <!-- Logo (Right in RTL) -->
-          <a class="logo-link" href=${this.logoUrl}>
+          <a
+            class="logo-link"
+            href=${this.logoUrl}
+            @click=${(e: Event) => this.handleNavClick(e, this.logoUrl)}
+          >
             ${this.renderLogo()}
           </a>
 
@@ -450,6 +571,7 @@ export default class DroneHeader extends LitElement {
                 <a
                   class="nav-link ${l.active ? "active" : ""}"
                   href=${l.url || "#"}
+                  @click=${(e: Event) => this.handleNavClick(e, l.url)}
                 >
                   ${l.active ? html`<span class="dash">_</span>` : nothing}
                   <span>${l.label || ""}</span>
@@ -482,7 +604,7 @@ export default class DroneHeader extends LitElement {
                 <a
                   class="nav-link ${l.active ? "active" : ""}"
                   href=${l.url || "#"}
-                  @click=${() => (this.mobileMenuOpen = false)}
+                  @click=${(e: Event) => this.handleNavClick(e, l.url)}
                 >
                   ${l.active ? html`<span class="dash">_</span>` : nothing}
                   <span>${l.label || ""}</span>

@@ -76,6 +76,11 @@ export default class DroneFeatures extends LitElement {
   @property({ type: Object })
   config?: Record<string, any>;
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "features";
+  }
+
   private get cfg(): DroneFeaturesConfig {
     const parsed = parseJsonSafe(this.config);
     return parsed && typeof parsed === "object" ? parsed : {};
@@ -138,6 +143,7 @@ export default class DroneFeatures extends LitElement {
         font-family: inherit;
         width: 100%;
         box-sizing: border-box;
+        scroll-margin-top: 80px;
         --sec-bg: #ffffff;
         --sec-text: #111111;
         --sec-desc: #666666;
@@ -706,7 +712,7 @@ export default class DroneFeatures extends LitElement {
     const features = this.featuresList;
 
     return html`
-      <section class="features-section" style="${customVars}">
+      <section class="features-section" id="features" style="${customVars}">
         <!-- Wireframe blueprint drone background -->
         ${bgType === "image" && bgImage
           ? html`<div

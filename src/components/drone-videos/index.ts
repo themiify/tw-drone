@@ -174,6 +174,11 @@ export default class DroneVideos extends LitElement {
     return this.globalVideoAutoplay || !!v.autoplay;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = "videos";
+  }
+
   firstUpdated() {
     this.initSwiper();
   }
@@ -337,6 +342,7 @@ export default class DroneVideos extends LitElement {
         font-family: inherit;
         width: 100%;
         box-sizing: border-box;
+        scroll-margin-top: 80px;
         --sec-bg: #ffffff;
         --sec-text: #111111;
         --sec-line: #e0e0e0;
@@ -675,7 +681,7 @@ export default class DroneVideos extends LitElement {
     const videos = this.videosList;
 
     return html`
-      <section class="videos-section" style="${customVars}">
+      <section class="videos-section" id="videos" style="${customVars}">
         <div class="container">
           <!-- Section Header (Title on left, Heading on right in RTL) -->
           ${renderSectionHeader(
