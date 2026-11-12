@@ -9,9 +9,8 @@ import {
 
 interface FeatureItem {
   id?: string;
-  title: string;
-  desc: string;
-  icon_type?: unknown;
+  title?: string;
+  desc?: string;
   icon_image?: string;
 }
 
@@ -41,48 +40,6 @@ const DEFAULT_BG_IMAGE =
   "https://cdn.files.salla.network/other/1637672648/885bcc6e-97cc-47ce-86ad-7cd492be4d05-original.webp";
 
 const DEFAULT_DRONE_IMAGE = "/images/drone-features-main.png";
-
-const DEFAULT_TITLE = "مميزات الدرون";
-const DEFAULT_HEADING = "استكشف العالم من زوايا جديدة مع تصميم متقدم";
-
-const DEFAULT_FEATURES: FeatureItem[] = [
-  {
-    id: "propellers",
-    title: "تصميم متعدد المراوح",
-    desc: "توزيع المراوح حول الهيكل يمنح الدرون طابعه المميز.",
-    icon_type: "propeller",
-  },
-  {
-    id: "camera",
-    title: "كاميرا مدمجة",
-    desc: "عينك في السماء لتوثيق المشاهد واللحظات من الأعلى.",
-    icon_type: "camera",
-  },
-  {
-    id: "aerial",
-    title: "تصوير جوي",
-    desc: "امنح صورك وفيديوهاتك بُعداً جديداً من السماء.",
-    icon_type: "aerial",
-  },
-  {
-    id: "guard",
-    title: "هيكل يحيط بالمراوح",
-    desc: "تصميم خارجي يبرز توزيع المراوح حول جسم الدرون.",
-    icon_type: "guard",
-  },
-  {
-    id: "record",
-    title: "وثّق مغامرتك",
-    desc: "حوّل رحلاتك وأماكنك المفضلة إلى حكايات بصرية.",
-    icon_type: "record",
-  },
-  {
-    id: "wide",
-    title: "منظور أوسع",
-    desc: "اكتشف تفاصيل المشهد من زوايا لا تراها من الأرض.",
-    icon_type: "wide",
-  },
-];
 
 function pick(v: unknown): string {
   if (Array.isArray(v)) {
@@ -125,11 +82,11 @@ export default class DroneFeatures extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title ?? DEFAULT_TITLE;
+    return this.cfg.title ?? "";
   }
 
   private get headingText(): string {
-    return this.cfg.heading ?? DEFAULT_HEADING;
+    return this.cfg.heading ?? "";
   }
 
   private get bgType(): string {
@@ -150,7 +107,7 @@ export default class DroneFeatures extends LitElement {
 
   private get featuresList(): FeatureItem[] {
     const list = this.cfg.features;
-    return Array.isArray(list) && list.length > 0 ? list : DEFAULT_FEATURES;
+    return Array.isArray(list) ? list : [];
   }
 
   private get showButton(): boolean {
@@ -261,7 +218,7 @@ export default class DroneFeatures extends LitElement {
         filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.12));
       }
 
-      /* Container for radial items on desktop / grid on mobile */
+      /* Container for radial items on desktop / 2-col grid on mobile */
       .features-grid {
         position: absolute;
         inset: 0;
@@ -329,63 +286,181 @@ export default class DroneFeatures extends LitElement {
       }
 
       /* =================== DESKTOP RADIAL POSITIONS =================== */
-      /* 1. Top Center / slightly right (تصميم متعدد المراوح) */
-      .pos-0 {
+      /* --- Default / 6 Items Layout --- */
+      .features-grid.count-6 .pos-0,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-0 {
         top: 2%;
         right: 42%;
         text-align: right;
       }
-      .pos-0 .feature-header {
+      .features-grid.count-6 .pos-0 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-0 .feature-header {
         flex-direction: row;
       }
 
-      /* 2. Top Right (كاميرا مدمجة) */
-      .pos-1 {
+      .features-grid.count-6 .pos-1,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-1 {
         top: 12%;
         right: 4%;
         text-align: right;
       }
-      .pos-1 .feature-header {
+      .features-grid.count-6 .pos-1 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-1 .feature-header {
         flex-direction: row;
       }
 
-      /* 3. Mid Right (تصوير جوي) */
-      .pos-2 {
+      .features-grid.count-6 .pos-2,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-2 {
         top: 58%;
         right: 5%;
         text-align: right;
       }
-      .pos-2 .feature-header {
+      .features-grid.count-6 .pos-2 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-2 .feature-header {
         flex-direction: row;
       }
 
-      /* 4. Bottom Center (هيكل يحيط بالمراوح) */
-      .pos-3 {
+      .features-grid.count-6 .pos-3,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-3 {
         bottom: 2%;
         left: 45%;
         text-align: right;
       }
-      .pos-3 .feature-header {
+      .features-grid.count-6 .pos-3 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-3 .feature-header {
         flex-direction: row;
       }
 
-      /* 5. Mid Left (وثّق مغامرتك) */
-      .pos-4 {
+      .features-grid.count-6 .pos-4,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-4 {
         top: 58%;
         left: 5%;
         text-align: right;
       }
-      .pos-4 .feature-header {
+      .features-grid.count-6 .pos-4 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-4 .feature-header {
         flex-direction: row-reverse;
       }
 
-      /* 6. Top Left (منظور أوسع) */
-      .pos-5 {
+      .features-grid.count-6 .pos-5,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-5 {
         top: 12%;
         left: 4%;
         text-align: right;
       }
-      .pos-5 .feature-header {
+      .features-grid.count-6 .pos-5 .feature-header,
+      .features-grid:not(.count-3):not(.count-4):not(.count-5) .pos-5 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      /* --- 5 Items Layout: 1 Top Center, 2 on Right, 2 on Left --- */
+      .features-grid.count-5 .pos-0 {
+        top: 2%;
+        right: 42%;
+        text-align: right;
+      }
+      .features-grid.count-5 .pos-0 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-5 .pos-1 {
+        top: 20%;
+        right: 5%;
+        text-align: right;
+      }
+      .features-grid.count-5 .pos-1 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-5 .pos-2 {
+        top: 60%;
+        right: 5%;
+        text-align: right;
+      }
+      .features-grid.count-5 .pos-2 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-5 .pos-3 {
+        top: 60%;
+        left: 5%;
+        text-align: right;
+      }
+      .features-grid.count-5 .pos-3 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      .features-grid.count-5 .pos-4 {
+        top: 20%;
+        left: 5%;
+        text-align: right;
+      }
+      .features-grid.count-5 .pos-4 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      /* --- 4 Items Layout: 2 on Right, 2 on Left (Balanced 2x2) --- */
+      .features-grid.count-4 .pos-0 {
+        top: 20%;
+        right: 6%;
+        text-align: right;
+      }
+      .features-grid.count-4 .pos-0 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-4 .pos-1 {
+        top: 60%;
+        right: 6%;
+        text-align: right;
+      }
+      .features-grid.count-4 .pos-1 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-4 .pos-2 {
+        top: 60%;
+        left: 6%;
+        text-align: right;
+      }
+      .features-grid.count-4 .pos-2 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      .features-grid.count-4 .pos-3 {
+        top: 20%;
+        left: 6%;
+        text-align: right;
+      }
+      .features-grid.count-4 .pos-3 .feature-header {
+        flex-direction: row-reverse;
+      }
+
+      /* --- 3 Items Layout: 1 Top Center, 1 Mid Right, 1 Mid Left (Balanced Triangle) --- */
+      .features-grid.count-3 .pos-0 {
+        top: 2%;
+        right: 42%;
+        text-align: right;
+      }
+      .features-grid.count-3 .pos-0 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-3 .pos-1 {
+        top: 48%;
+        right: 6%;
+        text-align: right;
+      }
+      .features-grid.count-3 .pos-1 .feature-header {
+        flex-direction: row;
+      }
+
+      .features-grid.count-3 .pos-2 {
+        top: 48%;
+        left: 6%;
+        text-align: right;
+      }
+      .features-grid.count-3 .pos-2 .feature-header {
         flex-direction: row-reverse;
       }
 
@@ -399,8 +474,12 @@ export default class DroneFeatures extends LitElement {
         z-index: 5;
       }
 
-      /* =================== RESPONSIVE (TABLET) =================== */
+      /* =================== RESPONSIVE (MOBILE & TABLET: 2-COLUMN GRID) =================== */
       @media (max-width: 990px) {
+        .features-section {
+          padding: 2.5rem 1rem 3.5rem;
+        }
+
         .bg-layer {
           background-size: 90% auto;
           background-position: center top;
@@ -409,23 +488,24 @@ export default class DroneFeatures extends LitElement {
 
         .features-stage {
           min-height: auto;
-          margin: 2rem auto;
+          margin: 1.5rem auto 2rem;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .drone-center {
-          max-width: 360px;
+          max-width: 320px;
           margin: 0 auto;
         }
 
+        /* 2-Column Grid exactly matching Image 2 */
         .features-grid {
           position: static;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem 1.25rem;
+          gap: 1.5rem 1rem;
           width: 100%;
           pointer-events: auto;
         }
@@ -441,62 +521,42 @@ export default class DroneFeatures extends LitElement {
           max-width: 100%;
           transform: none;
           text-align: right !important;
+          background: transparent;
+          border: none;
+          padding: 0;
+        }
+
+        .feature-item:hover {
+          transform: none;
         }
 
         .feature-header {
-          flex-direction: row !important;
-          gap: 0.65rem;
+          flex-direction: row !important; /* Always icon on right, title to its left */
+          gap: 0.5rem;
           margin-bottom: 0.35rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .feature-icon {
+          width: 30px;
+          height: 30px;
         }
 
         .feature-title {
-          font-size: 1.05rem;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--sec-text, #111111);
           white-space: normal;
+          line-height: 1.35;
+          margin: 0;
         }
 
         .feature-desc {
-          font-size: 0.88rem;
-          line-height: 1.6;
-        }
-      }
-
-      /* =================== RESPONSIVE (MOBILE PHONES) =================== */
-      @media (max-width: 640px) {
-        .features-section {
-          padding: 2.75rem 1rem 3.5rem;
-        }
-
-        .drone-center {
-          max-width: 260px;
-        }
-
-        /* 1 column layout on mobile phones: clean, readable, spacious */
-        .features-grid {
-          grid-template-columns: 1fr;
-          gap: 1.15rem;
-        }
-
-        .feature-item {
-          padding: 0.85rem 1rem;
-          background: rgba(0, 0, 0, 0.02);
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 8px;
-          text-align: right;
-        }
-
-        .feature-header {
-          flex-direction: row !important;
-          gap: 0.75rem;
-        }
-
-        .feature-title {
-          font-size: 1.05rem;
-        }
-
-        .feature-desc {
-          font-size: 0.88rem;
-          line-height: 1.6;
-          color: var(--sec-desc);
+          font-size: 0.8rem;
+          line-height: 1.55;
+          color: var(--sec-desc, #666666);
+          margin: 0;
         }
 
         .cta-wrapper {
@@ -506,7 +566,7 @@ export default class DroneFeatures extends LitElement {
     `,
   ];
 
-  private renderIcon(typeRaw?: unknown, customImg?: string) {
+  private renderIcon(customImg?: string, index: number = 0) {
     if (customImg && typeof customImg === "string" && customImg.trim()) {
       return html`
         <img
@@ -517,13 +577,10 @@ export default class DroneFeatures extends LitElement {
       `;
     }
 
-    const type = pick(typeRaw).toLowerCase();
+    const idx = index % 6;
 
-    switch (type) {
-      case "propeller":
-      case "propellers":
-      case "wind":
-      case "rotor":
+    switch (idx) {
+      case 0: // propeller
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -533,7 +590,7 @@ export default class DroneFeatures extends LitElement {
             />
           </svg>
         `;
-      case "camera":
+      case 1: // camera
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -543,8 +600,7 @@ export default class DroneFeatures extends LitElement {
             />
           </svg>
         `;
-      case "aerial":
-      case "drone":
+      case 2: // aerial
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -554,8 +610,7 @@ export default class DroneFeatures extends LitElement {
             />
           </svg>
         `;
-      case "guard":
-      case "shield":
+      case 3: // guard
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -570,8 +625,7 @@ export default class DroneFeatures extends LitElement {
             <circle cx="16" cy="16" r="2" fill="#FFFFFF" />
           </svg>
         `;
-      case "record":
-      case "video":
+      case 4: // record
         return html`
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="16" fill="#0D0D0D" />
@@ -590,7 +644,7 @@ export default class DroneFeatures extends LitElement {
             <circle cx="20" cy="13" r="0.8" fill="#FFFFFF" />
           </svg>
         `;
-      case "wide":
+      case 5: // wide
       default:
         return html`
           <svg viewBox="0 0 32 32" fill="none">
@@ -686,18 +740,18 @@ export default class DroneFeatures extends LitElement {
               />
             </div>
 
-            <!-- Absolute items on desktop / clean grid on mobile -->
-            <div class="features-grid">
+            <!-- Absolute items on desktop / 2-column grid on mobile -->
+            <div class="features-grid count-${features.length}">
               ${features.map(
                 (f, i) => html`
                   <div class="feature-item pos-${i}">
                     <div class="feature-header">
                       <span class="feature-icon">
-                        ${this.renderIcon(f.icon_type, (f as any).icon_image)}
+                        ${this.renderIcon(f.icon_image, i)}
                       </span>
-                      <h4 class="feature-title">${f.title}</h4>
+                      <h4 class="feature-title">${f.title || ""}</h4>
                     </div>
-                    <p class="feature-desc">${f.desc}</p>
+                    <p class="feature-desc">${f.desc || ""}</p>
                   </div>
                 `
               )}
