@@ -16,6 +16,7 @@ interface FeatureItem {
 
 interface DroneFeaturesConfig {
   title?: string;
+  badge?: string;
   heading?: string;
   bg_type?: unknown;
   bg_color?: string;
@@ -87,7 +88,7 @@ export default class DroneFeatures extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title || "";
+    return this.cfg.badge || this.cfg.title || "";
   }
 
   private get headingText(): string {

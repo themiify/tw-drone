@@ -19,6 +19,7 @@ interface VideoItem {
 
 interface DroneVideosConfig {
   title?: string;
+  badge?: string;
   heading?: string;
 
   videos?: VideoItem[];
@@ -96,7 +97,7 @@ export default class DroneVideos extends LitElement {
   }
 
   private get titleText(): string {
-    return this.cfg.title || "";
+    return this.cfg.badge || this.cfg.title || "";
   }
 
   private get headingText(): string {
