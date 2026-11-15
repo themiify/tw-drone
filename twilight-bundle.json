@@ -3145,7 +3145,7 @@
           "label": "رابط فيسبوك",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": "https://facebook.com"
         },
         {
           "id": "instagram_url",
@@ -3154,7 +3154,7 @@
           "label": "رابط انستغرام",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": "https://instagram.com"
         },
         {
           "id": "x_url",
@@ -3163,7 +3163,7 @@
           "label": "رابط منصة X (تويتر)",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": "https://x.com"
         },
         {
           "id": "linkedin_url",
@@ -3172,7 +3172,7 @@
           "label": "رابط لينكد إن",
           "format": "url",
           "required": false,
-          "value": "#"
+          "value": "https://linkedin.com"
         },
         {
           "id": "show_button",
