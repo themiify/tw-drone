@@ -403,6 +403,13 @@ export function renderTacticalMedia(opts: {
     `;
   }
 
+  const frameBg = opts.frameColor || "var(--frame-color, #ececec)";
+  const insetX = 11;
+  const insetY = 10;
+  const scaleX = (698 - 2 * insetX) / 698;
+  const scaleY = (397 - 2 * insetY) / 397;
+  const innerTransform = `translate(${insetX}, ${insetY}) scale(${scaleX.toFixed(6)}, ${scaleY.toFixed(6)})`;
+
   if (hasVideo) {
     const maskId = `mask-${uid}`;
     return html`
@@ -415,10 +422,14 @@ export function renderTacticalMedia(opts: {
           preserveAspectRatio="none"
         >
           <defs>
-            <mask id="${maskId}">
-              <path d="${TACTICAL_FRAME_PATH}" fill="#ffffff" />
+            <mask id="${maskId}" maskUnits="userSpaceOnUse" x="0" y="0" width="698" height="397">
+              <rect width="698" height="397" fill="#000000" />
+              <path d="${TACTICAL_FRAME_PATH}" fill="#ffffff" transform="${innerTransform}" />
             </mask>
           </defs>
+          <!-- Outer Tactical Frame (Background) -->
+          <path d="${TACTICAL_FRAME_PATH}" fill="${frameBg}" />
+          <!-- Inner Video with Gap -->
           <foreignObject width="698" height="397" mask="url(#${maskId})">
             <video
               src="${opts.videoUrl}"
@@ -429,12 +440,6 @@ export function renderTacticalMedia(opts: {
               style="width: 100%; height: 100%; object-fit: cover; display: block;"
             ></video>
           </foreignObject>
-          <path
-            d="${TACTICAL_FRAME_PATH}"
-            fill="none"
-            stroke="${stroke}"
-            stroke-width="1.5"
-          />
         </svg>
         ${opts.floatingNode || nothing}
       </div>
@@ -456,11 +461,13 @@ export function renderTacticalMedia(opts: {
             <image href="${opts.imageUrl}" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
           </pattern>
         </defs>
+        <!-- Outer Tactical Frame (Background) -->
+        <path d="${TACTICAL_FRAME_PATH}" fill="${frameBg}" />
+        <!-- Inner Framed Image with Gap -->
         <path
           d="${TACTICAL_FRAME_PATH}"
           fill="url(#${patId})"
-          stroke="${stroke}"
-          stroke-width="1.5"
+          transform="${innerTransform}"
         />
       </svg>
       ${opts.floatingNode || nothing}
