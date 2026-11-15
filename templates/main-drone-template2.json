@@ -2225,39 +2225,22 @@
           "item_label": "فيديو",
           "value": [
             {
-              "title": "تحليق جبلي ساحر",
+              "id": "v1",
               "poster": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-              "autoplay": false
+              "video_url": "https://raw.githubusercontent.com/themiifyHG/uploavideos/main/uploads/1794732797017_0_Quadcopter_Drone_1280x720.mp4.mp4"
             },
             {
-              "title": "استكشاف الطبيعة والوديان",
+              "id": "v2",
               "poster": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
-              "autoplay": false
+              "video_url": "https://raw.githubusercontent.com/themiifyHG/uploavideos/main/uploads/1794732885878_0_Shadow_High_1280x720.mp4.mp4"
             },
             {
-              "title": "ثبات وتصوير سينمائي دقيق",
+              "id": "v3",
               "poster": "https://images.unsplash.com/photo-1507582020474-9a35b7d455d7?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-              "autoplay": false
-            },
-            {
-              "title": "تصوير احترافي وقت الغروب",
-              "poster": "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&w=1200&q=80",
-              "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-              "autoplay": false
+              "video_url": "https://raw.githubusercontent.com/themiifyHG/uploavideos/main/uploads/1794732917293_2499603_Closeup_Drone_1280x720.mp4.mp4"
             }
           ],
           "fields": [
-            {
-              "id": "title",
-              "type": "string",
-              "icon": "sicon-format-text-alt",
-              "required": false,
-              "format": "text",
-              "label": "عنوان الفيديو"
-            },
             {
               "id": "poster",
               "type": "string",

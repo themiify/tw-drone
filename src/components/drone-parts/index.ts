@@ -154,11 +154,13 @@ export default class DroneParts extends LitElement {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M195 3.68201V3.18201L0 3.18201V3.68201V4.18201L195 4.18201V3.68201ZM195.354 4.03556C195.549 3.8403 195.549 3.52372 195.354 3.32845L192.172 0.146473C191.976 -0.0487893 191.66 -0.0487893 191.464 0.146473C191.269 0.341735 191.269 0.658318 191.464 0.85358L194.293 3.68201L191.464 6.51043C191.269 6.7057 191.269 7.02228 191.464 7.21754C191.66 7.4128 191.976 7.4128 192.172 7.21754L195.354 4.03556Z"
-        fill=${fill}
-      />
-      <path d="M0 3.68201H129L117.273 10.682H0V3.68201Z" fill=${fill} />
+      <g transform="translate(196, 0) scale(-1, 1)">
+        <path
+          d="M195 3.68201V3.18201L0 3.18201V3.68201V4.18201L195 4.18201V3.68201ZM195.354 4.03556C195.549 3.8403 195.549 3.52372 195.354 3.32845L192.172 0.146473C191.976 -0.0487893 191.66 -0.0487893 191.464 0.146473C191.269 0.341735 191.269 0.658318 191.464 0.85358L194.293 3.68201L191.464 6.51043C191.269 6.7057 191.269 7.02228 191.464 7.21754C191.66 7.4128 191.976 7.4128 192.172 7.21754L195.354 4.03556Z"
+          fill=${fill}
+        />
+        <path d="M0 3.68201H129L117.273 10.682H0V3.68201Z" fill=${fill} />
+      </g>
     </svg>`;
   }
 
@@ -519,18 +521,18 @@ export default class DroneParts extends LitElement {
       filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
     }
 
-    /* Frame 34385 / 34387 / 34386 / 34388: column, align flex-start, gap 14px */
+    /* Frame 34385 / 34387 / 34386 / 34388: column, align flex-end, gap 14px */
     .label-wrap {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-end;
       padding: 0;
       gap: 0.875cqw; /* 14 / 1600 */
       width: 12.1875cqw; /* 195 / 1600 */
       min-height: 3.5625cqw; /* 57 / 1600 */
       height: auto;
       flex: none;
-      order: 0;
+      order: 2;
     }
 
     /* المراوح / الكاميرا / هيكل الهبوط / جسم الطائرة: 195x36, 24px/36px Bold */
@@ -542,7 +544,7 @@ export default class DroneParts extends LitElement {
       font-size: 1.5cqw; /* 24 / 1600 */
       line-height: 2.25cqw; /* 36 / 1600 */
       color: var(--dp-part-label-color, #ffffff);
-      text-align: left;
+      text-align: right;
       direction: rtl;
       white-space: nowrap;
       flex: none;
@@ -601,13 +603,13 @@ export default class DroneParts extends LitElement {
       z-index: 1;
     }
 
-    /* Frame 34370 / 34371 / 34372 / 34373 (Thumb): 177x177, order 2 */
+    /* Frame 34370 / 34371 / 34372 / 34373 (Thumb): 177x177, order 0 */
     .thumb {
       position: relative;
       width: 11.0625cqw; /* 177 / 1600 */
       height: 11.0625cqw; /* 177 / 1600 */
       flex: none;
-      order: 2;
+      order: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -921,18 +923,18 @@ export default class DroneParts extends LitElement {
         align-self: stretch;
       }
 
-      /* Frame 34386: column, align flex-start, gap 14px */
+      /* Frame 34386: column, align flex-end, gap 14px */
       .label-wrap {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         padding: 0;
         gap: 14px;
         width: 195px;
         min-height: 45px;
         height: auto;
         flex: none;
-        order: 0;
+        order: 1;
       }
 
       /* المراوح / الكاميرا / هيكل الهبوط / جسم الطائرة: 16px/24px Bold */
@@ -943,7 +945,7 @@ export default class DroneParts extends LitElement {
         font-weight: 700;
         font-size: 16px;
         line-height: 24px;
-        text-align: left;
+        text-align: right;
       }
 
       /* Frame 34381: 195x7 arrow */
@@ -957,7 +959,7 @@ export default class DroneParts extends LitElement {
         width: 64px;
         height: 64px;
         flex: none;
-        order: 1;
+        order: 0;
       }
 
       .thumb-ellipse {
@@ -1089,10 +1091,6 @@ export default class DroneParts extends LitElement {
                   <div class="part-item">
                     <!-- Frame 34420: contents on desktop, flex row on mobile -->
                     <div class="frame-34420">
-                      <div class="label-wrap">
-                        <span class="label-name">${p.label}</span>
-                        ${this.renderArrowSvg()}
-                      </div>
                       <div class="thumb">
                         ${p.image
                           ? html`<img src=${p.image} alt=${p.label} />`
@@ -1100,6 +1098,10 @@ export default class DroneParts extends LitElement {
                         <span
                           class="thumb-ellipse thumb-ellipse-${idx % 4}"
                         ></span>
+                      </div>
+                      <div class="label-wrap">
+                        <span class="label-name">${p.label}</span>
+                        ${this.renderArrowSvg()}
                       </div>
                     </div>
                     <!-- Frame 34365 -->
