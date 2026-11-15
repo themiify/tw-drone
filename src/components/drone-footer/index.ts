@@ -678,10 +678,8 @@ export default class DroneFooter extends LitElement {
 
   private renderSocialIcons() {
     const c = this.cfg;
-    const fb = c.facebook_url || "#";
-    const ig = c.instagram_url || "#";
-    const x = c.x_url || "#";
-    const li = c.linkedin_url || "#";
+    const isValid = (url: unknown): url is string =>
+      typeof url === "string" && url.trim().length > 0 && url.trim() !== "#";
 
     const fbIcon = html`<svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -714,14 +712,22 @@ export default class DroneFooter extends LitElement {
       <circle cx="4" cy="4" r="2" />
     </svg>`;
 
+    const items = [
+      { icon: fbIcon, url: c.facebook_url, label: "Facebook" },
+      { icon: igIcon, url: c.instagram_url, label: "Instagram" },
+      { icon: xIcon, url: c.x_url, label: "X" },
+      { icon: liIcon, url: c.linkedin_url, label: "LinkedIn" },
+    ].filter((item) => isValid(item.url));
+
+    if (items.length === 0) return nothing;
+
     return html`
       <div class="social-section">
-        <h4 class="social-title">${this.socialTitle}</h4>
+        ${this.socialTitle ? html`<h4 class="social-title">${this.socialTitle}</h4>` : nothing}
         <div class="social-icons">
-          ${renderSocialBadge(fbIcon, fb, "Facebook", "var(--social-bg, #E6E6E6)")}
-          ${renderSocialBadge(igIcon, ig, "Instagram", "var(--social-bg, #E6E6E6)")}
-          ${renderSocialBadge(xIcon, x, "X", "var(--social-bg, #E6E6E6)")}
-          ${renderSocialBadge(liIcon, li, "LinkedIn", "var(--social-bg, #E6E6E6)")}
+          ${items.map((item) =>
+            renderSocialBadge(item.icon, item.url as string, item.label, "var(--social-bg, #E6E6E6)")
+          )}
         </div>
       </div>
     `;
