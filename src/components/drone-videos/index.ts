@@ -250,14 +250,16 @@ export default class DroneVideos extends LitElement {
       this.renderRoot.querySelector<HTMLElement>(".nav-arrow-prev");
     const paginationEl =
       this.renderRoot.querySelector<HTMLElement>(".swiper-pagination");
+    const hasControls = this.videosList.length > 3;
 
     this.swiperInstance = new Swiper(swiperEl, {
       modules: [Navigation, Pagination, Autoplay],
       speed: this.sliderSpeed, // 1000ms transition speed
       slidesPerView: 1.1,
       spaceBetween: 16,
-      loop: this.videosList.length > 3,
-      autoplay: this.sliderAutoplay
+      loop: hasControls,
+      watchOverflow: true,
+      autoplay: this.sliderAutoplay && hasControls
         ? {
             delay: Math.max(
               2500,
@@ -267,14 +269,18 @@ export default class DroneVideos extends LitElement {
             pauseOnMouseEnter: true,
           }
         : false,
-      navigation: {
-        nextEl: nextBtn,
-        prevEl: prevBtn,
-      },
-      pagination: {
-        el: paginationEl,
-        clickable: true,
-      },
+      navigation: nextBtn && prevBtn
+        ? {
+            nextEl: nextBtn,
+            prevEl: prevBtn,
+          }
+        : false,
+      pagination: paginationEl
+        ? {
+            el: paginationEl,
+            clickable: true,
+          }
+        : false,
       breakpoints: {
         640: {
           slidesPerView: 2,
@@ -742,31 +748,39 @@ export default class DroneVideos extends LitElement {
             </div>
           </div>
 
-          <!-- Slider Navigation & Indicators -->
-          <div class="slider-controls">
-            <!-- Next & Previous Arrows (RTL aware: Right is Prev, Left is Next) -->
-            <div class="slider-arrows">
-              <button
-                class="nav-arrow-btn nav-arrow-prev"
-                aria-label="السابق"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
-                </svg>
-              </button>
-              <button
-                class="nav-arrow-btn nav-arrow-next"
-                aria-label="التالي"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
-                </svg>
-              </button>
-            </div>
+          <!-- Slider Navigation & Indicators (only if more than 3 videos) -->
+          ${videos.length > 3
+            ? html`
+                <div class="slider-controls">
+                  <!-- Next & Previous Arrows (RTL aware: Right is Prev, Left is Next) -->
+                  <div class="slider-arrows">
+                    <button
+                      class="nav-arrow-btn nav-arrow-prev"
+                      aria-label="السابق"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      class="nav-arrow-btn nav-arrow-next"
+                      aria-label="التالي"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
 
-            <!-- Swiper Pagination Dots -->
-            <div class="swiper-pagination"></div>
-          </div>
+                  <!-- Swiper Pagination Dots -->
+                  <div class="swiper-pagination"></div>
+                </div>
+              `
+            : nothing}
         </div>
       </section>
     `;
